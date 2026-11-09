@@ -1,0 +1,315 @@
+{
+  "title": {
+    "en": "EAPA_2025 4-Week Accelerated Certification Study Schedule",
+    "ar": "خطة المذاكرة المكثفة لاجتياز اختبار EAPA_2025 في 4 أسابيع"
+  },
+  "examOverview": {
+    "code": "EAPA_2025",
+    "title": "ArcGIS Pro Associate 2025",
+    "questions": 75,
+    "timeMinutes": 90,
+    "passingScore": "~70%",
+    "domainWeights": {
+      "Data Management": 32,
+      "Visualization": 25,
+      "Analysis and Geoprocessing": 25,
+      "Layouts and Sharing": 18
+    }
+  },
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "domain": "Data Management (32%)",
+      "title": {
+        "en": "Week 1: Geodatabase Schemas, Integrity Rules & Precision Editing",
+        "ar": "الأسبوع 1: هياكل قواعد البيانات، قواعد السلامة، والتحرير المساحي الدقيق"
+      },
+      "focusModules": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "targetWorkflows": [
+        "WF-001",
+        "WF-002",
+        "WF-003",
+        "WF-004",
+        "WF-005",
+        "WF-006",
+        "WF-007",
+        "WF-008",
+        "WF-009",
+        "WF-010"
+      ],
+      "dailyTasks": [
+        {
+          "day": 1,
+          "task": {
+            "en": "Study File Geodatabase vs Shapefile limitations (2GB, 10-char names) and capacity keywords.",
+            "ar": "دراسة الفروق بين قواعد البيانات و Shapefile ومفتاح السعة 256TB."
+          }
+        },
+        {
+          "day": 2,
+          "task": {
+            "en": "Master Domains (Coded vs Range) and Subtypes (Short/Long integer) configuration.",
+            "ar": "إتقان إعداد المجالات والأنماط الفرعية وسياسات الانقسام."
+          }
+        },
+        {
+          "day": 3,
+          "task": {
+            "en": "Build Geodatabase Topology and fix overlaps/gaps in Error Inspector.",
+            "ar": "بناء طوبولوجيا قاعدة البيانات وتصحيح الأخطاء في Error Inspector."
+          }
+        },
+        {
+          "day": 4,
+          "task": {
+            "en": "Implement Arcade Calculation and Constraint Attribute Rules.",
+            "ar": "كتابة قواعد السمات للحساب الفوري والقيود بلغة Arcade."
+          }
+        },
+        {
+          "day": 5,
+          "task": {
+            "en": "Master Coordinate Systems: Define Projection vs Project and Datum Transformations.",
+            "ar": "التحكم في أنظمة الإحداثيات: Define Projection مقابل Project."
+          }
+        },
+        {
+          "day": 6,
+          "task": {
+            "en": "Complete 48 Data Management Scenarios and 80 MCQs in Exam Simulator.",
+            "ar": "حل كافة أسئلة وسيناريوهات إدارة البيانات (128 سؤالاً) في المحاكي."
+          }
+        },
+        {
+          "day": 7,
+          "task": {
+            "en": "Weekly Diagnostic Review and weak topic reinforcement.",
+            "ar": "مراجعة تقرير الأداء الأسبوعي وتثبيت النقاط الضعيفة."
+          }
+        }
+      ]
+    },
+    {
+      "weekNumber": 2,
+      "domain": "Visualization (25%)",
+      "title": {
+        "en": "Week 2: Cartography, Advanced Symbology, Maplex & 3D Scenes",
+        "ar": "الأسبوع 2: الكارتوغرافيا، الرموز المتقدمة، محرك Maplex، والمشاهد ثلاثية الأبعاد"
+      },
+      "focusModules": [
+        "M5",
+        "M6",
+        "M7"
+      ],
+      "targetWorkflows": [
+        "WF-011",
+        "WF-012",
+        "WF-013",
+        "WF-014",
+        "WF-015",
+        "WF-016",
+        "WF-017"
+      ],
+      "dailyTasks": [
+        {
+          "day": 8,
+          "task": {
+            "en": "Master all 7 classification methods (Jenks, Quantile, Equal, Standard Deviation).",
+            "ar": "دراسة طرق التصنيف السبعة وفروقها الرياضية وحالات استخدامها."
+          }
+        },
+        {
+          "day": 9,
+          "task": {
+            "en": "Configure multi-variable symbology (driving size and rotation concurrently).",
+            "ar": "تهيئة الرموز متعددة المتغيرات للتحكم بالحجم والتدوير معاً."
+          }
+        },
+        {
+          "day": 10,
+          "task": {
+            "en": "Build complex Maplex multi-line label expressions and resolve overlaps.",
+            "ar": "كتابة تعبيرات تسميات Maplex متعددة الأسطر وحل التصادمات."
+          }
+        },
+        {
+          "day": 11,
+          "task": {
+            "en": "Set up 3D Local Scenes with extrusion, elevation draping, and illumination.",
+            "ar": "بناء المشاهد ثلاثية الأبعاد مع بثق المباني والإضاءة الشمسية."
+          }
+        },
+        {
+          "day": 12,
+          "task": {
+            "en": "Configure Time Slider and Range Slider for temporal and indoor filtering.",
+            "ar": "تهيئة منزلق الوقت ومنزلق المدى للفلترة الزمنية والأدوار."
+          }
+        },
+        {
+          "day": 13,
+          "task": {
+            "en": "Practice 38 Visualization Scenarios and 63 MCQs in Exam Simulator.",
+            "ar": "حل كافة أسئلة وسيناريوهات العرض البصري (101 سؤال) في المحاكي."
+          }
+        },
+        {
+          "day": 14,
+          "task": {
+            "en": "Review cartographic visual hierarchy and color ramp guidelines.",
+            "ar": "مراجعة قواعد التصميم الكارتوغرافي والتسلسل البصري."
+          }
+        }
+      ]
+    },
+    {
+      "weekNumber": 3,
+      "domain": "Analysis and Geoprocessing (25%)",
+      "title": {
+        "en": "Week 3: Spatial Analysis, Raster Surface Modeling & Python Automation",
+        "ar": "الأسبوع 3: التحليل المكاني، نمذجة أسطح الراستر، وأتمتة بايثون"
+      },
+      "focusModules": [
+        "M8",
+        "M9",
+        "M10"
+      ],
+      "targetWorkflows": [
+        "WF-018",
+        "WF-019",
+        "WF-020",
+        "WF-021",
+        "WF-022",
+        "WF-023",
+        "WF-024"
+      ],
+      "dailyTasks": [
+        {
+          "day": 15,
+          "task": {
+            "en": "Master environment precedence and Snap Raster half-cell shift prevention.",
+            "ar": "إتقان أسبقية البيئات وضبط Snap Raster لمنع إزاحة الخلايا."
+          }
+        },
+        {
+          "day": 16,
+          "task": {
+            "en": "Execute multi-criteria raster suitability modeling with Map Algebra Con().",
+            "ar": "تنفيذ نمذجة الملاءمة المكانية باستخدام دالة Con وجبر الخرائط."
+          }
+        },
+        {
+          "day": 17,
+          "task": {
+            "en": "Execute Hydrology workflow (Fill -> Flow Direction -> Flow Accumulation -> Watershed).",
+            "ar": "إتقان مسار التحليل الهيدرولوجي واستخلاص أحواض التصريف."
+          }
+        },
+        {
+          "day": 18,
+          "task": {
+            "en": "Master Network Analyst solvers (Service Area, Closest Facility, Route TSP).",
+            "ar": "إتقان محللات الشبكات (نطاق الخدمة، أقرب منشأة، المسار الأمثل)."
+          }
+        },
+        {
+          "day": 19,
+          "task": {
+            "en": "Build automated ModelBuilder models with iterators and `%Name%` substitution.",
+            "ar": "بناء نماذج ModelBuilder بالمكررات والاستبدال الضمني %Name%."
+          }
+        },
+        {
+          "day": 20,
+          "task": {
+            "en": "Write ArcPy da.SearchCursor and da.UpdateCursor scripts with context managers.",
+            "ar": "كتابة سكربتات بايثون باستخدام مؤشرات البيانات وإدارة الأقفال."
+          }
+        },
+        {
+          "day": 21,
+          "task": {
+            "en": "Complete 37 Analysis Scenarios and 62 MCQs in Exam Simulator.",
+            "ar": "حل كافة أسئلة وسيناريوهات التحليل (99 سؤالاً) في المحاكي."
+          }
+        }
+      ]
+    },
+    {
+      "weekNumber": 4,
+      "domain": "Layouts and Sharing (18%) & Final Readiness",
+      "title": {
+        "en": "Week 4: Layouts, Spatial Map Series, Web Publishing & Full Mock Exams",
+        "ar": "الأسبوع 4: اللوحات، سلاسل الخرائط، النشر السحابي، والاختبارات التجريبية الكاملة"
+      },
+      "focusModules": [
+        "M11",
+        "M12"
+      ],
+      "targetWorkflows": [
+        "WF-025",
+        "WF-026",
+        "WF-027",
+        "WF-028",
+        "WF-029",
+        "WF-030"
+      ],
+      "dailyTasks": [
+        {
+          "day": 22,
+          "task": {
+            "en": "Design professional multi-frame layouts with dynamic legends and scale bars.",
+            "ar": "تصميم لوحات طباعة متعددة الأطر مع ربط مقاييس الرسم والدليل."
+          }
+        },
+        {
+          "day": 23,
+          "task": {
+            "en": "Automate a multi-page Spatial Map Series with dynamic text tags.",
+            "ar": "أتمتة سلاسل الخرائط المكانية مع وسوم النصوص الديناميكية."
+          }
+        },
+        {
+          "day": 24,
+          "task": {
+            "en": "Publish Web Feature Layers with offline sync and vector tile packages.",
+            "ar": "نشر طبقات معالم الويب مع المزامنة وحزم القوالب المتجهة."
+          }
+        },
+        {
+          "day": 25,
+          "task": {
+            "en": "Troubleshoot Sharing Analyzer errors (fatal red) vs warnings (yellow).",
+            "ar": "تشخيص وحل أخطاء فاحص المشاركة القاتلة والتحذيرات."
+          }
+        },
+        {
+          "day": 26,
+          "task": {
+            "en": "Review all 12 Tool Comparison guides and 12 Troubleshooting guides.",
+            "ar": "مراجعة أدلة المقارنة الـ 12 وأدلة استكشاف الأخطاء الـ 12."
+          }
+        },
+        {
+          "day": 27,
+          "task": {
+            "en": "Run full 75-Question Timed Mock Exam in Pearson VUE Simulator mode.",
+            "ar": "خوض اختبار تجريبي كامل من 75 سؤالاً ومؤقت 90 دقيقة في المحاكي."
+          }
+        },
+        {
+          "day": 28,
+          "task": {
+            "en": "Final flashcard speed drill (100 cards) and exam day checklist review.",
+            "ar": "المراجعة السريعة لكافة البطاقات الـ 100 وجاهزية يوم الاختبار."
+          }
+        }
+      ]
+    }
+  ]
+}

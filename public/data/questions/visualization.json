@@ -1,0 +1,4351 @@
+[
+  {
+    "id": "VIZ-001",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Which statistical classification method groups features so that each class contains the exact same number of features?",
+      "ar": "أي طريقة تصنيف إحصائي تقسم المعالم بحيث تحتوي كل فئة على نفس العدد تماماً من المعالم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Equal Interval",
+          "ar": "Equal Interval (الفترات المتساوية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Quantile",
+          "ar": "Quantile (الفئات المتساوية في العدد)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Natural Breaks (Jenks)",
+          "ar": "Natural Breaks (الكسور الطبيعية - جينكس)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Standard Deviation",
+          "ar": "Standard Deviation (الانحراف المعياري)"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Quantile distributes features equally across classes so that each class has an identical count of records (Total features / Number of classes).",
+      "ar": "توزع طريقة Quantile المعالم بالتساوي عبر الفئات بحيث تحتوي كل فئة على عدد متطابق من السجلات (إجمالي المعالم / عدد الفئات)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Equal Interval divides the attribute range (max - min) into equal-sized numeric value intervals, not equal counts.",
+        "C": "Natural Breaks minimizes variance within classes and maximizes variance between classes based on natural clustering.",
+        "D": "Standard Deviation creates classes based on deviations from the mean value."
+      },
+      "ar": {
+        "A": "تقسم طريقة الفترات المتساوية مدى القيم إلى فترات رقمية متساوية الطول وليس متساوية في عدد المعالم.",
+        "C": "تقلل طريقة الكسور الطبيعية التباين داخل الفئة وتزيد التباين بين الفئات بناءً على التجمعات الطبيعية في البيانات.",
+        "D": "تنشئ طريقة الانحراف المعياري فئات بناءً على انحراف القيم عن المتوسط الحسابي."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-002",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Why is Natural Breaks (Jenks) generally NOT recommended when visually comparing choropleth maps of different years?",
+      "ar": "لماذا لا يُوصى عموماً باستخدام طريقة الكسور الطبيعية (Natural Breaks) عند المقارنة البصرية بين خرائط كوربلث لسنوات مختلفة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because it only supports integer attribute fields",
+          "ar": "لأنها تدعم حقول الأرقام الصحيحة فقط"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because class break threshold values vary dynamically between datasets, making color comparisons invalid",
+          "ar": "لأن حدود الفئات وقيمها تتغير ديناميكياً باختلاف البيانات مما يجعل المقارنة البصرية للألوان غير دقيقة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because it requires creating a raster pyramid before classification",
+          "ar": "لأنها تتطلب بناء أهرامات راستر قبل تطبيق التصنيف"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because it only allows a maximum of 3 classes",
+          "ar": "لأنها تسمح بحد أقصى بـ 3 فئات فقط"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Natural Breaks calculates break boundaries based on the unique statistical distribution of the specific dataset. When comparing multiple maps across years, different break thresholds mean the same color represents different numeric ranges, distorting visual comparison.",
+      "ar": "تحسب طريقة الكسور الطبيعية فواصل الفئات بناءً على التوزيع الإحصائي الفريد لكل مجموعة بيانات؛ وعند مقارنة خرائط لسنوات مختلفة، فإن نفس اللون سيمثل نطاقات رقمية مختلفة مما يشوه المقارنة البصرية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Natural Breaks fully supports both integer and floating-point numeric fields.",
+        "C": "Pyramids are raster performance structures and are unrelated to vector layer classification.",
+        "D": "Natural Breaks supports up to 32 classes in ArcGIS Pro."
+      },
+      "ar": {
+        "A": "تدعم طريقة الكسور الطبيعية الأرقام الصحيحة والعشرية على حد سواء.",
+        "C": "الأهرامات هي هياكل تسريع لعرض الراستر ولا علاقة لها بتصنيف الطبقات الاتجاهية.",
+        "D": "تدعم طريقة الكسور الطبيعية حتى 32 فئة في ArcGIS Pro."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-003",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Best-practice",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "When mapping total population counts across administrative zones of vastly different geographic areas, how should the data be symbolized to prevent visual cartographic distortion?",
+      "ar": "عند رسم خريطة لإجمالي أعداد السكان عبر مناطق إدارية ذات مساحات جغرافية متباينة للغاية، كيف يجب تمثيل البيانات لتجنب التضليل الكارتوغرافي البصري؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Normalize the population field by polygon area to display population density",
+          "ar": "قسمة حقل السكان على مساحة المضلع (Normalization) لعرض الكثافة السكانية"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Use Unique Values symbology with random color palettes",
+          "ar": "استخدام رموز القيم الفريدة (Unique Values) بألوان عشوائية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Apply Inverse Distance Weighted raster interpolation",
+          "ar": "تطبيق استيفاء الراستر بطريقة IDW"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Increase the layer transparency to 90%",
+          "ar": "زيادة شفافية الطبقة إلى 90%"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Choropleth mapping of raw count data across varying polygon sizes produces misleading maps because larger polygons visually dominate regardless of population density. Normalizing by area (e.g., people per square kilometer) converts raw counts into true density rates.",
+      "ar": "يؤدي تمثيل الأعداد الخام على مضلعات متباينة المساحة إلى تضليل بصري لأن المساحات الكبيرة تهيمن بصرياً؛ ويعمل التقسيم على المساحة (التطبيع) على تحويل الأعداد إلى كثافات حقيقية عادلة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Unique Values is designed for categorical data, not quantitative continuous counts.",
+        "C": "Interpolation creates continuous surfaces from point samples and is not applicable for polygon census totals.",
+        "D": "Transparency does not fix the underlying cartographic error of mapping raw count polygons."
+      },
+      "ar": {
+        "B": "تُستخدم القيم الفريدة للبيانات الفئوية وليس للبيانات الرقمية الكمية.",
+        "C": "الاستيفاء ينشئ أسطحاً مستمرة من نقاط وليس لتلخيص مضلعات التعداد.",
+        "D": "الشفافية لا تعالج الخطأ الكارتوغرافي المتمثل في رسم الأعداد الإجمالية."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-004",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "An analyst needs to display street centerlines with a dark gray pavement fill and a thin black border (casing). At street intersections, the borders currently cross over each other instead of merging cleanly. What feature in ArcGIS Pro resolves this?",
+      "ar": "يحتاج محلل لعرض خطوط منتصف الشوارع بتعبئة رمادية مع إطار حدودي أسود (Casing)؛ لكن عند التقاطعات، تتقاطع الخطوط الحدودية فوق بعضها بدلاً من الاندماج بسلاسة. ما الميزة التي تحل هذه المشكلة في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Display Filters",
+          "ar": "Display Filters (فلاتر العرض)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Symbol Layer Drawing",
+          "ar": "Symbol Layer Drawing (رسم طبقات الرموز)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Feature Blending",
+          "ar": "Feature Blending (دمج المعالم)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Maplex Stacking",
+          "ar": "Maplex Stacking (تكدس مابلكس)"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Symbol Layer Drawing controls the drawing order of individual symbol layers across features in a layer or group, enabling joining and merging of casings and fills at line intersections.",
+      "ar": "تتحكم خاصية Symbol Layer Drawing في ترتيب رسم طبقات الرموز الفردية للمعالم، مما يمكن من دمج وربط الإطارات الخارجية والتعبئة بسلاسة عند تقاطعات الشوارع."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Display Filters filter which features draw at varying scales, but do not control symbol layer overlap drawing.",
+        "C": "Feature Blending blends colors mathematically like Multiply or Screen, but does not join line casings.",
+        "D": "Maplex Stacking is a text labeling fitting strategy for multi-line labels."
+      },
+      "ar": {
+        "A": "تتحكم فلاتر العرض في ظهور المعالم حسب المقياس ولا تدمج حواف الرموز.",
+        "C": "يدمج Feature Blending الألوان رياضياً كالشفافية ولكنه لا يدمج إطارات الطرق.",
+        "D": "تكدس مابلكس خاص بتقسيم نصوص التسميات على أسطر متعددة."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-005",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Layer Blending"
+    ],
+    "question": {
+      "en": "Which layer blend mode should you apply to a categorical Land Use layer placed directly above a Hillshade raster to allow 3D terrain shadows and textures to show through vibrantly without washing out the colors?",
+      "ar": "أي نمط دمج طبقات (Blend Mode) يجب تطبيقه على طبقة استخدامات الأراضي الموضوعة فوق راستر الظلال التضاريسية (Hillshade) لإظهار تضاريس وظلال السطح بحيوية دون بهتان الألوان؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Screen",
+          "ar": "Screen"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Multiply",
+          "ar": "Multiply"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Lighter Color",
+          "ar": "Lighter Color"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Difference",
+          "ar": "Difference"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Multiply multiplies the color values of the upper layer with the underlying layer. White areas in the upper layer become completely transparent, while darker hillshade shadows darken the land use colors, preserving full saturation.",
+      "ar": "يقوم نمط Multiply بضرب قيم ألوان الطبقة العليا بالطبقة السفلى؛ فتصبح المناطق البيضاء شفافة تماماً وتبرز ظلال التضاريس الداكنة ألوان استخدامات الأراضي دون بهتان أو فقدان للتشبع."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Screen inverts and multiplies colors, creating a brighter and bleached appearance.",
+        "C": "Lighter Color only shows pixels that are brighter, hiding shadows.",
+        "D": "Difference subtracts color channels, creating psychedelic inverted colors unsuitable for cartography."
+      },
+      "ar": {
+        "A": "يقوم نمط Screen بعكس الألوان وضربها مما يعطي مظهراً ساطعاً وباهتاً.",
+        "C": "يظهر نمط Lighter Color البكسلات الأكثر سطوعاً فقط فيخفي الظلال التضاريسية.",
+        "D": "يطرح نمط Difference قنوات الألوان مما ينتج ألواناً معكوسة غير صالحة للخرائط التضاريسية."
+      }
+    },
+    "references": [
+      {
+        "title": "Visual effects and layer blending, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/layer-blending.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-006",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling",
+      "Maplex Label Engine"
+    ],
+    "question": {
+      "en": "In the Maplex Label Engine, what is the effect of setting a feature's Feature Weight to 1000?",
+      "ar": "في محرك التسميات Maplex Label Engine، ما هو أثر ضبط وزن المعلم (Feature Weight) على القيمة 1000؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The feature is guaranteed to be labeled before all other features",
+          "ar": "ضمان وضع تسمية لهذا المعلم قبل جميع المعالم الأخرى"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The feature acts as a strict barrier that completely prohibits any labels from being placed over it",
+          "ar": "يعمل المعلم كحاجز صارم يمنع تماماً وضع أي تسميات نصية فوقه"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The feature's label font size is multiplied by 10",
+          "ar": "مضاعفة حجم خط تسمية المعلم بمقدار 10 أضعاف"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The feature will only be displayed when zoomed in closer than 1:1,000 scale",
+          "ar": "عرض المعلم فقط عند التقريب لمقياس رسم أكبر من 1:1,000"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Feature Weight (0–1000) specifies how strongly features act as obstacles. A weight of 1000 treats the feature as an absolute barrier, ensuring no labels from any layer can overlap it.",
+      "ar": "يحدد Feature Weight (من 0 إلى 1000) مدى مقاومة المعلم لوضع التسميات فوقه؛ والقيمة 1000 تعني حاجزاً صارماً يمنع أي تسمية من أي طبقة من التداخل معه."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Label Weight (not Feature Weight) governs priority between competing labels.",
+        "C": "Feature weights control collision avoidance placement, not font size.",
+        "D": "Scale dependencies are set via visibility ranges, not feature weights."
+      },
+      "ar": {
+        "A": "وزن التسمية Label Weight هو الذي يتحكم في أولوية رسم التسميات المتنافسة.",
+        "C": "تتحكم أوزان المعالم في تجنب التصادم ولا تغير أحجام الخطوط.",
+        "D": "نطاقات الرؤية للمقياس تُضبط عبر خصائص المقياس وليس أوزان المعالم."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-007",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling",
+      "Arcade"
+    ],
+    "question": {
+      "en": "Which Arcade expression correctly formats a population attribute number (e.g. 1542000) into a comma-separated string (e.g. '1,542,000') in a label?",
+      "ar": "أي تعبير Arcade ينسق بشكل صحيح رقم حقل السكان (مثل 1542000) إلى نص مفصول بفواصل للآلاف (مثل '1,542,000') في التسمية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "$feature.POPULATION.format('###,###')",
+          "ar": "$feature.POPULATION.format('###,###')"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Text($feature.POPULATION, '#,###')",
+          "ar": "Text($feature.POPULATION, '#,###')"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "NumberToComma($feature.POPULATION)",
+          "ar": "NumberToComma($feature.POPULATION)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "String($feature.POPULATION, 'COMMAS')",
+          "ar": "String($feature.POPULATION, 'COMMAS')"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "In Arcade, the Text() function accepts a value and a formatting pattern, where Text($feature.POPULATION, '#,###') formats numeric values with standard thousand separators.",
+      "ar": "في لغة Arcade، تقبل دالة Text() القيمة ونمط التنسيق، وتعبير Text($feature.POPULATION, '#,###') ينسق الأرقام بفواصل الآلاف القياسية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "format() is not a standard Arcade property method on numbers.",
+        "C": "NumberToComma is not an existing Arcade built-in function.",
+        "D": "String() converts values to text without formatting pattern parameters."
+      },
+      "ar": {
+        "A": "دالة format() ليست دالة قياسية في لغة Arcade للأرقام.",
+        "C": "لا توجد دالة مدمجة في Arcade باسم NumberToComma.",
+        "D": "دالة String() تحول إلى نص مجرد دون دعم معاملات أنماط التنسيق."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-008",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Annotation"
+    ],
+    "question": {
+      "en": "What is the key architectural difference between Standard Annotation and Feature-Linked Annotation?",
+      "ar": "ما هو الفرق الهيكلي الرئيسي بين النصوص التوضيحية القياسية (Standard Annotation) والنصوص التوضيحية المرتبطة بالمعالم (Feature-Linked Annotation)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Feature-Linked Annotation automatically updates or deletes when the linked feature is modified or deleted",
+          "ar": "تتحدث أو تُحذف النصوص التوضيحية المرتبطة بالمعالم تلقائياً عند تعديل أو حذف المعلم المرتبط بها"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Standard Annotation can only be stored in CAD files",
+          "ar": "تُخزن النصوص القياسية في ملفات CAD فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Feature-Linked Annotation does not support custom font sizing",
+          "ar": "لا تدعم النصوص المرتبطة بالمعالم تغيير أحجام الخطوط مخصصاً"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Standard Annotation requires an enterprise geodatabase with branch versioning",
+          "ar": "تتطلب النصوص القياسية قاعدة بيانات مؤسسية ذات إصدارات فرعية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Feature-Linked Annotation is connected to features via a geodatabase composite relationship class. When an editor moves, edits attributes of, or deletes the linked feature, the associated annotation text and position update or delete automatically.",
+      "ar": "ترتبط Feature-Linked Annotation بالمعالم عبر فئة علاقات مركبة في قاعدة البيانات؛ فعند تحريك المعلم أو تعديل بياناته أو حذفه، ينعكس ذلك تلقائياً على النص التوضيحي بالتحريك أو التحديث أو الحذف."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both types of annotation are stored as geodatabase feature classes in a .gdb.",
+        "C": "Feature-linked annotation fully supports individual font sizing, rotation, and symbol styling.",
+        "D": "Standard annotation works seamlessly in File Geodatabases, Mobile Geodatabases, and Enterprise Geodatabases."
+      },
+      "ar": {
+        "B": "يُخزن كلا النوعين كفئات معالم نصوص توضيحية داخل قاعدة البيانات الجغرافية.",
+        "C": "تدعم النصوص المرتبطة بالمعالم تخصيص أحجام الخطوط والتدوير والأنماط بالكامل.",
+        "D": "تعمل النصوص القياسية في قواعد البيانات الملفية والمحمولة والمؤسسية دون الحاجة لتفريع نسخ."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-009",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Display Filters"
+    ],
+    "question": {
+      "en": "An analyst wants a road layer to show only Major Highways when zoomed out past 1:50,000, but display both Major Highways and Local Streets when zoomed in closer, while keeping all roads accessible in the Attribute Table at all times. What should be used?",
+      "ar": "يريد محلل إظهار الطرق السريعة الرئيسية فقط عند التصغير إلى ما بعد 1:50,000، وعرض الشوارع المحلية مع السريعة عند التقريب، مع إبقاء جميع الطرق متاحة في جدول البيانات في كل الأوقات. ماذا يجب أن يستخدم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Definition Query",
+          "ar": "Definition Query (استعلام تعريفي)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Scale-based Display Filters",
+          "ar": "Scale-based Display Filters (فلاتر العرض المعتمدة على المقياس)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Clip Layer to Map Extent",
+          "ar": "Clip Layer to Map Extent (قص الطبقة حسب نطاق الخريطة)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Select By Attributes",
+          "ar": "Select By Attributes (تحديد حسب السمات)"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Scale-based Display Filters restrict feature drawing based on scale ranges and SQL queries without affecting attribute table queries, geoprocessing tools, or feature selections.",
+      "ar": "تتحكم فلاتر العرض المعتمدة على المقياس (Display Filters) في رسم المعالم بصرياً وفق مقاييس واستعلامات محددة دون استبعاد المعالم من جدول السمات أو أدوات التحليل."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "A Definition Query filters features at the data source level, hiding non-matching records from the attribute table and tools as well.",
+        "C": "Clip Layer to Map Extent clips graphics to the frame boundary, not by scale attributes.",
+        "D": "Select By Attributes creates a temporary selection highlight and does not control scale visibility."
+      },
+      "ar": {
+        "A": "يحجب الاستعلام التعريفي المعالم عن جدول البيانات وأدوات التحليل أيضاً وليس من الرسم فقط.",
+        "C": "قص الطبقة يقتطع المعالم عند حواف إطار الخريطة وليس حسب سمات مقياس الرسم.",
+        "D": "التحديد بالسمات يحدد معالم باللون الأزرق ولا يتحكم في ظهورها وإخفائها بالمقياس."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-010",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "Which statement correctly differentiates a Global Scene from a Local Scene in ArcGIS Pro?",
+      "ar": "أي عبارة تميز بشكل صحيح بين المشهد العالمي (Global Scene) والمشهد المحلي (Local Scene) في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Global Scenes display data on a 3D sphere using WGS84; Local Scenes display planar or projected data for localized extents",
+          "ar": "المشاهد العالمية تعرض البيانات على مجسم كروي ثلاثي الأبعاد بنظام WGS84؛ بينما المشاهد المحلية تعرض بيانات مستوية أو مسقطة لنطاقات محددة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Global Scenes only support raster data; Local Scenes only support vector data",
+          "ar": "المشاهد العالمية تدعم الراستر فقط؛ والمشاهد المحلية تدعم المتجهات فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Local Scenes cannot display elevation ground surfaces",
+          "ar": "المشاهد المحلية لا يمكنها عرض أسطح التضاريس والارتفاعات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Global Scenes can only be viewed in web browsers and not in ArcGIS Pro",
+          "ar": "المشاهد العالمية تُعرض في متصفحات الويب فقط ولا تفتح في ArcGIS Pro"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Global scenes model the curvature of the entire globe using WGS84 or CGCS2000. Local scenes project data onto a flat planar coordinate system, making them ideal for localized engineering sites, underground geology, or indoor mapping.",
+      "ar": "تعرض المشاهد العالمية (Global Scenes) انحناء الكرة الأرضية بالكامل بنظام WGS84؛ أما المشاهد المحلية (Local Scenes) فتسقط البيانات على نظام إحداثيات مستوٍ مسقط، مما يجعلها مثالية للمشاريع الهندسية المحلية والتطبيقات الجيولوجية تحت السطحية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both scenes support 2D/3D vectors, rasters, point clouds, and mesh data.",
+        "C": "Local scenes fully support custom digital elevation models (DEM) and TIN elevation surfaces.",
+        "D": "Both scenes are native core viewing modes inside the ArcGIS Pro desktop application."
+      },
+      "ar": {
+        "B": "يدعم كلا النوعين من المشاهد البيانات الاتجاهية والراستر وسحب النقاط والشبكات.",
+        "C": "تدعم المشاهد المحلية أسطح الارتفاع الرقمية ونماذج التضاريس بشكل كامل.",
+        "D": "يعد كلا المشهدين نمطي عرض أصيلين داخل تطبيق ArcGIS Pro المكتبي."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-011",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Extrusion"
+    ],
+    "question": {
+      "en": "How does ArcGIS Pro convert a 2D building footprint polygon layer into 3D solid structures using the Extrusion tool on the Appearance ribbon?",
+      "ar": "كيف يحول ArcGIS Pro طبقة مضلعات مساقط المباني ثنائية الأبعاد إلى مجسمات ثلاثية الأبعاد باستخدام أداة Extrusion في شريط Appearance؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "By applying a raster hillshade filter to the 2D polygon symbology",
+          "ar": "بتطبيق فلتر التظليل التضاريسي للراستر على رموز المضلع ثنائي الأبعاد"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "By generating vertical 3D planar walls from the feature base up to a specified attribute height or constant value",
+          "ar": "بتوليد جدران رأسية ثلاثية الأبعاد تنطلق من قاعدة المعلم إلى ارتفاع يحدده حقل سماتي أو قيمة ثابتة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "By running the Buffer 3D tool with spherical expansion",
+          "ar": "بتشغيل أداة Buffer 3D بالتوسع الكروي"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "By creating an animated fly-through camera path",
+          "ar": "بإنشاء مسار كاميرا متحرك للطيران التفاعلي"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Extrusion pushes a 2D flat shape vertically into a 3D volume, utilizing an attribute value (such as building height or number of floors) or a mathematical formula to generate vertical walls from the ground up.",
+      "ar": "تقوم أداة البثق (Extrusion) بدفع الشكل ثنائي الأبعاد رأسياً لإنتاج كتلة مجسمة ثلاثية الأبعاد، بالاعتماد على حقل سماتي (مثل ارتفاع المبنى أو عدد الطوابق) أو معادلة رياضية لتوليد الجدران من الأرض لأعلى."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Hillshade is a 2D raster shading technique, not 3D polygon extrusion.",
+        "C": "Buffer 3D expands geometry in all dimensions creating rounded buffers.",
+        "D": "Camera animations create video flythroughs, not geometric 3D features."
+      },
+      "ar": {
+        "A": "التظليل التضاريسي تقنية راستر ثنائية الأبعاد ولا ينشئ كتل مبانٍ ثلاثية الأبعاد.",
+        "C": "تنشئ أداة Buffer 3D نطاقات كروية حول المعالم وليست للبثق الرأسي للمباني.",
+        "D": "تحريك الكاميرا مخصص لإنتاج مقاطع الفيديو ولا يبني مجسمات هندسية."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-012",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Time"
+    ],
+    "question": {
+      "en": "What layer property must be configured to enable the Time Slider ribbon and view historical traffic accident animations across consecutive years?",
+      "ar": "ما هي خاصية الطبقة التي يجب تهيئتها لتفعيل شريط منزلق الوقت (Time Slider) وعرض رسوم متحركة للحوادث المرورية عبر السنوات المتتالية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Set a Definition Query with the CURRENT_DATE function",
+          "ar": "ضبط استعلام تعريفي باستخدام دالة CURRENT_DATE"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Enable Time in Layer Properties > Time and specify the date/time attribute field",
+          "ar": "تفعيل الوقت في Layer Properties > Time وتحديد حقل التاريخ/الوقت"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Run the Project tool to add temporal coordinate dimensions",
+          "ar": "تشغيل أداة Project لإضافة أبعاد إحداثية زمنية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Assign a Coded Value Domain to the date field",
+          "ar": "تعيين نطاق قيم مشفرة (Coded Value Domain) لحقل التاريخ"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Enabling Time on a layer via Layer Properties > Time instructs ArcGIS Pro to recognize date or timestamp fields, which activates the interactive Time Slider on the map view to filter, step, and animate data chronologically.",
+      "ar": "يؤدي تفعيل الوقت في خصائص الطبقة (Layer Properties > Time) إلى توجيه ArcGIS Pro للتعرف على حقول التواريخ، مما يفعل منزلق الوقت التفاعلي لتصفية البيانات واستعراضها وتحريكها زمنياً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Definition queries filter records statically, they do not activate the interactive time slider controls.",
+        "C": "Project handles spatial coordinate systems and cannot add temporal dimensions.",
+        "D": "Domains restrict valid values during data entry and do not configure map playback."
+      },
+      "ar": {
+        "A": "الاستعلام التعريفي يصفي السجلات بشكل ثابت ولا يفعل أدوات شريط منزلق الوقت.",
+        "C": "أداة Project تتعامل مع الإسقاط المكاني ولا علاقة لها بالبعد الزمني.",
+        "D": "النطاقات تقيد القيم المدخلة ولا علاقة لها بالتشغيل الزمني على الخريطة."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-013",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Range"
+    ],
+    "question": {
+      "en": "How does the Range Slider differ from the Time Slider in ArcGIS Pro?",
+      "ar": "كيف يختلف منزلق المدى (Range Slider) عن منزلق الوقت (Time Slider) في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The Range Slider filters continuous numeric attributes (e.g., floor number, pipeline pressure, elevation) rather than date/time values",
+          "ar": "يصفي منزلق المدى السمات الرقمية المستمرة (مثل رقم الطابق، ضغط الأنابيب، الارتفاع) بدلاً من قيم التاريخ والوقت"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The Range Slider can only be used on raster bands",
+          "ar": "يمكن استخدام منزلق المدى على نطاقات الراستر فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The Range Slider deletes features outside the selected range permanently from the geodatabase",
+          "ar": "يحذف منزلق المدى المعالم الواقعة خارج النطاق نهائياً من قاعدة البيانات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The Range Slider requires a Spatial Analyst license",
+          "ar": "يتطلب منزلق المدى ترخيص امتداد Spatial Analyst"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "While the Time Slider specifically handles temporal calendar dates and times, the Range Slider provides an interactive on-screen slider to dynamically step through and filter features using any integer or floating-point numeric field (e.g., building floor levels, contaminant levels).",
+      "ar": "بينما يختص منزلق الوقت بالتواريخ والأوقات التقويمية، يتيح منزلق المدى (Range Slider) تصفيح واستعراض المعالم ديناميكياً باستخدام أي حقل رقمي (مثل طوابق المباني، أو مستويات التلوث، أو الارتفاعات)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "The Range Slider works seamlessly on both vector feature layers and raster catalogs.",
+        "C": "Sliders are visualization filters and never modify or delete underlying disk records.",
+        "D": "Range filtering is a standard core capability included with all ArcGIS Pro license levels."
+      },
+      "ar": {
+        "B": "يعمل منزلق المدى على الطبقات الاتجاهية ومجموعات البيانات بكفاءة.",
+        "C": "المنزلقات أدوات عرض بصري ولا تحذف البيانات الأصلية على القرص إطلاقاً.",
+        "D": "تصفية المدى ميزة أساسية متاحة في جميع مستويات ترخيص ArcGIS Pro دون إضافات."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-014",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Select By Attributes"
+    ],
+    "question": {
+      "en": "Which SQL clause correctly queries an attribute table for all parcels where the ZONING field is either 'Commercial' or 'Industrial' and the ASSESSED_VALUE is greater than $500,000?",
+      "ar": "أي جملة SQL تستعلم بشكل صحيح عن قطع الأراضي التي يكون فيها حقل ZONING إما 'Commercial' أو 'Industrial' وقيمة ASSESSED_VALUE أكبر من 500,000 دولار؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "ZONING IN ('Commercial', 'Industrial') AND ASSESSED_VALUE > 500000",
+          "ar": "ZONING IN ('Commercial', 'Industrial') AND ASSESSED_VALUE > 500000"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "ZONING = 'Commercial' OR 'Industrial' AND ASSESSED_VALUE > 500000",
+          "ar": "ZONING = 'Commercial' OR 'Industrial' AND ASSESSED_VALUE > 500000"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "ZONING = 'Commercial' AND ZONING = 'Industrial' OR ASSESSED_VALUE > 500000",
+          "ar": "ZONING = 'Commercial' AND ZONING = 'Industrial' OR ASSESSED_VALUE > 500000"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "SELECT PARCELS WHERE ZONING = 'Commercial', 'Industrial' > 500000",
+          "ar": "SELECT PARCELS WHERE ZONING = 'Commercial', 'Industrial' > 500000"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The IN operator tests whether a field value matches any element in a list, and the AND operator enforces the joint condition with proper logical operator precedence.",
+      "ar": "تتحقق المعاملة IN مما إذا كانت القيمة تطابق أياً من عناصر القائمة، ويربط المعامل AND الشرط المالي الإضافي مع مراعاة أسبقية العمليات المنطقية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "SQL does not permit shorthand OR without re-specifying the field name or using the IN operator.",
+        "C": "A single field cannot simultaneously equal both 'Commercial' AND 'Industrial' on the same record.",
+        "D": "This syntax is not valid SQL in ArcGIS Pro query builders."
+      },
+      "ar": {
+        "B": "لا تسمح لغة SQL باختصار OR دون تكرار اسم الحقل أو استخدام معامل IN.",
+        "C": "لا يمكن لحقل واحد أن يحمل قيمتين مختلفتين معاً باستخدام AND لنفس السجل.",
+        "D": "هذه الصياغة غير صحيحة نحوياً في محررات استعلامات SQL بـ ArcGIS Pro."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-015",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Select By Location"
+    ],
+    "question": {
+      "en": "You need to identify all hospital points that fall completely inside a 100-year flood zone polygon layer. Which spatial relationship rule in the Select By Location tool should you configure?",
+      "ar": "تحتاج إلى تحديد جميع نقاط المستشفيات التي تقع بالكامل داخل طبقة مضلعات مناطق الفيضان لـ 100 عام. أي قاعدة علاقة مكانية في أداة Select By Location يجب ضبطها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Completely contain",
+          "ar": "Completely contain (تحتوي بالكامل)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Intersect",
+          "ar": "Intersect (تتقاطع)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Within",
+          "ar": "Within (تقع بداخل)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Touch the boundary of",
+          "ar": "Touch the boundary of (تلامس حدود)"
+        }
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "en": "When selecting points (Input Features) that are situated inside polygons (Selecting Features), the appropriate spatial relationship is 'Within' or 'Completely within'. 'Completely contain' is the reverse relationship.",
+      "ar": "عند تحديد نقاط (معالم الإدخال) تقع داخل مضلعات (معالم التحديد)، فإن العلاقة المكانية الصحيحة هي 'Within' (تقع بداخل). أما Completely contain فهي العلاقة العكسية للمضلع بالنسبة للنقطة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Completely contain selects polygons that encompass other features, not points contained inside polygons.",
+        "B": "Intersect also works for points on boundaries, but 'Within' strictly identifies internal containment.",
+        "D": "Touch the boundary of selects features that share coincident boundary segments without interior overlap."
+      },
+      "ar": {
+        "A": "تحدد أداة Completely contain المعالم الحاوية لغيرها وليس النقاط المحتواة بالداخل.",
+        "B": "التقاطع يحدد أيضاً النقاط على الحواف ولكن Within تعبر بدقة عن الاحتواء الداخلي.",
+        "D": "تلامس الحدود يحدد المعالم المشتركة في الحافة فقط دون التواجد بالداخل."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-016",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Identify how to control the coordinate system and geographic transformation in ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Map Properties"
+    ],
+    "question": {
+      "en": "When layers with different datums (e.g., NAD 1927 and WGS 1984) are added to the same map, where do you specify the transformation method in ArcGIS Pro?",
+      "ar": "عند إضافة طبقات ذات مراجع مختلفة (مثل NAD 1927 و WGS 1984) إلى نفس الخريطة، أين تحدد طريقة التحويل الجغرافي في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Map Properties > Coordinate Systems > Transformations",
+          "ar": "Map Properties > Coordinate Systems > Transformations"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Catalog Pane > Project Options",
+          "ar": "Catalog Pane > Project Options"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Layer Properties > Elevation",
+          "ar": "Layer Properties > Elevation"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Ribbon > Edit > Snapping",
+          "ar": "Ribbon > Edit > Snapping"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Geographic datum transformations for on-the-fly map display are configured in Map Properties under the Coordinate Systems tab by clicking the Transformations button.",
+      "ar": "تُضبط التحويلات الجغرافية للمراجع للعرض الآني في Map Properties تحت تبويب Coordinate Systems بالنقر على زر Transformations."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Project Options configure general application defaults, not active map transformations.",
+        "C": "Elevation tab controls 3D vertical surfaces.",
+        "D": "Snapping controls vertex magnetism during editing."
+      },
+      "ar": {
+        "B": "خيارات المشروع تضبط الإعدادات العامة للتطبيق ولا تضبط تحويلات الخريطة النشطة.",
+        "C": "تبويب الارتفاع يتحكم في الأسطح الرأسية ثلاثية الأبعاد.",
+        "D": "الانجذاب يتحكم في مغناطيسية الرؤوس أثناء التحرير."
+      }
+    },
+    "references": [
+      {
+        "title": "Coordinate systems in maps and scenes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-017",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Which classification method calculates equal-sized intervals by taking the difference between high and low values and dividing by the number of classes?",
+      "ar": "أي طريقة تصنيف تحسب فترات متساوية الحجم بقسمة الفرق بين أعلى وأدنى قيمة على عدد الفئات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Equal Interval",
+          "ar": "Equal Interval (الفترات المتساوية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Defined Interval",
+          "ar": "Defined Interval (الفترات المحددة)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Natural Breaks",
+          "ar": "Natural Breaks (الكسور الطبيعية)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Geometrical Interval",
+          "ar": "Geometrical Interval (الفترات الهندسية)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Equal Interval divides the total numeric range (Max - Min) into equal sub-ranges based on the requested number of classes.",
+      "ar": "تقسم طريقة الفترات المتساوية المدى الكلي (الأعلى - الأدنى) إلى فترات فرعية متساوية بناءً على عدد الفئات المطلوب."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Defined Interval requires the user to specify the step size, then determines class count.",
+        "C": "Natural Breaks uses clustering algorithms, not equal range widths.",
+        "D": "Geometrical Interval uses geometric progression multipliers."
+      },
+      "ar": {
+        "B": "تتطلب طريقة Defined Interval من المستخدم تحديد طول الفترة ثم تحسب عدد الفئات.",
+        "C": "تعتمد الكسور الطبيعية على خوارزميات التجميع وليس الفترات المتساوية.",
+        "D": "تستخدم الفترات الهندسية متواليات هندسية متضاعفة."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-018",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "An analyst needs to create a map where the user defines an exact interval step size of 100 meters for elevation contours. Which classification method should be used?",
+      "ar": "يحتاج محلل إلى إنشاء خريطة يحدد فيها المستخدم خطوة فاصلة ثابتة بمقدار 100 متر لخطوط الكنتور. أي طريقة تصنيف يجب استخدامها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Defined Interval",
+          "ar": "Defined Interval (الفترات المحددة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Equal Interval",
+          "ar": "Equal Interval (الفترات المتساوية)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Quantile",
+          "ar": "Quantile (الفئات المتساوية)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Manual Interval",
+          "ar": "Manual Interval (الفترات اليدوية)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Defined Interval allows the user to specify a precise interval value (e.g., 100), and ArcGIS Pro calculates the resulting number of classes automatically.",
+      "ar": "تتيح طريقة Defined Interval للمستخدم تحديد قيمة الفاصل بدقة (مثل 100)، ويقوم ArcGIS Pro باحتساب عدد الفئات الناتج تلقائياً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Equal Interval specifies class count and lets software determine interval width.",
+        "C": "Quantile groups equal numbers of features.",
+        "D": "Manual Interval requires typing every break threshold manually."
+      },
+      "ar": {
+        "B": "تحدد طريقة الفترات المتساوية عدد الفئات وتترك للبرنامج حساب طول الفترة.",
+        "C": "تقسم طريقة Quantile المعالم إلى أعداد متساوية.",
+        "D": "تتطلب طريقة الفترات اليدوية كتابة كل فاصل يدوياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-019",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Which classification method is specifically optimized for continuous data that is not normally distributed, striking a compromise between equal intervals, natural breaks, and quantiles?",
+      "ar": "أي طريقة تصنيف مخصصة للبيانات المستمرة غير الموزعة توزيعاً طبيعياً، وتحدث توازناً بين الفترات المتساوية والكسور الطبيعية والفئات المتساوية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Geometrical Interval",
+          "ar": "Geometrical Interval (الفترات الهندسية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Equal Interval",
+          "ar": "Equal Interval (الفترات المتساوية)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Standard Deviation",
+          "ar": "Standard Deviation (الانحراف المعياري)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Unique Values",
+          "ar": "Unique Values (القيم الفريدة)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Geometrical Interval creates class breaks based on class intervals that have a geometrical series, providing a compromise for highly skewed continuous datasets.",
+      "ar": "تنشئ طريقة Geometrical Interval فواصل فئات تعتمد على متوالية هندسية، مما يوفر حلاً متوازناً للبيانات المستمرة شديدة الالتواء."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Equal Interval produces empty classes when data is skewed.",
+        "C": "Standard Deviation requires normal bell-curve distributions.",
+        "D": "Unique Values is for categorical data."
+      },
+      "ar": {
+        "B": "تنتج الفترات المتساوية فئات فارغة عند التواء البيانات.",
+        "C": "يتطلب الانحراف المعياري توزيعاً طبيعياً معتدلاً.",
+        "D": "القيم الفريدة مخصصة للبيانات الفئوية."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-020",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "What is the cartographic purpose of using a Bivariate Colors symbology scheme in ArcGIS Pro?",
+      "ar": "ما هو الغرض الكارتوغرافي من استخدام نمط الرموز ثنائي المتغيرات (Bivariate Colors) في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To display two quantitative attribute variables simultaneously on a single map using a 2D color grid",
+          "ar": "عرض متغيرين كميين معاً على خريطة واحدة باستخدام شبكة ألوان ثنائية الأبعاد"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To alternate colors between odd and even feature IDs",
+          "ar": "تبديل الألوان بالتناوب بين المعالم الفردية والزوجية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To display vector data and raster data in alternating scanlines",
+          "ar": "عرض البيانات الاتجاهية والراستر في خطوط مسح متناوبة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To convert continuous rasters into binary 1-bit masks",
+          "ar": "تحويل الراستر المستمر إلى قناع ثنائي 1 بت"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Bivariate Colors symbology maps two quantitative attributes simultaneously (e.g., income and education level) using a 2D color matrix (typically 3x3 or 4x4) to visualize correlation.",
+      "ar": "يعرض نمط Bivariate Colors متغيرين كميين في آن واحد (مثل الدخل ومستوى التعليم) عبر مصفوفة ألوان ثنائية الأبعاد لإظهار العلاقة والارتباط المكاني بينهما."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Alternating IDs is not a standard cartographic method.",
+        "C": "Scanline alternating is a display hardware concept.",
+        "D": "1-bit masks are binary raster operations."
+      },
+      "ar": {
+        "B": "تبديل الألوان حسب الأرقام ليس منهجاً كارتوغرافياً علمياً.",
+        "C": "تبديل خطوط المسح مفهوم عتادي للشاشات.",
+        "D": "أقنعة 1 بت هي عمليات راستر ثنائية."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-021",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Which symbology method represents quantitative density by placing random dots inside polygon features, where each dot represents a fixed numeric value?",
+      "ar": "أي طريقة تمثيل رمزي تعرض الكثافة الكمية بوضع نقاط عشوائية داخل مضلعات المعالم بحيث تمثل كل نقطة قيمة رقمية ثابتة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Dot Density",
+          "ar": "Dot Density (كثافة النقط)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Graduated Symbols",
+          "ar": "Graduated Symbols (الرموز المتدرجة)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Proportional Symbols",
+          "ar": "Proportional Symbols (الرموز التناسبية)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Heat Map",
+          "ar": "Heat Map (الخريطة الحرارية)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Dot Density places a number of dots within each polygon proportional to the attribute value, with each dot representing a stated quantity (e.g., 1 dot = 500 cattle).",
+      "ar": "تضع طريقة Dot Density عدداً من النقاط داخل المضلع يتناسب مع القيمة السماتية، بحيث تمثل كل نقطة كمية محددة (مثل: نقطة واحدة = 500 رأس ماشية)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Graduated Symbols uses single sized symbols per polygon class.",
+        "C": "Proportional Symbols scales a single symbol exactly to data values.",
+        "D": "Heat Map calculates a continuous kernel density surface."
+      },
+      "ar": {
+        "B": "تستخدم الرموز المتدرجة رمزاً واحداً بحجم محدد لكل فئة.",
+        "C": "تغير الرموز التناسبية حجم الرمز الفردي بدقة مع القيمة.",
+        "D": "تحسب الخريطة الحرارية سطح كثافة كيرنز مستمر."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-022",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "What is the difference between Graduated Symbols and Proportional Symbols in ArcGIS Pro?",
+      "ar": "ما هو الفرق بين الرموز المتدرجة (Graduated Symbols) والرموز التناسبية (Proportional Symbols) في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Graduated Symbols classifies values into discrete size ranges; Proportional Symbols scales symbol size continuously to match exact values",
+          "ar": "تقسم الرموز المتدرجة القيم إلى فئات محددة بأحجام متدرجة؛ بينما تقيس الرموز التناسبية حجم الرمز باستمرار ليتناسب بدقة تامة مع كل قيمة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Graduated Symbols only works on polygons; Proportional Symbols only works on points",
+          "ar": "الرموز المتدرجة تعمل على المضلعات فقط؛ والتناسبية تعمل على النقاط فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Proportional Symbols does not appear in layout legends",
+          "ar": "الرموز التناسبية لا تظهر في مفتاح الخريطة باللوحة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Graduated Symbols requires 3D elevation Z-values",
+          "ar": "الرموز المتدرجة تتطلب قيماً رأسية ثلاثية الأبعاد Z"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Graduated Symbols divides data into classes and assigns each class a fixed symbol size. Proportional Symbols represents features with unclassed sizes that scale continuously in direct proportion to attribute values.",
+      "ar": "تقسم الرموز المتدرجة البيانات إلى فئات محددة وتعطي كل فئة حجماً ثابتاً؛ بينما تمثل الرموز التناسبية المعالم بأحجام متصلة غير مفئمة تتناسب طردياً مع القيمة الدقيقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both methods can be used on points, lines, and polygon centroids.",
+        "C": "Proportional symbols generate interactive legend boxes.",
+        "D": "Neither method requires 3D Z-values."
+      },
+      "ar": {
+        "B": "يمكن استخدام كلتا الطريقتين على النقاط والخطوط ومراكز المضلعات.",
+        "C": "تولد الرموز التناسبية مفاتيح خريطة متدرجة الأحجام.",
+        "D": "لا تتطلب أي من الطريقتين قيماً ثلاثية الأبعاد."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-023",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Apply Symbology From Layer"
+    ],
+    "question": {
+      "en": "Which geoprocessing tool transfers the complete symbology definition from a source layer or layer file (.lyrx) to a target layer?",
+      "ar": "أي أداة تحليل جغرافي تنقل تعريف الرموز بالكامل من طبقة مصدر أو ملف طبقة (.lyrx) إلى طبقة هدف؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Apply Symbology From Layer",
+          "ar": "Apply Symbology From Layer"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Copy Features",
+          "ar": "Copy Features"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Calculate Symbology",
+          "ar": "Calculate Symbology"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export Tile Package",
+          "ar": "Export Tile Package"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Apply Symbology From Layer tool reads the symbology renderer and classification parameters from an input source and applies them to a target layer matching appropriate fields.",
+      "ar": "تقرأ أداة Apply Symbology From Layer محرك الرموز ومعاملات التصنيف من مصدر مدخل وتطبقها على الطبقة المستهدفة بمطابقة الحقول المناسبة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Copy Features duplicates geometry and attributes, not symbology styles.",
+        "C": "Calculate Symbology is not an ArcGIS Pro tool.",
+        "D": "Export Tile Package exports cached raster map tiles."
+      },
+      "ar": {
+        "B": "تنسخ Copy Features البيانات الهندسية والسمات وليس أنماط الرموز.",
+        "C": "ليست أداة موجودة في ArcGIS Pro.",
+        "D": "تصدير حزمة البلاطات يصدر بلاطات خرائط مخزنة مؤقتاً."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-024",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "When configuring symbol rotation for wind direction point symbols, what is the difference between Geographic rotation and Arithmetic rotation?",
+      "ar": "عند ضبط تدوير الرموز لاتجاهات الرياح النقطية، ما هو الفرق بين التدوير الجغرافي (Geographic) والتدوير الحسابي (Arithmetic)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Geographic measures clockwise from North (0° = North); Arithmetic measures counter-clockwise from East (0° = East)",
+          "ar": "يقيس التدوير الجغرافي باتجاه عقارب الساعة من الشمال (0° = الشمال)؛ بينما يقيس الحسابي عكس عقارب الساعة من الشرق (0° = الشرق)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Geographic rotation is in radians; Arithmetic is in gradians",
+          "ar": "التدوير الجغرافي بالراديان والحسابي بالغراديان"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Arithmetic rotation only supports 3D scenes",
+          "ar": "التدوير الحسابي يدعم المشاهد ثلاثية الأبعاد فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Geographic rotation requires an active GPS receiver",
+          "ar": "يتطلب التدوير الجغرافي جهاز استقبال GPS نشطاً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Geographic rotation starts at 0° pointing North and rotates clockwise (standard azimuth). Arithmetic rotation starts at 0° pointing East and rotates counter-clockwise (standard mathematical angle).",
+      "ar": "يبدأ التدوير الجغرافي من زاوية 0° باتجاه الشمال ويدور مع عقارب الساعة (الاتجاه البوصلي)؛ بينما يبدأ التدوير الحسابي من 0° باتجاه الشرق ويدور عكس عقارب الساعة (الزاوية الرياضية)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both rotation systems in ArcGIS Pro are specified in degrees (0–360°).",
+        "C": "Arithmetic rotation is supported in both 2D maps and 3D scenes.",
+        "D": "GPS hardware is completely unrelated to symbol rotation angles."
+      },
+      "ar": {
+        "B": "يتم تحديد كلا النظامين بالدرجات المئوية من 0 إلى 360.",
+        "C": "التدوير الحسابي مدعوم في الخرائط ثنائية وثلاثية الأبعاد.",
+        "D": "أجهزة GPS لا علاقة لها بزوايا تدوير الرموز الكارتوغرافية."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-025",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling"
+    ],
+    "question": {
+      "en": "In Maplex Label Engine, what fitting strategy allows text to be automatically condensed by reducing font point size within defined minimum limits?",
+      "ar": "في محرك التسميات Maplex، ما هي استراتيجية الملاءمة التي تسمح بتقليص النص تلقائياً عبر تصغير حجم الخط ضمن حدود دنيا محددة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Font Reduction",
+          "ar": "Font Reduction (تقليص حجم الخط)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Key Numbering",
+          "ar": "Key Numbering (ترقيم المفاتيح)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Stacking",
+          "ar": "Stacking (التكدس)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Abbreviation Dictionaries",
+          "ar": "Abbreviation Dictionaries (قواميس الاختصارات)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Font Reduction allows Maplex to reduce font size by specified step intervals down to a lower limit (e.g. from 10pt to 7pt) to fit text in tight polygons.",
+      "ar": "تتيح استراتيجية Font Reduction للمحرك تصغير حجم الخط بخطوات تدريجية حتى حد أدنى (مثل من 10 إلى 7) ليناسب النص المساحات الضيقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Key Numbering replaces text with numbered legend callouts.",
+        "C": "Stacking splits text across multiple lines.",
+        "D": "Abbreviation dictionaries substitute words with shortened versions."
+      },
+      "ar": {
+        "B": "يستبدل Key Numbering النص بأرقام مرجعية في جدول.",
+        "C": "يقسم التكدس النص على عدة أسطر.",
+        "D": "تستبدل قواميس الاختصارات الكلمات بأشكال مختصرة."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-026",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Labeling"
+    ],
+    "question": {
+      "en": "Which tool or command in ArcGIS Pro converts dynamic map labels into editable, persistent geodatabase annotation features?",
+      "ar": "أي أداة أو أمر في ArcGIS Pro يحول التسميات الديناميكية إلى نصوص توضيحية (Annotation) قابلة للتحرير والتخزين الدائم في قاعدة البيانات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Convert Labels To Annotation",
+          "ar": "Convert Labels To Annotation"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Make Feature Layer",
+          "ar": "Make Feature Layer"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Export Map",
+          "ar": "Export Map"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Calculate Field",
+          "ar": "Calculate Field"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Convert Labels To Annotation is the geoprocessing tool that converts dynamic label classes into an annotation feature class stored in a geodatabase.",
+      "ar": "أداة Convert Labels To Annotation هي أداة التحليل الجغرافي المسؤولة عن تحويل فئات التسميات الديناميكية إلى فئة معالم نصوص توضيحية داخل قاعدة البيانات الجغرافية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Make Feature Layer creates a temporary layer view.",
+        "C": "Export Map exports graphical outputs like PDF or JPEG.",
+        "D": "Calculate Field computes column attribute values."
+      },
+      "ar": {
+        "B": "تنشئ Make Feature Layer طبقة عرض مؤقتة.",
+        "C": "يصدر أمر تصدير الخريطة ملفات رسومية مثل PDF.",
+        "D": "تحسب Calculate Field قيم الأعمدة السماتية."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-027",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Layer Properties"
+    ],
+    "question": {
+      "en": "What is the difference between 'In Beyond' (maximum scale) and 'Out Beyond' (minimum scale) scale threshold settings on a layer?",
+      "ar": "ما هو الفرق بين إعداد الحد الأقصى للمقياس (In Beyond) والحد الأدنى للمقياس (Out Beyond) في خصائص الطبقة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "In Beyond stops drawing the layer when zoomed in closer than that scale; Out Beyond stops drawing when zoomed out further",
+          "ar": "In Beyond يوقف رسم الطبقة عند التقريب لأكبر من ذلك المقياس؛ بينما Out Beyond يوقف الرسم عند التصغير لأصغر منه"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "In Beyond sets transparency; Out Beyond sets brightness",
+          "ar": "In Beyond يضبط الشفافية و Out Beyond يضبط السطوع"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Out Beyond only applies to 3D elevation rasters",
+          "ar": "Out Beyond ينطبق على راستر الارتفاع ثلاثي الأبعاد فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "In Beyond is measured in kilometers and Out Beyond in miles",
+          "ar": "In Beyond يُقاس بالكيلومترات و Out Beyond بالأميال"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In Beyond (maximum scale) suppresses drawing when zoomed in past the threshold scale. Out Beyond (minimum scale) suppresses drawing when zoomed out past that threshold.",
+      "ar": "يمنع إعداد In Beyond رسم الطبقة عند التقريب لمقياس أكبر من الحد المحدد، بينما يمنع Out Beyond رسمها عند التصغير لمقياس أصغر من الحد المحدد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Transparency and brightness are visual effects, not scale ranges.",
+        "C": "Both settings apply universally to vector and raster layers.",
+        "D": "Scale ranges are dimensionless representative fractions (e.g., 1:24,000)."
+      },
+      "ar": {
+        "B": "الشفافية والسطوع تأثيرات بصرية وليست نطاقات مقياس.",
+        "C": "ينطبق كلا الإعدادين على الطبقات الاتجاهية والراستر.",
+        "D": "نطاقات المقاييس هي كسور تمثيلية بلا وحدات قياس."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-028",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "When viewing polygon features in a 3D Scene, what elevation mode renders features draped directly over the digital elevation ground surface?",
+      "ar": "عند عرض معالم المضلعات في مشهد ثلاثي الأبعاد (3D Scene)، أي وضع ارتفاع يثبت المعالم مكسوة مباشرة فوق سطح الأرض التضاريسي الرقمي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "On the ground",
+          "ar": "On the ground (على سطح الأرض)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "At an absolute height",
+          "ar": "At an absolute height (عند ارتفاع مطلق)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Relative to the ground",
+          "ar": "Relative to the ground (نسبة إلى سطح الأرض)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Floating in orbit",
+          "ar": "Floating in orbit (عائمة في المدار)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "'On the ground' drapes 2D features directly onto the terrain elevation surface, automatically conforming the feature vertices to the elevations of the underlying Ground surface.",
+      "ar": "يثبت وضع 'On the ground' المعالم ثنائية الأبعاد مباشرة ككساء فوق سطح التضاريس، مما يجعل رؤوس المعالم تتبع ارتفاعات السطح التضاريسي للأرض تلقائياً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Absolute height places features at a fixed Z-elevation above sea level, regardless of terrain height.",
+        "C": "Relative to ground offsets features by an additional vertical distance above the terrain.",
+        "D": "Floating in orbit is not a valid elevation mode."
+      },
+      "ar": {
+        "B": "يثبت الارتفاع المطلق المعالم عند قيمة Z ثابتة فوق سطح البحر بغض النظر عن التضاريس.",
+        "C": "يضيف الارتفاع النسبي مسافة إزاحة إضافية فوق سطح الأرض.",
+        "D": "ليس وضع ارتفاع معتمداً في البرنامج."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-029",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "Which illumination property in an ArcGIS Pro 3D Scene simulates realistic sun position and ground shadows based on geographic coordinates, time of day, and calendar date?",
+      "ar": "أي خاصية إضاءة في المشهد ثلاثي الأبعاد بـ ArcGIS Pro تحاكي موضع الشمس الحقيقي وظلال الأرض بناءً على الإحداثيات الجغرافية ووقت اليوم وتاريخ التقويم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Sun Lighting and Shadows",
+          "ar": "Sun Lighting and Shadows (إضاءة الشمس والظلال)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Hillshade Bilinear Resampling",
+          "ar": "Hillshade Bilinear Resampling"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Ambient Occlusion Only",
+          "ar": "Ambient Occlusion Only"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Voxel Transparency",
+          "ar": "Voxel Transparency"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Sun Lighting calculates the solar azimuth and altitude based on the scene's geographic location, date, and time of day, casting realistic directional shadows from terrain, buildings, and multipatch models.",
+      "ar": "تحسب إضاءة الشمس (Sun Lighting) زاوية السمت الشمسي وارتفاعها بناءً على الموقع والتاريخ والوقت، مما يلقي ظلالاً اتجاهية واقعية من التضاريس والمباني."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Bilinear resampling is an image interpolation technique.",
+        "C": "Ambient occlusion adds contact shadows, but does not calculate solar angles.",
+        "D": "Voxel transparency adjusts 3D volumetric grid visibility."
+      },
+      "ar": {
+        "B": "الاستيفاء الخطي تقنية معالجة صور راستر.",
+        "C": "الانسداد المحيطي يضيف ظلال تلامس ولا يحسب زوايا الشمس.",
+        "D": "شفافية الفوكسل تضبط رؤية شبكات الكتل ثلاثية الأبعاد."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-030",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Time"
+    ],
+    "question": {
+      "en": "When configuring Time Properties on a layer where events span a defined duration (such as a wildfire burning over several days), which time configuration must be selected?",
+      "ar": "عند تهيئة خصائص الوقت على طبقة تمتد أحداثها لفترة زمنية محددة (مثل حريق غابات يستمر لعدة أيام)، أي إعداد وقت يجب اختياره؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Each feature has start and end time fields",
+          "ar": "Each feature has start and end time fields (كل معلم له حقل بداية ونهاية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Each feature has a single time field",
+          "ar": "Each feature has a single time field (كل معلم له حقل زمني واحد)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Time is stored in the layer metadata only",
+          "ar": "Time is stored in the layer metadata only"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Features have no time values",
+          "ar": "Features have no time values"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "When features persist across durations, selecting 'Each feature has start and end time fields' allows ArcGIS Pro to display features throughout their active lifespan on the Time Slider.",
+      "ar": "عندما تمتد المعالم عبر فترات زمنية، فإن اختيار 'كل معلم له حقل بداية ونهاية' يتيح لـ ArcGIS Pro عرض المعالم طوال فترة نشاطها الفعالة على منزلق الوقت."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "A single time field represents instantaneous point-in-time events (e.g., lightning strikes).",
+        "C": "Metadata does not feed interactive time slider animation.",
+        "D": "Features without time values cannot participate in temporal playback."
+      },
+      "ar": {
+        "B": "يمثل الحقل الفردي أحداثاً لحظية تقع في لحظة واحدة كالصواعق.",
+        "C": "البيانات الوصفية لا تغذي العرض التفاعلي لمنزلق الوقت.",
+        "D": "المعالم بدون قيم وقت لا يمكن تشغيلها زمنياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-031",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Select By Attributes"
+    ],
+    "question": {
+      "en": "Which wildcard character is used in standard SQL LIKE queries in ArcGIS Pro to match any sequence of zero or more characters in an enterprise or file geodatabase?",
+      "ar": "أي رمز من رموز البدل (Wildcard) يُستخدم في استعلامات SQL بـ ArcGIS Pro لمطابقة أي سلسلة من صفر أو أكثر من الحروف في قواعد البيانات الجغرافية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Percent sign (%)",
+          "ar": "علامة النسبة المئوية (%)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Underscore (_)",
+          "ar": "الشرطة السفلية (_)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Asterisk (*)",
+          "ar": "علامة النجمة (*)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Question mark (?)",
+          "ar": "علامة الاستفهام (?)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In file and enterprise geodatabases, the percent sign (%) matches any string of zero or more characters in a LIKE clause. The underscore (_) matches exactly one single character.",
+      "ar": "في قواعد البيانات الجغرافية الملفية والمؤسسية، تطابق علامة النسبة المئوية (%) أي سلسلة من صفر أو أكثر من المحارف في جمل LIKE؛ بينما تطابق الشرطة السفلية (_) محرفاً واحداً فقط."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Underscore matches exactly one single character.",
+        "C": "Asterisk was used in legacy personal geodatabases (.mdb / Access), but not in modern file geodatabases.",
+        "D": "Question mark matches single characters in legacy Access databases."
+      },
+      "ar": {
+        "B": "الشرطة السفلية تطابق محرفاً واحداً فقط.",
+        "C": "كانت النجمة تُستخدم في قواعد البيانات الشخصية القديمة mdb وليس في قواعد البيانات الحديثة.",
+        "D": "علامة الاستفهام كانت لقواعد Access القديمة."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-032",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Select By Location"
+    ],
+    "question": {
+      "en": "An analyst needs to select all fire stations located within a 5-mile driving radius of a hazardous chemical spill point. Which tool should be used first to model the spatial zone?",
+      "ar": "يحتاج محلل لتحديد جميع مراكز الإطفاء الواقعة ضمن نطاق مسافة 5 أميال من نقطة تسرب كيميائي. أي أداة يجب استخدامها أولاً لنمذجة هذا النطاق المكاني؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Buffer (or Select By Location with search distance)",
+          "ar": "Buffer (أو Select By Location مع مسافة بحث)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Dissolve",
+          "ar": "Dissolve"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Erase",
+          "ar": "Erase"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Select By Location supports a 'Search Distance' parameter directly (e.g., Within a distance of 5 miles), or the Buffer tool can generate an explicit 5-mile boundary polygon.",
+      "ar": "تدعم أداة Select By Location معامل مسافة البحث مباشرة (ضمن مسافة 5 أميال)، كما يمكن لأداة Buffer توليد مضلع حرم محدد بمسافة 5 أميال."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Dissolve merges adjacent polygons sharing common attributes.",
+        "C": "Clip cuts layer geometries by an extent.",
+        "D": "Erase removes areas falling inside an erase feature."
+      },
+      "ar": {
+        "B": "تدمج Dissolve المضلعات المتجاورة المشتركة في السمات.",
+        "C": "تقطع أداة Clip المعالم وفق حدود معينة.",
+        "D": "تحذف Erase المساحات الواقعة داخل معلم المسح."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-033",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "What happens when you enable 'Vary symbology by attribute' in the Symbology pane for a point layer?",
+      "ar": "ماذا يحدث عند تفعيل خيار 'Vary symbology by attribute' في نافذة Symbology لطبقة نقطية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It allows secondary attribute fields to dynamically control symbol transparency, rotation, size, or color",
+          "ar": "يتيح لحقول سمات ثانوية التحكم ديناميكياً في شفافية الرمز أو تدويره أو حجمه أو لونه"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It converts point symbols into polygon buffers",
+          "ar": "يحول الرموز النقطية إلى مضلعات حرم"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It exports points into an Excel spreadsheet",
+          "ar": "يصدر النقاط إلى جدول إكسل"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It changes the layer coordinate system",
+          "ar": "يغير نظام إحداثيات الطبقة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "'Vary symbology by attribute' allows mapping multiple data dimensions simultaneously on a single feature by driving visual variables (transparency, rotation, size, color) with separate attribute fields.",
+      "ar": "يتيح خيار 'Vary symbology by attribute' تمثيل عدة أبعاد للبيانات معاً على نفس المعلم عبر ربط المتغيرات البصرية (الشفافية، التدوير، الحجم، اللون) بحقول سمات مختلفة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Buffers are created by geoprocessing tools, not symbology variation.",
+        "C": "Excel export is a data conversion workflow.",
+        "D": "Symbology does not modify coordinate systems."
+      },
+      "ar": {
+        "B": "يتم إنشاء النطاقات بأدوات التحليل وليس بتغيير الرموز.",
+        "C": "تصدير إكسل عملية تحويل بيانات.",
+        "D": "الترميز لا يغير أنظمة الإحداثيات."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-034",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology Masking"
+    ],
+    "question": {
+      "en": "An analyst needs to create a halo or visual cutout around contour line labels so the contour lines do not strike through the label text. Which technique is most effective in ArcGIS Pro?",
+      "ar": "يحتاج محلل لإنشاء هالة أو تفريغ بصري حول نصوص خطوط الكنتور لمنع الخطوط من اختراق نصوص التسميات. ما هي التقنية الأكثر فاعلية في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Symbology Masking",
+          "ar": "Symbology Masking (أقنعة الرموز)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Clip Raster",
+          "ar": "Clip Raster"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Delete Vertices",
+          "ar": "Delete Vertices"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Raster Calculator",
+          "ar": "Raster Calculator"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Symbology Masking allows an annotation or label layer to mask underlying feature symbol layers dynamically, creating a clean visual gap without modifying vector line geometry.",
+      "ar": "تتيح تقنية أقنعة الرموز (Symbology Masking) لنصوص التسميات حجب طبقات الرموز التي تقع أسفلها ديناميكياً، مما ينشئ فراغاً بصرياً نظيفاً دون تشويه أو قطع الخطوط الأصلية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Clip Raster is an imagery cutting tool.",
+        "C": "Deleting vertices damages line geometry.",
+        "D": "Raster Calculator performs mathematical grid operations."
+      },
+      "ar": {
+        "B": "أداة قص الراستر تتعامل مع الصور.",
+        "C": "حذف الرؤوس يدمر هندسة الخطوط.",
+        "D": "حاسبة الراستر تجري عمليات حسابية على الشبكات."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-035",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Heat Map"
+    ],
+    "question": {
+      "en": "How does the Heat Map symbology renderer in ArcGIS Pro display point feature clusters dynamically across zoom levels?",
+      "ar": "كيف يعرض محرك الرموز الحرارية (Heat Map) في ArcGIS Pro تجمعات المعالم النقطية ديناميكياً عبر مستويات التكبير والتصغير؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It dynamically calculates a continuous kernel density surface on the fly, adjusting search radius as the user zooms",
+          "ar": "يحسب ديناميكياً سطح كثافة كيرنز المستمر في الوقت الفعلي مع تعديل نصف قطر البحث أثناء التكبير والتصغير"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It permanently generates a raster file in the scratch workspace",
+          "ar": "ينشئ ملف راستر دائم في مساحة العمل المؤقتة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It filters points using a SQL statement",
+          "ar": "يصفي النقاط باستخدام جمل استعلام SQL"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It measures point temperatures using an infrared sensor",
+          "ar": "يقيس درجات حرارة النقاط بحساسات الأشعة تحت الحمراء"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Heat Map symbology renders points as a continuous density surface calculated dynamically on-the-fly. As the map scale changes, the search radius recalculates automatically to maintain smooth hotspots.",
+      "ar": "يعرض نمط الخريطة الحرارية النقاط كسطح كثافة مستمر يتم حسابه ديناميكياً؛ ومع تغير مقياس الخريطة يعاد حساب نصف قطر البحث تلقائياً للحفاظ على سلاسة بؤر التركز."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Heat Map renderer is purely visual and creates no disk rasters.",
+        "C": "Definition queries filter points, not heat maps.",
+        "D": "GIS heat maps represent statistical density, not thermal physical heat."
+      },
+      "ar": {
+        "B": "الخريطة الحرارية عرض بصري خالص ولا تنشئ ملفات راستر على القرص.",
+        "C": "الاستعلام التعريفي يصفي المعالم.",
+        "D": "الخرائط الحرارية تمثل كثافة إحصائية وليست حرارة فيزيائية."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-036",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "Dictionary Symbology"
+    ],
+    "question": {
+      "en": "Which symbology method is required when visualizing defense or emergency management datasets governed by standardized specifications like MIL-STD-2525D or App-6D?",
+      "ar": "أي طريقة تمثيل رمزي مطلوبة عند عرض بيانات الدفاع أو الطوارئ المحكومة بمواصفات قياسية دولية مثل MIL-STD-2525D أو App-6D؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Dictionary Symbology",
+          "ar": "Dictionary Symbology (رموز القاموس)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Single Symbol",
+          "ar": "Single Symbol"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Graduated Colors",
+          "ar": "Graduated Colors"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Dot Density",
+          "ar": "Dot Density"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Dictionary Symbology reads multiple attribute fields from each feature and passes them through a rule-based dictionary engine to assemble complex, standardized multi-part symbols.",
+      "ar": "تقرأ رموز القاموس (Dictionary Symbology) حقولاً سماتية متعددة من كل معلم وتمررها عبر محرك قواعد لتجميع رموز معقدة ومعيارية تتوافق مع المواصفات العسكرية ومواصفات الطوارئ."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Single symbol uses one identical style for all features.",
+        "C": "Graduated colors is for numeric choropleth ranges.",
+        "D": "Dot density is for population counts."
+      },
+      "ar": {
+        "B": "الرمز المنفرد يطبق نمطاً موحداً على كل المعالم.",
+        "C": "الألوان المتدرجة للخرائط الرقمية الكمية.",
+        "D": "كثافة النقط لأعداد السكان."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-037",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "When designing a 3D subsurface geological model in ArcGIS Pro, where should the subsurface stratum layers be placed in the elevation hierarchy?",
+      "ar": "عند تصميم نموذج جيولوجي ثلاثي الأبعاد تحت سطحي في ArcGIS Pro، أين يجب وضع طبقات التكوينات الجيولوجية في التسلسل الهرمي للارتفاع؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "In a Custom Elevation Surface situated below the Ground surface",
+          "ar": "في سطح ارتفاع مخصص (Custom Elevation Surface) يقع أسفل سطح الأرض"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "In the Basemap group layer",
+          "ar": "في مجموعة طبقات خريطة الأساس"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "In an in-memory route event layer",
+          "ar": "في طبقة أحداث مسار بالذاكرة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Inside the 2D Layers category",
+          "ar": "داخل فئة الطبقات ثنائية الأبعاد (2D Layers)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Pro allows adding Custom Elevation Surfaces (e.g., top of bedrock, groundwater table) in addition to the master Ground elevation surface, enabling true 3D subsurface and geologic visualization.",
+      "ar": "يتيح ArcGIS Pro إضافة أسطح ارتفاع مخصصة (Custom Elevation Surfaces) إلى جانب سطح الأرض الأساسي، مما يمكن من العرض ثلاثي الأبعاد للطبقات الجيولوجية والمياه الجوفية تحت السطح."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Basemaps are 2D reference surfaces.",
+        "C": "Route event layers are for linear dynamic segmentation.",
+        "D": "2D Layers do not render with 3D elevations."
+      },
+      "ar": {
+        "B": "خرائط الأساس أسطح مرجعية ثنائية الأبعاد.",
+        "C": "طبقات أحداث المسار للتجزئة الديناميكية.",
+        "D": "الطبقات ثنائية الأبعاد لا تستفيد من الارتفاعات ثلاثية الأبعاد."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-038",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "Which 3D layer type is specifically designed to store and display volumetric multidimensional data, such as atmospheric temperature clouds or 3D oceanic salinity grids?",
+      "ar": "أي نوع من الطبقات ثلاثية الأبعاد مخصص لتخزين وعرض البيانات الحجمية متعددة الأبعاد، مثل سحب درجات الحرارة الجوية أو شبكات ملوحة المحيطات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Voxel Layer",
+          "ar": "Voxel Layer (طبقة الفوكسل)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Shapefile Polygon",
+          "ar": "Shapefile Polygon"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Tile Package (.tpkx)",
+          "ar": "Tile Package (.tpkx)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Map Package (.mpkx)",
+          "ar": "Map Package (.mpkx)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Voxel layers visualize complex 4D volumetric data (NetCDF cubes) as 3D discrete voxels, allowing slicing, sectioning, and isosurface extraction of atmospheric and oceanographic phenomena.",
+      "ar": "تعرض طبقات الفوكسل (Voxel layers) البيانات الحجمية المعقدة (مكعبات NetCDF) كعناصر حجمية ثلاثية الأبعاد، وتتيح إجراء قطاعات واستخراج أسطح التساوي للظواهر الجوية والبحرية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Shapefiles are 2D/3D surface vector boundaries, not volumetric grids.",
+        "C": "Tile packages are cached 2D map rasters.",
+        "D": "Map packages are sharing archives."
+      },
+      "ar": {
+        "B": "ملفات Shapefile معالم اتجاهية مساحية وليست حجوم شبكية.",
+        "C": "حزم البلاطات خرائط ثنائية الأبعاد مخزنة مؤقتاً.",
+        "D": "حزم الخرائط ملفات أرشيف للمشاركة."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-039",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "How can you quickly import symbol colors and classifications from another layer in the current map without opening geoprocessing tools?",
+      "ar": "كيف يمكنك استيراد ألوان وتصنيفات الرموز بسرعة من طبقة أخرى في نفس الخريطة دون فتح أدوات التحليل الجغرافي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Click the Symbology pane menu (hamburger icon) and select 'Import symbology...'",
+          "ar": "النقر على قائمة نافذة الرموز (أيقونة الخيارات) واختيار 'Import symbology...'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Restart ArcGIS Pro",
+          "ar": "إعادة تشغيل ArcGIS Pro"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Export the layer to a CSV file",
+          "ar": "تصدير الطبقة إلى ملف CSV"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Press Ctrl+Alt+Delete",
+          "ar": "الضغط على Ctrl+Alt+Delete"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In the Symbology pane, clicking the options menu provides an 'Import symbology...' command that links directly to the Apply Symbology From Layer tool functionality.",
+      "ar": "في نافذة Symbology، يوفر زر الخيارات أمراً سريعاً لاستيراد الرموز (Import symbology) ينقل التصنيف مباشرة من طبقة أخرى."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Restarting does not import symbols.",
+        "C": "CSV files do not store cartographic symbology.",
+        "D": "Ctrl+Alt+Delete opens OS task management."
+      },
+      "ar": {
+        "B": "إعادة التشغيل لا تستورد الرموز.",
+        "C": "ملفات CSV لا تخزن الرموز الكارتوغرافية.",
+        "D": "اختصار نظام التشغيل ولا علاقة له بالترميز."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-040",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling"
+    ],
+    "question": {
+      "en": "In Maplex label placement, what option ensures that street names follow the natural curvature of winding roads?",
+      "ar": "في موضع تسميات Maplex، ما الخيار الذي يضمن أن تتبع أسماء الشوارع التعرجات الطبيعية للطرق المنحنية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Curved placement",
+          "ar": "Curved placement (الموضع المنحني)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Horizontal placement",
+          "ar": "Horizontal placement (الموضع الأفقي)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Straight placement",
+          "ar": "Straight placement (الموضع المستقيم)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Perpendicular placement",
+          "ar": "Perpendicular placement (الموضع العمودي)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Curved line placement bends the label character by character to follow the sinuous geometry of polyline features smoothly.",
+      "ar": "يقوم خيار Curved placement بحني أحرف التسمية حرفاً بحرف لتتبع الهندسة الانسيابية للخطوط المنحنية بسلاسة كارتوغرافية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Horizontal placement draws text parallel to the page coordinate axis.",
+        "C": "Straight placement draws a single straight line along the trend angle.",
+        "D": "Perpendicular places labels at a 90-degree angle crossing the road."
+      },
+      "ar": {
+        "B": "الموضع الأفقي يرسم النص موازياً لأفق الصفحة.",
+        "C": "الموضع المستقيم يرسم النص في خط مستقيم مائل.",
+        "D": "الموضع العمودي يضع التسمية قاطعة للطريق بزاوية 90 درجة."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-041",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling"
+    ],
+    "question": {
+      "en": "What is the effect of enabling 'Never remove (place overlapping)' on an emergency evacuation route label class?",
+      "ar": "ما هو أثر تفعيل خيار 'Never remove (place overlapping)' على فئة تسميات مسارات الإخلاء في حالات الطوارئ؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It forces the label to draw even if it collides with or overlaps other labels or features",
+          "ar": "يفرض رسم التسمية إجبارياً حتى لو تصادمت أو تداخلت مع تسميات أو معالم أخرى"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It permanently deletes all conflicting features from the map",
+          "ar": "يحذف جميع المعالم المتعارضة نهائياً من الخريطة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It locks the label text against language translation",
+          "ar": "يقفل النص ضد الترجمة اللغوية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It converts the label into a 3D building model",
+          "ar": "يحول التسمية إلى نموذج مبنى ثلاثي الأبعاد"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "'Never remove (place overlapping)' guarantees that essential labels are always rendered on screen regardless of space constraints or collisions.",
+      "ar": "يضمن خيار 'Never remove' رسم التسميات الحيوية دائماً على الشاشة متجاهلاً قيود المساحة أو التصادم مع النصوص الأخرى لضمان عدم إخفائها."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "It does not alter data features.",
+        "C": "Language translation is unrelated to label placement.",
+        "D": "Labels remain text graphics, not 3D models."
+      },
+      "ar": {
+        "B": "لا يعدل معالم البيانات إطلاقاً.",
+        "C": "لا علاقة للغات بوضع التسميات.",
+        "D": "تبقى التسميات نصوصاً رسومية."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-042",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Which color scheme type should be chosen when symbolizing standardized poverty rates centered around a regional benchmark average?",
+      "ar": "أي نوع من مخططات الألوان يجب اختياره عند تمثيل معدلات الفقر المعيارية التي تتمحور حول متوسط مرجعي إقليمي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Diverging color scheme",
+          "ar": "Diverging color scheme (مخطط ألوان متباعد)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Sequential color scheme",
+          "ar": "Sequential color scheme (مخطط ألوان متسلسل)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Qualitative color scheme",
+          "ar": "Qualitative color scheme (مخطط ألوان نوعي)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Binary monochrome scheme",
+          "ar": "Binary monochrome scheme (مخطط أحادي ثنائي)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Diverging color schemes emphasize values above and below a critical midpoint (e.g. blue for below average, neutral for average, red for above average).",
+      "ar": "تركز مخططات الألوان المتباعدة (Diverging) على إبراز القيم التي تقع أعلى وأدنى نقطة مركزية حرجة (مثل ألوان متباينة للأعلى والأسفل ولون محايد للمتوسط)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Sequential schemes show low-to-high progressions without a central critical threshold.",
+        "C": "Qualitative schemes are for unranked nominal categories.",
+        "D": "Monochrome uses only black and white."
+      },
+      "ar": {
+        "B": "تعرض المخططات المتسلسلة تدرجاً بسيطاً من الأقل للأعلى دون نقطة مركزية.",
+        "C": "المخططات النوعية للفئات الاسمية غير المرتبة.",
+        "D": "المخطط الأحادي يستخدم لونين فقط."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-043",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Why is normalization required when creating a graduated colors choropleth map of COVID-19 cases by state?",
+      "ar": "لماذا يُعد التطبيع (Normalization) مطلوباً عند إنشاء خريطة كوربلث بالألوان المتدرجة لحالات كوفيد-19 حسب الولايات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To account for differences in state populations and display infection rates rather than raw counts",
+          "ar": "لمراعاة التفاوت في عدد سكان الولايات وعرض معدلات الإصابة بدلاً من الأعداد الإجمالية الخام"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To force all numbers into integer format",
+          "ar": "لإجبار جميع الأرقام على التحول إلى أعداد صحيحة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To eliminate zero values from the attribute table",
+          "ar": "لحذف القيم الصفرية من جدول البيانات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To rotate the north arrow automatically",
+          "ar": "لتدوير سهم الشمال تلقائياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Mapping raw counts gives a false impression because populous states naturally have more cases; normalizing by total population calculates true rates per capita.",
+      "ar": "يعطي رسم الأعداد الخام انطباعاً مضللاً لأن الولايات الأكثر سكاناً ستضم بطبيعتها أعداداً أكبر؛ ويحسب التطبيع على عدد السكان معدل الإصابة الحقيقي لكل نسمة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Normalization produces floating-point rates, not integers.",
+        "C": "Zero values are preserved as valid data points.",
+        "D": "North arrows are layout elements."
+      },
+      "ar": {
+        "B": "ينتج عن التطبيع معدلات كسرية.",
+        "C": "يتم الحفاظ على القيم الصفرية كبيانات صحيحة.",
+        "D": "سهم الشمال عنصر في لوحة الطباعة ولا يرتبط بالتطبيع."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-044",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Definition Query"
+    ],
+    "question": {
+      "en": "Where in ArcGIS Pro do you configure a Definition Query for a feature layer?",
+      "ar": "أين يتم ضبط الاستعلام التعريفي (Definition Query) لطبقة المعالم في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Layer Properties > Definition Query",
+          "ar": "Layer Properties > Definition Query"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Catalog Pane > Project Settings",
+          "ar": "Catalog Pane > Project Settings"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Map Properties > Coordinate Systems",
+          "ar": "Map Properties > Coordinate Systems"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Ribbon > Edit > Manage Templates",
+          "ar": "Ribbon > Edit > Manage Templates"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Definition Queries are set in the Layer Properties dialog under the Definition Query tab using the clause builder or SQL mode.",
+      "ar": "يتم ضبط الاستعلامات التعريفية في نافذة خصائص الطبقة (Layer Properties) تحت تبويب Definition Query باستخدام منشئ الشروط أو محرر SQL."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Project settings do not manage individual layer queries.",
+        "C": "Map coordinate systems control spatial projections.",
+        "D": "Manage Templates creates editing feature construction templates."
+      },
+      "ar": {
+        "B": "إعدادات المشروع لا تدير استعلامات الطبقات الفردية.",
+        "C": "أنظمة الإحداثيات تتحكم بالإسقاط.",
+        "D": "قوالب التحرير مخصصة لإنشاء المعالم الجديدة."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-045",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Select By Attributes"
+    ],
+    "question": {
+      "en": "An analyst needs to select all roads where the SPEED_LIMIT field contains an unpopulated missing value. Which SQL clause is correct?",
+      "ar": "يحتاج محلل لتحديد جميع الطرق التي يحتوي فيها حقل SPEED_LIMIT على قيمة مفقودة غير مدخلة. أي جملة SQL هي الصحيحة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "SPEED_LIMIT IS NULL",
+          "ar": "SPEED_LIMIT IS NULL"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "SPEED_LIMIT = 'NULL'",
+          "ar": "SPEED_LIMIT = 'NULL'"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "SPEED_LIMIT == 0",
+          "ar": "SPEED_LIMIT == 0"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "SPEED_LIMIT IS EMPTY",
+          "ar": "SPEED_LIMIT IS EMPTY"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In SQL, missing or undefined database values are tested using the IS NULL operator, not equality operators.",
+      "ar": "في لغة SQL، يتم فحص القيم المفقودة أو غير المحددة في قاعدة البيانات باستخدام المعامل IS NULL وليس معاملات المساواة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "'NULL' in quotes checks for a literal text string with the letters N-U-L-L.",
+        "C": "0 is a numeric value, completely different from a NULL database state.",
+        "D": "IS EMPTY is not standard SQL syntax in geodatabases."
+      },
+      "ar": {
+        "B": "وضع 'NULL' بين علامتي تنصيص يبحث عن كلمة نصية مكونة من هذه الحروف.",
+        "C": "الرقم 0 قيمة عددية تختلف تماماً عن القيمة الفارغة.",
+        "D": "ليست صياغة قياسية في SQL للجيوداتابيس."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-046",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Select By Location"
+    ],
+    "question": {
+      "en": "Which spatial selection method selects features that share any boundary segment or vertex with the selecting features without overlapping their interior?",
+      "ar": "أي طريقة تحديد مكاني تختار المعالم التي تشترك في أي جزء من الحد الخارجي أو رأس مع معالم التحديد دون أي تداخل في أجزائها الداخلية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Touch the boundary of",
+          "ar": "Touch the boundary of (تلامس حدود)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Are completely within",
+          "ar": "Are completely within (تقع بالكامل داخل)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Have their centroid in",
+          "ar": "Have their centroid in (يقع مركزها الهندسي في)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Are identical to",
+          "ar": "Are identical to (تتطابق تماماً مع)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "'Touch the boundary of' selects features that meet or share boundary lines or vertices with the selector, but whose interior areas do not intersect.",
+      "ar": "تحدد علاقة 'Touch the boundary of' المعالم التي تتلاقى أو تشترك في خطوط الحدود أو الرؤوس دون أي تداخل في المساحات الداخلية للمعالم."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Within requires interior containment.",
+        "C": "Centroid checks center point position.",
+        "D": "Identical requires matching exact geometry."
+      },
+      "ar": {
+        "B": "تتطلب Within احتواءً داخلياً.",
+        "C": "تفحص Centroid موضع النقطة المركزية.",
+        "D": "تتطلب Identical تطابقاً هندسياً كاملاً."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-047",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Selection"
+    ],
+    "question": {
+      "en": "How do you invert an active feature selection in an ArcGIS Pro attribute table?",
+      "ar": "كيف تعكس التحديد النشط للمعالم (Invert Selection) في جدول بيانات ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Click the Switch Selection button on the table toolbar",
+          "ar": "النقر على زر Switch Selection في شريط أدوات جدول البيانات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Close and reopen the map",
+          "ar": "إغلاق الخريطة وإعادة فتحها"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Delete the selected records",
+          "ar": "حذف السجلات المحددة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Press Esc twice",
+          "ar": "الضغط على مفتاح Esc مرتين"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Switch Selection button (or shortcut) toggles the selection state, unselecting currently selected features and selecting all previously unselected features.",
+      "ar": "يقوم زر تبديل التحديد (Switch Selection) بعكس حالة التحديد؛ فيلغي تحديد المعالم المختارة ويحدد كافة المعالم التي لم تكن محددة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Reopening the map clears unsaved selections.",
+        "C": "Deleting records destroys data.",
+        "D": "Esc clears the selection completely."
+      },
+      "ar": {
+        "B": "إعادة فتح الخريطة تلغي التحديد.",
+        "C": "حذف السجلات يدمر البيانات.",
+        "D": "مفتاح Esc يلغي التحديد بالكامل."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-048",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "What tool in the Map ribbon allows converting an existing 2D Map directly into a 3D Scene in ArcGIS Pro?",
+      "ar": "ما الأداة في شريط الخريطة التي تتيح تحويل خريطة ثنائية الأبعاد حالية مباشرة إلى مشهد ثلاثي الأبعاد في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Convert > To Global Scene or To Local Scene on the View tab",
+          "ar": "Convert > To Global Scene أو To Local Scene في تبويب View"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Export Map",
+          "ar": "Export Map"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Save As Template",
+          "ar": "Save As Template"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Project Raster",
+          "ar": "Project Raster"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "On the View tab, the Convert dropdown allows instantly duplicating a 2D map into either a Local Scene or Global Scene with all layers preserved.",
+      "ar": "في تبويب View، تتيح قائمة Convert المنسدلة تحويل الخريطة ثنائية الأبعاد فوراً إلى مشهد محلي أو عالمي مع الحفاظ على جميع الطبقات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Export Map creates static image or vector files.",
+        "C": "Save As Template creates project templates.",
+        "D": "Project Raster reprojects imagery files."
+      },
+      "ar": {
+        "B": "تصدير الخريطة ينشئ ملفات رسومية ثابتة.",
+        "C": "حفظ كقالب ينشئ قوالب مشاريع.",
+        "D": "إسقاط الراستر يعيد إسقاط الصور."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-049",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Time"
+    ],
+    "question": {
+      "en": "What happens when you lock the Time Extent on a specific map frame in a multi-frame page layout?",
+      "ar": "ماذا يحدث عند قفل النطاق الزمني (Time Extent) على إطار خريطة معين في لوحة طباعة تحتوي على عدة إطارات خرائط؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The locked map frame maintains its specific historical snapshot date regardless of changes to the global Time Slider",
+          "ar": "يحافظ إطار الخريطة المقفل على تاريخ لقطته التاريخية المحددة بغض النظر عن تغييرات منزلق الوقت العام"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The map frame becomes completely invisible",
+          "ar": "يصبح إطار الخريطة غير مرئي تماماً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "All vector features in the frame are converted to CAD format",
+          "ar": "تتحول جميع المعالم في الإطار إلى ملفات CAD"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The scale bar stops updating dynamically",
+          "ar": "يتوقف شريط المقياس عن التحديث ديناميكياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Locking time on a map frame decouples it from the shared project time slider, allowing multi-frame layouts to compare side-by-side snapshots (e.g. 1990 vs 2025).",
+      "ar": "يؤدي قفل الوقت على إطار الخريطة إلى فصله عن منزلق الوقت المشترك، مما يسمح بمقارنة لقطات زمنية جنباً إلى جنب في نفس اللوحة (مثل خريطة لعام 1990 بجوار خريطة لعام 2025)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "The frame remains fully visible displaying its locked timestamp.",
+        "C": "CAD conversion is unrelated to time locking.",
+        "D": "Scale bars function normally based on spatial extent."
+      },
+      "ar": {
+        "B": "يظل الإطار مرئياً بالكامل عارضاً توقيته المقفل.",
+        "C": "تحويل CAD لا علاقة له بقفل الوقت.",
+        "D": "يعمل مقياس الرسم بشكل طبيعي حسب النطاق المكاني."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-050",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Identify how to control the coordinate system and geographic transformation in ArcGIS Pro",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Map Properties"
+    ],
+    "question": {
+      "en": "Does changing the coordinate system of a Map Frame in ArcGIS Pro physically modify the coordinate data of the underlying feature classes on disk?",
+      "ar": "هل يؤدي تغيير نظام إحداثيات إطار الخريطة في ArcGIS Pro إلى تعديل إحداثيات فئات المعالم الأصلية المخزنة على القرص الصلب؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "No, it only changes how layers are projected on the fly for visual display",
+          "ar": "لا، بل يغير فقط كيفية إسقاط وعرض الطبقات آنياً (On the fly) على الشاشة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Yes, it permanently runs the Project tool on all datasets in the map",
+          "ar": "نعم، حيث يقوم بتشغيل أداة Project بشكل دائم على جميع الطبقات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Yes, but only for shapefiles and not geodatabases",
+          "ar": "نعم، ولكن لملفات shapefile فقط وليس للجيوداتابيس"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Yes, and it deletes all vertical Z-values",
+          "ar": "نعم، ويقوم بحذف جميع الارتفاعات الرأسية Z"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Changing map properties alters only the visual display coordinate reference. The source datasets on disk remain completely untouched in their native coordinate systems.",
+      "ar": "يغير تعديل خصائص الخريطة المرجع الإسقاطي للعرض البصري فقط؛ وتبقى مجموعات البيانات الأصلية على القرص في أنظمتها الإحداثية الأصلية دون أي تعديل."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Project tool must be run explicitly to alter disk coordinates.",
+        "C": "Data format has no bearing on on-the-fly projection mechanics.",
+        "D": "Z-values are preserved intact in feature geometries."
+      },
+      "ar": {
+        "B": "يجب تشغيل أداة Project صراحة لتعديل الإحداثيات على القرص.",
+        "C": "نوع تنسيق البيانات لا يغير آلية العرض الآني.",
+        "D": "تظل قيم Z محفوظة كما هي في البيانات الأصلية."
+      }
+    },
+    "references": [
+      {
+        "title": "Coordinate systems in maps and scenes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-051",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Identify how to control the coordinate system and geographic transformation in ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Map Properties"
+    ],
+    "question": {
+      "en": "What visual symptom occurs on a map when two layers with different datums (e.g., NAD 27 and WGS 84) are displayed together without a datum transformation?",
+      "ar": "ما العَرَض البصري الذي يظهر على الخريطة عند عرض طبقتين بمراجع مختلفة (مثل NAD 27 و WGS 84) معاً دون تطبيق تحويل للمرجع (Datum Transformation)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Features that should be coincident display with a noticeable spatial offset or misalignment (datum shift)",
+          "ar": "المعالم التي يجب أن تكون متطابقة تظهر بإزاحة مكانية ملحوظة وعدم محاذاة (إزاحة المرجع)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The entire map view turns completely black",
+          "ar": "تتحول شاشة عرض الخريطة بالكامل إلى اللون الأسود"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Labels are converted into question marks",
+          "ar": "تتحول نصوص التسميات إلى علامات استفهام"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The coordinate values in attribute tables are set to zero",
+          "ar": "تتحول قيم الإحداثيات في جداول البيانات إلى أصفار"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Without an appropriate datum transformation, features suffer a datum shift—an offset typically ranging from tens to hundreds of meters—causing roads and boundaries to misalign.",
+      "ar": "دون تطبيق تحويل ملائم للمرجع، تعاني المعالم من إزاحة المرجع (Datum Shift) التي تتراوح بين عشرات ومئات الأمتار، مما يسبب عدم تطابق الطرق والحدود جغرافياً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Black screens indicate graphics card driver issues, not datum shifts.",
+        "C": "Question marks indicate font encoding issues.",
+        "D": "Attribute table numbers are not affected by map display."
+      },
+      "ar": {
+        "B": "الشاشة السوداء مشكلة في بطاقة الرسوميات.",
+        "C": "علامات الاستفهام مشكلة في ترميز الخطوط.",
+        "D": "جداول البيانات لا تتأثر بالعرض البصري."
+      }
+    },
+    "references": [
+      {
+        "title": "Coordinate systems in maps and scenes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-052",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "When using Graduated Colors symbology, which option allows excluding specific outlier values (e.g., -999 NoData codes) from participating in classification calculations?",
+      "ar": "عند استخدام رموز الألوان المتدرجة، أي خيار يتيح استبعاد قيم شاذة معينة (مثل أكواد -999 للبيانات المفقودة) من الدخول في حسابات فئات التصنيف؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Data Exclusion clause in Advanced Symbology Options",
+          "ar": "Data Exclusion (استبعاد البيانات) في خيارات الرموز المتقدمة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete Field geoprocessing tool",
+          "ar": "أداة حذف الحقل Delete Field"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Set Layer Transparency to 100%",
+          "ar": "ضبط شفافية الطبقة على 100%"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export to KML",
+          "ar": "التصدير إلى KML"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Data Exclusion setting in the Advanced Symbology tab allows writing a SQL expression (e.g., VALUE <> -999) to omit specific values from the classification statistics.",
+      "ar": "يتيح إعداد استبعاد البيانات (Data Exclusion) في تبويب الرموز المتقدمة كتابة استعلام SQL لاستثناء قيم معينة من الحسابات الإحصائية لتصنيف الفئات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Deleting the field destroys the attribute column.",
+        "C": "Transparency hides features visually but does not fix classification breaks.",
+        "D": "KML export does not configure classification."
+      },
+      "ar": {
+        "B": "حذف الحقل يدمر عمود البيانات بالكامل.",
+        "C": "الشفافية تخفي المعالم بصرياً لكنها لا تصلح فواصل التصنيف.",
+        "D": "تصدير KML لا علاقة له بتصنيف الفئات."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-053",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Layer Properties"
+    ],
+    "question": {
+      "en": "Where can an analyst change the interactive selection color from the default cyan/blue to a custom color for a specific project?",
+      "ar": "أين يمكن للمحلل تغيير لون التحديد التفاعلي من اللون الأزرق الافتراضي إلى لون مخصص لمشروع معين؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Project > Options > Selection",
+          "ar": "Project > Options > Selection"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Catalog Pane > Styles",
+          "ar": "Catalog Pane > Styles"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Analysis > Environments",
+          "ar": "Analysis > Environments"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Share > Package Project",
+          "ar": "Share > Package Project"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Application selection preferences, including default selection color, tolerance, and interactive selection modes, are configured under Project > Options > Selection.",
+      "ar": "تُضبط تفضيلات التحديد للتطبيق، بما في ذلك لون التحديد الافتراضي ومسافة التسامح وأنماط التحديد، في نافذة Project > Options > Selection."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Styles manage symbols and color palettes.",
+        "C": "Environments manage geoprocessing execution parameters.",
+        "D": "Package project creates shared archives."
+      },
+      "ar": {
+        "B": "الأنماط تدير الرموز وبالتات الألوان.",
+        "C": "بيئات التحليل تدير معاملات المعالجة الجغرافية.",
+        "D": "حزم المشروع مخصصة للمشاركة."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-054",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling"
+    ],
+    "question": {
+      "en": "In Maplex label placement, what is the role of an Abbreviation Dictionary?",
+      "ar": "في محرك التسميات Maplex، ما هو دور قاموس الاختصارات (Abbreviation Dictionary)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It automatically replaces long words with standard abbreviations (e.g., 'Street' to 'St') when label space is constrained",
+          "ar": "يستبدل الكلمات الطويلة تلقائياً باختصارات معيارية (مثل 'Street' إلى 'St') عند ضيق مساحة التسمية"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It translates labels into foreign languages automatically",
+          "ar": "يترجم التسميات إلى لغات أجنبية تلقائياً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It converts uppercase labels to lowercase",
+          "ar": "يحول الأحرف الكبيرة إلى صغيرة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It fixes spelling errors in the attribute table",
+          "ar": "يصلح الأخطاء الإملائية في جدول البيانات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Abbreviation Dictionaries specify word substitutions that Maplex can apply when space is too tight to place full text strings, preserving readable labels.",
+      "ar": "تحدد قواميس الاختصارات بدائل الكلمات التي يمكن لمحرك Maplex استخدامها عند ضيق المساحة لتناسب النص دون حذفه (مثل تحويل Road إلى Rd)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "It does not provide language translation.",
+        "C": "Text case formatting is done via Arcade expressions.",
+        "D": "It does not modify underlying attribute table text."
+      },
+      "ar": {
+        "B": "لا يوفر ترجمة لغوية.",
+        "C": "تغيير حالة الأحرف يتم بتعبيرات Arcade.",
+        "D": "لا يعدل النصوص الأصلية في جدول البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-055",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "What type of layer in ArcGIS Pro stores optimized 3D geometric meshes (such as textured buildings, bridges, and monuments) with photo-realistic facade textures?",
+      "ar": "ما نوع الطبقة في ArcGIS Pro الذي يخزن شبكات هندسية ثلاثية الأبعاد محسنة (مثل المباني والجسور والمعالم ذات الواجهات الواقعية)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Multipatch or 3D Object feature layer",
+          "ar": "Multipatch أو طبقة معالم 3D Object"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Point feature layer with graduated colors",
+          "ar": "طبقة معالم نقطية برموز متدرجة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Dynamic Image Service layer",
+          "ar": "طبقة خدمة صور ديناميكية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Annotation feature layer",
+          "ar": "طبقة معالم نصوص توضيحية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Multipatch feature classes and 3D Object layers store true 3D surface geometry meshes with material textures, photorealistic facades, and lighting reflection properties.",
+      "ar": "تخزن فئات معالم Multipatch وطبقات 3D Object مجسمات هندسية ثلاثية الأبعاد حقيقية مع إكساءات المواد والواجهات الواقعية وخصائص انعكاس الإضاءة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Point layers represent 0D discrete coordinates.",
+        "C": "Image services stream 2D raster grids.",
+        "D": "Annotation layers represent text labels."
+      },
+      "ar": {
+        "B": "الطبقات النقطية تمثل إحداثيات صفرية الأبعاد.",
+        "C": "خدمات الصور تبث شبكات راستر ثنائية الأبعاد.",
+        "D": "طبقات النصوص التوضيحية تمثل نصوصاً."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-056",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "What is the function of the 'Symbol layer drawing' advanced setting when symbolizing multi-lane freeway lines with thick outlines?",
+      "ar": "ما وظيفة الإعداد المتقدم 'Symbol layer drawing' عند تمثيل خطوط الطرق السريعة متعددة المسارات بإطارات خارجية سميكة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It merges overlapping line outlines and fills seamlessly across intersections to eliminate internal borders",
+          "ar": "يدمج حدود وتعبئة الخطوط المتداخلة بسلاسة عبر التقاطعات لإزالة الخطوط الفاصلة الداخلية"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It converts polyline features into raster elevation surfaces",
+          "ar": "يحول معالم الخطوط إلى أسطح ارتفاع راستر"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It enforces topology rules during geometry edits",
+          "ar": "يفرض قواعد الطوبولوجيا أثناء التحرير"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It calculates the driving travel time along each segment",
+          "ar": "يحسب زمن القيادة على كل جزء من الطريق"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Symbol layer drawing allows you to control the draw order of individual symbol layers across features, merging casings and fills cleanly at junctions.",
+      "ar": "تسمح خاصية Symbol layer drawing بالتحكم في ترتيب رسم طبقات الرموز الفردية للمعالم، مما يدمج الحواف والتعبئة بسلاسة عند تقاطعات الشوارع."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "It is a cartographic display setting, not a raster tool.",
+        "C": "Topology is managed in the geodatabase, not symbology.",
+        "D": "Network Analyst calculates drive times."
+      },
+      "ar": {
+        "B": "إعداد كارتوغرافي وليس أداة راستر.",
+        "C": "الطوبولوجيا تُدار في قاعدة البيانات.",
+        "D": "تحليل الشبكات هو المسؤول عن حساب أزمنة القيادة."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-057",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Select By Attributes"
+    ],
+    "question": {
+      "en": "Which clause in an ArcGIS Pro SQL query selects records where the COUNTY field starts with the letter 'M'?",
+      "ar": "أي شرط في استعلام SQL بـ ArcGIS Pro يحدد السجلات التي يبدأ فيها حقل COUNTY بحرف 'M'؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "COUNTY LIKE 'M%'",
+          "ar": "COUNTY LIKE 'M%'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "COUNTY = 'M*'",
+          "ar": "COUNTY = 'M*'"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "COUNTY IN ('M')",
+          "ar": "COUNTY IN ('M')"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "COUNTY CONTAINS 'M'",
+          "ar": "COUNTY CONTAINS 'M'"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The LIKE operator paired with the percent wildcard (%) after the character 'M' matches any string beginning with 'M' followed by any characters.",
+      "ar": "يقوم المعامل LIKE متبوعاً بحرف 'M' وعلامة النسبة المئوية (%) بمطابقة أي نص يبدأ بحرف M متبوعاً بأي عدد من الحروف."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Asterisk is not used for file geodatabase wildcards.",
+        "C": "IN ('M') matches only the single exact letter 'M'.",
+        "D": "CONTAINS is not standard SQL syntax in this context."
+      },
+      "ar": {
+        "B": "علامة النجمة لا تُستخدم في قواعد البيانات الملفية.",
+        "C": "تطابق الحرف M بمفرده فقط.",
+        "D": "ليست صياغة قياسية في جمل SQL هنا."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-058",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Transparency"
+    ],
+    "question": {
+      "en": "Where is the interactive layer transparency slider located in the ArcGIS Pro interface when a feature layer is selected in the Contents pane?",
+      "ar": "أين يقع منزلق شفافية الطبقة التفاعلي في واجهة ArcGIS Pro عند تحديد طبقة معالم في نافذة المحتويات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "On the Feature Layer contextual ribbon under the Appearance tab",
+          "ar": "في الشريط السياقي Feature Layer تحت تبويب Appearance"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "In the Status bar at the bottom of the screen",
+          "ar": "في شريط الحالة أسفل الشاشة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "In the Catalog pane",
+          "ar": "في نافذة الكتالوج Catalog"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "In the Python window",
+          "ar": "في نافذة بايثون"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "When a feature layer is selected, the contextual Feature Layer tab group appears on the ribbon, where the Appearance tab contains the Transparency slider and Blend Mode controls.",
+      "ar": "عند تحديد طبقة معالم، يظهر الشريط السياقي Feature Layer، ويحتوي تبويب Appearance على منزلق الشفافية وأدوات نمط الدمج."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "The status bar displays coordinates and scale.",
+        "C": "Catalog pane manages project items and databases.",
+        "D": "Python window is for scripting."
+      },
+      "ar": {
+        "B": "شريط الحالة يعرض الإحداثيات ومقياس الرسم.",
+        "C": "نافذة الكتالوج تدير عناصر المشروع.",
+        "D": "نافذة بايثون لكتابة الأوامر البرمجية."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-059",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Time"
+    ],
+    "question": {
+      "en": "When playing a temporal animation on the Time Slider, what parameter controls the step size of each chronological frame advance?",
+      "ar": "عند تشغيل عرض زمني متحرك على منزلق الوقت، ما المعامل الذي يتحكم في مقدار القفزة الزمنية لكل إطار متحرك؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Time Step Interval",
+          "ar": "Time Step Interval (الفاصل الزمني للخطوة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Map Scale",
+          "ar": "Map Scale (مقياس الخريطة)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Buffer Distance",
+          "ar": "Buffer Distance (مسافة النطاق)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Spatial Tolerance",
+          "ar": "Spatial Tolerance (التسامح المكاني)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Time Step Interval (e.g. 1 Day, 1 Month, 1 Year) dictates how far forward in time the slider advances between consecutive animation frames.",
+      "ar": "يحدد الفاصل الزمني للخطوة (Time Step Interval) مقدار التقدم في الزمن بين كل إطار متحرك والذي يليه (مثل يوم واحد، أو شهر، أو سنة)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Map scale controls zoom level.",
+        "C": "Buffer distance is for proximity analysis.",
+        "D": "Spatial tolerance is for snapping and clustering."
+      },
+      "ar": {
+        "B": "مقياس الخريطة يتحكم في نسبة التقريب.",
+        "C": "مسافة الحرم لتحليل التقارب.",
+        "D": "التسامح المكاني لعمليات الانجذاب والتجميع."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-060",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Identify how to control the coordinate system and geographic transformation in ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "3D Scenes"
+    ],
+    "question": {
+      "en": "Can a Local Scene use a projected coordinate system (such as State Plane or UTM) as its scene coordinate system?",
+      "ar": "هل يمكن للمشهد المحلي (Local Scene) استخدام نظام إحداثيات مسقط (مثل State Plane أو UTM) كنظام إحداثيات للمشهد؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Yes, Local Scenes are specifically designed to use projected coordinate systems for planar localized visualization",
+          "ar": "نعم، فالمشاهد المحلية مصممة خصيصاً لاستخدام أنظمة الإحداثيات المسقطة للعرض المستوي المحلي"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "No, all 3D scenes are permanently locked to WGS 1984 geographic coordinates",
+          "ar": "لا، فجميع المشاهد ثلاثية الأبعاد مقفلة بشكل دائم على نظام WGS 1984 الجغرافي"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "No, 3D scenes have no coordinate systems",
+          "ar": "لا، فالمشاهد ثلاثية الأبعاد ليس لها أنظمة إحداثيات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Only if all layers are CAD drawings",
+          "ar": "فقط إذا كانت جميع الطبقات رسومات CAD"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Unlike Global Scenes which require WGS84 or CGCS2000, Local Scenes can be set to any projected coordinate system, preventing projection distortion across localized engineering or municipal extents.",
+      "ar": "على عكس المشاهد العالمية التي تتطلب WGS84، يمكن للمشاهد المحلية استخدام أي نظام إحداثيات مسقط، مما يمنع تشوهات الإسقاط في التطبيقات الهندسية والبلدية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Only Global scenes are restricted to geographic ellipsoids.",
+        "C": "All scenes require a valid spatial reference.",
+        "D": "Local scenes support all standard GIS data formats."
+      },
+      "ar": {
+        "B": "المشاهد العالمية فقط هي المقيدة بالنظام الجغرافي.",
+        "C": "تتطلب جميع المشاهد مرجعاً مكانياً صحيحاً.",
+        "D": "تدعم المشاهد المحلية كافة صيغ بيانات نظم المعلومات الجغرافية."
+      }
+    },
+    "references": [
+      {
+        "title": "Coordinate systems in maps and scenes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-061",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling"
+    ],
+    "question": {
+      "en": "In the Maplex Label Engine, how does 'Label Weight' differ from 'Feature Weight'?",
+      "ar": "في محرك التسميات Maplex، كيف يختلف 'وزن التسمية' (Label Weight) عن 'وزن المعلم' (Feature Weight)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Label Weight determines which label wins when competing labels collide; Feature Weight determines how strongly a feature resists having labels placed over it",
+          "ar": "وزن التسمية يحدد أي تسمية تُرسم عند تصادم تسميتين متنافستين؛ بينما وزن المعلم يحدد مدى مقاومة المعلم لوضع تسميات فوقه"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Label Weight sets the font thickness; Feature Weight sets line width",
+          "ar": "وزن التسمية يحدد سمك الخط؛ ووزن المعلم يحدد عرض خط المعلم"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Label Weight only works on point layers; Feature Weight only works on polygons",
+          "ar": "وزن التسمية يعمل على النقاط فقط؛ ووزن المعلم يعمل على المضلعات فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Both weights perform identical functions and can be used interchangeably",
+          "ar": "يؤدي كلا الوزنين نفس الوظيفة تماماً ويمكن التبديل بينهما"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Label Weight resolves collisions between competing label texts (higher weight wins). Feature Weight defines whether the feature geometry itself serves as an obstacle against any labels crossing it.",
+      "ar": "يحسم وزن التسمية (Label Weight) النزاع بين النصوص المتصادمة (الأعلى وزناً يفوز بالظهور)؛ بينما يحدد وزن المعلم (Feature Weight) مدى عمل هندسة المعلم كحاجز يمنع التسميات من تغطيته."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Weights control placement conflict rules, not graphic line widths or font weights.",
+        "C": "Both weight properties are available across all vector geometry types.",
+        "D": "They serve fundamentally distinct roles (label priority vs obstacle resistance)."
+      },
+      "ar": {
+        "B": "تتحكم الأوزان في قواعد تجنب النزاع وليس في سماكة الخطوط.",
+        "C": "كلا الوزنين متاح لجميع أنواع المعالم الهندسية.",
+        "D": "يؤدي كل منهما دوراً مختلفاً جوهرياً (أولوية التسمية مقابل مقاومة الحواجز)."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-062",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "question": {
+      "en": "Which classification method calculates class breaks so that the difference between the mean of each class and the values within that class is minimized?",
+      "ar": "أي طريقة تصنيف تحسب فواصل الفئات بحيث تقلل الفروق بين متوسط كل فئة والقيم الواقعة داخل تلك الفئة لأدنى حد؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Natural Breaks (Jenks)",
+          "ar": "Natural Breaks (الكسور الطبيعية - جينكس)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Quantile",
+          "ar": "Quantile (الفئات المتساوية)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Equal Interval",
+          "ar": "Equal Interval (الفترات المتساوية)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Standard Deviation",
+          "ar": "Standard Deviation (الانحراف المعياري)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Jenks optimization algorithm minimizes the sum of squared differences from the class means (variance within classes) while maximizing differences between classes.",
+      "ar": "تقلل خوارزمية جينكس التباين الداخلي داخل كل فئة (مجموع مربعات الفروق عن متوسط الفئة) وتعظم التباين بين الفئات المختلفة لإبراز التجمعات الطبيعية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Quantile focuses on equal counts, not variance minimization.",
+        "C": "Equal Interval divides range mathematically.",
+        "D": "Standard Deviation uses standard statistical units from the overall mean."
+      },
+      "ar": {
+        "B": "تركز طريقة Quantile على تساوي الأعداد وليس تقليل التباين.",
+        "C": "تقسم الفترات المتساوية المدى حسابياً.",
+        "D": "يستخدم الانحراف المعياري وحدات إحصائية من المتوسط العام."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-063",
+    "kind": "mcq",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Select By Location"
+    ],
+    "question": {
+      "en": "An analyst runs Select By Location with the spatial relationship 'Intersect'. If a polygon's boundary merely touches the edge of another polygon without interior overlap, is it selected?",
+      "ar": "قام محلل بتشغيل أداة Select By Location بالعلاقة المكانية 'Intersect'. إذا لامست حدود مضلع حافة مضلع آخر دون أي تداخل داخلي، فهل سيتم اختياره؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Yes, because touching boundaries or sharing vertices satisfies the mathematical Intersect condition",
+          "ar": "نعم، لأن ملامسة الحدود أو الاشتراك في الرؤوس يحقق شرط التقاطع الرياضي (Intersect)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "No, Intersect strictly requires overlapping interior area",
+          "ar": "لا، فالتقاطع يتطلب حتماً تداخلاً في المساحة الداخلية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Only if both polygons have the same area",
+          "ar": "فقط إذا كان للمضلعين نفس المساحة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Only in 3D Local Scenes",
+          "ar": "فقط في المشاهد ثلاثية الأبعاد المحلية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In the OpenGIS dimensionally extended 9-intersection model (DE-9IM) used by ArcGIS, 'Intersect' returns true if any point of geometry A touches or crosses any point of geometry B, including boundaries.",
+      "ar": "في النموذج الرياضي للتقاطع المكاني المعتمد بـ ArcGIS، تعتبر المعالم متقاطعة (Intersect) إذا اشتركت في أي نقطة أو حافة أو رأس، حتى لو لم تتداخل المساحات الداخلية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Interior overlap is required for 'Overlaps', not 'Intersect'.",
+        "C": "Area equality is irrelevant to topological intersections.",
+        "D": "Topological relationships function identically in 2D and 3D."
+      },
+      "ar": {
+        "B": "التداخل الداخلي مطلوب لعلاقة Overlaps وليس Intersect.",
+        "C": "تساوي المساحة لا علاقة له بالتقاطع الطوبولوجي.",
+        "D": "العلاقات المكانية تعمل بنفس القواعد في البيئتين."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  }
+]

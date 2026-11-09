@@ -1,0 +1,3107 @@
+[
+  {
+    "id": "LS-001",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Spatial Map Series"
+    ],
+    "question": {
+      "en": "What is the primary purpose of creating a Spatial Map Series in an ArcGIS Pro page layout?",
+      "ar": "ما هو الغرض الأساسي من إنشاء سلسلة خرائط مكانية (Spatial Map Series) في لوحة إخراج بـ ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To automate the generation of a multi-page map book from a single layout using features from an index layer",
+          "ar": "أتمتة إنتاج أطلس خرائط متعدد الصفحات من لوحة إخراج واحدة بالاعتماد على معالم طبقة الفهرس"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To convert 2D maps into 3D animations",
+          "ar": "تحويل الخرائط ثنائية الأبعاد إلى رسوم متحركة ثلاثية الأبعاد"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To compress raster images into JPEG format",
+          "ar": "ضغط صور الراستر إلى صيغة JPEG"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To create database backups on a schedule",
+          "ar": "إنشاء نسخ احتياطية لقاعدة البيانات وفق جدول زمني"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A Spatial Map Series uses a single layout and iterates across individual features in an index layer (e.g. parcels, grid cells, counties) to produce a standardized, multi-page map book.",
+      "ar": "تستخدم سلسلة الخرائط المكانية لوحة إخراج واحدة وتتنقل عبر معالم طبقة الفهرس (مثل قطع الأراضي أو شبكات التوزيع أو المحافظات) لإنتاج أطلس خرائط معياري موحد متعدد الصفحات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Map series generate static multi-page layouts, not 3D video animations.",
+        "C": "Image compression is managed in export formats, not map series.",
+        "D": "Database backups are administrative DBMS operations."
+      },
+      "ar": {
+        "B": "تنتج سلاسل الخرائط لوحات طباعة وليس رسوم فيديو متحركة.",
+        "C": "ضغط الصور يُدار في صيغ التصدير.",
+        "D": "النسخ الاحتياطي عملية إدارية لخوادم قواعد البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-002",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Spatial Map Series"
+    ],
+    "question": {
+      "en": "Which two elements are strictly required to configure a Spatial Map Series in ArcGIS Pro?",
+      "ar": "ما هما العنصران الإلزاميان تماماً لتهيئة سلسلة خرائط مكانية (Spatial Map Series) في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A Map Frame and an Index Layer",
+          "ar": "إطار خريطة (Map Frame) وطبقة فهرس (Index Layer)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A Scale Bar and a North Arrow",
+          "ar": "شريط مقياس وسهم شمال"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A 3D Local Scene and an elevation surface",
+          "ar": "مشهد محلي ثلاثي الأبعاد وسطح ارتفاع"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A Python script and an Excel table",
+          "ar": "سكربت بايثون وجدول إكسل"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A Spatial Map Series requires a Layout Map Frame (which displays the map) and an Index Layer (a polygon or polyline layer whose features define the extent and center of each page).",
+      "ar": "تتطلب سلسلة الخرائط المكانية وجود إطار خريطة (Map Frame) لعرض الخريطة وطبقة فهرس (Index Layer) تحدد معالمها نطاق ومركز كل صفحة في الأطلس."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Scale bars and north arrows are optional decorative layout elements.",
+        "C": "Map series operate on 2D map frames in layouts.",
+        "D": "No programming or external spreadsheets are required."
+      },
+      "ar": {
+        "B": "أشرطة المقاييس وأسهم الشمال عناصر تصميم اختيارية وليست إلزامية لتشغيل السلسلة.",
+        "C": "تعمل سلاسل الخرائط على إطارات الخرائط ثنائية الأبعاد.",
+        "D": "لا تتطلب السلسلة برمجة أو جداول خارجية."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-003",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Dynamic Text"
+    ],
+    "question": {
+      "en": "Which dynamic text tag in a Map Series layout dynamically displays the current page number and total page count (e.g., 'Page 3 of 50')?",
+      "ar": "أي وسم نص ديناميكي (Dynamic Text) في لوحة سلسلة الخرائط يعرض ديناميكياً رقم الصفحة الحالية وإجمالي عدد الصفحات (مثل: 'Page 3 of 50')؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Page <dyn type=\"page\" property=\"number\"/> of <dyn type=\"page\" property=\"count\"/>",
+          "ar": "Page <dyn type=\"page\" property=\"number\"/> of <dyn type=\"page\" property=\"count\"/>"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Page $PAGE of $TOTAL",
+          "ar": "Page $PAGE of $TOTAL"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Page %PageNumber% of %TotalPages%",
+          "ar": "Page %PageNumber% of %TotalPages%"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Page {PAGE_NUM} OF {PAGES}",
+          "ar": "Page {PAGE_NUM} OF {PAGES}"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Pro dynamic text uses XML-formatted tags, where `<dyn type=\"page\" property=\"number\"/>` evaluates to the current page number and property=\"count\" evaluates to total pages.",
+      "ar": "تستخدم النصوص الديناميكية في ArcGIS Pro وسوماً بصيغة XML؛ حيث يعيد الوسم `<dyn type=\"page\" property=\"number\"/>` رقم الصفحة الحالية و property=\"count\" إجمالي الصفحات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Dollar signs are used in Arcade, not layout dynamic text tags.",
+        "C": "Percent signs are ModelBuilder inline variables.",
+        "D": "Curly brackets are Python string formatting syntax."
+      },
+      "ar": {
+        "B": "علامات الدولار للغة Arcade وليست لوسوم النصوص الديناميكية.",
+        "C": "علامات النسبة المئوية لمتغيرات ModelBuilder.",
+        "D": "الأقواس المعقوفة لتنسيق سلاسل بايثون."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-004",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Dynamic Text"
+    ],
+    "question": {
+      "en": "How can an analyst dynamically display the value of the 'DISTRICT_LEADER' field from the active index layer feature on each page of a Map Series?",
+      "ar": "كيف يمكن للمحلل عرض قيمة حقل 'DISTRICT_LEADER' ديناميكياً من معلم طبقة الفهرس النشط في كل صفحة من صفحات سلسلة الخرائط؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Insert dynamic text: <dyn type=\"page\" property=\"attribute\" field=\"DISTRICT_LEADER\"/>",
+          "ar": "إدراج نص ديناميكي: <dyn type=\"page\" property=\"attribute\" field=\"DISTRICT_LEADER\"/>"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Type the name manually 50 times on separate text boxes",
+          "ar": "كتابة الاسم يدوياً 50 مرة في مربعات نصية منفصلة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Export the layer to a shapefile",
+          "ar": "تصدير الطبقة إلى shapefile"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Run the Calculate Field geoprocessing tool",
+          "ar": "تشغيل أداة Calculate Field"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The dynamic text attribute tag extracts and displays attribute values directly from the current page's index feature using the syntax `<dyn type=\"page\" property=\"attribute\" field=\"FieldName\"/>`.",
+      "ar": "يستخرج وسم سمة النص الديناميكي ويعرض القيم السماتية مباشرة من معلم الفهرس للصفحة الحالية باستخدام الصياغة المعيارية `<dyn type=\"page\" property=\"attribute\" field=\"اسم الحقل\"/>`."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Manual typing defeats the automation purpose of map series.",
+        "C": "Exporting to shapefile does not display text on layouts.",
+        "D": "Calculate field edits table records, not layout dynamic text."
+      },
+      "ar": {
+        "B": "الكتابة اليدوية تلغي الفائدة من أتمتة السلسلة.",
+        "C": "تصدير الملف لا يظهر النصوص على اللوحة.",
+        "D": "حساب الحقل يعدل الجداول ولا يغير نصوص اللوحة."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-005",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Sharing Packages"
+    ],
+    "question": {
+      "en": "Which sharing package encapsulates an entire ArcGIS Pro project—including all maps, scenes, layouts, custom toolboxes, styles, and a consolidated geodatabase of all underlying data?",
+      "ar": "أي حزمة مشاركة تجمع مشروع ArcGIS Pro بأكمله—بما في ذلك كافة الخرائط والمشاهد واللوحات وصناديق الأدوات المخصصة والأنماط مع قاعدة بيانات مجمعة لكافة البيانات الأصلية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Project Package (.ppkx)",
+          "ar": "حزمة المشروع Project Package (.ppkx)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Layer Package (.lpkx)",
+          "ar": "حزمة الطبقة Layer Package (.lpkx)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Map Package (.mpkx)",
+          "ar": "حزمة الخريطة Map Package (.mpkx)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Tile Package (.tpkx)",
+          "ar": "حزمة البلاطات Tile Package (.tpkx)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A Project Package (.ppkx) packages everything within an ArcGIS Pro project into a single compressed file, consolidating referenced data so external recipients can open the project without broken data paths.",
+      "ar": "تجمع حزمة المشروع (.ppkx) كافة عناصر المشروع داخل ملف مضغوط واحد، وتدمج البيانات المرجعية في قاعدة بيانات جغرافية مجمعة لتمكين المستلمين من فتح المشروع دون انقطاع مسارات البيانات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Layer Package (.lpkx) bundles only a single layer or group layer.",
+        "C": "Map Package (.mpkx) bundles a single 2D map.",
+        "D": "Tile Package (.tpkx) stores pre-rendered raster basemap tiles."
+      },
+      "ar": {
+        "B": "حزمة الطبقة (.lpkx) تجمع طبقة واحدة أو مجموعة طبقات فقط.",
+        "C": "حزمة الخريطة (.mpkx) تجمع خريطة ثنائية الأبعاد واحدة.",
+        "D": "حزمة البلاطات (.tpkx) تخزن بلاطات صور مخزنة مؤقتاً."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-006",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Sharing Packages"
+    ],
+    "question": {
+      "en": "What is the difference between a Map Package (.mpkx) and a Project Package (.ppkx)?",
+      "ar": "ما هو الفرق بين حزمة الخريطة (.mpkx) وحزمة المشروع (.ppkx)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A Map Package contains a single 2D map and its data; a Project Package contains multiple maps, 3D scenes, page layouts, tasks, and tools",
+          "ar": "تحتوي حزمة الخريطة على خريطة ثنائية الأبعاد واحدة وبياناتها؛ بينما تحتوي حزمة المشروع على عدة خرائط ومشاهد ثلاثية الأبعاد ولوحات طباعة ومهام وأدوات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A Map Package only works in ArcMap; a Project Package only works in Pro",
+          "ar": "تعمل حزمة الخريطة في ArcMap وحزمة المشروع في Pro"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A Project Package cannot include geodatabase data",
+          "ar": "لا يمكن لحزمة المشروع تضمين بيانات الجيوداتابيس"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A Map Package creates web feature services automatically",
+          "ar": "تنشئ حزمة الخريطة خدمات ويب تلقائياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "An .mpkx packages a single Map item (.mapx + data). A .ppkx packages the complete project workspace (.aprx) including all associated maps, scenes, layouts, toolboxes, and geodatabases.",
+      "ar": "تجمع حزمة .mpkx خريطة واحدة وبياناتها؛ بينما تجمع حزمة .ppkx مساحة عمل المشروع الكاملة (.aprx) بما فيها من خرائط ومشاهد متعددة ولوحات إخراج وصناديق أدوات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both .mpkx and .ppkx are native ArcGIS Pro package formats.",
+        "C": "Project packages consolidate referenced geodatabase datasets by default.",
+        "D": "Packages are local archives, not live hosted web services."
+      },
+      "ar": {
+        "B": "كلا التنسيقين أصيلان في ArcGIS Pro.",
+        "C": "تدمج حزم المشاريع بيانات الجيوداتابيس افتراضياً.",
+        "D": "الحزم ملفات أرشيفية محلية وليست خدمات ويب حية."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-007",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Mobile Map Package"
+    ],
+    "question": {
+      "en": "Which package format is specifically engineered for offline fieldwork in mobile applications like ArcGIS Field Maps, bundling vector basemaps, operational layers, address locators, and transportation networks into a single file?",
+      "ar": "أي صيغة حزم مصممة خصيصاً للعمل الميداني بدون إنترنت في تطبيقات الجوال مثل ArcGIS Field Maps، وتدمج خرائط الأساس المتجهة والطبقات التشغيلية ومحددات العناوين وشبكات النقل في ملف واحد؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Mobile Map Package (.mmpk)",
+          "ar": "Mobile Map Package (.mmpk)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Project Package (.ppkx)",
+          "ar": "Project Package (.ppkx)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Tile Package (.tpkx)",
+          "ar": "Tile Package (.tpkx)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Shapefile (.shp)",
+          "ar": "Shapefile (.shp)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Mobile Map Packages (.mmpk) consolidate vector basemaps, operational feature layers, geocoding locators, and network datasets into a compressed format optimized for offline mobile navigation and data collection.",
+      "ar": "تدمج حزم الخرائط المحمولة (.mmpk) خرائط الأساس المتجهة والطبقات التشغيلية ومحددات العناوين وشبكات التحليل المكاني في ملف مضغوط عالي الأداء مخصص للعمل الميداني دون اتصال بالإنترنت."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Project packages are designed for desktop ArcGIS Pro workstations.",
+        "C": "Tile packages only hold raster cache tiles, without locators or networks.",
+        "D": "Shapefiles cannot store locators, network topologies, or multiple layers."
+      },
+      "ar": {
+        "B": "حزم المشاريع مخصصة لأجهزة الحاسب المكتبي.",
+        "C": "حزم البلاطات تحتوي على صور وبلاطات فقط دون محددات عناوين.",
+        "D": "ملفات shapefile لا تدعم الشبكات أو محددات العناوين."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-008",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Sharing Packages"
+    ],
+    "question": {
+      "en": "What is the key advantage of a Vector Tile Package (.vtpk) over a traditional Raster Tile Package (.tpkx)?",
+      "ar": "ما هي الميزة الأساسية لحزمة البلاطات المتجهة (.vtpk) مقارنة بحزمة بلاطات الراستر التقليدية (.tpkx)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Vector tiles are significantly smaller in file size, scale crisply to high-DPI displays without pixelation, and support on-the-fly client-side restyling",
+          "ar": "البلاطات المتجهة أصغر حجماً بكثير، وتحافظ على حدة الرسم ونقائه في الشاشات عالية الدقة دون تشويش بكسلي، وتدعم إعادة التلوين لدى المستخدم"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Vector tiles can store raw Landsat satellite multispectral bands",
+          "ar": "تستطيع البلاطات المتجهة تخزين النطاقات الطيفية لصور لاندسات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Vector tiles can be edited using the Traverse tool",
+          "ar": "يمكن تحرير البلاطات المتجهة بأداة Traverse"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Vector tiles do not require coordinate systems",
+          "ar": "لا تتطلب البلاطات المتجهة نظام إحداثيات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Vector tiles store vector representations of features as protocol buffers. They are compact, adapt resolution smoothly to any screen DPI, rotate without distorted labels, and allow restyling styles without rebuilding caches.",
+      "ar": "تخزن البلاطات المتجهة المعالم بتنسيق متجه مضغوط؛ فتكون أحجامها أصغر بعشر مرات، وتظهر بنقاء فائق على الشاشات الحديثة دون تشويش، وتسمح بتدوير الخريطة وتغيير الألوان دون إعادة بناء الكاش."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Raster tile packages (.tpkx) handle continuous imagery bands, not vector tiles.",
+        "C": "Vector tiles are read-only cached basemaps and cannot be edited with editing tools.",
+        "D": "Vector tiles require projected coordinate systems (typically Web Mercator)."
+      },
+      "ar": {
+        "B": "حزم الراستر هي المخصصة للصور الفضائية.",
+        "C": "البلاطات المتجهة للقراءة فقط كخرائط أساس.",
+        "D": "تتطلب البلاطات المتجهة نظام إحداثيات محدد."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-009",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Share Web Layer"
+    ],
+    "question": {
+      "en": "During the 'Analyze' stage of sharing a web layer to ArcGIS Online, what is the critical difference between an Error (red circle with 'X') and a Warning (yellow triangle)?",
+      "ar": "أثناء مرحلة التحليل (Analyze) لنشر طبقة ويب إلى ArcGIS Online، ما هو الفرق الجوهري بين الخطأ (دائرة حمراء بها علامة X) والتحذير (مثلث أصفر)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Errors prevent publishing and MUST be resolved before sharing; Warnings are advisory and do not block publishing",
+          "ar": "الأخطاء تمنع النشر تماماً ويجب حلها إلزامياً قبل المشاركة؛ بينما التحذيرات إرشادية ولا تمنع استكمال عملية النشر"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Warnings delete the dataset; Errors do not",
+          "ar": "التحذيرات تحذف البيانات والأخطاء لا تحذفها"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Errors can be ignored if the user has an Administrator role",
+          "ar": "يمكن تجاهل الأخطاء إذا كان للمستخدم صلاحية مسؤول"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Both errors and warnings permanently cancel the publishing process",
+          "ar": "يلغي كلاهما عملية النشر بشكل دائم"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The ArcGIS Pro sharing analyzer marks blocking issues as Errors (e.g. unsupported layer types, missing unique IDs), which completely prevent publishing until fixed. Warnings indicate potential performance or cosmetic issues but allow publishing to proceed.",
+      "ar": "يميز محلل المشاركة المشكلات الحرجة كأخطاء (Errors) تمنع النشر إجبارياً حتى إصلاحها (مثل غياب المعرفات الفريدة)؛ بينما تمثل التحذيرات (Warnings) ملاحظات لتحسين الأداء ولا تعطل إتمام النشر."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Neither message deletes datasets.",
+        "C": "Administrator roles cannot override fatal publishing errors.",
+        "D": "Warnings permit publishing immediately."
+      },
+      "ar": {
+        "B": "لا تؤدي أي من الرسائل لحذف البيانات.",
+        "C": "صلاحيات المسؤول لا تتجاوز الأخطاء البرمجية المانعة.",
+        "D": "تسمح التحذيرات بنشر الطبقة مباشرة."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-010",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Share Web Layer"
+    ],
+    "question": {
+      "en": "When publishing a web feature layer to ArcGIS Enterprise, what is the impact of choosing 'Reference registered data' instead of 'Copy all data'?",
+      "ar": "عند نشر طبقة معالم ويب إلى ArcGIS Enterprise، ما هو أثر اختيار 'Reference registered data' بدلاً من 'Copy all data'؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The web service connects live to the enterprise geodatabase so edits made by web or desktop clients update the same central database in real time",
+          "ar": "تتصل خدمة الويب مباشرة بقاعدة البيانات المؤسسية المركزية بحيث تنعكس التعديلات من الويب أو الأجهزة المكتبية لحظياً على نفس البيانات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A duplicate snapshot copy of the data is uploaded to the hosting server's relational datastore",
+          "ar": "تُرفع نسخة طبق الأصل مكررة من البيانات إلى مخزن البيانات المستضاف بالخادم"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "All vector features are converted into raster JPEG images",
+          "ar": "تتحول كافة المعالم الاتجاهية إلى صور راستر"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The enterprise geodatabase is permanently uninstalled",
+          "ar": "يتم إلغاء تثبيت قاعدة البيانات المؤسسية نهائياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "'Reference registered data' creates a dynamic service pointing directly to the enterprise database source. 'Copy all data' duplicates the dataset and pushes it into the ArcGIS Data Store.",
+      "ar": "ينشئ خيار 'Reference registered data' خدمة متصلة حية بمصدر قاعدة البيانات المؤسسية المسجلة، مما يتيح مزامنة التعديلات الميدانية والمكتبية آنياً على نفس السجلات دون تكرار للبيانات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Uploading duplicate snapshots is the behavior of 'Copy all data'.",
+        "C": "Feature services publish vector geometries, not raster JPEGs.",
+        "D": "It does not damage the database engine."
+      },
+      "ar": {
+        "B": "رفع نسخ مكررة هو سلوك خيار Copy all data.",
+        "C": "خدمات المعالم تنشر بيانات اتجاهية وليست صوراً.",
+        "D": "لا يؤثر على خادم قاعدة البيانات إطلاقاً."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-011",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Export Layout"
+    ],
+    "question": {
+      "en": "An analyst needs to export a PDF map for field engineers so they can measure coordinates, calculate distances, and toggle layer visibility using free Adobe Acrobat Reader. Which option must be enabled during PDF export?",
+      "ar": "يحتاج محلل لتصدير خريطة بصيغة PDF لمهندسين ميدانيين لتمكينهم من قياس الإحداثيات والمسافات وتشغيل وإطفاء الطبقات ببرنامج Adobe Acrobat Reader المجاني. أي خيار يجب تفعيله أثناء تصدير PDF؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Export georeference information and Include layers and attributes",
+          "ar": "Export georeference information وتفعيل Include layers and attributes"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Convert all text to raster bitmaps",
+          "ar": "تحويل كافة النصوص إلى صور نقطية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Set resolution to 72 DPI",
+          "ar": "ضبط الدقة على 72 DPI"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export as CMYK monochrome",
+          "ar": "التصدير بنمط ألوان CMYK أحادي"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Enabling 'Export georeference information' embeds geospatial coordinates into the PDF (making it a GeoPDF). Enabling 'Include layers and attributes' embeds PDF layer management and attribute inspection for Acrobat Reader.",
+      "ar": "يؤدي تفعيل 'Export georeference information' إلى دمج الإحداثيات الجغرافية داخل ملف PDF (ليصبح GeoPDF)؛ ويتيح خيار 'Include layers' إمكانية إظهار وإخفاء الطبقات واستعراض سماتها في قارئ أدوبي."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Rasterizing text removes searchability and increases file size.",
+        "C": "72 DPI is low screen resolution, poor for measurement.",
+        "D": "Monochrome strips map colors."
+      },
+      "ar": {
+        "B": "تحويل النصوص لصور يفقدها ميزة البحث.",
+        "C": "دقة 72 ضعيفة جداً للقياس.",
+        "D": "النمط الأحادي يلغي ألوان الخريطة."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-012",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Export Layout"
+    ],
+    "question": {
+      "en": "What is the industry-standard resolution (DPI) recommended when exporting a formal cartographic page layout to PDF for high-quality commercial paper printing?",
+      "ar": "ما هي الدقة المعيارية الموصى بها بالنقاط في البوصة (DPI) عند تصدير لوحة إخراج كارتوغرافية إلى PDF للطباعة الورقية التجارية عالية الجودة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "300 DPI",
+          "ar": "300 DPI"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "72 DPI",
+          "ar": "72 DPI"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "96 DPI",
+          "ar": "96 DPI"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "2400 DPI",
+          "ar": "2400 DPI"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "300 DPI (dots per inch) is the worldwide standard for crisp commercial printing. 72 or 96 DPI is intended for web or monitor display; 2400 DPI generates unnecessarily massive files without noticeable paper benefit.",
+      "ar": "تُعد دقة 300 DPI المعيار العالمي الموصى به للطباعة الورقية التجارية الواضحة؛ بينما تُستخدم دقة 72 أو 96 لشاشات العرض والويب، وتنتج دقة 2400 ملفات ضخمة جداً دون فائدة بصرية ملموسة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "72 DPI produces pixelated, blurry paper prints.",
+        "C": "96 DPI is standard Windows screen resolution.",
+        "D": "2400 DPI exceeds print plate resolving capabilities and slows processing."
+      },
+      "ar": {
+        "B": "دقة 72 تنتج طباعة ورقية مشوشة.",
+        "C": "دقة 96 مخصصة لشاشات الحواسيب.",
+        "D": "دقة 2400 تتجاوز قدرة الطابعات وتضخم حجم الملف دون داعٍ."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-013",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Export Layout"
+    ],
+    "question": {
+      "en": "When preparing a map layout exclusively destined for offset commercial printing presses, which color model should be configured in the Export settings?",
+      "ar": "عند إعداد لوحة خريطة مخصصة حصرياً للمطابع التجارية (أوفست)، أي نموذج ألوان يجب اختياره في إعدادات التصدير؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "CMYK (Cyan, Magenta, Yellow, Key/Black)",
+          "ar": "CMYK (السماوي، القرمزي، الأصفر، والأسود)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "RGB (Red, Green, Blue)",
+          "ar": "RGB (الأحمر، الأخضر، والأزرق)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "HSV (Hue, Saturation, Value)",
+          "ar": "HSV (درجة اللون، التشبع، والقيمة)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Greyscale 1-bit",
+          "ar": "Greyscale 1-bit"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Commercial printing presses use four-color process ink (CMYK). Designing and exporting in CMYK prevents unpredictable color shifts (such as muddy greens or neon blues turning dull) that occur during RGB-to-CMYK conversion.",
+      "ar": "تعتمد المطابع التجارية على أحبار الطباعة الأربعة (CMYK)؛ ويضمن التصدير بنمط CMYK تجنب التغيرات اللونية المفاجئة التي تحدث عند تحويل ألوان الشاشات (RGB) إلى ألوان الطباعة الورقية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "RGB is an additive light model for computer monitors and web applications.",
+        "C": "HSV is a color picker model, not a print output profile.",
+        "D": "Greyscale 1-bit removes all color."
+      },
+      "ar": {
+        "B": "نموذج RGB مخصص لشاشات الحواسيب والعرض الضوئي.",
+        "C": "نموذج HSV لاختيار الألوان في الواجهة.",
+        "D": "النمط الأحادي يلغي كافة الألوان."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-014",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Legend"
+    ],
+    "question": {
+      "en": "In a layout legend, how do you automatically prevent layers or symbol classes that are not currently visible in the map frame extent from appearing in the legend?",
+      "ar": "في مفتاح الخريطة (Legend) باللوحة، كيف تمنع تلقائياً ظهور الطبقات أو الرموز غير المعروضة حالياً ضمن نطاق إطار الخريطة من الظهور في المفتاح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Check 'Only show features visible in the map extent' in Legend element properties",
+          "ar": "تفعيل خيار 'Only show features visible in the map extent' في خصائص عنصر مفتاح الخريطة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Manually delete the missing symbols from the legend every time the map pans",
+          "ar": "حذف الرموز الغائبة يدوياً في كل مرة يتم فيها تحريك الخريطة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Turn off the entire map frame",
+          "ar": "إطفاء إطار الخريطة بالكامل"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export the layout to a BMP file",
+          "ar": "تصدير اللوحة إلى ملف BMP"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Enabling 'Only show features visible in the map extent' dynamically updates the legend to show only the symbology classes and layers that currently have features drawn inside the active map frame.",
+      "ar": "يؤدي تفعيل خيار 'Only show features visible in the map extent' إلى تحديث مفتاح الخريطة ديناميكياً ليقتصر فقط على الرموز والطبقات التي تظهر معالمها فعلياً داخل إطار الخريطة الحالي."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Manual deletion is tedious and breaks on next map extent update.",
+        "C": "Turning off the frame hides the map entirely.",
+        "D": "BMP export does not configure legend filtering."
+      },
+      "ar": {
+        "B": "الحذف اليدوي مرهق ويتلف المفتاح عند تغيير النطاق.",
+        "C": "إطفاء الإطار يخفي الخريطة.",
+        "D": "تصدير BMP لا يضبط عناصر المفتاح."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-015",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "North Arrow"
+    ],
+    "question": {
+      "en": "When placing a North Arrow on a layout depicting an area with significant map projection convergence, which north arrow direction setting aligns the arrow with the true geographic North Pole?",
+      "ar": "عند وضع سهم الشمال على لوحة خريطة لمنطقة ذات زاوية تقارب إسقاطي كبيرة، أي إعداد لاتجاه سهم الشمال يجعله يشير بدقة إلى القطب الشمالي الجغرافي الحقيقي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "True North",
+          "ar": "True North (الشمال الحقيقي)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Map North",
+          "ar": "Map North (شمال الخريطة)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Magnetic North",
+          "ar": "Magnetic North (الشمال المغناطيسي)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Grid South",
+          "ar": "Grid South (جنوب الشبكة)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "True North points toward the geographic North Pole based on the map's coordinate system projection convergence angle at the center of the frame. Map North merely points straight up toward the top of the physical page.",
+      "ar": "يشير خيار True North نحو القطب الشمالي الجغرافي الفعلي محسوباً وفق زاوية تقارب خطوط الطول للإسقاط عند مركز الخريطة؛ بينما يشير Map North إلى أعلى حافة الصفحة الورقية فقط."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Map North points straight up relative to the page boundary regardless of projection curvature.",
+        "C": "Magnetic North points toward the Earth's shifting magnetic pole.",
+        "D": "Grid South points toward the south."
+      },
+      "ar": {
+        "B": "يشير Map North لأعلى الورقة متجاهلاً انحناء خطوط الطول.",
+        "C": "يشير Magnetic North للقطب المغناطيسي المتحرك.",
+        "D": "يشير Grid South للاتجاه المعاكس."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-016",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Scale Bar"
+    ],
+    "question": {
+      "en": "When multiple Map Frames are inserted into a single layout (e.g., Main Map and Inset Map), how do you ensure the Scale Bar reflects the scale of the Main Map?",
+      "ar": "عند إدراج عدة إطارات خرائط في لوحة واحدة (مثل خريطة رئيسية وخريطة تفصيلية مصغرة)، كيف تضمن أن شريط المقياس يعبر عن مقياس رسم الخريطة الرئيسية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Set the 'Map Frame' property of the Scale Bar element to target the Main Map frame explicitly",
+          "ar": "ضبط خاصية 'Map Frame' لعنصر شريط المقياس ليرتبط صراحة بإطار الخريطة الرئيسية"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Place the scale bar physically inside the main map frame",
+          "ar": "وضع شريط المقياس فيزيائياً داخل إطار الخريطة الرئيسية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Change the scale bar color to match the basemap",
+          "ar": "تغيير لون شريط المقياس ليطابق خريطة الأساس"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Lock the operating system screen orientation",
+          "ar": "قفل تدوير شاشة نظام التشغيل"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Layout elements like scale bars, legends, and north arrows are linked to a specific Map Frame via their Element Properties pane. Selecting the Main Map Frame ensures the scale bar calculates length from that specific frame's scale.",
+      "ar": "ترتبط عناصر اللوحة (كأشرطة المقاييس وأسهم الشمال) بإطار خريطة محدد عبر نافذة الخصائص؛ ويضمن ربطه بإطار الخريطة الرئيسية تحديث مقياس الرسم وفق نطاق ذلك الإطار حصراً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Physical placement on the page does not establish software element linking.",
+        "C": "Color changes do not affect scale calculations.",
+        "D": "Screen orientation is an OS feature."
+      },
+      "ar": {
+        "B": "الموضع المكاني على الصفحة لا يربط العنصر برمجياً.",
+        "C": "تغيير الألوان لا يؤثر على الحسابات.",
+        "D": "تدوير الشاشة خاصية نظام تشغيل."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-017",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Extent Indicator"
+    ],
+    "question": {
+      "en": "An analyst has a main detailed city map and a small overview locator map frame of the entire state on the same layout. Which layout element draws a dynamic rectangle on the state overview map showing the current boundary of the detailed city map?",
+      "ar": "لدى محلل خريطة تفصيلية لمدينة وخريطة عامة مصغرة للولاية بأكملها في نفس اللوحة. أي عنصر تصميم يرسم مستطيلاً ديناميكياً على خريطة الولاية يوضح الحدود الحالية لخريطة المدينة التفصيلية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Extent Indicator",
+          "ar": "Extent Indicator (مؤشر النطاق)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Scale Bar",
+          "ar": "Scale Bar (شريط المقياس)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "North Arrow",
+          "ar": "North Arrow (سهم الشمال)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Table Frame",
+          "ar": "Table Frame (إطار الجدول)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "An Extent Indicator displays the geographical extent of one map frame (e.g. detailed city) as a dynamic bounding rectangle inside another map frame (e.g. statewide overview).",
+      "ar": "يعرض عنصر Extent Indicator النطاق الجغرافي لإطار خريطة معين (مثل خريطة المدينة التفصيلية) كمستطيل ديناميكي داخل إطار خريطة آخر (مثل خريطة الولاية الإقليمية العامة)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Scale bars measure distances.",
+        "C": "North arrows indicate orientation.",
+        "D": "Table frames display tabular attribute records."
+      },
+      "ar": {
+        "B": "شريط المقياس يقيس المسافات.",
+        "C": "سهم الشمال يوضح الاتجاه.",
+        "D": "إطار الجدول يعرض سجلات البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-018",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Spatial Map Series"
+    ],
+    "question": {
+      "en": "In a Spatial Map Series, how can an analyst mask and hide all features lying outside the current page's index polygon so each page shows only the active municipality?",
+      "ar": "في سلسلة الخرائط المكانية، كيف يمكن للمحلل إخفاء وحجب كافة المعالم الواقعة خارج مضلع الفهرس للصفحة الحالية بحيث تعرض كل صفحة بلدية واحدة فقط دون جوارها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Enable 'Clip to current map series index feature' in the Map Frame properties",
+          "ar": "تفعيل خيار 'Clip to current map series index feature' في خصائص إطار الخريطة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete surrounding municipalities using the Delete tool",
+          "ar": "حذف البلديات المجاورة بأداة Delete"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Apply a 100% brightness filter to the entire monitor",
+          "ar": "تطبيق فلتر سطوع بنسبة 100% على الشاشة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Convert the index layer to a CAD drawing",
+          "ar": "تحويل طبقة الفهرس إلى رسم CAD"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Pro allows clipping the map frame display dynamically to the active map series index feature, automatically masking out all data outside the current page's boundary polygon.",
+      "ar": "يتيح ArcGIS Pro قص عرض إطار الخريطة ديناميكياً عند حدود معلم الفهرس النشط للصفحة، مما يحجب كافة المعالم الواقعة خارج حدود مضلع الصفحة الحالية تلقائياً وبشكل مؤقت."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Deleting features permanently destroys underlying data.",
+        "C": "Monitor brightness affects physical hardware display.",
+        "D": "CAD conversion does not manage layout clipping."
+      },
+      "ar": {
+        "B": "حذف المعالم يدمر البيانات الأصلية.",
+        "C": "سطوع الشاشة يؤثر على العتاد.",
+        "D": "تحويل CAD لا يدير إخراج اللوحات."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-019",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Export Layout"
+    ],
+    "question": {
+      "en": "Which export file format is specifically designed to transfer ArcGIS Pro vector layouts directly into Adobe Illustrator for professional graphic design, preserving organized vector artwork layers?",
+      "ar": "أي صيغة تصدير مصممة خصيصاً لنقل لوحات خرائط ArcGIS Pro المتجهة مباشرة إلى برنامج Adobe Illustrator للتصميم الجرافيكي المتقدم مع الحفاظ على تنظيم طبقات الرسم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Adobe Illustrator Exchange (.aix)",
+          "ar": "Adobe Illustrator Exchange (.aix)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "JPEG (.jpg)",
+          "ar": "JPEG (.jpg)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "TIFF (.tif)",
+          "ar": "TIFF (.tif)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "BMP (.bmp)",
+          "ar": "BMP (.bmp)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The .aix format (used with the ArcGIS Maps for Adobe Creative Cloud extension) converts map and layout vector art into organized, native Adobe Illustrator layers, paths, and text.",
+      "ar": "صيغة .aix (المستخدمة مع إضافة ArcGIS Maps for Adobe Creative Cloud) تنقل مسارات ورسوم ونصوص الخريطة إلى طبقات متجهة أصلية منظمة داخل برنامج أدوبي إليستريتور."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "JPEG is a compressed lossy raster format.",
+        "C": "TIFF is a raster format, not editable Illustrator vectors.",
+        "D": "BMP is an uncompressed raster bitmap."
+      },
+      "ar": {
+        "B": "JPEG صيغة راستر نقطية مضغوطة.",
+        "C": "TIFF صيغة راستر وليست متجهات.",
+        "D": "BMP صيغة نقطية خام."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-020",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Layer File"
+    ],
+    "question": {
+      "en": "What is the key difference between a Layer File (.lyrx) and a Layer Package (.lpkx)?",
+      "ar": "ما هو الفرق الجوهري بين ملف الطبقة (.lyrx) وحزمة الطبقة (.lpkx)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A .lyrx file stores only symbology, labeling, and a pointer to the data source; an .lpkx file bundles the symbology AND packages the physical dataset inside the file",
+          "ar": "يخزن ملف .lyrx إعدادات الرموز والتسميات ومسار البيانات فقط؛ بينما تجمع حزمة .lpkx إعدادات الرموز وتدمج معها ملف البيانات الفعلي داخل الحزمة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A .lyrx file can only be opened in Microsoft Word",
+          "ar": "يفتح ملف .lyrx في برنامج وورد فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A .lpkx file deletes all attributes",
+          "ar": "تحذف حزمة .lpkx كافة السمات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "There is no difference between them",
+          "ar": "لا يوجد أي فرق بينهما"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A layer file (.lyrx) is a lightweight pointer storing symbology and properties without copying data (if the source data moves, the link breaks). A layer package (.lpkx) embeds the actual dataset inside the archive file, making it self-contained.",
+      "ar": "ملف .lyrx هو ملف إعدادات خفيف يخزن الرموز ومسار البيانات فقط دون نسخها (وينقطع إذا تغير مسار البيانات)؛ أما حزمة .lpkx فتدمج ملف البيانات الفعلي بداخلها لتكون مستقلة تماماً وقابلة للنقل لأي جهاز."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Layer files are exclusive to ArcGIS software.",
+        "C": "Layer packages preserve all attribute tables and schemas.",
+        "D": "They have distinct architectures (pointer vs self-contained data archive)."
+      },
+      "ar": {
+        "B": "ملفات الطبقات خاصة ببرمجيات ArcGIS.",
+        "C": "تحافظ حزم الطبقات على كافة البيانات الوصفية.",
+        "D": "تختلفان جوهرياً (مؤشر مسار مقابل حزمة بيانات مدمجة)."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-021",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Web Map"
+    ],
+    "question": {
+      "en": "What is the distinguishing difference between sharing content as a Web Map versus sharing as a Web Scene to ArcGIS Online?",
+      "ar": "ما هو الفرق المميز بين مشاركة المحتوى كخريطة ويب (Web Map) ومشاركته كمشهد ويب (Web Scene) إلى ArcGIS Online؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Web Maps display 2D geospatial content; Web Scenes display 3D geographic content with terrain elevation and 3D symbology",
+          "ar": "تعرض خرائط الويب محتوى جغرافياً ثنائي الأبعاد 2D؛ بينما تعرض مشاهد الويب محتوى ثلاثي الأبعاد 3D مع تضاريس الارتفاع والرموز المجسمة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Web Maps only work on iPhones",
+          "ar": "خرائط الويب تعمل على هواتف آيفون فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Web Scenes cannot be viewed in web browsers",
+          "ar": "لا يمكن عرض مشاهد الويب في متصفحات الإنترنت"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Web Maps require a database server",
+          "ar": "تتطلب خرائط الويب خادم قواعد بيانات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Web Maps are 2D interactive maps authored from Pro 2D maps. Web Scenes are 3D interactive experiences authored from Pro Local or Global scenes that support 3D layers, elevation surfaces, and lighting.",
+      "ar": "خرائط الويب (Web Maps) هي خرائط تفاعلية ثنائية الأبعاد 2D؛ بينما مشاهد الويب (Web Scenes) هي بيئات تفاعلية ثلاثية الأبعاد 3D مبنية من مشاهد Pro وتدعم أسطح الارتفاع والمجسمات وإضاءة الشمس."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Web Maps work on all desktop and mobile web browsers.",
+        "C": "Web Scenes are designed specifically for modern WebGL browser viewing.",
+        "D": "Web maps are hosted cloud services."
+      },
+      "ar": {
+        "B": "تعمل خرائط الويب على كافة المتصفحات.",
+        "C": "صُممت مشاهد الويب للعرض في المتصفحات عبر تقنية WebGL.",
+        "D": "خرائط الويب خدمات سحابية مستضافة."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-022",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Web Layer"
+    ],
+    "question": {
+      "en": "When publishing to ArcGIS Enterprise, which service type sends vector geometry and attributes directly to the client browser for client-side rendering and interactive editing?",
+      "ar": "عند النشر إلى ArcGIS Enterprise، أي نوع خدمة يرسل إحداثيات المعالم المتجهة وسماتها مباشرة إلى متصفح العميل للرسم المحلي ودعم التحرير التفاعلي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Feature Layer (Feature Service)",
+          "ar": "طبقة المعالم Feature Layer (Feature Service)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Map Image Layer (Map Service)",
+          "ar": "طبقة صورة الخريطة Map Image Layer (Map Service)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Tile Layer",
+          "ar": "طبقة البلاطات Tile Layer"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Vector Tile Layer",
+          "ar": "طبقة البلاطات المتجهة Vector Tile Layer"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Feature Layers stream individual vector geometries (points, lines, polygons) and attributes directly to client apps, supporting client-side filtering, interactive symbology styling, and transactional editing.",
+      "ar": "ترسل خدمات المعالم (Feature Layers) الإحداثيات والسمات المتجهة مباشرة إلى جهاز المستخدم، مما يتيح التحرير الميداني، والتصفية اللحظية، وتغيير أنماط الرموز تفاعلياً داخل المتصفح."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Map Image layers render maps as static raster images on the server before sending to client.",
+        "C": "Tile layers stream pre-cached image tiles.",
+        "D": "Vector tile layers are read-only basemap caches."
+      },
+      "ar": {
+        "B": "خدمات Map Image ترسم الخريطة كصورة على الخادم قبل إرسالها.",
+        "C": "طبقات البلاطات ترسل صوراً مخزنة مؤقتاً.",
+        "D": "البلاطات المتجهة خرائط أساس للقراءة فقط."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-023",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Web Layer"
+    ],
+    "question": {
+      "en": "What is the primary advantage of publishing a Map Image Layer (Map Service) from an enterprise geodatabase containing millions of complex utility features?",
+      "ar": "ما هي الميزة الأساسية لنشر طبقة صورة خريطة (Map Image Layer) من قاعدة بيانات مؤسسية تحتوي على ملايين معالم شبكات البنية التحتية المعقدة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The server renders the complex symbology into an image on demand, avoiding the overhead of streaming millions of vector vertices over the network to the browser",
+          "ar": "يقوم الخادم برسم الرموز المعقدة كصورة حسب الطلب، متجنباً عبء إرسال ملايين إحداثيات المتجهات عبر الشبكة إلى المتصفح"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It automatically deletes retired utility poles",
+          "ar": "تحذف أعمدة الإنارة القديمة تلقائياً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It converts polyline features into 3D multipatches",
+          "ar": "تحول الخطوط إلى مجسمات ثلاثية الأبعاد"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It translates attribute table column names to French",
+          "ar": "تترجم أسماء الأعمدة إلى الفرنسية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Map Image Layers leverage the server's computing power to dynamically draw and rasterize complex symbology into a lightweight image, delivering fast performance over narrow bandwidth for massive datasets.",
+      "ar": "تستغل طبقات Map Image قدرة معالجة الخادم لرسم الرموز الكارتوغرافية المعقدة في صورة واحدة خفيفة تُرسل للعميل، مما يضمن سرعة التصفح لشبكات المرافق الضخمة دون استهلاك حزمة الإنترنت."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Publishing services does not delete features.",
+        "C": "Map Image layers render existing 2D/3D vectors.",
+        "D": "Schema translation is not automated."
+      },
+      "ar": {
+        "B": "النشر لا يحذف المعالم.",
+        "C": "ترسم المعالم ولا تحول أنواعها الهندسية.",
+        "D": "لا تترجم أسماء الأعمدة تلقائياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-024",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Export Layout"
+    ],
+    "question": {
+      "en": "Why is it essential to check 'Embed fonts' when exporting a map layout containing specialized cartographic fonts to PDF?",
+      "ar": "لماذا يُعد تفعيل خيار 'تضمين الخطوط' (Embed fonts) أمراً ضرورياً عند تصدير لوحة خريطة تحتوي على خطوط كارتوغرافية مخصصة إلى PDF؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To ensure text renders accurately with the exact designed styling on recipient computers that do not have those fonts installed",
+          "ar": "لضمان ظهور النصوص بدقة وبنفس التنسيق المصمم على أجهزة المستلمين التي لا تملك تلك الخطوط مثبتة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To prevent the PDF file from being opened on Mondays",
+          "ar": "لمنع فتح ملف PDF في أيام محددة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To reduce the PDF file size to 1 kilobyte",
+          "ar": "لتقليص حجم ملف PDF إلى 1 كيلوبايت"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To convert the PDF to an executable program",
+          "ar": "لتحويل ملف PDF إلى برنامج تنفيذي"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Embedding fonts packs the character glyphs directly inside the PDF file, preventing PDF viewers on foreign machines from substituting missing fonts with generic system fonts.",
+      "ar": "يؤدي تضمين الخطوط (Embed fonts) إلى حفظ أشكال الحروف ومحارفها داخل ملف PDF، مما يمنع برامج قراءة PDF على أجهزة المستخدمين الآخرين من استبدال الخطوط المخصصة بخطوط افتراضية تشوه التصميم."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "PDFs have no weekday restrictions.",
+        "C": "Embedding fonts slightly increases file size, rather than shrinking it to 1 KB.",
+        "D": "PDFs remain static document files."
+      },
+      "ar": {
+        "B": "لا توجد قيود زمنية لفتح ملفات PDF.",
+        "C": "تضمين الخطوط يزيد حجم الملف قليلاً.",
+        "D": "تبقى ملفات PDF وثائق رقمية وليست برامج تنفيذية."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-025",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Grids and Graticules"
+    ],
+    "question": {
+      "en": "What is the difference between a Graticule and a Measured Grid when added to a Map Frame in a layout?",
+      "ar": "ما هو الفرق بين شبكة خطوط الطول والعرض (Graticule) وشبكة الإحداثيات المترية (Measured Grid) عند إضافتها لإطار خريطة باللوحة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A Graticule displays lines of geographic latitude and longitude (degrees); a Measured Grid displays projected grid coordinates (e.g. UTM meters or State Plane feet)",
+          "ar": "تعرض شبكة Graticule خطوط الطول ودوائر العرض الجغرافية (بالدرجات)؛ بينما تعرض شبكة Measured Grid إحداثيات الشبكة المسقطة (مثل أمتار UTM أو أقدام State Plane)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A Graticule only works in the Southern Hemisphere",
+          "ar": "تعمل Graticule في نصف الكرة الجنوبي فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A Measured Grid cannot have tick marks",
+          "ar": "لا يمكن لشبكة Measured Grid احتواء علامات تأشير"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Both grid types display identical degree coordinates",
+          "ar": "تعرض كلتا الشبكتين إحداثيات متطابقة بالدرجات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Graticules depict geographic coordinates (angular units: degrees/minutes/seconds). Measured Grids depict linear projected coordinate intervals (meters, feet) matching the projected coordinate system of the map.",
+      "ar": "تعرض شبكة Graticule الإحداثيات الجغرافية الكروية (درجات، دقائق، ثوانٍ)؛ بينما تعرض شبكة Measured Grid فواصل الإحداثيات المسقطة المستوية (بالأمتار أو الأقدام) المتطابقة مع نظام إسقاط الخريطة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Graticules function globally across all hemispheres.",
+        "C": "Measured grids fully support ticks, sub-ticks, and labels.",
+        "D": "They represent fundamentally different coordinate measurement units (angular vs linear)."
+      },
+      "ar": {
+        "B": "تعمل شبكات Graticule على مستوى العالم.",
+        "C": "تدعم علامات التأشير والأرقام.",
+        "D": "تختلفان في وحدات القياس (زوايا جغرافية مقابل مسافات خطية)."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-026",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Spatial Map Series"
+    ],
+    "question": {
+      "en": "In a Spatial Map Series, which field configuration controls the sequence and order in which pages are organized and exported?",
+      "ar": "في سلسلة الخرائط المكانية، أي إعداد حقل يتحكم في تسلسل وترتيب الصفحات أثناء العرض والتصدير؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Sort Field",
+          "ar": "Sort Field (حقل الترتيب)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Shape_Area field",
+          "ar": "حقل المساحة Shape_Area"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "GlobalID field",
+          "ar": "حقل GlobalID"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "OBJECTID field",
+          "ar": "حقل OBJECTID"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Sort Field parameter in Map Series properties specifies which attribute field dictates the sequential order (ascending or descending) of pages in the series.",
+      "ar": "يحدد خيار Sort Field في خصائص سلسلة الخرائط الحقل السماتي الذي يحكم الترتيب التسلسلي للصفحات (تصاعدياً أو تنازلياً) في الأطلس المخرج."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Shape_Area sorts by size only if explicitly chosen as Sort Field.",
+        "C": "GlobalID values are random hexadecimal strings unsuitable for sequential sorting.",
+        "D": "OBJECTID reflects database insertion order, not logical atlas page order."
+      },
+      "ar": {
+        "B": "حقل المساحة يرتب حسب الحجم فقط إذا تم اختياره كحقل ترتيب.",
+        "C": "معرفات GlobalID عشوائية ولا تصلح للترتيب التسلسلي.",
+        "D": "حقل OBJECTID يعكس ترتيب الإدخال في قاعدة البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-027",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Web Scene"
+    ],
+    "question": {
+      "en": "When publishing a 3D Scene to ArcGIS Online, can a Local Scene using a custom projected coordinate system be shared as a Web Scene?",
+      "ar": "عند نشر مشهد ثلاثي الأبعاد إلى ArcGIS Online، هل يمكن مشاركة مشهد محلي (Local Scene) بنظام إحداثيات مسقط مخصص كمشهد ويب؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Yes, ArcGIS Online fully supports hosting both Global and Local Web Scenes with projected coordinate systems",
+          "ar": "نعم، يدعم ArcGIS Online استضافة مشاهد الويب العالمية والمحلية ذات أنظمة الإحداثيات المسقطة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "No, ArcGIS Online only supports 2D flat maps",
+          "ar": "لا، فمنصة ArcGIS Online تدعم الخرائط ثنائية الأبعاد فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Only if all buildings are extruded to exactly 100 meters",
+          "ar": "فقط إذا تم بثق المباني لارتفاع 100 متر بالضبط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Only if published from ArcMap 10.8",
+          "ar": "فقط إذا تم النشر من برنامج ArcMap 10.8"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Online and Enterprise support publishing Local Web Scenes in projected coordinate systems (with custom local clipping extents) as well as Global Web Scenes in WGS84 or Web Mercator.",
+      "ar": "تدعم منصات ArcGIS Online و Enterprise استضافة مشاهد الويب المحلية (Local Web Scenes) بأنظمة إحداثيات مسقطة مع نطاقات قص محلية، بالإضافة إلى المشاهد العالمية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "ArcGIS Online provides rich 3D Scene viewing capabilities.",
+        "C": "Extrusion heights can vary dynamically.",
+        "D": "ArcGIS Pro is the modern publishing platform for web scenes."
+      },
+      "ar": {
+        "B": "توفر المنصة قدرات عرض ثلاثية الأبعاد متقدمة.",
+        "C": "ارتفاعات البثق متغيرة بحرية.",
+        "D": "برنامج Pro هو المنصة الأساسية لنشر المشاهد."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-028",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Tile Layer"
+    ],
+    "question": {
+      "en": "Why would an organization publish an imagery basemap as a Tile Layer rather than a dynamic Map Image Layer?",
+      "ar": "لماذا تفضل المؤسسة نشر خريطة أساس من الصور الجوية كطبقة بلاطات (Tile Layer) بدلاً من طبقة صورة خريطة ديناميكية (Map Image Layer)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because pre-rendered cached tiles deliver near-instantaneous pan and zoom performance to thousands of concurrent users without consuming server CPU per request",
+          "ar": "لأن البلاطات المخزنة مسبقاً توفر سرعة تصفح فورية لآلاف المستخدمين المتزامنين دون استهلاك معالج الخادم في كل طلب"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because Tile Layers allow real-time vector editing",
+          "ar": "لأن طبقات البلاطات تتيح التحرير اللحظي للمتجهات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because Tile Layers store live GPS locations",
+          "ar": "لأن طبقات البلاطات تخزن مواقع GPS الحية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because Tile Layers automatically translate labels into 50 languages",
+          "ar": "لأن طبقات البلاطات تترجم التسميات تلقائياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Tile Layers serve static pre-generated raster images (cache) from disk or cloud storage, offloading rendering burden from the server and providing blistering speed under heavy public traffic.",
+      "ar": "تقدم طبقات البلاطات (Tile Layers) صوراً جاهزة ومخزنة مسبقاً (Cache)، مما يرفع العبء الحسابي عن معالج الخادم ويوفر سرعة تصفح فائقة تحت ضغط آلاف المستخدمين في وقت واحد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Tile layers are static raster images and do not support vector editing.",
+        "C": "Live GPS tracking uses Stream Layers.",
+        "D": "Tile layers do not perform automatic translation."
+      },
+      "ar": {
+        "B": "البلاطات صور ثابتة ولا تدعم التحرير.",
+        "C": "تتبع GPS المباشر يعتمد على طبقات البث.",
+        "D": "لا تترجم اللغات تلقائياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-029",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Export Layout"
+    ],
+    "question": {
+      "en": "When exporting a map to a TIFF image, which option outputs an auxiliary world file (.tfw) to allow other GIS applications to georeference the image?",
+      "ar": "عند تصدير خريطة إلى صورة TIFF، أي خيار يُخرج ملف توجيه مكاني مصاحب (.tfw) لتمكين برامج نظم المعلومات الجغرافية الأخرى من مطابقة الصورة مكانياً؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Write World File",
+          "ar": "Write World File (كتابة ملف التوجيه)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Compress with JPEG",
+          "ar": "Compress with JPEG"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Convert to Grayscale",
+          "ar": "Convert to Grayscale"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Clip to Map Frame",
+          "ar": "Clip to Map Frame"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Checking 'Write World File' exports an accompanying .tfw file (or embeds GeoTIFF header tags) storing the image extent coordinates, pixel size, and spatial reference coefficients.",
+      "ar": "يؤدي اختيار 'Write World File' إلى تصدير ملف توجيه مكاني (.tfw) أو تضمين وسوم GeoTIFF التي تخزن إحداثيات أركان الصورة وأبعاد البكسل لإسقاطها جغرافياً في أي برنامج GIS."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "JPEG compression compresses image data, it does not write spatial metadata files.",
+        "C": "Grayscale adjusts color channels.",
+        "D": "Clip cuts the graphic boundary."
+      },
+      "ar": {
+        "B": "ضغط JPEG يقلل حجم الملف ولا يكتب بيانات مكانية.",
+        "C": "التدرج الرمادي يعدل قنوات الألوان.",
+        "D": "قص الحدود يقتطع الصورة فقط."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-030",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Spatial Map Series"
+    ],
+    "question": {
+      "en": "When configuring page extents in a Spatial Map Series, what does the 'Best Fit Margin' parameter control?",
+      "ar": "عند تهيئة نطاقات الصفحات في سلسلة الخرائط المكانية، في ماذا يتحكم معامل 'Best Fit Margin'؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "It adds a buffer percentage or distance around each index feature so the feature does not touch the edge of the map frame",
+          "ar": "يضيف هامش أمان بنسبة مئوية أو مسافة حول معلم الفهرس حتى لا يلامس المعلم حواف إطار الخريطة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "It automatically aligns the north arrow to true magnetic north",
+          "ar": "يحاذي سهم الشمال تلقائياً للشمال المغناطيسي"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "It locks the legend text against editing",
+          "ar": "يقفل نصوص مفتاح الخريطة ضد التعديل"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It deletes empty attribute columns",
+          "ar": "يحذف أعمدة السمات الفارغة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Best Fit Margin applies padding (specified as a percentage of the feature size or in page units) between the index feature boundary and the border of the layout map frame, ensuring breathing room.",
+      "ar": "يضيف معامل Best Fit Margin مسافة هامشية (كنسبة مئوية من حجم المعلم أو بوحدات الصفحة) بين حدود معلم الفهرس وإطار الخريطة، لضمان عدم التصاق المعلم بحواف الإطار وظهوره بأريحية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "North arrows are aligned via orientation settings.",
+        "C": "Legend editing is managed in legend properties.",
+        "D": "Attribute columns are unaffected by layout margins."
+      },
+      "ar": {
+        "B": "سهم الشمال يضبط من إعدادات الاتجاه.",
+        "C": "مفتاح الخريطة يدار من خصائصه.",
+        "D": "الأعمدة السماتية لا تتأثر بهوامش اللوحة."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-031",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Layer File"
+    ],
+    "question": {
+      "en": "If you share a Layer File (.lyrx) with a colleague who has access to the exact same enterprise geodatabase connection, what happens when they add the .lyrx to their project?",
+      "ar": "إذا شاركت ملف طبقة (.lyrx) مع زميل لديه حق الوصول لنفس اتصال قاعدة البيانات المؤسسية، ماذا يحدث عند إضافة ملف .lyrx لمشروعه؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The layer connects to the database and displays with the exact symbology, labels, and definition queries you authored",
+          "ar": "تتصل الطبقة بقاعدة البيانات وتعرض المعالم بنفس الرموز والتسميات والاستعلامات التعريفية التي قمت بإعدادها تماماً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The database tables are duplicated on their desktop hard drive",
+          "ar": "تتكرر جداول قاعدة البيانات على قرصه الصلب"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "All attribute rules are permanently removed",
+          "ar": "تُحذف جميع القواعد السماتية بشكل دائم"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The colleague's user license is upgraded to Advanced",
+          "ar": "تتم ترقية ترخيص الزميل إلى المستوى المتقدم"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Because the colleague has access to the underlying data source, the .lyrx file re-establishes the connection and applies all preserved symbology, labeling properties, and query definitions seamlessly.",
+      "ar": "نظراً لامتلاك الزميل صلاحية الوصول لمصدر البيانات الأصلي، يقوم ملف .lyrx بإعادة الربط وتطبيق كافة تنسيقات الرموز وخصائص التسميات والاستعلامات المحفوظة بسلاسة تامة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Layer files do not copy underlying data.",
+        "C": "Attribute rules reside in the geodatabase schema and are unaffected.",
+        "D": "User licenses are managed by the organization administrator."
+      },
+      "ar": {
+        "B": "ملفات الطبقات لا تنسخ البيانات.",
+        "C": "القواعد السماتية مخزنة في قاعدة البيانات ولا تتأثر.",
+        "D": "تراخيص المستخدمين تدار من قبل مسؤولي المؤسسة."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-032",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Geoprocessing Package"
+    ],
+    "question": {
+      "en": "Which package type allows an analyst to share a custom ModelBuilder model or Python geoprocessing tool along with required reference datasets and tool execution history?",
+      "ar": "أي نوع من الحزم يتيح للمحلل مشاركة نموذج ModelBuilder مخصص أو أداة بايثون مع مجموعات البيانات المرجعية المطلوبة وسجل تنفيذ الأداة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Geoprocessing Package (.gpkx)",
+          "ar": "حزمة المعالجة الجغرافية Geoprocessing Package (.gpkx)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Project Package (.ppkx)",
+          "ar": "Project Package (.ppkx)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Map Package (.mpkx)",
+          "ar": "Map Package (.mpkx)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Locator Package (.gcpk)",
+          "ar": "Locator Package (.gcpk)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A Geoprocessing Package (.gpkx) encapsulates one or more successful tool execution results from History, packaging the underlying model/script, input data, and parameter schema.",
+      "ar": "تجمع حزمة المعالجة الجغرافية (.gpkx) نتيجة تشغيل أداة ناجحة من سجل History، دامجة معها النموذج أو السكربت البرمجي والبيانات المرجعية لضمان عملها لدى الآخرين."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Project packages share the whole workspace.",
+        "C": "Map packages share 2D maps.",
+        "D": "Locator packages share address locators."
+      },
+      "ar": {
+        "B": "حزم المشاريع تشارك مساحة العمل كاملة.",
+        "C": "حزم الخرائط تشارك الخرائط ثنائية الأبعاد.",
+        "D": "حزم محددات العناوين تشارك أدوات العنونة."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-033",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Layer To KML"
+    ],
+    "question": {
+      "en": "Which tool in ArcGIS Pro converts a symbolized vector layer into a KMZ file for viewing in Google Earth?",
+      "ar": "أي أداة في ArcGIS Pro تحول طبقة معالم اتجاهية مُمثلة برموزها إلى ملف KMZ للعرض في برنامج Google Earth؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Layer To KML",
+          "ar": "Layer To KML"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Export Features",
+          "ar": "Export Features"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Table To Table",
+          "ar": "Table To Table"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Project Raster",
+          "ar": "Project Raster"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Layer To KML (and Map To KML) translates ArcGIS layers into Keyhole Markup Language (.kmz / .kml) archives, preserving symbols and popup attributes for Google Earth.",
+      "ar": "تحول أداة Layer To KML طبقات ArcGIS برموزها ونوافذها المنبثقة إلى ملفات KML/KMZ المضغوطة المتوافقة مع برنامج Google Earth."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Export Features outputs geodatabase feature classes or shapefiles.",
+        "C": "Table To Table converts attribute tables.",
+        "D": "Project Raster reprojects raster grids."
+      },
+      "ar": {
+        "B": "تُخرج Export Features فئات معالم جيوداتابيس.",
+        "C": "تحول Table To Table الجداول.",
+        "D": "تعيد Project Raster إسقاط الراستر."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-034",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Export Layout"
+    ],
+    "question": {
+      "en": "Why is Scalable Vector Graphics (SVG) format advantageous when embedding interactive web maps or technical diagrams on responsive websites?",
+      "ar": "لماذا تُعد صيغة الرسوميات المتجهة القابلة للتحجيم (SVG) ميزة كبرى عند تضمين الخرائط التخطيطية في المواقع الإلكترونية المتجاوبة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because SVG is an XML-based vector format that scales infinitely without resolution loss and can be styled via CSS",
+          "ar": "لأن SVG صيغة متجهة قائمة على XML تتوسع وتتحجم بلا حدود دون فقدان للدقة ويمكن تنسيقها عبر كود CSS"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because SVG can only display black and white pixels",
+          "ar": "لأن SVG تعرض بكسلات سوداء وبيضاء فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because SVG requires proprietary desktop software to open",
+          "ar": "لأن SVG تتطلب برامج مكتبية مدفوعة لفتحها"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because SVG converts polygon features into satellite imagery",
+          "ar": "لأن SVG تحول المضلعات إلى صور فضائية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "SVG represents 2D graphics as XML text vectors. It scales seamlessly across any browser window resolution without blurring, and paths can be styled or animated using web CSS and JavaScript.",
+      "ar": "تمثل صيغة SVG المعالم كمتجهات برمجية بصيغة XML؛ فتتكيف بدقة ونقاء فائق مع أي حجم شاشة أو نافذة متصفح، وتدعم التنسيق والتحريك عبر أكواد الويب CSS و JavaScript."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "SVG supports rich RGB and alpha color definitions.",
+        "C": "SVG is an open W3C standard natively supported by all modern browsers.",
+        "D": "SVG is a vector document, not satellite imagery."
+      },
+      "ar": {
+        "B": "تدعم SVG ملايين الألوان والشفافية.",
+        "C": "صيغة معيارية مفتوحة تدعمها كافة المتصفحات.",
+        "D": "صيغة رسوميات متجهة وليست صور أقمار صناعية."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-035",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Layout Guides"
+    ],
+    "question": {
+      "en": "How do Layout Guides assist cartographers when arranging multiple map frames, legends, and title blocks on a page layout?",
+      "ar": "كيف تساعد خطوط الإرشاد (Layout Guides) رسامي الخرائط عند ترتيب عدة إطارات خرائط ومفاتيح تصميم وعناوين في لوحة الإخراج؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They provide magnetic alignment lines that snap elements cleanly to consistent margins and grid intervals across the page",
+          "ar": "توفر خطوط محاذاة مغناطيسية تجذب العناصر وتطابقها بدقة مع هوامش وفواصل متناسقة عبر الصفحة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They automatically calculate the coordinate system transformation",
+          "ar": "تحسب تحويلات أنظمة الإحداثيات تلقائياً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "They export the layout to social media platforms",
+          "ar": "تنشر اللوحة على منصات التواصل الاجتماعي"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "They convert 2D points into 3D buildings",
+          "ar": "تحول النقاط إلى مبانٍ ثلاثية الأبعاد"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Guides are non-printing ruler lines placed on the layout. Elements snap to guides, enabling precise alignment of margins, headers, map frames, and neatlines.",
+      "ar": "خطوط الإرشاد (Guides) هي خطوط مسطرية غير قابلة للطباعة توضع على اللوحة؛ وتنجذب إليها العناصر تلقائياً لضبط الهوامش والعناوين والإطارات بمحاذاة كارتوغرافية هندسية دقيقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Guides are visual layout alignment tools, not projection engines.",
+        "C": "Sharing tools handle publication, not ruler guides.",
+        "D": "3D extrusion is handled in scenes."
+      },
+      "ar": {
+        "B": "أدوات محاذاة تصميمية وليست محركات إسقاط.",
+        "C": "أدوات المشاركة هي المسؤولة عن النشر.",
+        "D": "البثق ثلاثي الأبعاد يُدار في المشاهد."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-036",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Scene Layer Package"
+    ],
+    "question": {
+      "en": "Which package type is optimized for publishing and streaming massive 3D datasets (such as integrated meshes, 3D buildings, or lidar point clouds) to web scenes?",
+      "ar": "أي نوع من الحزم مُحسن لنشر وبث مجموعات البيانات ثلاثية الأبعاد الضخمة (مثل الشبكات المدمجة ومجسمات المباني وسحب نقاط ليدار) إلى مشاهد الويب؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Scene Layer Package (.slpk)",
+          "ar": "Scene Layer Package (.slpk)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Tile Package (.tpkx)",
+          "ar": "Tile Package (.tpkx)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Map Package (.mpkx)",
+          "ar": "Map Package (.mpkx)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Vector Tile Package (.vtpk)",
+          "ar": "Vector Tile Package (.vtpk)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Scene Layer Packages (.slpk) use Indexed 3D Scene Layers (I3S) format, an open standard specifically engineered for streaming massive 3D content efficiently across the web.",
+      "ar": "تعتمد حزم Scene Layer Packages (.slpk) على معيار I3S المفتوح المخصص لضغط وبث الكتل والمجسمات ثلاثية الأبعاد وسحب نقاط الليدار بكفاءة عالية عبر متصفحات الإنترنت."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Tile packages stream 2D cached raster tiles.",
+        "C": "Map packages are for 2D desktop maps.",
+        "D": "Vector tile packages stream 2D basemaps."
+      },
+      "ar": {
+        "B": "حزم البلاطات لبث صور الخرائط ثنائية الأبعاد.",
+        "C": "حزم الخرائط للخرائط المكتبية.",
+        "D": "حزم البلاطات المتجهة لخرائط الأساس ثنائية الأبعاد."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-037",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Overwrite Web Layer"
+    ],
+    "question": {
+      "en": "When an analyst needs to update the symbology and schema of an existing published Web Layer on ArcGIS Online without breaking downstream dashboards or changing its item ID URL, which workflow must be used?",
+      "ar": "عندما يحتاج محلل لتحديث رموز وهيكل طبقة ويب منشورة مسبقاً على ArcGIS Online دون تعطيل لوحات المؤشرات (Dashboards) المرتبطة بها أو تغيير معرف الرابط URL، ما مسار العمل الصحيح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Use 'Overwrite Web Layer' from the Share ribbon tab",
+          "ar": "استخدام أمر 'Overwrite Web Layer' من تبويب المشاركة Share"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete the web layer from ArcGIS Online and publish a new layer",
+          "ar": "حذف طبقة الويب من ArcGIS Online ونشر طبقة جديدة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Rename the local file geodatabase",
+          "ar": "إعادة تسمية قاعدة البيانات المحلية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export the map to a georeferenced PDF",
+          "ar": "تصدير الخريطة إلى ملف PDF جغرافي"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "'Overwrite Web Layer' replaces the service definitions and data of an existing hosted web layer in-place, preserving its item ID, service URL, and all dependent web maps and dashboards.",
+      "ar": "يقوم أمر 'Overwrite Web Layer' باستبدال تعريفات وبيانات خدمة الويب القائمة في مكانها، مع الحفاظ التام على معرف العنصر (Item ID) ورابط الخدمة، مما يمنع تعطل لوحات المؤشرات والتطبيقات المرتبطة بها."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Deleting and republishing generates a new item ID, permanently breaking all linked apps and dashboards.",
+        "C": "Renaming local files does not update web cloud services.",
+        "D": "PDF export creates static documents."
+      },
+      "ar": {
+        "B": "الحذف وإعادة النشر ينشئ معرفاً جديداً ويعطل كافة التطبيقات المرتبطة.",
+        "C": "إعادة التسمية المحلية لا تحدث الخدمات السحابية.",
+        "D": "تصدير PDF ينشئ وثيقة ثابتة."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-038",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Share Web Layer"
+    ],
+    "question": {
+      "en": "When sharing any web layer, map package, or web map from ArcGIS Pro, which metadata fields are strictly mandatory before publishing can proceed?",
+      "ar": "عند مشاركة أي طبقة ويب أو حزمة خريطة أو خريطة ويب من ArcGIS Pro، ما هي حقول البيانات الوصفية الإلزامية تماماً قبل إمكانية المتابعة والنشر؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Title, Summary, and Tags",
+          "ar": "Title (العنوان)، Summary (الملخص)، و Tags (الكلمات الدلالية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Database password and server port",
+          "ar": "كلمة مرور قاعدة البيانات ورقم المنفذ"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Operating system serial number",
+          "ar": "الرقم التسلسلي لنظام التشغيل"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Elevation vertical datum name",
+          "ar": "اسم المرجع الرأسي للارتفاعات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS item discovery requires three mandatory metadata fields: Title (item name), Summary (short description), and Tags (search keywords). The Share pane disables the publish button until all three are populated.",
+      "ar": "تتطلب منصات ArcGIS ثلاثة حقول وصفية إلزامية لفهرسة العناصر والبحث عنها: Title (العنوان)، و Summary (الملخص)، و Tags (الكلمات الدلالية)؛ ويتعطل زر النشر حتى يتم ملؤها جميعاً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Database credentials are not required in general sharing metadata.",
+        "C": "OS serial numbers are private and unrelated.",
+        "D": "Vertical datums are optional spatial reference properties."
+      },
+      "ar": {
+        "B": "بيانات الخادم لا تدخل في البيانات الوصفية العامة.",
+        "C": "الأرقام التسلسلية للحاسب لا علاقة لها بالنشر.",
+        "D": "المراجع الرأسية خصائص مكانية اختيارية."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-039",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Print Layout"
+    ],
+    "question": {
+      "en": "When printing a large wall map layout (e.g. 36x48 inches) on a standard office desktop printer that only supports letter-size paper (8.5x11 inches), which print setting tiles the layout across multiple sheets with cut marks?",
+      "ar": "عند طباعة لوحة حائطية جدارية كبيرة (مثل 36×48 بوصة) باستخدام طابعة مكتبية عادية تدعم ورق Letter فقط (8.5×11 بوصة)، أي إعداد طباعة يقسم اللوحة إلى بلاطات عبر عدة ورقات مع علامات للقص؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Tile: Tile all pages (or Tile oversized pages)",
+          "ar": "Tile: تجزئة كل الصفحات (Tile oversized pages)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Fit to paper size",
+          "ar": "ملاءمة لحجم الورق Fit to paper size"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Export to ASCII grid",
+          "ar": "التصدير إلى شبكة ASCII"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Print black and white only",
+          "ar": "الطباعة بالأبيض والأسود فقط"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Tile oversized pages print option splits a layout larger than the printer's sheet size into a grid of overlapping printed pages, including alignment guidelines and crop marks for assembling the physical wall poster.",
+      "ar": "يتيح خيار تجزئة الصفحات الكبيرة (Tile oversized pages) تقسيم اللوحات الضخمة إلى شبكة من الورقات المتداخلة مع علامات إرشادية للمحاذاة والقص لتجميع الخريطة الجدارية يدوياً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Fit to paper size shrinks the 48-inch map down to 11 inches, making text unreadably tiny.",
+        "C": "ASCII grid is a raster export format.",
+        "D": "Color options do not handle physical paper tiling."
+      },
+      "ar": {
+        "B": "تصغير الصفحة يقلص الخريطة إلى حجم ورقة صغيرة ويجعل النصوص غير مقروءة.",
+        "C": "شبكة ASCII صيغة تصدير راستر.",
+        "D": "خيارات الألوان لا تقسم الورق."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-040",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Bookmark Map Series"
+    ],
+    "question": {
+      "en": "In addition to an Index Layer, what alternative method can be used to generate pages in an ArcGIS Pro Map Series?",
+      "ar": "بالإضافة إلى استخدام طبقة الفهرس (Index Layer)، ما هي الطريقة البديلة المتاحة لإنشاء صفحات في سلسلة خرائط ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Bookmark Map Series (using saved map bookmarks)",
+          "ar": "سلسلة خرائط العلامات المرجعية Bookmark Map Series (باستخدام العلامات المرجعية المحفوظة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Python while loop",
+          "ar": "حلقة تكرار بايثون while"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Random coordinate generator",
+          "ar": "مولد الإحداثيات العشوائية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Buffer analysis",
+          "ar": "تحليل النطاق Buffer"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Pro supports Bookmark Map Series, which creates a multi-page series using the extents, scales, and camera angles of bookmarks saved in the map, without requiring an index polygon layer.",
+      "ar": "يدعم ArcGIS Pro نمط Bookmark Map Series، الذي ينشئ أطلس خرائط متعدد الصفحات بالاعتماد على العلامات المرجعية (Bookmarks) المحفوظة في الخريطة دون الحاجة لوجود طبقة مضلعات فهرس."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Bookmark series is built directly in the UI without coding.",
+        "C": "Random coordinates cannot generate meaningful pages.",
+        "D": "Buffer creates proximity zones."
+      },
+      "ar": {
+        "B": "تُبنى سلسلة العلامات المرجعية مباشرة من الواجهة.",
+        "C": "الإحداثيات العشوائية لا تنتج خرائط هادفة.",
+        "D": "النطاق ينشئ مساحات حرم."
+      }
+    },
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-041",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Identify how to export data, maps, and scenes to different formats",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Export Map"
+    ],
+    "question": {
+      "en": "When exporting a 2D Map view directly from the Map tab (without a page layout) to PNG, how do you define the exact geographic bounds of the exported image?",
+      "ar": "عند تصدير عرض خريطة ثنائية الأبعاد مباشرة من تبويب الخريطة (دون لوحة إخراج) إلى صيغة PNG، كيف تحدد الحدود الجغرافية الدقيقة للصورة المصدرة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Set the 'Clip to extent' parameter in the Export Map pane using custom coordinates or current view extent",
+          "ar": "ضبط معامل 'Clip to extent' في نافذة Export Map باستخدام إحداثيات مخصصة أو النطاق المعروض حالياً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Turn the computer monitor upside down",
+          "ar": "قلب شاشة الحاسوب"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Change the layer transparency to 50%",
+          "ar": "تغيير شفافية الطبقة إلى 50%"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export to an Excel file first",
+          "ar": "التصدير إلى ملف إكسل أولاً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In the Export Map pane, the Clip to extent option restricts exported image pixels to a designated coordinate box, current map view, or an existing layer's boundary.",
+      "ar": "في نافذة تصدير الخريطة (Export Map)، يتيح خيار 'Clip to extent' تقييد حدود الصورة المصدرة بإحداثيات مستطيل مخصص، أو نطاق العرض الحالي، أو حدود طبقة معينة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Physical monitor movement has no effect on software raster export.",
+        "C": "Transparency does not define geographic bounding boxes.",
+        "D": "Excel does not manage PNG map extents."
+      },
+      "ar": {
+        "B": "تحريك الشاشة لا يؤثر على التصدير البرمجي.",
+        "C": "الشفافية لا تحدد النطاق الجغرافي.",
+        "D": "ملفات إكسل لا تدير تصدير صور الخرائط."
+      }
+    },
+    "references": [
+      {
+        "title": "Export a map or layout, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/export-a-map-or-layout.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-042",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Vector Tile Package"
+    ],
+    "question": {
+      "en": "When creating a Vector Tile Package (.vtpk), what is the function of the Index Polygons generated during the caching process?",
+      "ar": "عند إنشاء حزمة بلاطات متجهة (.vtpk)، ما وظيفة مضلعات الفهرس (Index Polygons) التي يتم إنشاؤها أثناء عملية بناء الكاش؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They optimize tile creation by creating smaller, denser tiles in areas with high feature density and larger tiles in sparse areas",
+          "ar": "تحسن عملية بناء البلاطات بإنشاء بلاطات أصغر وأكثر تفصيلاً في المناطق عالية كثافة المعالم وبلاطات أوسع في المناطق المتناثرة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They delete all attributes from point features",
+          "ar": "تحذف كافة السمات من المعالم النقطية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "They convert line features into raster contours",
+          "ar": "تحول الخطوط إلى خطوط كنتور راستر"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "They calculate real estate property taxes",
+          "ar": "تحسب الضرائب العقارية للأراضي"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Vector tile indexing analyzes feature vertex density and builds an optimized quad-tree index, creating appropriately sized tiles that balance visual detail and download speed.",
+      "ar": "تحلل مضلعات الفهرسة كثافة رؤوس المعالم وتبني شجرة فهارس رباعية (Quad-tree) محسنة، مما يولد بلاطات متجهة متوازنة الحجم تجمع بين التفاصيل العالية وسرعة التنزيل عبر الإنترنت."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Indexing does not delete attributes.",
+        "C": "Vector tiles remain vector data.",
+        "D": "Tax calculations are outside tile generation."
+      },
+      "ar": {
+        "B": "الفهرسة لا تحذف البيانات.",
+        "C": "البلاطات المتجهة تظل بيانات اتجاهية.",
+        "D": "حساب الضرائب ليس من وظائف الفهرسة الكارتوغرافية."
+      }
+    },
+    "references": [
+      {
+        "title": "Sharing packages, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/sharing-packages.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-043",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Layout Pictures"
+    ],
+    "question": {
+      "en": "When inserting an organization's logo image onto a page layout, what setting ensures the logo remains visible even if the image file on the local hard drive is later moved or deleted?",
+      "ar": "عند إدراج شعار المؤسسة كصورة في لوحة إخراج، ما الإعداد الذي يضمن بقاء الشعار ظاهراً حتى لو تم نقل ملف الصورة أو حذفه لاحقاً من القرص الصلب؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Check 'Save image with document' (embed image) in Picture element properties",
+          "ar": "تفعيل خيار 'Save image with document' (تضمين الصورة) في خصائص عنصر الصورة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Rename the picture file with a .txt extension",
+          "ar": "إعادة تسمية الصورة بلاحقة .txt"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Lock the Windows desktop wallpaper",
+          "ar": "قفل خلفية سطح مكتب ويندوز"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export the project to a CSV file",
+          "ar": "تصدير المشروع إلى ملف CSV"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Checking 'Save image with document' embeds the picture data directly into the ArcGIS Pro project file (.aprx), severing dependence on the original external file path.",
+      "ar": "يؤدي اختيار 'Save image with document' إلى تضمين بيانات الصورة مباشرة داخل ملف مشروع ArcGIS Pro (.aprx)، مما يلغي الاعتماد على المسار الخارجي للملف ويمنع تعطل الرابط عند نقل المشروع."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Renaming image extensions corrupts the graphic format.",
+        "C": "Desktop wallpapers are unrelated to GIS layouts.",
+        "D": "CSV files store tabular text, not image graphics."
+      },
+      "ar": {
+        "B": "تغيير لاحقة الملف يتلف تنسيق الصورة.",
+        "C": "خلفية الشاشة لا علاقة لها بلوحات التصميم.",
+        "D": "ملفات CSV تخزن نصوصاً جدولية وليست صوراً."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-044",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Determine how to create and manage map layouts and map series",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Dynamic Text"
+    ],
+    "question": {
+      "en": "Which dynamic text tag automatically reads and displays the projected coordinate system name and projection parameters of the main map frame on the layout border?",
+      "ar": "أي وسم نص ديناميكي يقرأ ويعرض تلقائياً اسم نظام الإحداثيات المسقط ومعاملات الإسقاط لإطار الخريطة الرئيسي على هامش اللوحة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "<dyn type=\"mapFrame\" name=\"Main Map\" property=\"spatialReference\"/>",
+          "ar": "<dyn type=\"mapFrame\" name=\"Main Map\" property=\"spatialReference\"/>"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "<dyn type=\"projection\" name=\"EPSG\"/>",
+          "ar": "<dyn type=\"projection\" name=\"EPSG\"/>"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "$MAP.COORDINATES",
+          "ar": "$MAP.COORDINATES"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "%SpatialReference%",
+          "ar": "%SpatialReference%"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Pro dynamic text tags for spatial reference query the map frame properties using `<dyn type=\"mapFrame\" name=\"<FrameName>\" property=\"spatialReference\"/>`, updating automatically if the projection changes.",
+      "ar": "تستعلم وسوم النصوص الديناميكية للمرجع المكاني عن إطار الخريطة باستخدام الصياغة `<dyn type=\"mapFrame\" name=\"اسم الإطار\" property=\"spatialReference\"/>`، وتتحدث تلقائياً إذا تغير نظام إسقاط الخريطة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "This is not a valid ArcGIS Pro dynamic text syntax.",
+        "C": "Dollar syntax belongs to Arcade.",
+        "D": "Percent syntax is for ModelBuilder."
+      },
+      "ar": {
+        "B": "ليست صياغة وسوم نص ديناميكي صحيحة في البرنامج.",
+        "C": "صيغة الدولار خاصة بلغة Arcade.",
+        "D": "صيغة النسبة المئوية خاصة بـ ModelBuilder."
+      }
+    },
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "LS-045",
+    "kind": "mcq",
+    "domain": "Layouts and Sharing",
+    "objective": "Choose how to share content from ArcGIS Pro",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Web Map"
+    ],
+    "question": {
+      "en": "When sharing an entire 2D map as a Web Map to ArcGIS Online, what happens to feature layers whose underlying data sources are stored in local File Geodatabases on your C: drive?",
+      "ar": "عند مشاركة خريطة ثنائية الأبعاد بالكامل كخريطة ويب (Web Map) إلى ArcGIS Online، ماذا يحدث لطبقات المعالم المخزنة في قواعد بيانات جغرافية ملفية محلية على القرص C:؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Their features and schema are automatically copied and published as hosted feature layers in ArcGIS Online",
+          "ar": "يتم نسخ معالمها وهيكلها تلقائياً ونشرها كطبقات معالم مستضافة (Hosted Feature Layers) على سحابة ArcGIS Online"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The layers fail to draw and are skipped without notice",
+          "ar": "تفشل الطبقات في الظهور ويتم تجاهلها دون تنبيه"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The local C: drive is made publicly accessible over the internet",
+          "ar": "يصبح قرص الحاسوب C متاحاً للعامة عبر الإنترنت"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The feature layers are permanently converted into CAD DXF files",
+          "ar": "تتحول طبقات المعالم بشكل دائم إلى ملفات CAD DXF"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Online cannot access local workstation C: drives; therefore, the sharing engine packages the vector features and publishes them as cloud-hosted feature layers associated with the new web map.",
+      "ar": "نظراً لعدم قدرة منصة ArcGIS Online السحابية على الوصول للقرص المحلي C، يقوم محرك النشر بنسخ المعالم ورفعها تلقائياً كطبقات معالم مستضافة (Hosted Feature Layers) ترتبط بخريطة الويب المنشورة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "The sharing wizard handles data upload automatically.",
+        "C": "Local workstations are never exposed to public internet access.",
+        "D": "Data is published as web layers, not CAD files."
+      },
+      "ar": {
+        "B": "يتولى معالج النشر رفع البيانات تلقائياً.",
+        "C": "لا يتم كشف القرص المحلي على الإنترنت.",
+        "D": "تُنشر البيانات كخدمات ويب وليس ملفات CAD."
+      }
+    },
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ]
+  }
+]

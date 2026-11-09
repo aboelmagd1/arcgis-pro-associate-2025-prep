@@ -1,0 +1,2167 @@
+[
+  {
+    "id": "M1",
+    "week": 1,
+    "domain": "data",
+    "domainTitle_en": "Data Management (32%)",
+    "domainTitle_ar": "إدارة البيانات الجغرافية (32%)",
+    "title_en": "Module 1: Geodatabase Architecture & Schema Design",
+    "title_ar": "الموديول 1: بنية قواعد البيانات الجغرافية وتصميم المخططات",
+    "summary_en": "Master File Geodatabases vs. Shapefiles, dataset capacity upgrades, BLOB fields, attachments, GlobalIDs, and compaction.",
+    "summary_ar": "إتقان الفروق بين File GDB و Shapefile، ترقية السعة التخزينية، حقول BLOB، المرفقات، GlobalID، وضغط قواعد البيانات.",
+    "ui_paths": [
+      {
+        "label_en": "Create File Geodatabase",
+        "label_ar": "إنشاء قاعدة بيانات ملفية",
+        "path": "Catalog Pane > Databases folder > Right-click > New > File Geodatabase"
+      },
+      {
+        "label_en": "Enable Attachments",
+        "label_ar": "تفعيل المرفقات",
+        "path": "Geoprocessing > Search 'Enable Attachments' > Input Dataset"
+      },
+      {
+        "label_en": "Compact Geodatabase",
+        "label_ar": "ضغط قاعدة البيانات",
+        "path": "Catalog Pane > Right-click .gdb > Manage > Compact (or GP Tool 'Compact')"
+      },
+      {
+        "label_en": "Add Global IDs",
+        "label_ar": "إضافة المعرفات العالمية",
+        "path": "Geoprocessing > Search 'Add Global IDs' > Select Feature Class / Table"
+      },
+      {
+        "label_en": "Upgrade GDB Capacity",
+        "label_ar": "ترقية سعة الجيوداتابيز",
+        "path": "Geoprocessing > Feature Class To Feature Class > Environments > Geodatabase Storage Parameters > Configuration Keyword: MAX_FILE_SIZE_256TB"
+      }
+    ],
+    "key_concepts_en": [
+      "Shapefile vs File GDB: Shapefiles have a strict 2 GB size limit per file component, 10-character field name limits, no NULL value support, and cannot store true curves or topology. File GDBs default to 1 TB per table (upgradable to 256 TB) and support full schema capabilities.",
+      "Feature Datasets: Containers for feature classes that MUST share the identical spatial reference (GCS, PCS, and vertical coordinate system). Required for building Geodatabase Topology, Utility Networks, and Parcel Fabrics.",
+      "Capacity Upgrade: Using the configuration keyword 'MAX_FILE_SIZE_256TB' allows tables or rasters in a File GDB to exceed the default 1 TB boundary up to 256 TB.",
+      "GlobalIDs vs ObjectIDs: OBJECTID is a 32-bit integer unique only within a single table; it re-indexes upon export. GlobalID is a 128-bit globally unique GUID (UUID) required for two-way replication, branch versioning, attachments, and offline synchronization in Field Maps.",
+      "Attachments: Adding attachments generates an auxiliary table ('_ATTACH') and a Composite Relationship Class linking the parent feature to attachments with cascade-delete behavior.",
+      "Compact Geodatabase: Reorganizes physical storage files on disk, cleans up temporary space, and rebuilds spatial/attribute indexes to accelerate queries."
+    ],
+    "key_concepts_ar": [
+      "مقارنة Shapefile مقابل File GDB: ملفات Shapefile مقيدة بحد أقصى 2 جيجابايت لكل ملف، وأسماء الحقول بـ 10 أحرف فقط، ولا تدعم القيم الفارغة الحقيقية (NULL) أو المنحنيات الدائرية أو الطوبولوجيا. بينما تدعم File GDB سعة 1 تيرابايت افتراضياً (قابلة للترقية لـ 256 تيرابايت) وكامل وظائف الجيوداتابيز.",
+      "مجموعات بيانات المعالم (Feature Datasets): حاويات تجمع فئات المعالم التي تشترك إلزامياً في نفس المرجع المكاني بدقة متطابقة. تعد متطلباً أساسياً لبناء طوبولوجيا الجيوداتابيز والشبكات الهندسية.",
+      "ترقية السعة التخزينية: يتيح استخدام المعامل التكويني 'MAX_FILE_SIZE_256TB' توسيع سعة الجداول والراستر في قاعدة البيانات من 1 تيرابايت إلى 256 تيرابايت.",
+      "المعرفات العالمية GlobalIDs مقابل ObjectIDs: حقل OBJECTID هو رقم تسلسلي فريد داخل الجدول فقط ويتغير عند التصدير. بينما GlobalID هو كود فريد عالمياً (GUID) بطول 128-bit لا يتكرر ومطلوب للمزامنة السحابية غير المتصلة (Offline Sync) وإدارة المرفقات والنسخ.",
+      "المرفقات (Attachments): تفعيل المرفقات ينشئ جدولاً تابعاً باسم '_ATTACH' مع فئة علاقة ترابطية مركبة (Composite Relationship) تضمن الحذف المتسلسل للمرفقات عند حذف المعلم الأساسي.",
+      "ضغط الجيوداتابيز (Compact): يعيد ترتيب الملفات على القرص الصلب، ويستعيد المساحات المتروكة، ويعيد بناء الفهارس المكانية لتسريع الاستعلامات."
+    ],
+    "comparison_table": {
+      "title_en": "Format Architecture: Shapefile vs. File Geodatabase vs. Enterprise Geodatabase",
+      "title_ar": "مقارنة معمارية البيانات: Shapefile مقابل File GDB مقابل Enterprise GDB",
+      "headers_en": [
+        "Feature / Capability",
+        "Shapefile (.shp)",
+        "File Geodatabase (.gdb)",
+        "Enterprise Geodatabase (SDE)"
+      ],
+      "headers_ar": [
+        "الخاصية / الإمكانية",
+        "Shapefile (.shp)",
+        "File Geodatabase (.gdb)",
+        "Enterprise Geodatabase (SDE)"
+      ],
+      "rows_en": [
+        [
+          "Storage Architecture",
+          "Multi-file open format (.shp, .shx, .dbf, .prj)",
+          "Folder of binary files on disk",
+          "Relational DBMS (PostgreSQL, SQL Server, Oracle)"
+        ],
+        [
+          "File / Table Size Limit",
+          "2 GB per component",
+          "1 TB default (expandable to 256 TB)",
+          "Governed by RDBMS / Hardware limits"
+        ],
+        [
+          "Field Name Length Limit",
+          "10 Characters max",
+          "64 Characters",
+          "Governed by RDBMS (typically 64-128 chars)"
+        ],
+        [
+          "True Curves (Beziers/Arcs)",
+          "No (Densified into line segments)",
+          "Yes (Preserves true circular curves)",
+          "Yes"
+        ],
+        [
+          "Topology & Attribute Rules",
+          "No support",
+          "Yes (Full GDB Topology & Attribute Rules)",
+          "Yes (Branch & Traditional Versioning support)"
+        ],
+        [
+          "Concurrent Multiuser Editing",
+          "No (File locking corruption risk)",
+          "One active editor per table/feature class",
+          "Yes (Hundreds of concurrent editors with Versioning)"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "معمارية التخزين",
+          "تنسيق مفتوح متعدد الملفات (.shp, .shx, .dbf, .prj)",
+          "مجلد يحوي ملفات ثنائية على القرص",
+          "نظام إدارة قواعد بيانات علائقية (PostgreSQL, SQL Server)"
+        ],
+        [
+          "حد حجم الملف / الجدول",
+          "2 جيجابايت فقط لكل ملف",
+          "1 تيرابايت افتراضياً (يتوسع إلى 256 تيرابايت)",
+          "تحدده سعة محرك قاعدة البيانات والعتاد"
+        ],
+        [
+          "الحد الأقصى لاسم الحقل",
+          "10 أحرف كحد أقصى",
+          "64 حرفاً",
+          "حسب محرك RDBMS (عادة 64 إلى 128 حرفاً)"
+        ],
+        [
+          "المنحنيات الهندسية الحقيقية",
+          "لا تدعم (تتحول إلى خطوط مكسرة مستقيمة)",
+          "نعم (تدعم المنحنيات الدائرية الحقيقية)",
+          "نعم"
+        ],
+        [
+          "الطوبولوجيا وقواعد السمات",
+          "غير مدعومة نهائياً",
+          "نعم (طوبولوجيا كاملة وقواعد سمات)",
+          "نعم (مع دعم الإصدارات Branch و Traditional)"
+        ],
+        [
+          "التحرير التزامني المتعدد",
+          "لا (مخاطر تلف الملفات عند القفل)",
+          "محرر واحد فقط في نفس الوقت لكل طبقة",
+          "نعم (مئات المحررين المتزامنين مع تتبع الإصدارات)"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "What happens if a field name in a feature class with 15 characters is exported to a shapefile?",
+        "q_ar": "ماذا يحدث عند تصدير فئة معالم تحتوي على اسم حقل من 15 حرفاً إلى ملف Shapefile؟",
+        "a_en": "The field name is truncated to the first 10 characters due to dBASE IV format limitations.",
+        "a_ar": "يتم اقتطاع اسم الحقل وحذف الحروف الزائدة ليقتصر على أول 10 أحرف فقط بسبب قيود ملفات dBASE IV."
+      },
+      {
+        "q_en": "Why are GlobalIDs mandatory before enabling synchronization in ArcGIS Field Maps?",
+        "q_ar": "لماذا تعد حقول GlobalIDs إلزامية قبل تفعيل المزامنة مع تطبيق ArcGIS Field Maps؟",
+        "a_en": "Because ObjectIDs are unique only within a single local database instance and re-index on export, whereas GlobalIDs provide a globally unique 128-bit GUID across disconnected offline devices and the enterprise server.",
+        "a_ar": "لأن ObjectIDs فريدة فقط محلياً داخل الجدول وتتغير عند التصدير، بينما GlobalIDs تضمن معرفاً عالمياً لا يتكرر عبر الأجهزة الميدانية غير المتصلة والخادم المركزي."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m1_lab1",
+        "task_en": "Create a new File Geodatabase and configure MAX_FILE_SIZE_256TB configuration keyword",
+        "task_ar": "إنشاء File GDB جديدة وتكوين معامل السعة القصوى MAX_FILE_SIZE_256TB"
+      },
+      {
+        "id": "m1_lab2",
+        "task_en": "Import external Shapefiles and CAD DWG drawings using Feature Class To Geodatabase",
+        "task_ar": "استيراد ملفات Shapefile ورسومات CAD باستخدام أداة Feature Class To Geodatabase"
+      },
+      {
+        "id": "m1_lab3",
+        "task_en": "Enable Attachments on a feature class and inspect the generated _ATTACH table and relationship",
+        "task_ar": "تفعيل المرفقات على فئة معالم ومعاينة جدول _ATTACH وفئة العلاقة التابعة"
+      },
+      {
+        "id": "m1_lab4",
+        "task_en": "Add GlobalIDs to prepare datasets for offline field synchronization and branch versioning",
+        "task_ar": "إضافة المعرفات العالمية GlobalIDs لتجهيز الطبقات للمزامنة الميدانية وتتبع الإصدارات"
+      },
+      {
+        "id": "m1_lab5",
+        "task_en": "Run Compact Geodatabase tool to reorganize database storage files and rebuild indexes",
+        "task_ar": "تشغيل أداة ضغط الجيوداتابيز Compact لإعادة ترتيب الملفات وتحديث الفهارس"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M2",
+    "week": 1,
+    "domain": "data",
+    "domainTitle_en": "Data Management (32%)",
+    "domainTitle_ar": "إدارة البيانات الجغرافية (32%)",
+    "title_en": "Module 2: Domains, Subtypes & Contingent Values",
+    "title_ar": "الموديول 2: مجالات السمات، الأنواع الفرعية والقيم المشروطة",
+    "summary_en": "Implement data integrity using Coded Value and Range Domains, Subtypes, Contingent Values (Field Groups), Split/Merge Policies, and Relationship Classes.",
+    "summary_ar": "تطبيق تكامل البيانات باستخدام مجالات القيم المشفرة والمدى، الأنواع الفرعية، القيم المشروطة، سياسات التجزئة والدمج، وفئات العلاقات.",
+    "ui_paths": [
+      {
+        "label_en": "Manage Domains",
+        "label_ar": "إدارة مجالات السمات",
+        "path": "Catalog Pane > Right-click Geodatabase > Manage > Domains (or Ribbon: Data tab > Domains)"
+      },
+      {
+        "label_en": "Configure Subtypes",
+        "label_ar": "إعداد الأنواع الفرعية",
+        "path": "Contents Pane > Select Layer > Data tab on Ribbon > Design group > Subtypes"
+      },
+      {
+        "label_en": "Configure Contingent Values",
+        "label_ar": "إعداد القيم المشروطة",
+        "path": "Contents Pane > Select Layer > Data tab > Design group > Contingent Values"
+      },
+      {
+        "label_en": "Create Relationship Class",
+        "label_ar": "إنشاء فئة علاقة",
+        "path": "Catalog Pane > Right-click GDB or Feature Dataset > New > Relationship Class"
+      }
+    ],
+    "key_concepts_en": [
+      "Coded Value Domains: Restricts attributes to a discrete list of coded values (Code stored in database, Description shown to user). Supports text and numeric fields.",
+      "Range Domains: Enforces minimum and maximum allowable numeric or date bounds. Valid only for numeric and date field types.",
+      "Split Policies: Determines value calculation when splitting a feature: 'Default Value' resets to default; 'Duplicate' copies original value to both children; 'Geometry Ratio' divides value proportionally based on new area/length.",
+      "Merge Policies: Determines value calculation when merging features: 'Default Value' resets; 'Sum' adds values; 'Weighted Average' computes average weighted by length or area.",
+      "Subtypes: Partitions a feature class into logical subsets based on an integer field (MUST be Short or Long Integer). Allows assigning distinct Default Values, Domains, and Topology rules per subtype.",
+      "Contingent Values: Establishes dependent relationships across multiple fields (Field Groups). Selecting a value in Field 1 filters valid options in Field 2 and Field 3.",
+      "Relationship Classes: Simple (independent existence, deleting parent leaves child intact) vs Composite (parent-child ownership, deleting parent triggers automatic cascade-delete of child records)."
+    ],
+    "key_concepts_ar": [
+      "مجالات القيم المشفرة (Coded Value Domains): تقيد الإدخال بقائمة ثابتة من الخيارات (الكود يُخزن في قاعدة البيانات والوصف يظهر للمستخدم). صالحة للحقول النصية والرقمية.",
+      "مجالات المدى (Range Domains): تفرض حدوداً دنيا وقصوى مقبولة للقيم. صالحة فقط للحقول الرقمية وتواريخ الوقت.",
+      "سياسات التجزئة (Split Policies): تحدد سلوك القيمة عند تقسيم المعلم: 'Default Value' تعود للقيمة الافتراضية؛ 'Duplicate' تكرر القيمة في الجزأين؛ 'Geometry Ratio' توزع القيمة بنسبة المساحة أو الطول.",
+      "سياسات الدمج (Merge Policies): تحدد سلوك القيمة عند دمج معالم: 'Default Value' القيمة الافتراضية؛ 'Sum' جمع القيم؛ 'Weighted Average' المتوسط المرجح بالمساحة أو الطول.",
+      "الأنواع الفرعية (Subtypes): تصنيف معالم الطبقة إلى مجموعات منطقية بالاعتماد على حقل رقمي (يجب أن يكون Short أو Long Integer). تتيح تخصيص قيم افتراضية ومجالات سمات مختلفة لكل نوع فرعي.",
+      "القيم المشروطة (Contingent Values): إنشاء علاقات تبعية بين عدة حقول (Field Groups). اختيار قيمة في الحقل الأول يقيد الخيارات المتاحة في الحقلين الثاني والثالث.",
+      "فئات العلاقات (Relationship Classes): بسيطة Simple (وجود مستقل، حذف الأصل لا يحذف التابع) مقابل مركبة Composite (علاقة تبعية، حذف الأصل يحذف الكائنات التابعة تلقائياً Cascade Delete)."
+    ],
+    "comparison_table": {
+      "title_en": "Data Integrity Mechanics: Subtypes vs. Domains vs. Contingent Values",
+      "title_ar": "مقارنة آليات ضبط جودة البيانات: الأنواع الفرعية مقابل المجالات مقابل القيم المشروطة",
+      "headers_en": [
+        "Mechanism",
+        "Storage Level",
+        "Field Type Required",
+        "Core Purpose"
+      ],
+      "headers_ar": [
+        "الآلية",
+        "مستوى التخزين",
+        "نوع الحقل المطلوب",
+        "الهدف الأساسي"
+      ],
+      "rows_en": [
+        [
+          "Domains (Attribute Domains)",
+          "Geodatabase Level",
+          "Text, Float, Double, Short, Long, Date",
+          "Restricts valid entries to lists (Coded) or ranges (Range) across any table."
+        ],
+        [
+          "Subtypes",
+          "Feature Class / Table Level",
+          "Short Integer or Long Integer ONLY",
+          "Partitions records to apply unique default values and domains per category."
+        ],
+        [
+          "Contingent Values",
+          "Feature Class / Table Level",
+          "Multiple fields tied to Coded Domains",
+          "Enforces tree-like dependencies across multiple fields (e.g., Make -> Model)."
+        ],
+        [
+          "Relationship Class (Composite)",
+          "Geodatabase Level",
+          "Origin Primary Key + Foreign Key",
+          "Enforces parent-child ownership with automated cascade-delete behavior."
+        ]
+      ],
+      "rows_ar": [
+        [
+          "مجالات السمات (Domains)",
+          "على مستوى الجيوداتابيز",
+          "نصي، أعداد صحيحة، أعداد عشرية، تاريخ",
+          "تقييد القيم المسموحة بقائمة أو مدى رقمي لجميع جداول قاعدة البيانات."
+        ],
+        [
+          "الأنواع الفرعية (Subtypes)",
+          "على مستوى الطبقة / الجدول",
+          "Short Integer أو Long Integer فقط",
+          "تقسيم المعالم لمنح كل فئة قيماً افتراضية ومجالات سمات مستقلة."
+        ],
+        [
+          "القيم المشروطة (Contingent Values)",
+          "على مستوى الطبقة / الجدول",
+          "حقول متعددة مرتبطة بمجالات قيم مشفرة",
+          "فرض ترابط تسلسلي بين عدة حقول (مثال: نوع السيارة -> الطراز)."
+        ],
+        [
+          "فئات العلاقات المركبة (Composite)",
+          "على مستوى الجيوداتابيز",
+          "المفتاح الأساسي والمفتاح الأجنبي",
+          "فرض ملكية أبوية تحذف العناصر التابعة تلقائياً عند حذف العنصر الأصلي."
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "What field types are valid for defining Subtypes in ArcGIS Pro?",
+        "q_ar": "ما هي أنواع الحقول الصالحة لتعريف الأنواع الفرعية (Subtypes) في ArcGIS Pro؟",
+        "a_en": "Only Short Integer and Long Integer fields. Text, Float, and Double cannot be used as Subtype fields.",
+        "a_ar": "حقول الأعداد الصحيحة القصيرة والطويلة فقط (Short Integer / Long Integer). لا يمكن استخدام الحقول النصية أو العشرية."
+      },
+      {
+        "q_en": "In a parcel feature class, which Split Policy ensures that a $100,000 assessed value is split into $60,000 and $40,000 for a 60/40 land division?",
+        "q_ar": "في طبقة قطع الأراضي، ما هي سياسة التجزئة (Split Policy) التي تضمن توزيع قيمة 100,000$ إلى 60,000$ و 40,000$ عند تقسيم الأرض بنسبة 60/40؟",
+        "a_en": "Geometry Ratio. It apportions the numeric value based on the ratio of the resulting geometries.",
+        "a_ar": "نسبة الهندسة (Geometry Ratio)، حيث توزع القيمة الرقمية بناءً على نسبة مساحة أو طول الأجزاء الناتجة."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m2_lab1",
+        "task_en": "Configure Coded Value Domains for Pipe Material ('PVC', 'Ductile Iron', 'HDPE') in Troutdale network",
+        "task_ar": "إعداد نطاق قيم مشفرة Coded Value Domain لمواد الأنابيب في شبكة مياه Troutdale"
+      },
+      {
+        "id": "m2_lab2",
+        "task_en": "Configure Range Domain for Water Pressure (min: 20 PSI, max: 120 PSI)",
+        "task_ar": "إعداد نطاق مدى Range Domain لضغط المياه بين 20 و 120 PSI"
+      },
+      {
+        "id": "m2_lab3",
+        "task_en": "Set Split Policy to 'Geometry Ratio' on parcel assessed value to apportion value on feature splits",
+        "task_ar": "ضبط سياسة التجزئة Split Policy على 'Geometry Ratio' لتوزيع القيمة بنسبة المساحة عند التقسيم"
+      },
+      {
+        "id": "m2_lab4",
+        "task_en": "Define Subtypes on an integer field and assign unique default values and domains to each subtype",
+        "task_ar": "تعريف الأنواع الفرعية Subtypes على حقل رقمي وتعيين قيم افتراضية ومجالات مخصصة لكل نوع"
+      },
+      {
+        "id": "m2_lab5",
+        "task_en": "Configure Contingent Values with Field Groups linking Surface Type to allowable Speed Limits",
+        "task_ar": "إعداد القيم المشروطة Contingent Values بمجموعة حقول تربط نوع الرصف بالسرعات المسموحة"
+      },
+      {
+        "id": "m2_lab6",
+        "task_en": "Build a Composite Relationship Class and test cascade-deletion of child records",
+        "task_ar": "بناء فئة علاقة مركبة Composite واختبار الحذف المتسلسل التلقائي للسجلات التابعة"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M3",
+    "week": 1,
+    "domain": "data",
+    "domainTitle_en": "Data Management (32%)",
+    "domainTitle_ar": "إدارة البيانات الجغرافية (32%)",
+    "title_en": "Module 3: Topology, Attribute Rules & Editing Workflows",
+    "title_ar": "الموديول 3: الطوبولوجيا، قواعد السمات وعمليات التحرير المتقدمة",
+    "summary_en": "Master Geodatabase Topology, Arcade-driven Attribute Rules, snapping environments, and advanced editing tools including COGO and Traverse.",
+    "summary_ar": "إتقان طوبولوجيا الجيوداتابيز، قواعد السمات بلغة Arcade، بيئات الالتقاط، وأدوات التحرير المتقدمة بما في ذلك COGO و Traverse.",
+    "ui_paths": [
+      {
+        "label_en": "Create GDB Topology",
+        "label_ar": "إنشاء طوبولوجيا الجيوداتابيز",
+        "path": "Catalog Pane > Right-click Feature Dataset > New > Topology"
+      },
+      {
+        "label_en": "Manage Attribute Rules",
+        "label_ar": "إدارة قواعد السمات",
+        "path": "Contents Pane > Select Layer > Data tab > Design group > Attribute Rules"
+      },
+      {
+        "label_en": "Validate Topology",
+        "label_ar": "التحقق من الطوبولوجيا",
+        "path": "Edit tab on Ribbon > Manage Edits group > Error Inspector"
+      },
+      {
+        "label_en": "COGO Traverse Tool",
+        "label_ar": "أداة الترافيرس المساحي",
+        "path": "Edit tab > Tools group > Create Features pane > Select line template > Traverse tool"
+      }
+    ],
+    "key_concepts_en": [
+      "Geodatabase Topology vs Map Topology: Map topology creates temporary topological relationships among coincident edges during an editing session. Geodatabase topology defines persistent, strict geometric rules within a Feature Dataset, creating 'Dirty Areas' that require validation.",
+      "Topology Rules & Ranks: Rules include 'Must Not Overlap', 'Must Not Have Gaps', 'Must Not Have Dangles', and 'Point Must Be Covered By Line'. Coordinate ranks (1 to 50) control which layers stay fixed (Rank 1 = highest accuracy, will not move) during cluster snapping.",
+      "Attribute Rules Types: Calculation (Immediate on edit or Batch; writes attributes), Constraint (Evaluates Arcade; if false, strictly rolls back edit and displays custom error dialogue), Validation (Runs via Error Inspector to evaluate existing data).",
+      "Arcade Global Variables: '$feature' accesses current feature attributes; '$originalFeature' accesses state before edit; '$editcontext.editType' checks if operation is 'INSERT', 'UPDATE', or 'DELETE'; 'FeatureSetByName' queries external layers.",
+      "Editing Geometry Tools: 'Reshape' (alters boundary, must intersect twice), 'Align Edge' (snaps boundary to adjacent feature avoiding slivers), 'Split' (divides feature based on line/cut), 'Merge' (combines into single feature).",
+      "COGO & Traverse: COGO stores bearing/direction and distance. The Traverse tool enables land surveyors to input metes-and-bounds legal descriptions sequentially with closure checks."
+    ],
+    "key_concepts_ar": [
+      "طوبولوجيا الجيوداتابيز مقابل طوبولوجيا الخريطة: طوبولوجيا الخريطة تنشئ علاقات مؤقتة بين الحواف المشتركة أثناء جلسة التحرير. بينما طوبولوجيا الجيوداتابيز تفرض قواعد دائمة وصارمة داخل Feature Dataset وتنشئ 'مناطق قذرة Dirty Areas' تتطلب فحصاً.",
+      "قواعد ورتب الطوبولوجيا: تشمل 'Must Not Overlap' و 'Must Not Have Gaps' و 'Must Not Have Dangles'. تحدد الرتب (1 إلى 50) أي الطبقات تظل ثابتة (الرتبة 1 الأعلى دقة لا تتحرك) أثناء التقريب العنقودي Cluster Snapping.",
+      "أنواع قواعد السمات (Attribute Rules): الحسابية Calculation (تكتب قيماً في الحقول فورياً أو بدفعات)، التقييدية Constraint (تفحص تعبير Arcade وإذا كان خطأ تلغي الحفظ فوراً وتظهر رسالة خطأ مخصصة للمستخدم)، التحقق Validation (تفحص السجلات القائمة عبر Error Inspector).",
+      "متغيرات Arcade العامة: '$feature' للوصول للمعلم الحالي؛ '$originalFeature' لحالته قبل التعديل؛ '$editcontext.editType' لتحديد نوع العملية (INSERT أو UPDATE أو DELETE)؛ 'FeatureSetByName' للاستعلام من طبقات خارجية.",
+      "أدوات تعديل المعالم: Reshape (إعادة تشكيل الحدود بشرط التقاطع مرتين)، Align Edge (مطابقة حافة معلم بحافة مجاورة لمنع الفجوات)، Split (تجزئة المعلم)، Merge (دمج معالم متجاورة في معلم واحد).",
+      "أدوات COGO و Traverse: يخزن COGO الاتجاه والمسافة المساحية. وتتيح أداة Traverse للمساحين إدخال الأوصاف القانونية للحدود خطوة بخطوة مع حساب خطأ القفل المساحي."
+    ],
+    "comparison_table": {
+      "title_en": "Attribute Rules Architecture: Calculation vs. Constraint vs. Validation",
+      "title_ar": "مقارنة أنواع قواعد السمات: الحسابية مقابل التقييدية مقابل التحقق",
+      "headers_en": [
+        "Rule Type",
+        "Trigger Timing",
+        "Blocks Edit Transaction?",
+        "Evaluation Tool"
+      ],
+      "headers_ar": [
+        "نوع القاعدة",
+        "توقيت التنفيذ",
+        "هل تحظر وتمنع الحفظ؟",
+        "أداة المعاينة والتنفيذ"
+      ],
+      "rows_en": [
+        [
+          "Calculation Rule (Immediate)",
+          "During feature creation/update",
+          "No (Populates target field)",
+          "Automatic upon save"
+        ],
+        [
+          "Constraint Rule",
+          "At the instant of saving edits",
+          "YES (Strictly rolls back edit)",
+          "Displays custom error dialog"
+        ],
+        [
+          "Validation Rule",
+          "Asynchronous batch on demand",
+          "No (Identifies and logs errors)",
+          "Error Inspector Pane"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "قواعد الحساب الفورية (Calculation)",
+          "أثناء إنشاء أو تعديل المعلم",
+          "لا (تحسب وتملأ قيمة الحقل)",
+          "تلقائياً فور الحفظ"
+        ],
+        [
+          "قواعد التقييد (Constraint)",
+          "لحظة الضغط على حفظ التعديل",
+          "نعم (تلغي عملية الحفظ بالكامل)",
+          "نافذة خطأ برقم ورسالة مخصصة"
+        ],
+        [
+          "قواعد التحقق (Validation)",
+          "بشكل غير متزامن كدفعة مجمعة",
+          "لا (تسجل الأخطاء للمراجعة)",
+          "لوحة فاحص الأخطاء Error Inspector"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "How can an administrator prevent an editor from saving a parcel if its zoning code does not match municipal bylaws?",
+        "q_ar": "كيف يمكن لمسؤول النظام منع المحرر نهائياً من حفظ قطعة أرض إذا كان تصنيفها لا يطابق اللوائح البلدية؟",
+        "a_en": "Configure a Constraint Attribute Rule with an Arcade expression that evaluates to false when a mismatch occurs, triggering an immediate edit rollback.",
+        "a_ar": "إنشاء قاعدة تقييد (Constraint Attribute Rule) بتعبير Arcade يرجع خطأ (false) عند عدم التطابق، مما يلغي عملية الحفظ لحظياً."
+      },
+      {
+        "q_en": "In Geodatabase Topology, what coordinate rank represents the highest accuracy that will not be moved during validation?",
+        "q_ar": "في طوبولوجيا الجيوداتابيز، ما هي الرتبة الإحداثية (Coordinate Rank) التي تمثل الدقة الأعلى والتي لا تتحرك نهائياً أثناء الفحص؟",
+        "a_en": "Rank 1 represents the highest geometric priority and accuracy. Lower priority vertices (e.g., Rank 2 to 50) snap to Rank 1 vertices.",
+        "a_ar": "الرتبة 1 (Rank 1) تمثل الأولوية والدقة الأعلى وتظل ثابتة بينما تنجذب نقاط الطبقات ذات الرتب الأدنى (2 إلى 50) إليها."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m3_lab1",
+        "task_en": "Create Geodatabase Topology inside a Feature Dataset with 'Must Not Overlap' and 'Must Not Have Gaps'",
+        "task_ar": "إنشاء طوبولوجيا الجيوداتابيز بقواعد 'Must Not Overlap' و 'Must Not Have Gaps'"
+      },
+      {
+        "id": "m3_lab2",
+        "task_en": "Validate topology, review Dirty Areas, and resolve errors or mark valid exceptions in Error Inspector",
+        "task_ar": "فحص الطوبولوجيا ومعاينة المناطق المشوهة Dirty Areas وحل الأخطاء أو تعليم الاستثناءات المقبولة"
+      },
+      {
+        "id": "m3_lab3",
+        "task_en": "Write an Arcade Constraint Attribute Rule to strictly block invalid pipe slopes and rollback edits",
+        "task_ar": "برمجة قاعدة سمات تقييدية Constraint بلغة Arcade لمنع إدخال انحدار غير صالح وإلغاء الحفظ"
+      },
+      {
+        "id": "m3_lab4",
+        "task_en": "Write an Immediate Calculation Attribute Rule using $editcontext.editType to auto-calculate geodetic length",
+        "task_ar": "برمجة قاعدة حسابية فورية باستخدام $editcontext.editType لحساب الطول الجيوديسي آلياً"
+      },
+      {
+        "id": "m3_lab5",
+        "task_en": "Use Reshape, Align Edge, and Split editing tools with active vertex and edge snapping",
+        "task_ar": "استخدام أدوات التحرير Reshape و Align Edge و Split مع تفعيل بيئات الالتقاط Snapping"
+      },
+      {
+        "id": "m3_lab6",
+        "task_en": "Enable COGO on line layer and enter surveyor metes-and-bounds using the Traverse tool",
+        "task_ar": "تفعيل COGO على طبقة خطية وإدخال الأوصاف المساحية للأراضي باستخدام أداة Traverse"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M4",
+    "week": 1,
+    "domain": "data",
+    "domainTitle_en": "Data Management (32%)",
+    "domainTitle_ar": "إدارة البيانات الجغرافية (32%)",
+    "title_en": "Module 4: Coordinate Systems, Geocoding & Linear Referencing",
+    "title_ar": "الموديول 4: نظم الإحداثيات، التكويد الجغرافي والإسناد الخطي",
+    "summary_en": "Differentiate GCS vs. PCS, Define Projection vs. Project, Georeferencing control points, address locators, and Linear Referencing M-values.",
+    "summary_ar": "التفريق بين نظم الإحداثيات الجغرافية والمسقطة، أداة Define Projection مقابل Project، إرجاع الصور الجغرافي، محددات العناوين، والإسناد الخطي M-values.",
+    "ui_paths": [
+      {
+        "label_en": "Set Map Coordinate System",
+        "label_ar": "ضبط نظام إحداثيات الخريطة",
+        "path": "Contents Pane > Right-click Map > Properties > Coordinate Systems tab"
+      },
+      {
+        "label_en": "Configure Datum Transformation",
+        "label_ar": "ضبط التحويل الجيوديسي",
+        "path": "Map Properties > Coordinate Systems > Transformations button"
+      },
+      {
+        "label_en": "Georeference Raster",
+        "label_ar": "الإرجاع الجغرافي للراستر",
+        "path": "Contents Pane > Select Raster Layer > Imagery tab > Georeference"
+      },
+      {
+        "label_en": "Create Address Locator",
+        "label_ar": "إنشاء محدد عناوين",
+        "path": "Geoprocessing > Search 'Create Locator' tool"
+      }
+    ],
+    "key_concepts_en": [
+      "GCS vs PCS: Geographic Coordinate Systems (GCS) model a 3D ellipsoid and express coordinates in angular units (Degrees, Latitude/Longitude). Projected Coordinate Systems (PCS) project curved coordinates onto a 2D flat plane in linear units (Meters, Feet).",
+      "Define Projection vs Project: 'Define Projection' modifies only the dataset's metadata/header when the projection is missing or Unknown; it does NOT alter X/Y numbers. 'Project' recalculates physical coordinate numbers to create a NEW dataset.",
+      "Project Raster Resampling: 'Nearest Neighbor' for discrete/categorical rasters (land use, soil classes) to preserve exact class values. 'Bilinear Interpolation' or 'Cubic Convolution' for continuous surface rasters (elevation, temperature) for smooth gradients.",
+      "Georeferencing: Assigns spatial coordinates to unreferenced scanned maps or aerial photos using Ground Control Points (GCPs). Evaluated by Root Mean Square (RMS) Error. First-Order Polynomial requires minimum 3 points.",
+      "Geocoding: Converts textual addresses into point features using a Locator. The 'Rematch Addresses' pane handles 'Unmatched' or 'Tied' candidates (candidates with identical match scores).",
+      "Linear Referencing & M-Values: Stores relative distance measurements (M-values) along linear features independently of X,Y coordinates. 'Make Route Event Layer' maps events (e.g., pavement cracks at Milepost 14.2) as point or line events."
+    ],
+    "key_concepts_ar": [
+      "نظم الإحداثيات الجغرافية مقابل المسقطة: GCS يمثل مجسماً ثلاثي الأبعاد ويعبر عن الإحداثيات بوحدات زاوية (درجات عشرية). بينما PCS يسقط السطح الكروي على سطح مستوٍ بوحدات خطية طولية (أمتار، أقدام).",
+      "أداة Define Projection مقابل Project: أداة 'Define Projection' تعدل البيانات الوصفية (Metadata) فقط للطبقات مجهولة الإسقاط (Unknown) دون تغيير أرقام الإحداثيات. بينما 'Project' تعيد حساب الإحداثيات هندسياً وتنتج طبقة جديدة تماماً.",
+      "إعادة معاينة الراستر (Resampling): استخدام 'Nearest Neighbor' لبيانات الراستر النوعية/المنفصلة (مثل الغطاء الأرضي) للحفاظ على قيم الأصناف. واستخدام 'Bilinear' أو 'Cubic' للأسطح المستمرة (مثل الارتفاعات DEM) للحصول على تدرج ناعم.",
+      "الإرجاع الجغرافي (Georeferencing): ربط الخرائط الممسوحة ضوئياً بإحداثيات حقيقية باستخدام نقاط التحكم الأرضي (GCPs)، ويقاس الخطأ بمتوسط مربع الخطأ (RMS Error). ويتطلب التحويل من الدرجة الأولى 3 نقاط على الأقل.",
+      "التكويد الجغرافي (Geocoding): تحويل العناوين النصية لنقاط مكانية عبر الـ Locator. وتتيح نافذة Rematch Addresses معالجة العناوين غير المتطابقة (Unmatched) أو المتطابقة بنفس الدرجة (Tied).",
+      "الإسناد الخطي وقيم M-values: تخزين مسافات قياس طولية (M-values) على طول المسار الخطي بمعزل عن إحداثيات X,Y. وتنشئ أداة 'Make Route Event Layer' معالم أحداث (مثل شقوق الطريق عند الميل 14.2)."
+    ],
+    "comparison_table": {
+      "title_en": "Coordinate Operations: Define Projection vs. Project Tool",
+      "title_ar": "مقارنة عمليات الإسقاط: أداة Define Projection مقابل Project",
+      "headers_en": [
+        "Aspect",
+        "Define Projection Tool",
+        "Project Tool"
+      ],
+      "headers_ar": [
+        "وجه المقارنة",
+        "أداة Define Projection",
+        "أداة Project"
+      ],
+      "rows_en": [
+        [
+          "Target Data State",
+          "Dataset with missing or Unknown spatial reference",
+          "Dataset with known, accurately defined spatial reference"
+        ],
+        [
+          "Geometry Coordinates",
+          "NEVER changes coordinate values (numbers stay identical)",
+          "Recalculates physical X, Y (and Z) values using formulas"
+        ],
+        [
+          "Output Mechanism",
+          "In-place modification of existing dataset header",
+          "Generates a brand-new output feature class"
+        ],
+        [
+          "Datum Transformation",
+          "Not applicable (No math transformation performed)",
+          "Supports selecting Geographic Datum Transformation"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "حالة البيانات المستهدفة",
+          "طبقة ذات نظام إحداثيات مفقود أو مجهول (Unknown)",
+          "طبقة ذات نظام إحداثيات معرف مسبقاً بشكل صحيح"
+        ],
+        [
+          "إحداثيات المعالم",
+          "لا تغير أرقام الإحداثيات نهائياً (تبقى الأرقام كما هي)",
+          "تعيد حساب قيم X و Y هندسياً وفق معادلات رياضية"
+        ],
+        [
+          "طريقة الإخراج",
+          "تعديل مباشر في ترويسة نفس الملف المدخل (In-place)",
+          "تنشئ فئة معالم جديدة بالكامل كملف إخراج"
+        ],
+        [
+          "التحويل الجيوديسي",
+          "غير قابل للتطبيق (لا توجد حسابات تحويل)",
+          "تدعم اختيار مسار التحويل الجغرافي (Datum Transformation)"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "Which resampling technique must be selected when projecting a discrete land cover raster dataset?",
+        "q_ar": "ما هي تقنية إعادة المعاينة (Resampling) الواجب اختيارها عند إعادة إسقاط راستر يمثل تصنيف الغطاء الأرضي؟",
+        "a_en": "Nearest Neighbor. It preserves original discrete cell values without averaging or creating fractional class values.",
+        "a_ar": "طريقة الجار الأقرب (Nearest Neighbor)، لأنها تحافظ على قيم الأصناف النوعية الأصلية دون حساب متوسطات أو قيم كسرية مشوهة."
+      },
+      {
+        "q_en": "What happens if a layer in WGS 1984 is displayed in a map set to NAD 1983 without a transformation?",
+        "q_ar": "ماذا يحدث عند عرض طبقة بنظام WGS 1984 في خريطة مضبوطة على مسقط NAD 1983 دون تحديد مسار تحويل جغرافي؟",
+        "a_en": "A datum shift occurs, causing spatial misalignment of up to several meters between features.",
+        "a_ar": "تحدث إزاحة مسندية (Datum Shift)، مما يسبب إزاحة مكانية بين المعالم تصل لعدة أمتار."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m4_lab1",
+        "task_en": "Identify layers with 'Unknown Coordinate System' and apply Define Projection with correct metadata",
+        "task_ar": "فحص الطبقات مجهولة الإسقاط وتطبيق أداة Define Projection لتعريف المرجع المكاني دون تغيير الأرقام"
+      },
+      {
+        "id": "m4_lab2",
+        "task_en": "Execute Project tool to convert WGS84 coordinates to local State Plane / UTM with Datum Transformation",
+        "task_ar": "تشغيل أداة Project لتحويل الإحداثيات إلى مسقط محلي مع اختيار مسار التحويل الجغرافي السليم"
+      },
+      {
+        "id": "m4_lab3",
+        "task_en": "Project discrete vs. continuous rasters using Nearest Neighbor vs. Bilinear resampling",
+        "task_ar": "إعادة إسقاط الراستر المنفصل بالجار الأقرب والراستر المستمر بإعادة المعاينة الخطية Bilinear"
+      },
+      {
+        "id": "m4_lab4",
+        "task_en": "Georeference scanned historic map using Ground Control Points and evaluate Root Mean Square (RMS) Error",
+        "task_ar": "إرجاع خريطة ممسوحة ضوئياً بنقاط التحكم الأرضي وتقييم متوسط مربع الخطأ RMS Error"
+      },
+      {
+        "id": "m4_lab5",
+        "task_en": "Create an Address Locator for Houston streets and use Rematch Addresses pane to resolve ties",
+        "task_ar": "بناء محدد عناوين Locator لشوارع هيوستن واستخدام نافذة Rematch Addresses لمعالجة العناوين المشكوك فيها"
+      },
+      {
+        "id": "m4_lab6",
+        "task_en": "Execute Check Geometry and Repair Geometry tools to fix invalid self-intersecting polygons",
+        "task_ar": "تشغيل أدوات Check Geometry و Repair Geometry لمعالجة المضلعات المتقاطعة ذاتياً"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M5",
+    "week": 2,
+    "domain": "viz",
+    "domainTitle_en": "Visualization (25%)",
+    "domainTitle_ar": "العرض البصري والخرائط (25%)",
+    "title_en": "Module 5: Advanced Symbology & Statistical Classification",
+    "title_ar": "الموديول 5: الترميز المتقدم وطرق التصنيف الإحصائي",
+    "summary_en": "Master all 7 classification methods, visual variables, normalization, symbol layer drawing, and advanced thematic symbology.",
+    "summary_ar": "إتقان طرق التصنيف الإحصائي السبع، المتغيرات البصرية، التوحيد المعياري، رسم طبقات الرموز، والترميز الموضوعي المتقدم.",
+    "ui_paths": [
+      {
+        "label_en": "Open Symbology Pane",
+        "label_ar": "فتح لوحة الترميز",
+        "path": "Contents Pane > Click Layer Symbol (or Right-click Layer > Symbology)"
+      },
+      {
+        "label_en": "Enable Symbol Layer Drawing",
+        "label_ar": "تفعيل رسم طبقات الرموز",
+        "path": "Symbology Pane > Menu icon (hamburger) > Symbol layer drawing"
+      },
+      {
+        "label_en": "Set Visual Variables",
+        "label_ar": "ضبط المتغيرات البصرية",
+        "path": "Symbology Pane > Vary symbology by attribute tab (Size, Color, Opacity, Rotation)"
+      },
+      {
+        "label_en": "Apply Symbology From Layer",
+        "label_ar": "تطبيق ترميز من طبقة",
+        "path": "Geoprocessing > Search 'Apply Symbology From Layer' tool"
+      }
+    ],
+    "key_concepts_en": [
+      "The 7 Statistical Classification Methods: Natural Breaks (Jenks - default, minimizes within-class variance and maximizes between-class variance; unsuitable for multi-temporal comparisons); Quantile (equal number of features per class, best for ranks, misleading with skewed data); Equal Interval (equal range widths, ideal for familiar ranges like temperature); Defined Interval (user sets step interval, software calculates classes); Manual Interval (user explicitly sets break values); Geometric Interval (compromise for highly skewed data based on geometric progressions); Standard Deviation (shows deviation from the mean in +/- standard deviation units).",
+      "Normalization: Dividing an attribute by another (e.g., total crimes divided by total population) to yield rates, densities, or percentages, avoiding misleading raw count choropleth maps.",
+      "Visual Variables: Varying symbol color, size, transparency, or rotation based on secondary attributes. Rotation can be 'Geographic' (0° at North, rotates clockwise) or 'Arithmetic' (0° at East, rotates counterclockwise).",
+      "Symbol Layer Drawing: Controls rendering order of individual symbol layers within multi-layer symbols. Essential for seamlessly joining highway casing borders without overlapping crossbars.",
+      "Symbology Types: Graduated Colors, Graduated Symbols, Proportional Symbols (size directly proportional to value, no classes), Dot Density, Bivariate Colors, and Heat Map (dynamic kernel rendering)."
+    ],
+    "key_concepts_ar": [
+      "طرق التصنيف الإحصائي السبع: Natural Breaks (Jenks - الافتراضية، تقلل التباين الداخلي وتزيد التباين بين الفئات؛ لا تصلح للمقارنات الزمنية)؛ Quantile (عدد متساوٍ من المعالم في كل فئة، مثالية للترتيب النسبي ومضللة مع القيم المتطرفة)؛ Equal Interval (مدى رقمي متساوٍ لكل فئة، ممتازة لدرجات الحرارة)؛ Defined Interval (يحدد المستخدم حجم الخطوة ويحسب البرنامج عدد الفئات)؛ Manual Interval (تحديد يدوي لحدود الفئات)؛ Geometric Interval (للبيانات شديدة الالتواء)؛ Standard Deviation (عرض التشتت حول المتوسط بانحرافات معيارية).",
+      "التوحيد المعياري (Normalization): قسمة حقل رقمي على آخر (مثل قسمة عدد الجرائم على إجمالي السكان) لإنتاج معدلات أو نسب مئوية وتفادي الخرائط المضللة الناتجة عن الأعداد الخام.",
+      "المتغيرات البصرية (Visual Variables): تغيير لون الرمز أو حجمه أو شفافيته أو زاوية تدويره بناءً على حقول إضافية. ويكون التدوير إما جغرافياً Geographic (يبدأ 0° شمالاً ويدور مع عقارب الساعة) أو حسابياً Arithmetic (يبدأ 0° شرقاً ويدور عكس عقارب الساعة).",
+      "رسم طبقات الرموز (Symbol Layer Drawing): التحكم في ترتيب رسم طبقات الرموز المركبة، وهو ضروري لربط حدود حواف الطرق السريعة بسلاسة دون تقاطعات مشوهة.",
+      "أنواع الترميز الموضوعي: Graduated Colors، Graduated Symbols، Proportional Symbols (حجم نسبي متصل بدون فئات)، Dot Density، Bivariate Colors، و Heat Map (كثافة ديناميكية متغيرة بالتكبير)."
+    ],
+    "comparison_table": {
+      "title_en": "Statistical Classification Methods: Decision Matrix for Associate Exam",
+      "title_ar": "مصفوفة اختيار طرق التصنيف الإحصائي للامتحان",
+      "headers_en": [
+        "Method",
+        "Class Boundary Rule",
+        "Best Scenario",
+        "Key Exam Trap"
+      ],
+      "headers_ar": [
+        "طريقة التصنيف",
+        "قاعدة حدود الفئات",
+        "أفضل سيناريو للاستخدام",
+        "الفخ الامتحاني الحاسم"
+      ],
+      "rows_en": [
+        [
+          "Natural Breaks (Jenks)",
+          "Natural clusters (minimizes variance within classes)",
+          "Unevenly distributed continuous data with natural gaps",
+          "Cannot compare multiple maps across time periods"
+        ],
+        [
+          "Quantile",
+          "Equal NUMBER of features in every single class",
+          "Rank ordering, percentiles, uniform distribution displays",
+          "Places identical or near-identical values in different classes"
+        ],
+        [
+          "Equal Interval",
+          "Equal NUMERICAL RANGE in every class (Max-Min / k)",
+          "Familiar ranges (e.g., percentages 0-25-50-75-100%, temps)",
+          "Highly skewed data results in empty intermediate classes"
+        ],
+        [
+          "Standard Deviation",
+          "Intervals based on standard deviation units from mean",
+          "Highlighting spatial outliers above or below the average",
+          "Requires divergent color ramp and normal distribution"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "Natural Breaks (Jenks)",
+          "تجمعات طبيعية (تقليل التباين داخل الفئة)",
+          "بيانات غير متجانسة تحوي فجوات وتجمعات طبيعية",
+          "لا تصلح نهائياً لمقارنة خرائط متعددة عبر فترات زمنية"
+        ],
+        [
+          "Quantile (الكميات المتساوية)",
+          "عدد متساوٍ تماماً من المعالم في كل فئة",
+          "الترتيب النسبي والشرائح المئوية المتساوية",
+          "قد تضع قيماً متطابقة أو متقاربة جداً في فئات منفصلة"
+        ],
+        [
+          "Equal Interval (الفترات المتساوية)",
+          "مدى رقمي متساوٍ في كل فئة (المدى / عدد الفئات)",
+          "البيانات المألوفة للمستخدم مثل درجات الحرارة والنسب",
+          "إذا كانت البيانات ملتوية بشدة ستمتلئ فئة واحدة وتفرغ البقية"
+        ],
+        [
+          "Standard Deviation (الانحراف المعياري)",
+          "فئات مبنية على وحدات الانحراف المعياري عن المتوسط",
+          "إبراز القيم الشاذة والمتطرفة فوق وتحت المعدل العام",
+          "تتطلب لوحة ألوان متباينة (Divergent) وتوزيعاً معتدلاً"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "A cartographer wants to compare median household income across 50 states over three consecutive census decades. Why should Natural Breaks NOT be used?",
+        "q_ar": "يريد كارتوغرافي مقارنة متوسط دخل الأسرة عبر 50 ولاية عبر ثلاثة عقود إحصائية متتالية. لماذا لا يجب استخدام طريقة Natural Breaks؟",
+        "a_en": "Because Natural Breaks recalculates class break boundaries dynamically based on the specific dataset distribution of each year, making cross-year visual comparison statistically invalid.",
+        "a_ar": "لأن طريقة Natural Breaks تعيد حساب حدود الفئات ديناميكياً لكل سنة بشكل مستقل، مما يجعل المقارنة البصرية عبر السنوات غير صحيحة إحصائياً."
+      },
+      {
+        "q_en": "Which rotation type starts with 0 degrees at the East and rotates counterclockwise?",
+        "q_ar": "أي نمط من أنماط التدوير يبدأ بزاوية 0 درجة من جهة الشرق ويدور عكس اتجاه عقارب الساعة؟",
+        "a_en": "Arithmetic rotation. In contrast, Geographic rotation starts at North (0°) and rotates clockwise.",
+        "a_ar": "التدوير الحسابي (Arithmetic). بينما التدوير الجغرافي يبدأ من الشمال (0°) ويدور مع عقارب الساعة."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m5_lab1",
+        "task_en": "Compare all 7 Classification Methods (Jenks, Quantile, Equal Interval, Defined, Manual, Geometric, Std Dev)",
+        "task_ar": "مقارنة طرق التصنيف الإحصائي السبع عملياً وتحليل الفروق بين Jenks و Quantile و Std Dev"
+      },
+      {
+        "id": "m5_lab2",
+        "task_en": "Normalize demographic counts by total population to avoid misleading raw count choropleth maps",
+        "task_ar": "توحيد البيانات السكانية معيارياً (Normalization) بالقسمة على إجمالي السكان لتفادي الخرائط المضللة"
+      },
+      {
+        "id": "m5_lab3",
+        "task_en": "Configure Visual Variables to vary symbol size by magnitude and rotation by wind direction (Geographic vs Arithmetic)",
+        "task_ar": "ضبط المتغيرات البصرية لتغيير حجم الرمز بالقيمة وتدويره بزاوية الرياح (جغرافياً أو حسابياً)"
+      },
+      {
+        "id": "m5_lab4",
+        "task_en": "Enable Symbol Layer Drawing to seamlessly merge highway casings without overlapping borders",
+        "task_ar": "تفعيل رسم طبقات الرموز Symbol Layer Drawing لربط حواف الطرق السريعة بسلاسة دون تقاطعات"
+      },
+      {
+        "id": "m5_lab5",
+        "task_en": "Apply Dot Density, Bivariate Colors, and Dynamic Heat Map symbology on incident points",
+        "task_ar": "تطبيق ترميز الكثافة النقطية والألوان الثنائية وخريطة الكثافة الحرارية على نقاط الحوادث"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M6",
+    "week": 2,
+    "domain": "viz",
+    "domainTitle_en": "Visualization (25%)",
+    "domainTitle_ar": "العرض البصري والخرائط (25%)",
+    "title_en": "Module 6: Queries, Display Control & Maplex Labeling",
+    "title_ar": "الموديول 6: الاستعلامات، التحكم بالعرض ومحرك تسميات Maplex",
+    "summary_en": "Master Definition Queries vs. Display Filters, Layer Blend Modes, Reference Scales, and the Maplex Label Engine with Arcade expressions and Annotation.",
+    "summary_ar": "إتقان استعلامات التعريف مقابل فلاتر العرض، أوضاع دمج الطبقات، مقياس الرسم المرجعي، ومحرك تسميات Maplex مع تعبيرات Arcade والحواشي.",
+    "ui_paths": [
+      {
+        "label_en": "Set Definition Query",
+        "label_ar": "إعداد استعلام التعريف",
+        "path": "Contents Pane > Right-click Layer > Properties > Definition Query"
+      },
+      {
+        "label_en": "Configure Display Filter",
+        "label_ar": "إعداد فلتر العرض",
+        "path": "Layer Properties > Display tab > Display Filters (or Symbology pane)"
+      },
+      {
+        "label_en": "Set Layer Blend Mode",
+        "label_ar": "ضبط وضع دمج الطبقات",
+        "path": "Select Layer > Feature Layer ribbon tab > Blending group > Layer Blend"
+      },
+      {
+        "label_en": "Open Labeling Properties",
+        "label_ar": "فتح خصائص التسميات",
+        "path": "Select Layer > Labeling tab on Ribbon > Label Placement group (Maplex)"
+      },
+      {
+        "label_en": "Convert Labels to Annotation",
+        "label_ar": "تحويل التسميات إلى حواشٍ",
+        "path": "Geoprocessing > Search 'Convert Labels to Annotation' tool"
+      }
+    ],
+    "key_concepts_en": [
+      "Definition Query vs Display Filter: A Definition Query filters which features are retrieved by ArcGIS Pro (excluded features are inaccessible to selections, tables, or GP tools). A Display Filter controls only feature visibility at specific scales without excluding them from the attribute table or analysis.",
+      "Layer Blending Modes: 'Multiply' mode darkens pixels by multiplying color values with underlying layers; standard for draping colored categorical layers over a grayscale Hillshade to show terrain shadows without color washout. 'Screen' mode inverts and lightens.",
+      "Reference Scale: Fixes the symbol size and text font size to look identical at a specific scale. When zoomed in, symbols and text enlarge; when zoomed out, they shrink.",
+      "Maplex Label Engine: Standard advanced labeling engine. Supports Fitting Strategies: Stacking, Font Reduction, Overrun, and Abbreviation Dictionaries. Conflict resolution via Feature Weight (0 to 1000) and Label Priority.",
+      "Arcade Labeling: Constructing dynamic labels using '$feature.FIELD', conditional logic ('if (IsEmpty(...))'), and formatting tags ('<CLR red=\"255\">', '<FNT size=\"10\">', '<BOL>').",
+      "Labels vs Annotation: Labels are generated dynamically on the fly in memory; Annotation features are permanent geometric objects stored in a Geodatabase Feature Class, enabling individual manual movement, rotation, and re-styling."
+    ],
+    "key_concepts_ar": [
+      "استعلام التعريف مقابل فلتر العرض: استعلام التعريف (Definition Query) يقيد المعالم المسترجعة بالكامل (المعالم المستبعدة تختفي من الجداول وأدوات التحليل). أما فلتر العرض (Display Filter) فيتحكم فقط بظهور المعالم بصرياً عند مقاييس رسم معينة دون حجبها من الجدول أو التحليل.",
+      "أوضاع دمج الطبقات (Layer Blend Modes): وضع 'Multiply' يدمج قيم الألوان مع الطبقة السفلية؛ وهو المعيار لعرض طبقات استخدامات الأراضي الملونة فوق تظليل التضاريس (Hillshade) لإبراز الجبال دون بهتان الألوان. وضع 'Screen' يفتح الألوان.",
+      "مقياس الرسم المرجعي (Reference Scale): يثبت الحجم المطبوع للرموز والنصوص عند مقياس معين. وعند التكبير تكبر الرموز والنصوص، وعند التصغير تصغر بنفس النسبة.",
+      "محرك تسميات Maplex: المحرك المتقدم المعتمد. يدعم استراتيجيات الملاءمة: التكديس (Stacking)، تصغير الخط، التجاوز (Overrun)، وقواميس الاختصارات. وحل التعارض عبر وزن المعلم (Feature Weight من 0 إلى 1000) وأولوية التسميات.",
+      "تسميات Arcade: بناء نصوص تفاعلية شرطية باستخدام '$feature' ودوال التحقق من القيم الفارغة 'IsEmpty' ووسوم التنسيق مثل '<CLR>' و '<FNT>'.",
+      "التسميات مقابل الحواشي (Annotation): التسميات ديناميكية تتولد في الذاكرة لحظياً؛ أما الحواشي التوضيحية فهي معالم مكانية حقيقية مخزنة في قاعدة البيانات تتيح التحرير والتحريك والتدوير الفردي لكل نص."
+    ],
+    "comparison_table": {
+      "title_en": "Data Filtering: Definition Query vs. Display Filter vs. Page Query",
+      "title_ar": "مقارنة تصفية البيانات: استعلام التعريف مقابل فلتر العرض مقابل استعلام الصفحة",
+      "headers_en": [
+        "Feature",
+        "Definition Query",
+        "Display Filter",
+        "Page Query (Map Series)"
+      ],
+      "headers_ar": [
+        "الخاصية",
+        "استعلام التعريف (Definition Query)",
+        "فلتر العرض (Display Filter)",
+        "استعلام الصفحة (Page Query)"
+      ],
+      "rows_en": [
+        [
+          "Impact on Attribute Table",
+          "Hides excluded rows completely",
+          "All rows remain visible in table",
+          "All rows remain in table"
+        ],
+        [
+          "Impact on GP Analysis",
+          "Excluded features are NOT processed",
+          "Excluded features ARE processed",
+          "All features processed"
+        ],
+        [
+          "Primary Purpose",
+          "Exclude irrelevant records from project",
+          "Reduce visual clutter at small scales",
+          "Filter features to match active map book page"
+        ],
+        [
+          "Scale Dependence",
+          "Applies across all zoom levels",
+          "Scale-dependent rules configured",
+          "Driven by active Map Series index"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "التأثير على جدول السمات",
+          "يحجب الصفوف المستبعدة تماماً من الجدول",
+          "تبقى جميع الصفوف مرئية وقابلة للاستعلام",
+          "تبقى جميع الصفوف في الجدول"
+        ],
+        [
+          "التأثير على التحليل والمعالجة",
+          "المعالم المستبعدة لا تدخل في أدوات GP",
+          "المعالم المستبعدة تدخل بالكامل في التحليل",
+          "جميع المعالم تظل متاحة للتحليل"
+        ],
+        [
+          "الهدف الأساسي",
+          "استبعاد بيانات غير لازمة من الطبقة",
+          "تقليل الزحام البصري عند مقاييس الرسم الصغيرة",
+          "حصر المعالم المطابقة لصفحة أطلس الخرائط الحالية"
+        ],
+        [
+          "الاعتماد على مقياس الرسم",
+          "يطبق على جميع مقاييس التكبير والتصغير",
+          "يعتمد على قواعد محددة بمقاييس الرسم",
+          "مرتبط بمعلم الفهرس لصفحة المخطط الحالية"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "Which Layer Blend Mode should be used when draping a colored land cover layer over a shaded relief (Hillshade) to keep rich colors?",
+        "q_ar": "أي وضع من أوضاع دمج الطبقات يجب استخدامه لعرض طبقة غطاء أرضي ملونة فوق تضاريس مظللة (Hillshade) للحفاظ على تشبع الألوان؟",
+        "a_en": "Multiply mode. It multiplies the color channels, allowing underlying hillshade shadows to darken the layer without washing out color saturation.",
+        "a_ar": "وضع الضرب (Multiply)، حيث يدمج الألوان مع التظليل السفلي لإبراز تضاريس الجبال مع الحفاظ على حيوية وتشبع الألوان دون بهتان."
+      },
+      {
+        "q_en": "What is the key difference between setting a Feature Weight of 1000 versus 0 in the Maplex Label Engine?",
+        "q_ar": "ما هو الفرق الأساسي بين تعيين وزن المعلم (Feature Weight) بـ 1000 مقابل 0 في محرك التسميات Maplex؟",
+        "a_en": "A weight of 1000 treats the feature as an absolute barrier that labels must never overlap, whereas a weight of 0 allows labels to be freely placed over it.",
+        "a_ar": "الوزن 1000 يعتبر المعلم حاجزاً مطلقاً يمنع مرور أي نص فوقه نهائياً، بينما الوزن 0 يسمح بمرور التسميات فوقه بحرية."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m6_lab1",
+        "task_en": "Apply Definition Query to exclude inactive records from attribute tables and geoprocessing",
+        "task_ar": "تطبيق استعلام التعريف Definition Query لاستبعاد السجلات غير النشطة من الجداول والتحليل"
+      },
+      {
+        "id": "m6_lab2",
+        "task_en": "Configure Display Filters with scale-dependent thresholds to declutter map without hiding table data",
+        "task_ar": "إعداد فلاتر العرض Display Filters لتخفيف الزحام البصري عند مقاييس معينة دون حذف البيانات من الجدول"
+      },
+      {
+        "id": "m6_lab3",
+        "task_en": "Set Layer Blend Mode to 'Multiply' to drape land use over Hillshade without washing out saturation",
+        "task_ar": "ضبط وضع دمج الطبقات على 'Multiply' لعرض استخدامات الأراضي فوق التضاريس دون بهتان الألوان"
+      },
+      {
+        "id": "m6_lab4",
+        "task_en": "Configure Maplex Label Engine with Stacking, Font Reduction, Overrun, and Abbreviation Dictionaries",
+        "task_ar": "إعداد محرك Maplex باستراتيجيات التكديس، تصغير الخط، التجاوز، وقواميس الاختصارات المعتمدة"
+      },
+      {
+        "id": "m6_lab5",
+        "task_en": "Write multi-line Arcade label expressions with conditional formatting tags (<CLR>, <FNT>, <BOL>)",
+        "task_ar": "كتابة نصوص Arcade متعددة الأسطر مع وسوم التنسيق الشرطية للألوان وأحجام الخطوط"
+      },
+      {
+        "id": "m6_lab6",
+        "task_en": "Convert dynamic labels into Geodatabase Annotation feature class and edit individual text positions",
+        "task_ar": "تحويل التسميات إلى فئة حواشٍ Annotation بقاعدة البيانات وتحريك وتعديل النصوص فردياً"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M7",
+    "week": 2,
+    "domain": "viz",
+    "domainTitle_en": "Visualization (25%)",
+    "domainTitle_ar": "العرض البصري والخرائط (25%)",
+    "title_en": "Module 7: 3D Scenes, Temporal & Range Visualization",
+    "title_ar": "الموديول 7: المشاهد ثلاثية الأبعاد، البيانات الزمنية والنطاقية",
+    "summary_en": "Differentiate Global vs. Local Scenes, configure 3D layer extrusion, elevation surfaces, 3D exploratory analysis, and Time/Range Sliders.",
+    "summary_ar": "المقارنة بين المشاهد العالمية والمحلية، إعداد تجسيم الطبقات ثلاثية الأبعاد، أسطح الارتفاعات، التحليل الاستكشافي 3D، ومشرقي الوقت والنطاق.",
+    "ui_paths": [
+      {
+        "label_en": "Convert 2D to 3D",
+        "label_ar": "تحويل خريطة 2D إلى مشهد 3D",
+        "path": "View tab on Ribbon > View group > Convert > To Local Scene (or To Global Scene)"
+      },
+      {
+        "label_en": "Configure Layer Extrusion",
+        "label_ar": "إعداد تجسيم الطبقات",
+        "path": "Select 3D Layer > Feature Layer tab > Extrusion group > Type (e.g., Base Height)"
+      },
+      {
+        "label_en": "Link 3D and 2D Views",
+        "label_ar": "ربط العرض ثنائي وثلاثي الأبعاد",
+        "path": "View tab > Windows group > Link Views > Center and Scale"
+      },
+      {
+        "label_en": "Exploratory 3D Analysis",
+        "label_ar": "التحليل الاستكشافي 3D",
+        "path": "Analysis tab > Workflows group > Exploratory 3D Analysis (Viewshed, Slice)"
+      },
+      {
+        "label_en": "Configure Range Slider",
+        "label_ar": "تفعيل شريط النطاق",
+        "path": "Contents Pane > Select Layer > Data tab > Range group > Select Range Field"
+      }
+    ],
+    "key_concepts_en": [
+      "Global Scene vs Local Scene: Global Scenes project onto a 3D spherical globe (WGS84 coordinate system) and represent world/continental extents. Local Scenes project onto a flat coordinate system (PCS like State Plane/UTM), support custom clipped extents, and FULLY SUPPORT subsurface navigation (tunnels, geology, underground pipes).",
+      "Extrusion Methods: Extrudes 2D polygons vertically into 3D volumes based on attributes: 'Base Height' (adds value to each vertex's base height); 'Absolute Height' (extrudes to an absolute Z elevation regardless of terrain); 'Min Height' / 'Max Height'.",
+      "Elevation Surfaces: Ground surface defines the base height for 2D and 3D layers (e.g., WorldElevation3D/Terrain3D). Custom elevation surfaces model geological formations or bathymetry.",
+      "Exploratory 3D Analysis: Interactive GPU-accelerated tools including 'Viewshed' (determines visible vs obstructed sightlines from an observer point) and 'Slice' (cross-section planes through 3D meshes or subsurface strata).",
+      "Time Slider vs Range Slider: Time Slider animates temporal changes based on Date/Time fields. Range Slider filters discrete or continuous integer/numeric data across any non-temporal dimension (e.g., floor levels in high-rise buildings, pipe pressures)."
+    ],
+    "key_concepts_ar": [
+      "المشاهد العالمية مقابل المحلية: المشاهد العالمية (Global Scenes) تسقط على كرة كروية بنظام WGS84 وتختص بالمشاريع القارية والعالمية. المشاهد المحلية (Local Scenes) تسقط على نظام مستوٍ مسقط (PCS) وتدعم اقتطاع حدود المشروع، وتدعم بالكامل الملاحة تحت سطح الأرض (الأنفاق، الجيولوجيا، وأنابيب المرافق).",
+      "طرق التجسيم (Extrusion): رفع المضلعات ثنائية الأبعاد إلى مجسمات ثلاثية الأبعاد بناءً على حقل: 'Base Height' (إضافة القيمة فوق ارتفاع سطح الأرض)، 'Absolute Height' (الرفع لقيمة Z مطلقة بغض النظر عن التضاريس).",
+      "أسطح الارتفاع (Elevation Surfaces): يحدد سطح الأرض (Ground) الارتفاع المرجعي لطبقات الخريطة. وتتيح الأسطح المخصصة نمذجة الطبقات الجيولوجية تحت السطحية أو أعماق البحار.",
+      "التحليل الاستكشافي ثلاثي الأبعاد: أدوات تفاعلية سريعة تعتمد على معالج الرسوميات تشمل 'Viewshed' (تحليل نطاق الرؤية وتحديد المناطق المحجوبة) و 'Slice' (عمل قطاعات تشريحية في المباني والمجسمات).",
+      "شريط الوقت مقابل شريط النطاق: شريط الوقت (Time Slider) يحرك البيانات زمنياً بناءً على حقول التاريخ والوقت. بينما شريط النطاق (Range Slider) يصفي المعالم بناءً على قيم رقمية غير زمنية (مثل أرقام الطوابق في المباني الشاهقة أو مستويات الضغط)."
+    ],
+    "comparison_table": {
+      "title_en": "3D Environments: Local Scene vs. Global Scene",
+      "title_ar": "مقارنة البيئات ثلاثية الأبعاد: المشهد المحلي مقابل المشهد العالمي",
+      "headers_en": [
+        "Characteristic",
+        "Local Scene",
+        "Global Scene"
+      ],
+      "headers_ar": [
+        "الخاصية",
+        "المشهد المحلي (Local Scene)",
+        "المشهد العالمي (Global Scene)"
+      ],
+      "rows_en": [
+        [
+          "Coordinate System",
+          "Projected Coordinate Systems (PCS - State Plane, UTM)",
+          "Geographic WGS 1984 (Spherical globe projection)"
+        ],
+        [
+          "Subsurface Navigation",
+          "FULLY SUPPORTED (Navigate below ground level)",
+          "Constrained / Not intended for underground visualization"
+        ],
+        [
+          "Spatial Scale",
+          "Campus, city, localized engineering site, mine",
+          "Continental, global, satellite orbits, global weather"
+        ],
+        [
+          "Extent Clipping",
+          "Supports clipping to rectangular or custom polygon boundary",
+          "Always displays full planetary Earth globe"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "نظام الإحداثيات",
+          "نظم إحداثيات مسقطة مستوية (PCS مثل State Plane و UTM)",
+          "نظام إحداثيات جغرافي كروي WGS 1984"
+        ],
+        [
+          "الملاحة تحت السطح",
+          "مدعومة بالكامل (التنقل واستكشاف الطبقات تحت الأرض)",
+          "مقيدة جداً وغير مصممة لعرض المعالم تحت السطحية"
+        ],
+        [
+          "المقياس المكاني",
+          "حرم جامعي، مدينة، موقع هندسي محلي، مناجم وأنفاق",
+          "قاري، عالمي، مدارات الأقمار الصناعية والطقس الكوكبي"
+        ],
+        [
+          "اقتطاع نطاق العرض",
+          "تدعم اقتطاع المشهد داخل حدود مستطيلة أو مضلع مخصص",
+          "تعرض كامل كوكب الأرض دائماً ككرة أرضية مستمرة"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "An environmental engineer needs to visualize a subway line and utility pipes located 25 meters underground in UTM Zone 18N. Which scene type must be used?",
+        "q_ar": "يحتاج مهندس بيئي إلى نمذجة مسار مترو أنفاق وأنابيب مرافق تقع على عمق 25 متراً تحت الأرض بنظام UTM Zone 18N. أي نوع من المشاهد يجب اختياره؟",
+        "a_en": "A Local Scene. It supports projected coordinate systems and enables full subsurface navigation below the ground elevation surface.",
+        "a_ar": "مشهد محلي (Local Scene). لأنه يدعم نظم الإحداثيات المسقطة ويتيح الملاحة الكاملة واستكشاف المعالم الواقعة تحت سطح الأرض."
+      },
+      {
+        "q_en": "Which dynamic interface slider is used to filter indoor building models by floor level (e.g., Floor 1, Floor 2, Floor 3)?",
+        "q_ar": "أي شريط تمرير تفاعلي يُستخدم لتصفية مجسمات المباني الداخلية حسب رقم الطابق (مثل الطابق 1، 2، 3)؟",
+        "a_en": "The Range Slider. It filters numeric values across any non-temporal dimension.",
+        "a_ar": "شريط النطاق (Range Slider)، حيث يختص بتصفية البيانات الرقمية وفق أبعاد غير زمنية مثل أرقام الطوابق."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "M7_lab1",
+        "task_en": "Convert 2D Map of NYC to a 3D Local Scene using View -> Convert -> To Local Scene",
+        "task_ar": "تحويل خريطة نيويورك ثنائية الأبعاد إلى مشهد محلي ثلاثي الأبعاد Local Scene"
+      },
+      {
+        "id": "m7_lab2",
+        "task_en": "Configure Building Extrusion using 'Base Height' and 'Absolute Height' attribute formulas",
+        "task_ar": "إعداد تجسيم المباني Extrusion باستخدام ارتفاع القاعدة والارتفاع المطلق للأسطح"
+      },
+      {
+        "id": "m7_lab3",
+        "task_en": "Add custom subterranean elevation surface and enable subsurface navigation for utility pipes",
+        "task_ar": "إضافة سطح ارتفاع تحت أرضي وتفعيل الملاحة تحت السطحية لأنابيب المرافق والأنفاق"
+      },
+      {
+        "id": "m7_lab4",
+        "task_en": "Use Exploratory 3D Viewshed tool to assess antenna mast line-of-sight against 3D buildings",
+        "task_ar": "استخدام أداة Viewshed الاستكشافية التفاعلية لفحص خطوط الرؤية لبرج هوائي بين ناطحات السحاب"
+      },
+      {
+        "id": "m7_lab5",
+        "task_en": "Configure Range Slider to filter multi-story architectural BIM floorplans by floor number",
+        "task_ar": "تفعيل شريط النطاق Range Slider لتصفية الطوابق المعمارية للمبنى وفق رقم الطابق"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M8",
+    "week": 3,
+    "domain": "analysis",
+    "domainTitle_en": "Analysis & Geoprocessing (25%)",
+    "domainTitle_ar": "التحليل والمعالجة المكانية (25%)",
+    "title_en": "Module 8: Tabular & Spatial Joins, Overlay & Proximity",
+    "title_ar": "الموديول 8: الضم الجدولي والمكاني، التراكب والتقارب",
+    "summary_en": "Master Add Join vs. Add Relate cardinalities, Spatial Join match options and merge rules, Pairwise tools, and Geodesic vs. Planar buffers.",
+    "summary_ar": "إتقان درجات علاقات الضم الجدولي والمكاني، خيارات المطابقة وقواعد الدمج، أدوات Pairwise، والفرق بين الحرم الجيوديسي والمستوي.",
+    "ui_paths": [
+      {
+        "label_en": "Add Join to Layer",
+        "label_ar": "إضافة ضم جدولي",
+        "path": "Contents Pane > Right-click Layer > Joins and Relates > Add Join"
+      },
+      {
+        "label_en": "Spatial Join Tool",
+        "label_ar": "أداة الضم المكاني",
+        "path": "Geoprocessing > Search 'Spatial Join' tool"
+      },
+      {
+        "label_en": "Pairwise Buffer Tool",
+        "label_ar": "أداة الحرم المكاني المتوازي",
+        "path": "Geoprocessing > Search 'Pairwise Buffer' tool"
+      },
+      {
+        "label_en": "Select By Location",
+        "label_ar": "التحديد بالموقع الجغرافي",
+        "path": "Map tab on Ribbon > Selection group > Select By Location"
+      }
+    ],
+    "key_concepts_en": [
+      "Add Join vs Add Relate: Add Join appends columns in memory; valid for 1:1 and Many-to-1 (M:1) cardinalities. In a 1:Many (1:M) relationship, Add Join joins only the first matching record and drops subsequent rows. Add Relate supports 1:M and M:N relationships without appending columns, linking records interactively.",
+      "Spatial Join: Joins attributes based on spatial relationships ('Intersect', 'Within', 'Contains', 'Within a Distance'). Output cardinalities: 'JOIN_ONE_TO_ONE' (aggregates multiple matching records using Field Map merge rules: Sum, Mean, Count) vs 'JOIN_ONE_TO_MANY' (creates duplicate target features for each matching join feature).",
+      "Overlay Tools: 'Clip' (cookie-cutter, extracts target features within clip boundary; input attributes only); 'Intersect' (computes geometric intersection; keeps shared area with attributes from all inputs); 'Union' (combines geometries and attributes of all polygon inputs); 'Erase' (removes portions of input overlapping erase features).",
+      "Pairwise Geoprocessing: 'Pairwise Buffer', 'Pairwise Intersect', 'Pairwise Dissolve' use multi-threaded parallel processing algorithms to complete massive overlay operations significantly faster than legacy single-threaded tools.",
+      "Geodesic vs Planar Buffers: Planar buffers calculate distances on a projected flat 2D plane; accuracy distorts heavily across continental or global scales. Geodesic buffers compute true distances over the 3D ellipsoid curve, producing distortion-free buffers regardless of map projection."
+    ],
+    "key_concepts_ar": [
+      "الضم الجدولي مقابل الربط (Add Join vs Relate): أداة Add Join تدمج الأعمدة في الذاكرة وتصلح لعلاقات 1:1 و M:1. وفي علاقات 1:M يربط أول سجل مطابق فقط ويهمل البقية. بينما Add Relate يدعم علاقات 1:M و M:N دون دمج الأعمدة ويتيح استعراض السجلات المرتبطة.",
+      "الضم المكاني (Spatial Join): يربط السمات بناءً على الموقع الجغرافي (Intersect, Within, Contains). ويأخذ نمطين: 'JOIN_ONE_TO_ONE' (يدمج السجلات المتعددة المطابقة عبر قواعد دمج الحقول: الجمع Sum، المتوسط Mean، أو العدد Count) مقابل 'JOIN_ONE_TO_MANY' (يكرر المعلم الهدف لكل تطابق).",
+      "أدوات التراكب المكاني: Clip (اقتطاع المعالم داخل حدود القناع مع الحفاظ على سمات الهدف فقط)؛ Intersect (تقاطع المعالم مع دمج سمات جميع الطبقات المدخلة)؛ Union (دمج كامل المساحات والسمات للمضلعات المدخلة)؛ Erase (حذف الأجزاء المتداخلة مع طبقة المسح).",
+      "أدوات Pairwise للمعالجة المتوازية: Pairwise Buffer و Pairwise Intersect تستخدم خوارزميات المعالجة المتعددة الأنوية (Parallel Processing) لإنجاز العمليات الضخمة بسرعة تفوق الأدوات التقليدية بأضعاف.",
+      "الحرم المكاني الجيوديسي مقابل المستوي: الحرم المستوي (Planar Buffer) يحسب المسافات على سطح مستوٍ وتتشوه دقته عند المساحات القارية. بينما الحرم الجيوديسي (Geodesic Buffer) يحسب المسافة الحقيقية على انحناء المجسم الكروي دون أي تشوه."
+    ],
+    "comparison_table": {
+      "title_en": "Overlay Tools: Clip vs. Intersect vs. Union vs. Erase",
+      "title_ar": "مقارنة أدوات التراكب المكاني: Clip مقابل Intersect مقابل Union مقابل Erase",
+      "headers_en": [
+        "Tool",
+        "Geometry Types Supported",
+        "Output Attributes",
+        "Spatial Operation"
+      ],
+      "headers_ar": [
+        "الأداة",
+        "الأنواع الهندسية المدعومة",
+        "السمات الناتجة في المخرجات",
+        "العملية المكانية"
+      ],
+      "rows_en": [
+        [
+          "Clip",
+          "Points, Lines, Polygons (Clipped by Polygon)",
+          "Input features attributes ONLY",
+          "Extracts input features inside clip boundary"
+        ],
+        [
+          "Intersect",
+          "Points, Lines, Polygons (Mixed allowed)",
+          "Attributes from ALL participating inputs",
+          "Preserves overlapping spatial regions common to all inputs"
+        ],
+        [
+          "Union",
+          "POLYGONS ONLY",
+          "Attributes from ALL input polygon layers",
+          "Combines all spatial extents; creates multipart/slivers"
+        ],
+        [
+          "Erase",
+          "Points, Lines, Polygons (Erased by Polygon)",
+          "Input features attributes ONLY",
+          "Removes portions of input overlapping erase polygon"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "Clip (اقتطاع)",
+          "نقاط، خطوط، مضلعات (تُقتطع بمضلع)",
+          "سمات الطبقة المدخلة فقط",
+          "استخراج المعالم الواقعة داخل حدود المضلع"
+        ],
+        [
+          "Intersect (تقاطع)",
+          "نقاط، خطوط، مضلعات (بأي مزيج)",
+          "سمات جميع الطبقات المشتركة في التقاطع",
+          "الاحتفاظ فقط بالمناطق المكانية المشتركة بين الجميع"
+        ],
+        [
+          "Union (اتحاد)",
+          "مضلعات فقط (Polygons Only)",
+          "سمات جميع طبقات المضلعات المدخلة",
+          "دمج كامل المساحات مع إبقاء المعالم المتداخلة والمنفصلة"
+        ],
+        [
+          "Erase (مسح)",
+          "نقاط، خطوط، مضلعات (تُمسح بمضلع)",
+          "سمات الطبقة المدخلة فقط",
+          "حذف المعالم الواقعة داخل حدود مضلع المسح"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "An analyst performs an Add Join between a Parcels layer (500 features) and an Owner Deeds table with 1,200 records (multiple deeds per parcel). Why do only 500 records appear?",
+        "q_ar": "قام محلل بتنفيذ Add Join بين طبقة قطع الأراضي (500 معلم) وجدول الملكيات الذي يحوي 1200 سجل (عدة ملكيات للقطعة). لماذا تظهر 500 نتيجة فقط؟",
+        "a_en": "Because standard Add Join supports 1:1 or M:1. In a 1:Many relationship, it joins only the first matching record from the join table and drops subsequent matches.",
+        "a_ar": "لأن أداة Add Join تدعم فقط علاقات 1:1 أو M:1. وفي علاقة 1:M تربط الأداة السجل الأول المتطابق فقط وتتجاهل بقية السجلات المطابقة."
+      },
+      {
+        "q_en": "Which buffer type must be used when creating a 500-kilometer exclusion zone around flight paths across North America?",
+        "q_ar": "أي نمط حرم مكاني (Buffer) يجب استخدامه لإنشاء منطقة حظر طيران بعرض 500 كيلومتر عبر قارة أمريكا الشمالية؟",
+        "a_en": "Geodesic Buffer. Planar buffers introduce severe geometric distortion when measuring large linear distances across continental scales.",
+        "a_ar": "الحرم الجيوديسي (Geodesic Buffer)، لأن الحرم المستوي يسبب تشوهات هندسية حادة عند قياس مسافات شاسعة عبر نطاق القارات."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m8_lab1",
+        "task_en": "Execute Add Join for 1:1 census tables and export features to make join permanent on disk",
+        "task_ar": "تنفيذ ضم الجداول Add Join لعلاقات 1:1 وتصدير الطبقة لتثبيت الأعمدة بشكل دائم"
+      },
+      {
+        "id": "m8_lab2",
+        "task_en": "Configure Add Relate for 1:Many building inspection records and navigate related records",
+        "task_ar": "إعداد ربط الجداول Add Relate لعلاقات 1:M واستعراض السجلات التاريخية المرتبطة"
+      },
+      {
+        "id": "m8_lab3",
+        "task_en": "Execute Spatial Join with JOIN_ONE_TO_ONE and Field Map Merge Rules (Sum, Mean, Count)",
+        "task_ar": "تشغيل الضم المكاني Spatial Join بنمط 1:1 وقواعد دمج الحقول بالجمع والمتوسط والتعداد"
+      },
+      {
+        "id": "m8_lab4",
+        "task_en": "Compare overlay operations: Clip vs. Intersect vs. Union vs. Erase and inspect output schema",
+        "task_ar": "مقارنة عمليات التراكب المكاني Clip و Intersect و Union و Erase وفحص الحقول الناتجة"
+      },
+      {
+        "id": "m8_lab5",
+        "task_en": "Execute Pairwise Buffer and compare execution speed and topology against standard Buffer",
+        "task_ar": "تشغيل أداة الحرم المكاني المتوازي Pairwise Buffer ومقارنة السرعة مع الأدوات التقليدية"
+      },
+      {
+        "id": "m8_lab6",
+        "task_en": "Generate Geodesic Buffers across continental boundary zones to eliminate planar distortion",
+        "task_ar": "إنشاء حرم مكاني جيوديسي Geodesic Buffer عبر مساحات قارية لمنع التشوه الإسقاطي"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M9",
+    "week": 3,
+    "domain": "analysis",
+    "domainTitle_en": "Analysis & Geoprocessing (25%)",
+    "domainTitle_ar": "التحليل والمعالجة المكانية (25%)",
+    "title_en": "Module 9: Spatial Statistics, Space-Time Cubes & Raster Suitability",
+    "title_ar": "الموديول 9: الإحصاء المكاني، مكعبات الزمان والمكان وملاءمة الراستر",
+    "summary_en": "Master Hot Spot Analysis (Getis-Ord Gi*), Space-Time Cubes (.nc), Emerging Hot Spot Analysis, OLS regression, and Raster Suitability modeling.",
+    "summary_ar": "إتقان تحليل البؤر الساخنة (Getis-Ord Gi*)، مكعبات الزمان والمكان (.nc)، تحليل البؤر الساخنة الناشئة، انحدار OLS، ونمذجة ملاءمة الراستر.",
+    "ui_paths": [
+      {
+        "label_en": "Hot Spot Analysis (Getis-Ord Gi*)",
+        "label_ar": "تحليل البؤر الساخنة",
+        "path": "Geoprocessing > Search 'Hot Spot Analysis (Getis-Ord Gi*)' tool"
+      },
+      {
+        "label_en": "Create Space Time Cube",
+        "label_ar": "إنشاء مكعب الزمان والمكان",
+        "path": "Geoprocessing > Space Time Pattern Mining Tools > Create Space Time Cube By Aggregating Points"
+      },
+      {
+        "label_en": "Emerging Hot Spot Analysis",
+        "label_ar": "تحليل البؤر الساخنة الناشئة",
+        "path": "Geoprocessing > Space Time Pattern Mining Tools > Emerging Hot Spot Analysis"
+      },
+      {
+        "label_en": "Suitability Modeler",
+        "label_ar": "منمذج الملاءمة المكانية",
+        "path": "Analysis tab on Ribbon > Suitability Modeler"
+      }
+    ],
+    "key_concepts_en": [
+      "Hot Spot Analysis (Getis-Ord Gi*): Identifies statistically significant spatial clusters of high values (Hot Spots - red) and low values (Cold Spots - blue). Evaluated by Z-scores and P-values: A high positive Z-score with p < 0.01 indicates significant clustering of high values that rejects the null hypothesis of Complete Spatial Randomness.",
+      "Space-Time Cubes (.nc format): Aggregates point events across space and time into netCDF space-time bins. Horizontal dimensions represent X and Y space; vertical dimension represents Time intervals (e.g., months).",
+      "Emerging Hot Spot Analysis: Analyzes trends across Space-Time Cubes using the Mann-Kendall statistic. Classifies patterns into: 'New Hot Spot' (statistically significant hot spot only in the final time step); 'Persistent Hot Spot' (statistically significant hot spot for 90% of time steps with no trend); 'Intensifying Hot Spot' (hot spot for 90% of time with statistically increasing clustering).",
+      "Ordinary Least Squares (OLS) vs GWR: OLS performs global linear regression; diagnostic Koenker (BP) test checks for non-stationarity. If significant, use Geographically Weighted Regression (GWR) to model spatially varying local relationships.",
+      "Raster Suitability Modeling: Sequential workflow: 'Extract By Mask' (clip to study boundary) -> 'Slope' & 'Aspect' (derive topographic metrics) -> 'Reclassify' (standardize disparate variables into common scale, e.g., 1 to 5) -> 'Raster Calculator' / Weighted Overlay (apply percentage weights)."
+    ],
+    "key_concepts_ar": [
+      "تحليل البؤر الساخنة (Getis-Ord Gi*): يحدد التجمعات الإحصائية ذات الدلالة للقيم العالية (Hot Spots - أحمر) والقيم المنخفضة (Cold Spots - أزرق). يقاس بدرجات Z-score وقيم P-value: درجة Z موجبة عالية مع p < 0.01 تؤكد وجود تجمع مكاني حقيقي يرفض الفرضية الصفرية للعشوائية المكانية.",
+      "مكعبات الزمان والمكان (Space-Time Cubes بصيغة .nc): تجميع نقاط الأحداث عبر أبعاد المكان والزمان في خلايا netCDF ثلاثية الأبعاد. يمثل المحوران الأفقيان X و Y، ويمثل المحور الرأسي الفترات الزمنية المتتالية.",
+      "تحليل البؤر الساخنة الناشئة (Emerging Hot Spot Analysis): يفحص اتجاهات مكعبات الزمان والمكان باختبار Mann-Kendall. ويصنف الأنماط إلى: 'New Hot Spot' (بؤرة ساخنة ظهرت فقط في الخطوة الزمنية الأخيرة)؛ 'Persistent Hot Spot' (بؤرة ساخنة مستمرة في أكثر من 90% من الفترات)؛ 'Intensifying Hot Spot' (بؤرة ساخنة تتزايد كثافتها إحصائياً مع الوقت).",
+      "انحدار OLS مقابل GWR: انحدار OLS يبني نموذجاً خطياً عاماً؛ ويكشف اختبار Koenker (BP) عن عدم الاستقرار المكاني. وإذا كان ذا دلالة، يُستخدم الانحدار الموزون جغرافياً (GWR) لنمذجة العلاقات المكانية المتغيرة محلياً.",
+      "نمذجة الملاءمة بالراستر: مسار عمل تسلسلي: Extract By Mask (اقتطاع منطقة الدراسة) -> Slope و Aspect (اشتقاق مؤشرات التضاريس) -> Reclassify (إعادة تصنيف المتغيرات وتوحيد مقياسها من 1 إلى 5) -> Raster Calculator أو Weighted Overlay (تطبيق الأوزان النسبية)."
+    ],
+    "comparison_table": {
+      "title_en": "Spatial Statistics: Hot Spot (Getis-Ord Gi*) vs. Kernel Density",
+      "title_ar": "مقارنة الإحصاء المكاني: تحليل البؤر الساخنة مقابل كثافة النواة",
+      "headers_en": [
+        "Parameter",
+        "Kernel Density",
+        "Hot Spot Analysis (Getis-Ord Gi*)"
+      ],
+      "headers_ar": [
+        "المعيار",
+        "كثافة النواة (Kernel Density)",
+        "تحليل البؤر الساخنة (Getis-Ord Gi*)"
+      ],
+      "rows_en": [
+        [
+          "Statistical Output",
+          "Calculates magnitude/density per unit area (descriptive)",
+          "Computes statistical significance (Z-scores and P-values)"
+        ],
+        [
+          "Data Requirements",
+          "Point or Polyline locations",
+          "Features with numeric attribute values or incident counts"
+        ],
+        [
+          "Testing Hypothesis",
+          "Does NOT test statistical significance (no null hypothesis)",
+          "Tests Complete Spatial Randomness (rejects null hypothesis)"
+        ],
+        [
+          "Visual Result",
+          "Smooth heat map raster showing where events concentrate",
+          "Points/polygons colored by confidence levels (90%, 95%, 99%)"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "المخرجات الإحصائية",
+          "يحسب الكثافة السطحية لكل وحدة مساحة (وصفي)",
+          "يحسب الدلالة الإحصائية الحقيقية (درجات Z-score وقيم P-value)"
+        ],
+        [
+          "متطلبات البيانات",
+          "مواقع نقاط أو خطوط فقط",
+          "معالم تحتوي على قيم رقمية أو تعداد للحوادث"
+        ],
+        [
+          "اختبار الفرضيات",
+          "لا يختبر الدلالة الإحصائية (لا توجد فرضية صفرية)",
+          "يختبر الفرضية الصفرية للعشوائية المكانية التامة CSR"
+        ],
+        [
+          "النتيجة البصرية",
+          "راستر ناعم يوضح مناطق تمركز الأحداث (خريطة حرارية)",
+          "معالم ملونة حسب مستويات الثقة الإحصائية (90%, 95%, 99%)"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "What does a high positive Z-score and a P-value < 0.01 signify in Hot Spot Analysis?",
+        "q_ar": "ماذا تعني درجة Z موجبة مرتفعة وقيمة P-value أقل من 0.01 في تحليل البؤر الساخنة؟",
+        "a_en": "It indicates a statistically significant hot spot cluster of high values at the 99% confidence level, rejecting Complete Spatial Randomness.",
+        "a_ar": "تشير إلى وجود بؤرة ساخنة ذات دلالة إحصائية لتجمع قيم مرتفعة عند مستوى ثقة 99%، مما يرفض فرضية العشوائية المكانية."
+      },
+      {
+        "q_en": "In Emerging Hot Spot Analysis, how is a location classified if it was never a hot spot previously but becomes a statistically significant hot spot in the final time step?",
+        "q_ar": "في تحليل البؤر الساخنة الناشئة، كيف يُصنف الموقع إذا لم يكن بؤرة ساخنة في أي فترة سابقة وأصبح بؤرة ساخنة فقط في الخطوة الزمنية الأخيرة؟",
+        "a_en": "New Hot Spot.",
+        "a_ar": "بؤرة ساخنة جديدة (New Hot Spot)."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m9_lab1",
+        "task_en": "Run Optimized Hot Spot Analysis (Getis-Ord Gi*) and interpret statistically significant Z-scores and P-values",
+        "task_ar": "تشغيل تحليل البؤر الساخنة المحسّن وفحص درجات Z-score وقيم P-value ذات الدلالة الإحصائية"
+      },
+      {
+        "id": "m9_lab2",
+        "task_en": "Create Space Time Cube by Aggregating Points (.nc) across 5 years of crime incident points",
+        "task_ar": "إنشاء مكعب الزمان والمكان .nc بتجميع نقاط بلاغات الجرائم على مدى 5 سنوات"
+      },
+      {
+        "id": "m9_lab3",
+        "task_en": "Run Emerging Hot Spot Analysis and identify New, Intensifying, and Persistent Hot Spots",
+        "task_ar": "تشغيل تحليل البؤر الساخنة الناشئة وتحديد البؤر الجديدة والمتزايدة والمستمرة"
+      },
+      {
+        "id": "m9_lab4",
+        "task_en": "Derive Slope, Aspect, and Hillshade (evaluating Z-Factor for unit conversion) in Spatial Analyst",
+        "task_ar": "اشتقاق الانحدار والتوجيه وتظليل التضاريس مع ضبط معامل Z-Factor لمعايرة وحدات الارتفاع"
+      },
+      {
+        "id": "m9_lab5",
+        "task_en": "Build boolean suitability model using Raster Calculator Map Algebra for vineyard site selection",
+        "task_ar": "بناء نموذج ملاءمة شرطي بحاسبة الراستر وجبر الخرائط لاختيار أفضل الأراضي الزراعية"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M10",
+    "week": 3,
+    "domain": "analysis",
+    "domainTitle_en": "Analysis & Geoprocessing (25%)",
+    "domainTitle_ar": "التحليل والمعالجة المكانية (25%)",
+    "title_en": "Module 10: Workflow Automation: Tasks, ModelBuilder & Python",
+    "title_ar": "الموديول 10: أتمتة مهام العمل: المهام الموجهة، ModelBuilder و Python",
+    "summary_en": "Master guided ArcGIS Pro Tasks, ModelBuilder mechanics (parameters, iterators, inline substitutions), and ArcPy scripts and cursors.",
+    "summary_ar": "إتقان مهام العمل الموجهة Tasks، خفايا أتمتة ModelBuilder (المعاملات، المكررات، الاستبدال الديناميكي)، وسكريبتات ArcPy ومؤشرات البيانات.",
+    "ui_paths": [
+      {
+        "label_en": "Create New Task",
+        "label_ar": "إنشاء مهمة عمل موجهة",
+        "path": "Insert tab on Ribbon > Tasks group > New Task Item"
+      },
+      {
+        "label_en": "Open ModelBuilder",
+        "label_ar": "فتح منشئ النماذج",
+        "path": "Analysis tab > Geoprocessing group > ModelBuilder"
+      },
+      {
+        "label_en": "Set Model Parameter",
+        "label_ar": "تعيين معامل للنموذج",
+        "path": "ModelBuilder tab > Right-click variable oval > Model Parameter (letter 'P' appears)"
+      },
+      {
+        "label_en": "Open Python Window",
+        "label_ar": "فتح نافذة بايثون",
+        "path": "Analysis tab > Geoprocessing group > Python"
+      }
+    ],
+    "key_concepts_en": [
+      "ArcGIS Pro Tasks: Interactive, guided workflows consisting of Task Items, Groups, and Steps. Step execution options: 'Manual' (user clicks next), 'Auto-Run' (executes tool automatically), 'Auto-Proceed' (advances to next step upon tool completion). Exported as '.esriTasks'.",
+      "ModelBuilder Elements & States: Blue ovals = Input data/variables; Yellow rectangles = Geoprocessing tools; Green ovals = Derived outputs. States: 'Not Ready to Run' (white/unfilled); 'Ready to Run' (colored); 'Has Run' (drop shadow behind elements).",
+      "Advanced ModelBuilder Features: Model Parameters (marked with letter 'P', exposes variable in GP dialog); Intermediate Data (flagged to automatically delete scratch files from disk upon run completion); Preconditions (dashed connector ensuring Tool A finishes before Tool B starts); Single Iterator Rule (only ONE iterator allowed per model; multiple iterators require nested submodels); Inline Variable Substitution ('%Name%' dynamically inserts variable string into output paths).",
+      "Python & ArcPy Automation: 'arcpy.env.workspace' sets default geodatabase; 'arcpy.env.overwriteOutput = True' allows overwriting. Data Access Cursors ('arcpy.da'): 'SearchCursor' (read-only), 'UpdateCursor' (modify/delete rows), 'InsertCursor' (add rows). Always use Python context manager ('with arcpy.da... as cursor:') to release schema locks.",
+      "Arcade vs Python in Calculate Field: In Python 3, fields are referenced using '!FieldName!'. In Arcade, fields are referenced using '$feature.FieldName'."
+    ],
+    "key_concepts_ar": [
+      "مهام العمل الموجهة (ArcGIS Pro Tasks): مسارات عمل إرشادية تتكون من حاوية ومهام وخطوات تفصيلية. خيارات تنفيذ الخطوة: Manual (يدوياً)، Auto-Run (تشغيل الأداة تلقائياً)، Auto-Proceed (الانتقال للخطوة التالية فور انتهاء الأداة). تُصدر كملف '.esriTasks'.",
+      "عناصر وحالات ModelBuilder: بيضاوي أزرق = مدخلات ومتغيرات؛ مستطيل أصفر = أداة معالجة؛ بيضاوي أخضر = مخرجات مشتقة. الحالات: Not Ready (أبيض لعدم اكتمال المدخلات)؛ Ready (ملون وجاهز)؛ Has Run (ظلال مسقطة drop shadow تدل على اكتمال التشغيل وإنشاء المخرجات على القرص).",
+      "خصائص متقدمة في النماذج: معاملات النموذج Model Parameters (تظهر بحرف 'P' لإتاحة المدخل في واجهة الأداة للمستخدم)؛ البيانات الوسيطة Intermediate Data (وسم المخرجات المؤقتة لحذفها تلقائياً عند انتهاء النموذج)؛ الشروط المسبقة Preconditions (سهم متقطع لضمان انتهاء خطوة قبل بدء الأخرى)؛ قاعدة المكرر الواحد (مكرر واحد فقط في النموذج الرئيسي؛ وإذا تطلب الأمر أكثر يُنشأ نموذج فرعي Submodel)؛ الاستبدال النصي المباشر (%Name% لتسمية المخرجات باسم الملف المدخل ديناميكياً).",
+      "أتمتة Python ومكتبة ArcPy: ضبط مساحة العمل 'arcpy.env.workspace' والسماح بالاستبدال 'overwriteOutput = True'. مؤشرات قراءة البيانات ('arcpy.da'): SearchCursor (للقراءة فقط)، UpdateCursor (للتعديل والحذف)، InsertCursor (للإضافة). ويجب استخدام سياق 'with' لإغلاق أقفال الجداول تلقائياً.",
+      "مقارنة Arcade مقابل Python في Calculate Field: في لغة بايثون يُكتب الحقل بين علامتي تعجب '!FieldName!'، بينما في لغة Arcade يُكتب '$feature.FieldName'."
+    ],
+    "comparison_table": {
+      "title_en": "Automation Tools: Tasks vs. ModelBuilder vs. Python Scripts",
+      "title_ar": "مقارنة أدوات الأتمتة: المهام الموجهة مقابل النماذج مقابل سكريبتات بايثون",
+      "headers_en": [
+        "Aspect",
+        "ArcGIS Pro Tasks (.esriTasks)",
+        "ModelBuilder (.atbx)",
+        "Python Script Tool (.pyt / .atbx)"
+      ],
+      "headers_ar": [
+        "وجه المقارنة",
+        "مهام العمل Tasks (.esriTasks)",
+        "منشئ النماذج ModelBuilder (.atbx)",
+        "سكريبتات بايثون (.pyt / .atbx)"
+      ],
+      "rows_en": [
+        [
+          "Target User",
+          "End-users needing step-by-step guidance",
+          "GIS analysts chaining visual workflows",
+          "Developers building advanced programmatic logic"
+        ],
+        [
+          "Execution Interface",
+          "Interactive checklist panel in Pro",
+          "Geoprocessing tool dialog or canvas",
+          "Standard geoprocessing tool dialog"
+        ],
+        [
+          "Looping & Iteration",
+          "Step navigation loops",
+          "Iterators (single iterator per model)",
+          "Full Python loops (for, while, nested)"
+        ],
+        [
+          "Error Handling",
+          "User reviews step outcomes",
+          "Preconditions and model validation",
+          "Try/Except blocks and arcpy.ExecuteError"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "المستخدم المستهدف",
+          "المستخدمون النهائيون المتبعون لمسار عمل موجه",
+          "محللو GIS الراغبون في أتمتة بصرية سهلة",
+          "المطورون الذين يبنون منطقاً برمجياً معقداً"
+        ],
+        [
+          "واجهة التنفيذ",
+          "لوحة تفاعلية موجهة خطوة بخطوة داخل البرنامج",
+          "نافذة أداة معالجة عادية أو لوحة النماذج",
+          "نافذة أداة معالجة قياسية في صندوق الأدوات"
+        ],
+        [
+          "حلقات التكرار",
+          "تكرار تنفيذ الخطوات",
+          "مكررات Iterators (مكرر واحد لكل نموذج)",
+          "حلقات بايثون البرمجية الكاملة بدون أي قيود"
+        ],
+        [
+          "معالجة الأخطاء",
+          "معاينة المستخدم لنتائج الخطوات يدوياً",
+          "الشروط المسبقة Preconditions والفحص المسبق",
+          "أكواد Try / Except واقتناص أخطاء ArcPy"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "How can a modeler ensure that temporary buffer rasters created during a model execution are automatically deleted when the model finishes?",
+        "q_ar": "كيف يمكن لمصمم النماذج ضمان مسح راستر الحرم المؤقت تلقائياً من القرص بمجرد اكتمال تشغيل النموذج؟",
+        "a_en": "Right-click the output variable oval in ModelBuilder and check 'Intermediate'.",
+        "a_ar": "النقر بزر الفأرة الأيمن على بيضاوي المخرجات في ModelBuilder وتفعيل خيار 'Intermediate' (بيانات وسيطة)."
+      },
+      {
+        "q_en": "What Python construct ensures that geodatabase table lock files are immediately cleared when a cursor completes iteration?",
+        "q_ar": "ما هو التركيب البرمجي في لغة بايثون الذي يضمن تحرير وإلغاء أقفال الجداول فور انتهاء مؤشر القراءة؟",
+        "a_en": "The 'with' statement (Context Manager), e.g., 'with arcpy.da.SearchCursor(...) as cursor:'.",
+        "a_ar": "استخدام مدير السياق بواسطة جملة 'with'، مثل: 'with arcpy.da.SearchCursor(...) as cursor:'."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m10_lab1",
+        "task_en": "Create and record an ArcGIS Pro Task (.esriTasks) with Auto-Run and Auto-Proceed steps",
+        "task_ar": "إنشاء وتسجيل مهمة عمل موجهة Task بخطوات تلقائية التشغيل والانتقال وتصديرها"
+      },
+      {
+        "id": "m10_lab2",
+        "task_en": "Build a multi-step ModelBuilder workflow with blue inputs, yellow tools, and green derived outputs",
+        "task_ar": "بناء نموذج ModelBuilder متعدد المراحل بمدخلات وأدوات ومخرجات مشتقة ملونة"
+      },
+      {
+        "id": "m10_lab3",
+        "task_en": "Set Model Parameters (letter 'P') to expose external user inputs in geoprocessing tool dialog",
+        "task_ar": "تعيين معاملات النموذج Model Parameters بالحرف 'P' لإتاحة الحقول كمدخلات للمستخدم"
+      },
+      {
+        "id": "m10_lab4",
+        "task_en": "Configure Intermediate Data flag to automatically purge temporary scratch rasters upon completion",
+        "task_ar": "تفعيل خيار البيانات الوسيطة Intermediate لمسح ملفات الراستر المؤقتة تلقائياً فور انتهاء التشغيل"
+      },
+      {
+        "id": "m10_lab5",
+        "task_en": "Apply Iterate Feature Classes with inline variable substitution %Name% in output file paths",
+        "task_ar": "استخدام مكرر فئات المعالم مع الاستبدال النصي المباشر %Name% لتسمية الملفات الناتجة ديناميكياً"
+      },
+      {
+        "id": "m10_lab6",
+        "task_en": "Write an ArcPy Python script using arcpy.da.SearchCursor and UpdateCursor with context managers",
+        "task_ar": "كتابة سكريبت بايثون بمكتبة ArcPy ومؤشرات قراءة وتحديث البيانات مع جملة with السياقية"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M11",
+    "week": 4,
+    "domain": "sharing",
+    "domainTitle_en": "Layouts & Sharing (18%)",
+    "domainTitle_ar": "المخططات والمشاركة السحابية (18%)",
+    "title_en": "Module 11: Page Layouts, Map Series & Reporting",
+    "title_ar": "الموديول 11: إخراج المخططات، سلاسل الخرائط والتقارير",
+    "summary_en": "Master layout elements, map frame constraints, Spatial Map Series, Dynamic Text tags, legend filtering, and report generation.",
+    "summary_ar": "إتقان عناصر المخطط، قيود إطار الخريطة، سلاسل الخرائط المكانية، وسوم النصوص الديناميكية، تصفية مفتاح الخريطة، وإنشاء التقارير.",
+    "ui_paths": [
+      {
+        "label_en": "Insert Layout",
+        "label_ar": "إدراج مخطط طباعة",
+        "path": "Insert tab on Ribbon > Layout group > New Layout"
+      },
+      {
+        "label_en": "Set Map Frame Constraint",
+        "label_ar": "ضبط قيود إطار الخريطة",
+        "path": "Layout view > Select Map Frame > Element pane > Display Options > Constraint (Fixed Scale)"
+      },
+      {
+        "label_en": "Create Spatial Map Series",
+        "label_ar": "إنشاء سلسلة خرائط مكانية",
+        "path": "Insert tab > Map Series group > Spatial (Select Index Layer, Name Field, Sort Field)"
+      },
+      {
+        "label_en": "Filter Legend by Extent",
+        "label_ar": "تصفية المفتاح بنطاق الخريطة",
+        "path": "Select Legend > Element pane > Legend tab > Check 'Only show features visible in the map extent'"
+      }
+    ],
+    "key_concepts_en": [
+      "Map Frames & Activation: Layouts contain one or more Map Frames linked to 2D maps or 3D scenes. 'Activate' map frame enables panning and zooming the underlying map without moving layout elements. Map Frame Constraints: 'Fixed Scale' (scale remains constant while extents pan) or 'Fixed Extent'.",
+      "North Arrow Options: Linked to a map frame. 'Map North' (points straight up to top of page); 'True North' (points toward geographic North Pole calculated at center of map); 'Magnetic North' (calculates magnetic declination).",
+      "Dynamic Legend Settings: 'Only show features visible in the map extent' hides legend items whose features do not appear within the current visible map frame extent.",
+      "Spatial Map Series: Automates generating a multi-page atlas from a single layout. Driven by an 'Index Layer' (polygon or line features defining page extents), a 'Name Field', and a 'Sort Field'.",
+      "Dynamic Text Tags: Formats layout labels dynamically: Current page name ('<dyn type=\"page\" property=\"name\"/>'), page number ('<dyn type=\"page\" property=\"number\"/> of <dyn type=\"page\" property=\"count\"/>'), and index layer attributes ('<dyn type=\"page\" property=\"attribute\" field=\"POPULATION\"/>').",
+      "Page Query: Filters feature layers to display ONLY the features matching an attribute of the active Map Series page index feature, hiding features belonging to adjacent pages."
+    ],
+    "key_concepts_ar": [
+      "أطر الخرائط والتفعيل: يحتوي المخطط على إطار خريطة أو أكثر مرتبط بخرائط 2D أو مشاهد 3D. يتيح 'تفعيل إطار الخريطة' (Activate) التحريك والتكبير داخل الخريطة دون تغيير موضع عناصر الصفحة. قيود الإطار: 'Fixed Scale' (تثبيت مقياس الرسم أثناء التحريك) أو 'Fixed Extent' (تثبيت النطاق).",
+      "خيارات سهم الشمال: يرتبط بإطار الخريطة. 'Map North' (يشير لأعلى الصفحة دائماً)؛ 'True North' (يشير للقطب الشمالي الجغرافي الحقيقي في مركز الخريطة)؛ 'Magnetic North' (يحسب زاوية الانحراف المغناطيسي).",
+      "تصفية مفتاح الخريطة الديناميكي: خيار 'Only show features visible in the map extent' يخفي الرموز التي لا يظهر لها أي معلم داخل نطاق إطار الخريطة الحالي.",
+      "سلاسل الخرائط المكانية (Spatial Map Series): أتمتة توليد أطلس متعدد الصفحات من قالب مخطط واحد. تعتمد على: طبقة الفهرس (Index Layer تحدد نطاق كل صفحة)، وحقل الاسم (Name Field)، وحقل الترتيب (Sort Field).",
+      "وسوم النصوص الديناميكية (Dynamic Text): تعرض بيانات متغيرة تلقائياً مثل اسم الصفحة ورقمها وسجلات سمات طبقة الفهرس مثل '<dyn type=\"page\" property=\"name\"/>'.",
+      "استعلام الصفحة (Page Query): يصفي طبقات الخريطة لتعرض فقط المعالم المطابقة لمعلم الفهرس الخاص بالصفحة المعروضة حالياً، وإخفاء معالم الصفحات المجاورة."
+    ],
+    "comparison_table": {
+      "title_en": "North Arrow Alignment: Map North vs. True North vs. Magnetic North",
+      "title_ar": "مقارنة توجيه سهم الشمال: شمال الخريطة مقابل الشمال الحقيقي مقابل الشمال المغناطيسي",
+      "headers_en": [
+        "Type",
+        "Directional Reference",
+        "Behavior on Rotated Map Frame",
+        "Standard Cartographic Use"
+      ],
+      "headers_ar": [
+        "النوع",
+        "المرجع التوجيهي",
+        "السلوك عند تدوير إطار الخريطة",
+        "الاستخدام الكارتوغرافي القياسي"
+      ],
+      "rows_en": [
+        [
+          "Map North",
+          "Points directly toward top edge of page layout",
+          "Always points straight up (0° layout angle)",
+          "Standard urban flat parcel and reference maps"
+        ],
+        [
+          "True North",
+          "Calculates meridian pointing to geographic North Pole",
+          "Rotates dynamically based on map frame center",
+          "Navigation, topographic quadrangle sheets, polar projections"
+        ],
+        [
+          "Magnetic North",
+          "Points toward Earth's migrating Magnetic North Pole",
+          "Calculates magnetic declination angle dynamically",
+          "Military grids, aviation, field compass navigation maps"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "شمال الخريطة (Map North)",
+          "يشير مباشرة إلى الحافة العليا لصفحة المخطط",
+          "يشير لأعلى الصفحة دائماً بزاوية 0°",
+          "المخططات الحضرية القياسية وخرائط قطع الأراضي"
+        ],
+        [
+          "الشمال الحقيقي (True North)",
+          "يحسب خط الطول المتجه للقطب الشمالي الجغرافي",
+          "يدور ديناميكياً بناءً على مركز إطار الخريطة وإسقاطها",
+          "الخرائط الطبوغرافية، الخرائط الملاحية، ومساقط المناطق القطبية"
+        ],
+        [
+          "الشمال المغناطيسي (Magnetic North)",
+          "يشير إلى القطب المغناطيسي الشمالي المتغير للأرض",
+          "يحسب زاوية الانحراف المغناطيسي الحالية تلقائياً",
+          "الخرائط العسكرية، الملاحة الجوية، والخرائط الميدانية للبوصلة"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "Which feature in a Spatial Map Series filters operational layers to show only features matching the current active atlas page?",
+        "q_ar": "ما هي الميزة في سلسلة الخرائط المكانية التي تصفي الطبقات التشغيلية لتعرض فقط المعالم المطابقة لصفحة الأطلس الحالية؟",
+        "a_en": "Page Query. It restricts feature display based on the active index layer attribute.",
+        "a_ar": "استعلام الصفحة (Page Query)، حيث يقيد عرض المعالم بالمعلم المطابق لصفحة الفهرس النشطة حالياً."
+      },
+      {
+        "q_en": "How can a cartographer navigate and pan the layers inside a map frame without moving or resizing the map frame box on the layout page?",
+        "q_ar": "كيف يمكن للكارتوغرافي التنقل والتحريك داخل طبقات إطار الخريطة دون تحريك أو تغيير حجم إطار المخطط على الصفحة؟",
+        "a_en": "Right-click the map frame and click 'Activate' (or click Activate on the Layout ribbon tab).",
+        "a_ar": "النقر بزر الفأرة الأيمن على إطار الخريطة واختيار 'Activate' (تفعيل الإطار)."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m11_lab1",
+        "task_en": "Insert Layout, configure Guides, add Map Frame, and set Constraint to 'Fixed Scale'",
+        "task_ar": "إدراج مخطط وضبط خطوط الدليل وإضافة إطار الخريطة وتثبيت مقياس الرسم Fixed Scale"
+      },
+      {
+        "id": "m11_lab2",
+        "task_en": "Activate Map Frame to pan and zoom underlying spatial layers without moving page elements",
+        "task_ar": "تفعيل إطار الخريطة Activate للتحريك والتكبير داخل الطبقات دون تغيير موضع إطار المخطط"
+      },
+      {
+        "id": "m11_lab3",
+        "task_en": "Configure North Arrow orientation: Map North vs. True North vs. Magnetic North (with declination)",
+        "task_ar": "ضبط توجيه سهم الشمال: شمال الخريطة، الشمال الحقيقي، أو الشمال المغناطيسي بزاوية الانحراف"
+      },
+      {
+        "id": "m11_lab4",
+        "task_en": "Configure Legend with 'Only show features visible in the map extent' to suppress empty classes",
+        "task_ar": "إعداد مفتاح الخريطة بخاصية إظهار المعالم المرئية فقط لحجب الرموز غير الموجودة بالصفحة"
+      },
+      {
+        "id": "m11_lab5",
+        "task_en": "Build Spatial Map Series using precinct polygon index layer, Name Field, and Sort Field",
+        "task_ar": "إنشاء سلسلة خرائط مكانية Spatial Map Series بطبقة مضلعات الفهرس وحقول التسمية والترتيب"
+      },
+      {
+        "id": "m11_lab6",
+        "task_en": "Insert Dynamic Text tags for page name, page number, and spatial index attributes",
+        "task_ar": "إدراج وسوم النصوص الديناميكية Dynamic Text لاسم ورقم الصفحة والسمات المكانية للفهرس"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "M12",
+    "week": 4,
+    "domain": "sharing",
+    "domainTitle_en": "Layouts & Sharing (18%)",
+    "domainTitle_ar": "المخططات والمشاركة السحابية (18%)",
+    "title_en": "Module 12: Packaging, File Formats & Web Publishing",
+    "title_ar": "الموديول 12: حزم المشاريع، صيغ الملفات والنشر السحابي",
+    "summary_en": "Master Project Packages vs. Map Packages, Web Layer types (Feature, Vector Tile, Tile), offline synchronization, and Sharing Analyzer resolution.",
+    "summary_ar": "إتقان الفرق بين حزم المشاريع والخرائط، أنواع طبقات الويب، المزامنة غير المتصلة، وحل أخطاء وتحذيرات نافذة Analyzer.",
+    "ui_paths": [
+      {
+        "label_en": "Share Project Package",
+        "label_ar": "مشاركة حزمة مشروع",
+        "path": "Share tab on Ribbon > Package group > Project Package (.ppkx)"
+      },
+      {
+        "label_en": "Share Web Layer",
+        "label_ar": "مشاركة طبقة ويب",
+        "path": "Share tab > Share As group > Web Layer > Publish Web Layer"
+      },
+      {
+        "label_en": "Run Sharing Analyzer",
+        "label_ar": "تشغيل فاحص النشر",
+        "path": "Share Web Layer pane > Analyze button (Check Errors vs Warnings)"
+      },
+      {
+        "label_en": "Export Layout to PDF",
+        "label_ar": "تصدير المخطط إلى PDF",
+        "path": "Share tab > Output group > Export Layout"
+      }
+    ],
+    "key_concepts_en": [
+      "Packages vs Reference Files: Reference files (.aprx, .mapx, .lyrx, .pagx) store only pointers and symbology rules; they contain NO underlying data. Packages (.ppkx, .mpkx, .lpkx, .gpkx, .vtpk) consolidate and compress the source data and definitions into a single standalone portable file.",
+      "Web Layer Types: 'Web Feature Layer' (vector features supporting queries, selection, pop-ups, and web editing); 'Tile Layer' (pre-rendered raster image cache for static basemaps); 'Vector Tile Layer' (binary vector protocol buffers delivering high-speed rendering with client-side restyling); 'Scene Layer' (3D objects and meshes).",
+      "Copy All Data vs Reference Registered Data: 'Copy all data' uploads a copy of the geodatabase to ArcGIS Online/Enterprise datastore. 'Reference registered data' connects directly to the enterprise geodatabase.",
+      "Offline Field Work Requirements: Enabling offline synchronization in ArcGIS Field Maps requires: GlobalIDs enabled on all layers, Editor Tracking enabled, and Sync capability checked in the feature service configuration.",
+      "Sharing Analyzer: 'Errors' (red circle with 'X') are fatal blockers that completely disable the Publish button until resolved. 'Warnings' (yellow triangle) are non-blocking advisory suggestions for performance optimization.",
+      "PDF Export Options: 'Export PDF layers and feature attributes' embeds vector layer toggles into the PDF file. 'Output as image' rasterizes vector layers to prevent font corruption."
+    ],
+    "key_concepts_ar": [
+      "الملفات المرجعية مقابل الحزم المدمجة: الملفات المرجعية (.aprx, .mapx, .lyrx, .pagx) تخزن مسارات التوجيه وقواعد الرموز فقط ولا تحوي أي بيانات فعلية. أما الحزم (.ppkx, .mpkx, .lpkx, .gpkx) فتنسخ وتضغط البيانات الأصلية مع المخططات في ملف واحد مستقل وقابل للتبادل.",
+      "أنواع طبقات الويب: Web Feature Layer (طبقة معالم متجهة تدعم الاستعلام والتعديل عبر المتصفح والميدان)؛ Tile Layer (كاش صور راستر ثابت فائق السرعة لخرائط الأساس)؛ Vector Tile Layer (طبقات متجهة مضغوطة عالية الدقة تدعم تغيير الأنماط على المتصفح)؛ Scene Layer (للمجسمات ثلاثية الأبعاد).",
+      "نسخ البيانات مقابل الإسناد: 'Copy all data' ترفع نسخة من قاعدة البيانات لسحابة ArcGIS Online. بينما 'Reference registered data' تبقي الاتصال حياً بقاعدة بيانات المؤسسة Enterprise GDB.",
+      "متطلبات العمل الميداني غير المتصل (Offline): يتطلب تفعيل المزامنة مع Field Maps: تفعيل حقول GlobalIDs، تفعيل تتبع التعديل Editor Tracking، وتفعيل خيار Sync في إعدادات الخدمة.",
+      "نافذة فحص النشر (Analyzer): الأخطاء الحمراء (Errors) تمنع النشر إلزامياً وتعطل زر Publish حتى يتم حلها. بينما التحذيرات الصفراء (Warnings) استشارية ولا تمنع الضغط على Publish.",
+      "خيارات تصدير PDF: خيار 'Export PDF layers and feature attributes' يتيح إغلاق وفتح الطبقات داخل ملف PDF. وخيار 'Output as image' يحول الطبقات لصورة نقطية لمنع مشاكل الخطوط."
+    ],
+    "comparison_table": {
+      "title_en": "Web Layer Services: Feature Layer vs. Vector Tile vs. Tile Layer",
+      "title_ar": "مقارنة خدمات طبقات الويب: Feature Layer مقابل Vector Tile مقابل Tile Layer",
+      "headers_en": [
+        "Service Type",
+        "Supported Capabilities",
+        "Editing Support",
+        "Performance / Storage"
+      ],
+      "headers_ar": [
+        "نوع الخدمة",
+        "الإمكانيات المدعومة",
+        "دعم التعديل",
+        "الأداء والمساحة التخزينية"
+      ],
+      "rows_en": [
+        [
+          "Web Feature Layer",
+          "Queries, selections, attribute filtering, pop-ups",
+          "YES (Web and offline mobile editing)",
+          "Vector payloads; slower on millions of vertices"
+        ],
+        [
+          "Vector Tile Layer",
+          "High-speed rendering, crisp zoom, client restyling",
+          "NO (Read-only basemaps and operational overlays)",
+          "Extremely compact binary tiles; fast rendering"
+        ],
+        [
+          "Tile Layer (Raster)",
+          "Pre-rendered static image map display",
+          "NO (Read-only static background)",
+          "Fast display, large server cache storage footprint"
+        ]
+      ],
+      "rows_ar": [
+        [
+          "Web Feature Layer (معالم متجهة)",
+          "استعلام، تحديد، فلاتر، ونوافذ منبثقة",
+          "نعم (تعديل المعالم هندسياً وجدولياً في الميدان)",
+          "حجم متجهي؛ يتأثر بالشبكات البطيئة عند كثرة المعالم"
+        ],
+        [
+          "Vector Tile Layer (بلاطات متجهة)",
+          "رسم فائق السرعة، خطوط حادة، وتغيير الأنماط بالمتصفح",
+          "لا (للعرض والخرائط الأساسية فقط)",
+          "حجم ثنائي مضغوط جداً وسرعة عرض قصوى"
+        ],
+        [
+          "Tile Layer (بلاطات راستر)",
+          "عرض خرائط أساس مسبقة التجهيز بصيغة صور",
+          "لا (للعرض الثابت فقط)",
+          "عرض سريع لكنه يستهلك مساحة تخزين كاش كبيرة على الخادم"
+        ]
+      ]
+    },
+    "flashcards": [
+      {
+        "q_en": "When sharing a web layer, the Analyzer pane shows one red Error and three yellow Warnings. What is the status of the Publish button?",
+        "q_ar": "عند مشاركة طبقة ويب، أظهرت نافذة Analyzer خطأً واحداً باللون الأحمر وثلاثة تحذيرات باللون الأصفر. ما هي حالة زر النشر (Publish)؟",
+        "a_en": "The Publish button is disabled. Red Errors are fatal blockers that must be resolved, while yellow Warnings do not block publishing.",
+        "a_ar": "زر النشر (Publish) يكون معطلاً تماماً. الأخطاء الحمراء حواجز إلزامية يجب حلها أولاً، بينما التحذيرات الصفراء لا تمنع النشر."
+      },
+      {
+        "q_en": "Which package format bundles an entire ArcGIS Pro project including all maps, scenes, layouts, custom toolboxes, and compressed source data?",
+        "q_ar": "أي صيغة حزم تجمع مشروع ArcGIS Pro كاملاً بجميع خرائطه ومشاهده ومخططاته وصناديق أدواته وبياناته المضغوطة؟",
+        "a_en": "Project Package (.ppkx). A Map Package (.mpkx) bundles only a single map and its layers.",
+        "a_ar": "حزمة المشروع Project Package بصيغة (.ppkx). أما حزمة الخريطة (.mpkx) فتحزم خريطة مفردة فقط."
+      }
+    ],
+    "lab_checklist": [
+      {
+        "id": "m12_lab1",
+        "task_en": "Create Project Package (.ppkx) consolidating all maps, scenes, layouts, toolboxes, and source data",
+        "task_ar": "إنشاء حزمة مشروع .ppkx مدمجة تجمع كامل الخرائط والمشاهد والمخططات والأدوات والبيانات"
+      },
+      {
+        "id": "m12_lab2",
+        "task_en": "Create Map Package (.mpkx) and Layer Package (.lpkx) for isolated sharing workflows",
+        "task_ar": "إنشاء حزمة خريطة .mpkx وحزمة طبقة .lpkx لمشاركة عناصر محددة ومستقلة"
+      },
+      {
+        "id": "m12_lab3",
+        "task_en": "Share As Web Layer (Feature Layer vs. Vector Tile Layer vs. Tile Layer) to ArcGIS Online/Enterprise",
+        "task_ar": "مشاركة طبقة ويب (معالم متجهة، بلاطات متجهة، أو كاش راستر) على السحابة المؤسسية"
+      },
+      {
+        "id": "m12_lab4",
+        "task_en": "Run Analyzer tool, resolve fatal red blocking Errors, and evaluate yellow advisory Warnings",
+        "task_ar": "تشغيل أداة فحص النشر Analyzer وحل الأخطاء الحمراء الإلزامية ومعاينة التحذيرات الصفراء"
+      },
+      {
+        "id": "m12_lab5",
+        "task_en": "Configure Feature Service for offline mobile synchronization with GlobalIDs and Sync enabled",
+        "task_ar": "إعداد خدمة المعالم للمزامنة الميدانية مع تطبيق Field Maps بتفعيل GlobalIDs وخيار Sync"
+      },
+      {
+        "id": "m12_lab6",
+        "task_en": "Export Layout to PDF with 'Export PDF layers and feature attributes' and GeoTIFF tags enabled",
+        "task_ar": "تصدير المخطط إلى ملف PDF تفاعلي مع تفعيل طبقات PDF وسمات المعالم وبيانات GeoTIFF"
+      }
+    ],
+    "doc_hubs": [
+      {
+        "title": "Get Started with ArcGIS Pro",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/get-started/introducing-arcgis-pro.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro App Help",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/main/welcome-to-the-arcgis-pro-app-help.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcGIS Pro Tool Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/main/arcgis-pro-tool-reference.htm",
+        "kind": "official"
+      },
+      {
+        "title": "ArcPy Reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
+        "kind": "official"
+      }
+    ]
+  }
+]

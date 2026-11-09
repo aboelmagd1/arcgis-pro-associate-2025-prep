@@ -1,0 +1,2780 @@
+[
+  {
+    "id": "VIZ-S-001",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Range Slider"
+    ],
+    "context": {
+      "en": "An airport facilities management team maintains a 3D building model containing thousands of interior asset points (security cameras, gates, HVAC sensors) across 5 terminal floors. When viewing the entire building, assets from all floors overlap into an unreadable vertical cluster.",
+      "ar": "يدير فريق مرافق المطار نموذج مبنى ثلاثي الأبعاد يحتوي على آلاف الأصول الداخلية (كاميرات المراقبة، البوابات، حساسات التكييف) موزعة على 5 طوابق؛ وعند عرض المبنى ككل، تتداخل أصول كافة الطوابق في كتلة رأسية متزاحمة غير مقروءة."
+    },
+    "question": {
+      "en": "How can the facilities team configure ArcGIS Pro to interactively isolate and display assets on Floor 3 only?",
+      "ar": "كيف يمكن لفريق المرافق تهيئة ArcGIS Pro لعزل وعرض أصول الطابق الثالث تفاعلياً فقط؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Enable Range on the layer properties using the FLOOR_NUMBER integer field and activate the on-screen Range Slider",
+          "ar": "تفعيل خاصية Range في خصائص الطبقة باستخدام حقل FLOOR_NUMBER الرقمي وتشغيل منزلق المدى (Range Slider)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Set a static definition query FLOOR_NUMBER = 3 permanently on all layers",
+          "ar": "ضبط استعلام تعريفي ثابت FLOOR_NUMBER = 3 بشكل دائم على جميع الطبقات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Convert the 3D scene to a 2D map view",
+          "ar": "تحويل المشهد ثلاثي الأبعاد إلى خريطة ثنائية الأبعاد"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Delete assets on floors 1, 2, 4, and 5",
+          "ar": "حذف أصول الطوابق 1 و 2 و 4 و 5"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Range Slider enables interactive filtering of features based on any continuous or discrete numeric attribute (such as building floor levels, pipe pressure, or depth), allowing users to step floor-by-floor dynamically.",
+      "ar": "يتيح منزلق المدى (Range Slider) تصفية المعالم تفاعلياً بناءً على أي حقل رقمي (مثل طوابق المباني، أو مستويات العمق، أو الضغط)، مما يمكن المستخدمين من التنقل طابقاً بطابق ديناميكياً دون تعديل البيانات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "A static definition query requires opening properties dialogs repeatedly to change floors.",
+        "C": "Converting to 2D loses spatial floor separation entirely.",
+        "D": "Deleting assets permanently destroys corporate facility inventory."
+      },
+      "ar": {
+        "B": "الاستعلام الثابت يتطلب فتح نافذة الخصائص يدوياً في كل مرة لتغيير الطابق.",
+        "C": "التحويل للثنائي يفقد التمايز المكاني للطوابق.",
+        "D": "حذف الأصول يدمر قاعدة بيانات المرافق."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-002",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "3D Scenes",
+      "Illumination"
+    ],
+    "context": {
+      "en": "A city planning commission evaluates a proposed 60-story skyscraper to assess whether its afternoon shadow will fall across a public historic park on the Winter Solstice (December 21) at 3:00 PM.",
+      "ar": "تقيم لجنة تخطيط المدينة برجاً مقترحاً بارتفاع 60 طابقاً لتقييم ما إذا كان ظله في فترة بعد الظهيرة سيسقط على حديقة تاريخية عامة في يوم الانقلاب الشتوي (21 ديسمبر) عند الساعة 3:00 مساءً."
+    },
+    "question": {
+      "en": "How should the GIS analyst configure the 3D Scene in ArcGIS Pro to perform this visual impact assessment accurately?",
+      "ar": "كيف يجب على محلل نظم المعلومات الجغرافية تهيئة المشهد ثلاثي الأبعاد في ArcGIS Pro لإجراء هذا التقييم البصري بدقة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Enable Sun Lighting and Shadows on the Scene illumination properties, and set the calendar date to December 21 and clock time to 3:00 PM",
+          "ar": "تفعيل إضاءة الشمس والظلال (Sun Lighting and Shadows) في خصائص إضاءة المشهد، وضبط التاريخ على 21 ديسمبر والساعة على 3:00 مساءً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Apply a transparent yellow color ramp to the building footprint",
+          "ar": "تطبيق تدرج لوني أصفر شفاف على مسقط المبنى"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Run the Buffer tool with a 500-meter radius around the park",
+          "ar": "تشغيل أداة Buffer بمسافة 500 متر حول الحديقة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Convert the building polygon into a TIN surface",
+          "ar": "تحويل مضلع المبنى إلى سطح TIN"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Pro 3D Scenes include solar illumination models that calculate precise real-world solar azimuth and elevation angles for any geographic location, date, and time, accurately casting realistic shadows across terrain and 3D buildings.",
+      "ar": "تتضمن المشاهد ثلاثية الأبعاد بـ ArcGIS Pro نماذج إضاءة شمسية تحسب زوايا السمت والارتفاع الشمسي الحقيقي لأي موقع جغرافي وتاريخ وساعة بدقة، مما يلقي ظلالاً واقعية تماماً للمباني على التضاريس والحدائق."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Color ramps only alter surface painting, not directional solar shadows.",
+        "C": "Buffers represent arbitrary proximity distances, not solar shadow lengths.",
+        "D": "TIN surfaces model terrain elevations, not building shadow projections."
+      },
+      "ar": {
+        "B": "تدرج الألوان يلون الأسطح فقط ولا يحسب الظلال.",
+        "C": "النطاق مسافة ثابتة ولا يمثل أطوال الظلال الشمسية.",
+        "D": "أسطح TIN للتضاريس وليست لمجسمات المباني."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-003",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Workflow-based",
+    "tools": [
+      "Time Slider"
+    ],
+    "context": {
+      "en": "An emergency management agency tracks a major forest wildfire that has burned across multiple counties over two weeks. The fire boundary dataset contains START_TIME and END_TIME timestamp fields recording the dynamic perimeter progression every 6 hours.",
+      "ar": "تتابع هيئة طوارئ حريق غابات ضخماً امتد عبر عدة مقاطعات على مدى أسبوعين؛ وتحتوي بيانات حدود الحريق على حقلي تواريخ START_TIME و END_TIME تسجلان توسع محيط الحريق كل 6 ساعات."
+    },
+    "question": {
+      "en": "How should the analyst configure the layer so the fire's continuous spatial expansion animates smoothly on the map view?",
+      "ar": "كيف يجب على المحلل تهيئة الطبقة بحيث تظهر حركة وتوسع محيط الحريق كرسوم متحركة متصلة وسلسة على الخريطة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "In Layer Properties > Time, select 'Each feature has start and end time fields', and set the Time Slider step interval to 6 Hours",
+          "ar": "في Layer Properties > Time، اختيار 'Each feature has start and end time fields'، وضبط خطوة منزلق الوقت على 6 ساعات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Create 56 individual definition queries manually",
+          "ar": "إنشاء 56 استعلاماً تعريفياً يدوياً منفصلاً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Convert the vector perimeters to static CAD drawings",
+          "ar": "تحويل الحدود الاتجاهية إلى رسومات CAD ثابتة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Set the layer transparency to 100% and export to GIF",
+          "ar": "ضبط شفافية الطبقة على 100% وتصديرها بصيغة GIF"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Configuring 'start and end time fields' enables ArcGIS Pro to display features continuously over their active duration, and setting the Time Slider step to match data sampling frequency (6 hours) produces fluid chronological playback.",
+      "ar": "يتيح اختيار 'حقول بداية ونهاية' لـ ArcGIS Pro عرض المعالم طوال فترة نشاطها الفعالة، وضبط خطوة منزلق الوقت لتطابق وتيرة الرصد (6 ساعات) يمنح عرضاً متحركاً سلساً لتقدم جبهة الحريق."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Manual definition queries cannot produce continuous animated playback.",
+        "C": "CAD drawings lose interactive temporal playback controls.",
+        "D": "100% transparency makes the fire completely invisible."
+      },
+      "ar": {
+        "B": "الاستعلامات اليدوية لا تنتج عرضاً متحركاً متصلاً.",
+        "C": "رسومات CAD تفقد التحكم الزمني.",
+        "D": "الشفافية الكاملة تخفي الحريق تماماً."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-004",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Layer Blending"
+    ],
+    "context": {
+      "en": "A cartographer designs a topographic recreation map by overlaying a vibrant categorical Land Cover polygon layer directly above a grayscale Hillshade raster. When using standard 50% layer transparency, the land cover colors appear faded, washed out, and milky.",
+      "ar": "يصمم رسام خرائط خريطة سياحية بوضع طبقة استخدامات غطاء أرضي ملونة فوق راستر تظليل تضاريسي (Hillshade)؛ وعند تطبيق شفافية 50% العادية، بدت ألوان الغطاء الأرضي باهتة ومغبرة وفاقدة للحيوية."
+    },
+    "question": {
+      "en": "What layer blending technique restores rich, fully saturated colors while allowing terrain shadows and textures to show through clearly?",
+      "ar": "ما هي تقنية دمج الطبقات التي تستعيد تشبع الألوان وحيويتها الكاملة مع إبراز ظلال وتفاصيل التضاريس بوضوح فائق؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Set the Land Cover layer's Blend Mode to 'Multiply' on the Appearance ribbon tab",
+          "ar": "ضبط نمط دمج الطبقة (Blend Mode) للغطاء الأرضي على 'Multiply' في تبويب Appearance"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Convert the hillshade to a binary black-and-white grid",
+          "ar": "تحويل راستر التضاريس إلى شبكة ثنائية بالأبيض والأسود فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Increase the computer monitor contrast to 100%",
+          "ar": "زيادة تباين شاشة الحاسوب إلى 100%"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export the map to a black-and-white TIFF file",
+          "ar": "تصدير الخريطة إلى ملف TIFF أحادي اللون"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Multiply blend mode multiplies the color values of the top layer with the bottom layer. Whites become transparent while darker shadows from the hillshade darken the land cover tones without washing out color saturation.",
+      "ar": "يقوم نمط الدمج Multiply بضرب قيم ألوان الطبقة العليا بالطبقة السفلى؛ فتصبح المساحات البيضاء شفافة تماماً وتبرز ظلال التضاريس ألوان الغطاء الأرضي دون إضعاف تشبعها اللوني أو جعلها باهتة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Binary grids lose all continuous elevation shadow shading.",
+        "C": "Hardware monitor tweaks do not fix exported digital cartography.",
+        "D": "Monochrome TIFF removes all color information."
+      },
+      "ar": {
+        "B": "الشبكات الثنائية تفقد التدرجات التضاريسية.",
+        "C": "تعديل الشاشة لا يصلح الملف المصدر.",
+        "D": "ملف TIFF الأحادي يلغي كافة الألوان."
+      }
+    },
+    "references": [
+      {
+        "title": "Visual effects and layer blending, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/layer-blending.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-005",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Workflow-based",
+    "tools": [
+      "Maplex Label Engine"
+    ],
+    "context": {
+      "en": "In a dense urban tax mapping project, parcel polygons are too narrow for standard parcel identification numbers (PINs) to fit horizontally at 10pt font, causing hundreds of parcels to remain completely unlabeled.",
+      "ar": "في مشروع خرائط عقارية حضرية كثيفة، تبين أن مضلعات قطع الأراضي ضيقة جداً بحيث لا تستوعب أرقام التعريف العقاري (PIN) أفقياً بخط 10pt، مما أدى لغياب التسميات عن مئات القطع."
+    },
+    "question": {
+      "en": "Which combination of Maplex fitting strategies should the cartographer enable to maximize label placement in tight parcels?",
+      "ar": "أي مجموعة من استراتيجيات الملاءمة في محرك Maplex يجب على رسام الخرائط تفعيلها لزيادة ظهور التسميات في القطع الضيقة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Enable Stacking, allow Font Reduction down to 6pt, and allow Overrun beyond polygon boundaries",
+          "ar": "تفعيل التكدس (Stacking)، والسماح بتقليص الخط (Font Reduction) حتى 6pt، والسماح بالتجاوز (Overrun) خارج الحدود"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete small parcels from the map view",
+          "ar": "حذف قطع الأراضي الصغيرة من الخريطة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Turn off the Maplex Label Engine and revert to the Standard engine",
+          "ar": "إلغاء تفعيل محرك Maplex والعودة للمحرك القياسي القديم"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Rotate the map frame upside down",
+          "ar": "قلب إطار الخريطة رأساً على عقب"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Maplex provides ordered fitting strategies: Stacking splits text across multiple lines, Font Reduction scales text down to a specified minimum legibility limit, and Overrun allows text to extend slightly beyond polygon edges.",
+      "ar": "يوفر محرك Maplex استراتيجيات ملاءمة تصاعدية: يقسم التكدس (Stacking) النص على عدة أسطر، ويقلص خيار Font Reduction حجم الخط تدريجياً لحد أدنى مقروء، ويسمح Overrun للنص بتجاوز حدود المضلع قليلاً لاستيعابه."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Deleting parcels corrupts legal cadastre representation.",
+        "C": "The Standard engine has inferior collision avoidance compared to Maplex.",
+        "D": "Rotating frames does not resolve element density."
+      },
+      "ar": {
+        "B": "حذف الأراضي يدمر التمثيل العقاري.",
+        "C": "المحرك القديم أضعف بكثير من Maplex في حل النزاعات.",
+        "D": "تدوير الخريطة لا يحل مشكلة كثافة المعالم."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-006",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology Masking"
+    ],
+    "context": {
+      "en": "A topographic mapping specialist creates 10-foot elevation contour lines with elevation labels. Currently, the brown contour lines cut directly through the middle of the label numbers, reducing readability.",
+      "ar": "أنشأ أخصائي خرائط تضاريسية خطوط كنتور بفاصل 10 أقدام مع تسميات رقمية للارتفاع؛ وتمر خطوط الكنتور البنية حالياً مباشرة عبر منتصف أرقام التسميات مما يعيق قراءتها."
+    },
+    "question": {
+      "en": "How can the specialist create clean visual cutouts in the contour lines behind the labels without physically breaking or deleting line features?",
+      "ar": "كيف يمكن للأخصائي إنشاء تفريغ بصري نظيف في خطوط الكنتور خلف أرقام التسميات دون كسر أو حذف المعالم الخطية هندسياً؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Configure Symbology Masking so the contour label class masks the contour line symbol layer",
+          "ar": "تهيئة أقنعة الرموز (Symbology Masking) بحيث تحجب فئة تسميات الكنتور طبقة رموز الخطوط"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Use the Split tool to manually cut every contour line on either side of each label",
+          "ar": "استخدام أداة Split لقطع كل خط كنتور يدوياً على جانبي التسميات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Change the contour lines color to transparent",
+          "ar": "تغيير لون خطوط الكنتور إلى اللون الشفاف"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Delete all contour lines that have labels",
+          "ar": "حذف كافة خطوط الكنتور التي تحمل تسميات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Symbology Masking dynamically masks specified symbol layers behind labels or annotation, creating a crisp, non-destructive cartographic gap without splitting or altering the underlying vector geometry.",
+      "ar": "تتيح ميزة أقنعة الرموز (Symbology Masking) حجب طبقات رموز معينة ديناميكياً خلف نصوص التسميات، مما ينشئ فراغاً بصرياً كارتوغرافياً نظيفاً دون الحاجة لقطع أو تشويه هندسة الخطوط الأصلية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Manually cutting lines is destructive and permanently damages elevation line continuity.",
+        "C": "Transparent lines disappear entirely.",
+        "D": "Deleting contours destroys contour data."
+      },
+      "ar": {
+        "B": "قطع الخطوط يدوياً مدمر لبيانات واستمرارية خطوط الكنتور.",
+        "C": "الخطوط الشفافة تختفي كلياً.",
+        "D": "حذف الكنتور يدمر البيانات التضاريسية."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-007",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology",
+      "Normalization"
+    ],
+    "context": {
+      "en": "A crime analyst creates a choropleth map of total burglaries by police precinct. Large suburban precincts with 100,000 residents show dark red (high crime), while dense downtown precincts with 10,000 residents show light yellow (low crime), even though downtown has a much higher crime rate per capita.",
+      "ar": "أنشأ محلل جرائم خريطة كوربلث لإجمالي السرقات حسب أقسام الشرطة؛ فظهرت الأقسام الخارجية الكبيرة التي تضم 100,000 نسمة باللون الأحمر الداكن (جرائم مرتفعة)، بينما ظهرت الأقسام الحضرية المزدحمة التي تضم 10,000 نسمة باللون الأصفر الفاتح، رغم أن معدل الجريمة للفرد في وسط المدينة أعلى بكثير."
+    },
+    "question": {
+      "en": "How should the analyst adjust the Graduated Colors symbology to display an accurate, unbiased crime risk comparison?",
+      "ar": "كيف يجب على المحلل تعديل رموز الألوان المتدرجة لعرض مقارنة دقيقة وغير متحيزة لمخاطر الجريمة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Normalize the burglary count field by the total population field to calculate burglaries per capita",
+          "ar": "تطبيع (Normalize) حقل إجمالي السرقات بالقسمة على حقل إجمالي السكان لحساب معدل الجرائم لكل نسمة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Switch from Graduated Colors to Unique Values",
+          "ar": "التحويل من الألوان المتدرجة إلى القيم الفريدة (Unique Values)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Increase the number of classes from 5 to 30",
+          "ar": "زيادة عدد الفئات من 5 إلى 30 فئة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Set all precinct boundaries to 0 line width",
+          "ar": "ضبط سماكة خطوط حدود الأقسام على القيمة 0"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Mapping raw counts across administrative zones with varying populations produces misleading maps because populous zones visually exaggerate totals. Normalizing raw counts by population produces true per-capita incidence rates.",
+      "ar": "يؤدي تمثيل الأعداد الخام عبر مناطق إدارية متفاوتة السكان إلى خرائط مضللة بصرياً؛ ويعمل تطبيع الأعداد (قسمتها على عدد السكان) على حساب معدل الجريمة الحقيقي لكل فرد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Unique Values is for qualitative categories, not numerical rates.",
+        "C": "Increasing classes does not fix the raw count distortion.",
+        "D": "Line width is a border aesthetic."
+      },
+      "ar": {
+        "B": "القيم الفريدة للبيانات النوعية وليست للمعدلات الكمية.",
+        "C": "زيادة الفئات لا تعالج تشوه الأعداد الإجمالية.",
+        "D": "سماكة الحدود مظهر تجميلي."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-008",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Display Filters"
+    ],
+    "context": {
+      "en": "A regional highway department publishes a web-ready map. At regional scales (1:500,000), only Interstate freeways should be displayed; at city scales (1:50,000), both Interstates and Major Arterials should display; and at neighborhood scales (1:10,000), all roads including Local Streets must display. Crucially, all road records must remain accessible in the Attribute Table at every scale.",
+      "ar": "تنشر إدارة طرق خريطة تفاعلية؛ ويجب عند مقياس 1:500,000 إظهار الطرق السريعة الدولية فقط، وعند 1:50,000 إظهار الطرق السريعة والشريانية معاً، وعند 1:10,000 إظهار كافة الطرق بما فيها المحلية، مع بقاء كافة الطرق متاحة في جدول البيانات في كل الأوقات."
+    },
+    "question": {
+      "en": "Which ArcGIS Pro layer capability satisfies this exact requirement?",
+      "ar": "أي ميزة في طبقات ArcGIS Pro تلبي هذا المتطلب بدقة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Scale-based Display Filters",
+          "ar": "فلاتر العرض المعتمدة على المقياس (Scale-based Display Filters)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Definition Queries",
+          "ar": "الاستعلامات التعريفية (Definition Queries)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Delete Features tool",
+          "ar": "أداة حذف المعالم (Delete Features)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Spatial Join",
+          "ar": "الضم المكاني (Spatial Join)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Scale-based Display Filters dynamically restrict which features draw at specified scale ranges using SQL clauses without filtering out features from attribute tables, selections, or analytical tools.",
+      "ar": "تتحكم فلاتر العرض المعتمدة على المقياس (Display Filters) في رسم المعالم بصرياً وفق مقاييس واستعلامات SQL محددة دون استبعاد المعالم من جدول السمات أو أدوات التحليل أو التحديد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Definition Queries filter data at the data source level, hiding records from attribute tables as well.",
+        "C": "Deleting features permanently destroys road network data.",
+        "D": "Spatial Join appends attributes, it does not manage scale visibility."
+      },
+      "ar": {
+        "B": "يحجب الاستعلام التعريفي المعالم عن جدول البيانات وأدوات التحليل أيضاً.",
+        "C": "حذف المعالم يدمر بيانات شبكة الطرق.",
+        "D": "الضم المكاني يربط السمات ولا يدير الرؤية بالمقياس."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-009",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Select By Location"
+    ],
+    "context": {
+      "en": "Following a hurricane storm surge, an emergency analyst has a polygon layer of inundated flood extents and a point layer of 45,000 residential building structures. The analyst needs to identify every building that experienced flooding, including buildings where water touched the property foundation boundary.",
+      "ar": "بعد عاصفة إعصار، يمتلك محلل طوارئ طبقة مضلعات نطاق الفيضان وطبقة نقطية لـ 45,000 مبنى سكني؛ ويحتاج لتحديد كل مبنى تعرض للغمر بما في ذلك المباني التي لامست المياه أساساتها."
+    },
+    "question": {
+      "en": "Which spatial relationship rule in the Select By Location tool should be used with Input: Buildings and Selecting Features: Flood Extents?",
+      "ar": "أي قاعدة علاقة مكانية في أداة Select By Location يجب استخدامها مع تحديد المدخلات: المباني، ومعالم التحديد: نطاق الفيضان؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Intersect",
+          "ar": "Intersect (تتقاطع)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Are completely within",
+          "ar": "Are completely within (تقع بالكامل داخل)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Have their centroid in",
+          "ar": "Have their centroid in (يقع مركزها في)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Are identical to",
+          "ar": "Are identical to (تتطابق مع)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The 'Intersect' relationship selects any feature that touches, crosses, or falls inside the selecting polygon boundary, capturing both fully inundated and edge-affected buildings.",
+      "ar": "تحدد علاقة التقاطع (Intersect) أي معلم يلامس أو يقطع أو يقع داخل حدود مضلع التحديد، مما يشمل كافة المباني المغمورة بالكامل أو المتأثرة عند الحواف."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "'Are completely within' misses edge buildings where water only touched part of the foundation.",
+        "C": "Centroids may fall just outside the boundary for complex irregular footprints.",
+        "D": "Points and polygons cannot have identical geometry."
+      },
+      "ar": {
+        "B": "علاقة Completely within تهمل المباني الواقعة على حواف الغمر.",
+        "C": "المراكز قد تقع خارج النطاق للمباني غير المنتظمة.",
+        "D": "النقاط والمضلعات لا يمكن أن تتطابق هندسياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-010",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Select By Attributes"
+    ],
+    "context": {
+      "en": "A county finance auditor needs to select commercial parcels where the property taxes are delinquent (DELINQUENT = 'Yes') AND the unpaid tax balance exceeds $25,000, OR where the property is currently under active tax foreclosure (FORECLOSURE = 'Active').",
+      "ar": "يحتاج مدقق مالي لتحديد قطع الأراضي التجارية التي تأخر سداد ضرائبها (DELINQUENT = 'Yes') وتجاوزت المبالغ غير المسددة 25,000 دولار، أو العقارات الواقعة تحت الحجز الضريبي النشط (FORECLOSURE = 'Active')."
+    },
+    "question": {
+      "en": "Which SQL clause enforces correct logical operator precedence for this selection?",
+      "ar": "أي جملة SQL تفرض أسبقية العمليات المنطقية الصحيحة لهذا التحديد؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "(DELINQUENT = 'Yes' AND UNPAID_TAX > 25000) OR FORECLOSURE = 'Active'",
+          "ar": "(DELINQUENT = 'Yes' AND UNPAID_TAX > 25000) OR FORECLOSURE = 'Active'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "DELINQUENT = 'Yes' OR UNPAID_TAX > 25000 AND FORECLOSURE = 'Active'",
+          "ar": "DELINQUENT = 'Yes' OR UNPAID_TAX > 25000 AND FORECLOSURE = 'Active'"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "DELINQUENT, FORECLOSURE = 'Yes', 'Active' > 25000",
+          "ar": "DELINQUENT, FORECLOSURE = 'Yes', 'Active' > 25000"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "SELECT WHERE TAXES DELINQUENT AND FORECLOSED",
+          "ar": "SELECT WHERE TAXES DELINQUENT AND FORECLOSED"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In SQL evaluation, parentheses explicitly group the AND conditions together, ensuring the OR condition correctly captures active foreclosures regardless of balance.",
+      "ar": "في تقييم استعلامات SQL، تعمل الأقواس على تجميع شروط AND معاً بشكل صريح، مما يضمن تقييم شرط OR البديل بشكل صحيح ومستقل."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Without parentheses, AND binds more tightly than OR, producing unexpected evaluation logic.",
+        "C": "SQL does not permit combined field syntax.",
+        "D": "This is natural language prose, not valid SQL."
+      },
+      "ar": {
+        "B": "بدون أقواس، يرتبط المعامل AND بقوة أكبر من OR مما يعطي نتائج مغلوطة.",
+        "C": "لا تسمح SQL بدمج أسماء الحقول.",
+        "D": "هذه لغة نصية عامة وليست استعلام SQL."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-011",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Extrusion"
+    ],
+    "context": {
+      "en": "An urban designer extrudes 2D building footprints in a 3D Local Scene. The building polygons currently float above the terrain or sink into the hillside.",
+      "ar": "قام مصمم عمراني ببثق مساقط مبانٍ ثنائية الأبعاد في مشهد محلي؛ فظهرت المباني تطفو في الهواء أو تغوص داخل التلال."
+    },
+    "question": {
+      "en": "How should the layer's elevation properties be configured so that the bottom of each building anchors cleanly to the hillside terrain?",
+      "ar": "كيف يجب ضبط خصائص ارتفاع الطبقة بحيث تستند قاعدة كل مبنى بثبات على سطح الأرض التضاريسي المنحدر؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Set Elevation to 'On the ground' and Extrusion method to 'Base height'",
+          "ar": "ضبط الارتفاع على 'On the ground' وطريقة البثق على 'Base height'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Set Elevation to 'At an absolute height' of 0 meters",
+          "ar": "ضبط الارتفاع على 'At an absolute height' بقيمة 0 متر"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Delete the hillshade surface",
+          "ar": "حذف سطح التظليل التضاريسي"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Change the building color to green",
+          "ar": "تغيير لون المباني إلى الأخضر"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Draping the feature base 'On the ground' allows vertices to follow the terrain elevation surface, while extruding from 'Base height' projects vertical walls upward from the ground.",
+      "ar": "تثبيت قاعدة المعلم على 'On the ground' يجعل القواعد تتبع سطح التضاريس، بينما يبثق خيار 'Base height' الجدران رأسياً من منسوب الأرض للأعلى."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Absolute height places all bases at a flat horizontal plane, cutting through hills.",
+        "C": "Deleting hillshade does not fix 3D elevation offsets.",
+        "D": "Color changes do not alter 3D geometric elevations."
+      },
+      "ar": {
+        "B": "الارتفاع المطلق يضع المباني في مستوى أفقي مستوٍ فيخترق التلال.",
+        "C": "حذف التظليل لا يصلح أخطاء الارتفاع.",
+        "D": "تغيير الألوان لا يغير المناسيب ثلاثية الأبعاد."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-012",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "context": {
+      "en": "A political analyst visualizes presidential election victory margins by county, where positive percentages indicate Party A wins and negative percentages indicate Party B wins, with 0% representing an exact tie.",
+      "ar": "يصمم محلل سياسي خريطة لفوارق نتائج الانتخابات الرئاسية حسب المقاطعات، حيث تمثل النسب الموجبة فوز الحزب أ والنسب السالبة فوز الحزب ب ونسبة 0% تمثل التعادل التام."
+    },
+    "question": {
+      "en": "Which type of color ramp is cartographically appropriate for this dataset?",
+      "ar": "أي نوع من مدرجات الألوان هو الأنسب كارتوغرافياً لتمثيل هذه البيانات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A Diverging color ramp (e.g. Blue to Neutral Gray to Red centered at 0%)",
+          "ar": "مدرج ألوان متباعد (Diverging) مثل أزرق - رمادي محايد - أحمر متمحور حول 0%"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "A Sequential single-hue ramp from light yellow to dark yellow",
+          "ar": "مدرج ألوان متسلسل أحادي اللون من الأصفر الفاتح إلى الداكن"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "A random qualitative pastel palette",
+          "ar": "بالتة ألوان نوعية عشوائية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A solid black monochrome fill",
+          "ar": "تعبئة أحادية باللون الأسود المصمت"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Diverging color ramps emphasize values departing in two opposite directions from a critical central midpoint (such as zero, an average, or a tie threshold).",
+      "ar": "تركز مدرجات الألوان المتباعدة (Diverging) على إبراز التباين في اتجاهين متعاكسين انطلاقاً من نقطة وسطية حرجة (كالصفر أو المتوسط أو التعادل)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Sequential ramps only show variation in a single direction without a midpoint.",
+        "C": "Qualitative palettes are for unranked nominal categories.",
+        "D": "Solid black obscures all data variation."
+      },
+      "ar": {
+        "B": "المدرجات المتسلسلة تعرض اتجاهاً واحداً دون نقطة تعادل.",
+        "C": "البالتات النوعية للفئات الاسمية.",
+        "D": "اللون الأسود يخفي تباين البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-013",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Feature Blending"
+    ],
+    "context": {
+      "en": "A public safety department symbolizes 911 emergency calls as overlapping semi-transparent circles. The analyst wants areas with heavy concentrations of calls to visually intensify and glow brighter where circles overlap.",
+      "ar": "يمثل قسم السلامة العامة بلاغات الطوارئ بدوائر نصف شفافة متداخلة؛ ويريد المحلل إبراز المناطق كثيفة البلاغات بصرياً لتتوهج وتزداد سطوعاً وكثافة مع تداخل الدوائر."
+    },
+    "question": {
+      "en": "Which layer visual effect should be configured?",
+      "ar": "أي تأثير بصري للطبقة يجب تهيئته لتحقيق هذا التوهج التراكمي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Feature Blending (e.g. Screen or Lighten mode)",
+          "ar": "دمج المعالم Feature Blending (بنمط Screen أو Lighten)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Layer Blending Multiply mode",
+          "ar": "نمط الدمج Multiply للطبقة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Display Filter scale thresholds",
+          "ar": "فلاتر العرض بالمقياس"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Definition Query on Call_ID",
+          "ar": "استعلام تعريفي على حقل المعرف"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Feature Blending blends overlapping features within the same layer together, allowing overlapping transparent elements to accumulate color density or light intensity into dynamic hotspots.",
+      "ar": "يطبق دمج المعالم (Feature Blending) خوارزميات المزج اللوني بين المعالم المتداخلة داخل نفس الطبقة، مما يسمح للدوائر الشفافة بمراكمة الكثافة والتوهج في بؤر التركز."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Layer Blending blends between different layers, not between features of the same layer.",
+        "C": "Display filters hide features by scale.",
+        "D": "Definition queries filter out records."
+      },
+      "ar": {
+        "B": "دمج الطبقات يمزج بين طبقات مختلفة وليس بين معالم نفس الطبقة.",
+        "C": "فلاتر العرض تخفي المعالم بالمقياس.",
+        "D": "الاستعلامات التعريفية تستبعد السجلات."
+      }
+    },
+    "references": [
+      {
+        "title": "Visual effects and layer blending, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/layer-blending.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-014",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Labeling",
+      "Arcade"
+    ],
+    "context": {
+      "en": "An analyst needs road labels to display the highway name in bold uppercase if it is an Interstate (e.g. '<BOL>' + Upper($feature.NAME) + '</BOL>'), but display ordinary title case text for local streets.",
+      "ar": "يحتاج محلل لتسميات الطرق لعرض اسم الطريق السريع بخط عريض وحروف كبيرة إذا كان طريقاً دولياً، وعرضه بنص عادي للشوارع المحلية."
+    },
+    "question": {
+      "en": "What tool or capability allows writing conditional if/else expressions to author advanced labels?",
+      "ar": "ما الأداة أو الإمكانية التي تتيح كتابة شروط if/else البرمجية لصياغة تسميات متقدمة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Arcade Label Expression in the Label Class properties",
+          "ar": "تعبير تسمية Arcade في خصائص فئة التسمية (Label Class)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Convert Labels to CAD tool",
+          "ar": "أداة تحويل التسميات إلى CAD"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Spatial Join geoprocessing tool",
+          "ar": "أداة الضم المكاني Spatial Join"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Calculate Geometry Attributes",
+          "ar": "حساب السمات الهندسية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Arcade label expressions support full conditional logic (IIf, When, if/else blocks) and text formatting tags (such as `<BOL>`, `<CLR>`, `<FNT>`) to dynamically style labels based on attributes.",
+      "ar": "تدعم تعبيرات التسمية بلغة Arcade الشروط المنطقية الكاملة (IIf, When, if/else) ووسوم التنسيق النصي (مثل `<BOL>` للعريض) لتنسيق التسميات ديناميكياً وفق سمات المعالم."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Converting to CAD exports static graphics.",
+        "C": "Spatial Join is a spatial overlay tool.",
+        "D": "Calculate Geometry Attributes writes coordinates to tables."
+      },
+      "ar": {
+        "B": "التحويل إلى CAD يصدر رسومات ثابتة.",
+        "C": "الضم المكاني يربط البيانات.",
+        "D": "حساب السمات الهندسية يكتب إحداثيات في الجداول."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-015",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Maplex Label Engine"
+    ],
+    "context": {
+      "en": "In a layout, street labels like 'Martin Luther King Jr. Boulevard' are too long for one line. A cartographer wants Maplex to break long names onto multiple lines, but only at spaces or hyphens.",
+      "ar": "في لوحة إخراج، كانت أسماء الشوارع الطويلة تتجاوز السطر الواحد؛ ويريد رسام الخرائط تجزئة الأسماء الطويلة على عدة أسطر عند المسافات أو الشرطات فقط."
+    },
+    "question": {
+      "en": "Which Maplex labeling strategy and parameter manages this multi-line splitting behavior?",
+      "ar": "أي استراتيجية ملاءمة ومعامل في محرك Maplex يدير سلوك التجزئة على أسطر متعددة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Stack label (Stacking) with designated stacking separator characters",
+          "ar": "تكدس التسميات (Stacking) مع تحديد أحرف فاصلة للتكدس"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Font Reduction to 1pt",
+          "ar": "تقليص الخط إلى 1pt"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Key Numbering without legend",
+          "ar": "ترقيم المفاتيح بدون جدول"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Remove all labels from the map",
+          "ar": "حذف كافة التسميات من الخريطة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Label Stacking splits long labels across multiple lines based on defined separator characters (spaces, commas, hyphens) and maximum characters per line.",
+      "ar": "تسمح خاصية تكدس التسميات (Label Stacking) بتقسيم النصوص الطويلة على أسطر متعددة بناءً على أحرف فصل محددة (المسافات والشرطات) والحد الأقصى لعدد المحارف في كل سطر."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "1pt font is illegible to humans.",
+        "C": "Key numbering without a legend leaves numbers unexplained.",
+        "D": "Removing labels defeats cartographic communication."
+      },
+      "ar": {
+        "B": "خط 1pt غير مقروء إطلاقاً.",
+        "C": "الترقيم بلا مفتاح يفقد النص معناه.",
+        "D": "حذف التسميات يلغي التواصل الكارتوغرافي."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-016",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "3D Scenes"
+    ],
+    "context": {
+      "en": "An oceanographer visualizes a 4D NetCDF dataset containing ocean temperatures across latitude, longitude, depth, and time in an ArcGIS Pro Local Scene.",
+      "ar": "يستعرض باحث علوم بحار بيانات NetCDF رباعية الأبعاد لدرجات حرارة المحيطات عبر خطوط الطول والعرض والعمق والزمن في مشهد محلي بـ ArcGIS Pro."
+    },
+    "question": {
+      "en": "Which tool or capability allows interactive slicing through the 3D volume to reveal internal temperature cores?",
+      "ar": "ما الأداة أو الإمكانية التي تتيح إحداث قطاعات تفاعلية عبر الكتلة الحجمية ثلاثية الأبعاد لكشف بؤر الحرارة الداخلية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Voxel Layer with Slicing and Isosurface tools",
+          "ar": "طبقة الفوكسل (Voxel Layer) باستخدام أدوات القطاع (Slicing) وأسطح التساوي (Isosurfaces)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "2D Contour geoprocessing tool",
+          "ar": "أداة خطوط الكنتور ثنائية الأبعاد"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Near tool with search radius",
+          "ar": "أداة Near بنصف قطر بحث"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Clip tool on a shapefile",
+          "ar": "أداة Clip على ملف shapefile"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Voxel layers represent volumetric multidimensional NetCDF data as 3D discrete voxels, supporting interactive cross-sections, slicing planes, and isosurfaces in 3D scenes.",
+      "ar": "تمثل طبقات الفوكسل (Voxel layers) البيانات الحجمية متعددة الأبعاد كمجسمات ثلاثية الأبعاد، وتدعم إجراء قطاعات تفاعلية واستخراج أسطح التساوي (Isosurfaces) داخل المشاهد ثلاثية الأبعاد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "2D contours only generate flat isolines.",
+        "C": "Near measures point distances.",
+        "D": "Clip operates on vector boundaries."
+      },
+      "ar": {
+        "B": "الكنتور ثنائي الأبعاد ينتج خطوطاً مستوية.",
+        "C": "أداة Near تقيس المسافات.",
+        "D": "أداة Clip للمتجهات."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-017",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "context": {
+      "en": "A demographer symbolizes an agricultural census using Dot Density symbology where 1 dot represents 1,000 sheep. When zooming in and out on the map, the positions of individual dots shift slightly.",
+      "ar": "مثل باحث ديموغرافي تعداد الثروة الحيوانية برموز كثافة النقط (Dot Density) بحيث تمثل كل نقطة 1,000 رأس ماشية؛ وعند التكبير والتصغير على الخريطة، لاحظ تحرك مواضع النقاط قليلاً."
+    },
+    "question": {
+      "en": "What explains this shifting dot behavior?",
+      "ar": "ما هو التفسير العلمي الكارتوغرافي لتحرك مواضع هذه النقاط؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Dot Density places dots randomly within each polygon at each redraw to represent overall density, not exact surveyed GPS animal positions",
+          "ar": "توزع طريقة Dot Density النقاط عشوائياً داخل المضلع مع كل إعادة رسم لتمثيل الكثافة الإجمالية، وليست مواقع GPS حقيقية مساحة للحيوانات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The geodatabase is corrupted",
+          "ar": "قاعدة البيانات تالفة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The graphics card is overheating",
+          "ar": "بطاقة الرسوميات تعاني من حرارة مرتفعة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The coordinate system datum is drifting",
+          "ar": "مرجع نظام الإحداثيات يتحرك وينزاح"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Dot density symbology distributes dots pseudorandomly inside polygon boundaries to convey visual density. The dots represent statistical aggregations rather than real geographic coordinates of individual features.",
+      "ar": "توزع طريقة كثافة النقط (Dot Density) النقاط عشوائياً داخل حدود كل مضلع لتعبر بصرياً عن الكثافة الإحصائية؛ وهي تعبير رمزي كمي وليست إحداثيات مكانية حقيقية لكل مفردة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Dot density behavior is normal software design, not data corruption.",
+        "C": "Hardware graphics heat does not control dot algorithms.",
+        "D": "Datums are mathematically fixed definitions."
+      },
+      "ar": {
+        "B": "سلوك طبيعي للترميز وليس تلفاً بالبيانات.",
+        "C": "حرارة العتاد لا تتحكم بالخوارزمية.",
+        "D": "المراجع الإسنادية ثابتة رياضياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-018",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Troubleshooting",
+    "tools": [
+      "Definition Query"
+    ],
+    "context": {
+      "en": "An analyst configures a Definition Query to display active permits in District 5: `DISTRICT = 5 AND STATUS = 'Active' OR STATUS = 'Pending'`. In the map, active permits from Districts 1, 2, 3, and 4 also appear.",
+      "ar": "ضبط محلل استعلاماً تعريفياً لعرض التراخيص النشطة في المنطقة 5: `DISTRICT = 5 AND STATUS = 'Active' OR STATUS = 'Pending'`. فظهرت على الخريطة تراخيص نشطة من المناطق 1 و 2 و 3 و 4 أيضاً."
+    },
+    "question": {
+      "en": "What logical error exists in this query clause?",
+      "ar": "ما هو الخطأ المنطقي الموجود في صياغة هذا الاستعلام؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Missing parentheses around the OR condition: `DISTRICT = 5 AND (STATUS = 'Active' OR STATUS = 'Pending')`",
+          "ar": "غياب الأقواس حول شرط OR: والصحيح `DISTRICT = 5 AND (STATUS = 'Active' OR STATUS = 'Pending')`"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The field names are spelled in uppercase",
+          "ar": "كتابة أسماء الحقول بأحرف كبيرة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "SQL does not support the word AND",
+          "ar": "لغة SQL لا تدعم كلمة AND"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The layer must be converted to raster format",
+          "ar": "يجب تحويل الطبقة إلى راستر"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In SQL precedence, AND takes priority over OR. The original query evaluates as (District 5 AND Active) OR (Any Pending permit in any district). Adding parentheses groups the statuses together under District 5.",
+      "ar": "في أسبقية عمليات SQL، يسبق المعامل AND المعامل OR في التقييم؛ فالاستعلام الأصلي يظهر أي ترخيص معلق (Pending) في أي منطقة كانت. وإضافة الأقواس تضمن قصر كلا الحالتين على المنطقة 5 حصراً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Case formatting in SQL field names does not alter boolean logic.",
+        "C": "AND is a fundamental core SQL operator.",
+        "D": "Vector definition queries do not require rasters."
+      },
+      "ar": {
+        "B": "حالة الأحرف لا تغير المنطق البولياني.",
+        "C": "المعامل AND عنصر أساسي في SQL.",
+        "D": "الاستعلامات للمتجهات لا تتطلب راستر."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-019",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Maplex Label Engine"
+    ],
+    "context": {
+      "en": "On a statewide road map layout, long interstate highway lines run across several feet of the printed map. Currently, each highway is labeled only once at its western start point, leaving the rest of the line unlabeled.",
+      "ar": "في لوحة خريطة طرق للولاية، تمتد خطوط الطرق السريعة الطويلة لعدة أقدام على الخريطة المطبوعة؛ وتظهر التسمية حالياً مرة واحدة فقط عند بداية الطريق غرباً، ويبقى بقية الخط دون أي تسمية توضيحية."
+    },
+    "question": {
+      "en": "Which Maplex placement setting ensures highway labels repeat at regular distance intervals along the length of the road?",
+      "ar": "أي إعداد في محرك Maplex يضمن تكرار تسميات الطرق السريعة على فواصل مسافات منتظمة بطول مسار الطريق؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Repeat label with a specified distance interval",
+          "ar": "تكرار التسمية (Repeat label) بمسافة فاصلة محددة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Remove duplicates globally",
+          "ar": "إزالة التكرار عالمياً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Set font size to 72pt",
+          "ar": "ضبط حجم الخط على 72pt"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Convert road layer to a point layer",
+          "ar": "تحويل طبقة الطرق إلى نقاط"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Repeat Label placement property in Maplex allows labels on long polyline features to repeat at specified distance increments (e.g. every 500 millimeters on page or 50 miles in ground units).",
+      "ar": "تسمح خاصية تكرار التسمية (Repeat Label) في محرك Maplex بتكرار نصوص التسميات على المعالم الخطية الطويلة بفواصل مسافات منتظمة (مثل كل 50 ميلاً) لتسهيل قراءة الخريطة عبر امتدادها الواسع."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Remove duplicates suppresses repeated labels, the exact opposite of what is needed.",
+        "C": "72pt font is massive and clutters the map.",
+        "D": "Converting to points breaks line cartography."
+      },
+      "ar": {
+        "B": "إزالة التكرار تخفي التسميات المكررة وهو عكس المطلوب.",
+        "C": "خط 72 ضخم جداً ويشوه الخريطة.",
+        "D": "التحويل لنقاط يفقد خواص الخطوط."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-020",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology",
+      "Classification"
+    ],
+    "context": {
+      "en": "An economist maps city household wealth using Quantile classification with 5 classes. A small billionaire enclave with extreme wealth ($100M+) is grouped into the exact same top 20% class as middle-class households earning $120,000.",
+      "ar": "رسم خبير اقتصادي خريطة لثروات الأسر في المدينة بتصنيف Quantile ذي 5 فئات؛ فوُضعت أسر المليارديرات ذات الثروات الفائقة (+100 مليون دولار) في نفس فئة الـ 20% الأعلى مع أسر الطبقة المتوسطة ذات الدخل 120,000 دولار."
+    },
+    "question": {
+      "en": "Why did the Quantile classification mask these extreme wealth outliers?",
+      "ar": "لماذا أخفت طريقة تصنيف Quantile هذه القيم الشاذة المتطرفة للثروة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Because Quantile distributes equal counts of features into each class regardless of numerical magnitude or natural data gaps",
+          "ar": "لأن تصنيف Quantile يوزع أعداداً متساوية من المعالم في كل فئة بغض النظر عن الفروق الرقمية أو الفجوات الطبيعية في البيانات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Because Quantile only works on percentage data",
+          "ar": "لأن Quantile تعمل على النسب المئوية فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Because the attribute field was stored as Double",
+          "ar": "لأن الحقل مخزن بنوع Double"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Because the map coordinate system was projected",
+          "ar": "لأن نظام إحداثيات الخريطة كان مسقطاً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Quantile groups equal counts of records (20% per class). It completely ignores data magnitude gaps and clusters, grouping extreme outliers into the same quantile bucket as typical adjacent values.",
+      "ar": "تقسم طريقة Quantile المعالم إلى أعداد متساوية (20% في كل فئة)؛ وهي تتجاهل الفجوات الرقمية والتجمعات الطبيعية، مما يدمج القيم الشاذة المتطرفة في نفس الفئة مع القيم العادية المجاورة لها في الترتيب."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Quantile works on any numeric values.",
+        "C": "Double fields store floating-point numbers accurately.",
+        "D": "Map projections do not alter statistical classification."
+      },
+      "ar": {
+        "B": "تعمل Quantile على كافة القيم الرقمية.",
+        "C": "نوع Double يخزن الأرقام بدقة.",
+        "D": "الإسقاط لا يغير التصنيف الإحصائي."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-021",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Classification"
+    ],
+    "context": {
+      "en": "A public health researcher wants to highlight census tracts that have infant mortality rates significantly above or below the national average.",
+      "ar": "يريد باحث صحة عامة إبراز مناطق التعداد التي تسجل معدلات وفيات رضع أعلى أو أقل بشكل ملحوظ من المتوسط الوطني العام."
+    },
+    "question": {
+      "en": "Which classification method classifies data based on multiples of standard deviation above and below the arithmetic mean?",
+      "ar": "أي طريقة تصنيف تقسم البيانات بالاعتماد على مضاعفات الانحراف المعياري أعلى وأدنى المتوسط الحسابي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Standard Deviation",
+          "ar": "الانحراف المعياري (Standard Deviation)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Equal Interval",
+          "ar": "الفترات المتساوية (Equal Interval)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Manual Interval",
+          "ar": "الفترات اليدوية (Manual Interval)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Natural Breaks",
+          "ar": "الكسور الطبيعية (Natural Breaks)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Standard Deviation classification method shows how much a feature's attribute value varies from the mean, creating class breaks at intervals of 1, 0.5, or 0.33 standard deviations.",
+      "ar": "توضح طريقة تصنيف الانحراف المعياري مدى تباعد قيم المعالم عن المتوسط الحسابي العام، وتنشئ فواصل فئات بفواصل 1 أو 0.5 انحراف معياري لإبراز الشذوذ الإحصائي."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Equal interval divides range evenly.",
+        "C": "Manual interval requires typing breaks.",
+        "D": "Natural breaks clusters variance."
+      },
+      "ar": {
+        "B": "الفترات المتساوية تقسم المدى بالتساوي.",
+        "C": "الفترات اليدوية تتطلب إدخال الفواصل.",
+        "D": "الكسور الطبيعية تجمع التباين."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-022",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "Symbology"
+    ],
+    "context": {
+      "en": "An emergency response task force visualizes joint military and civilian search-and-rescue teams according to the MIL-STD-2525D standard, where symbols depend on echelon, identity, affiliation, and equipment codes.",
+      "ar": "تعرض فرقة طوارئ مواقع فرق الإنقاذ العسكرية والمدنية المشتركة وفق معيار MIL-STD-2525D، حيث ترتهن الرموز بأكواد التبعية والرتبة ونوع المعدات."
+    },
+    "question": {
+      "en": "Which symbology renderer in ArcGIS Pro supports generating complex standardized multi-attribute composite symbols from rule dictionaries?",
+      "ar": "أي محرك رموز في ArcGIS Pro يدعم توليد رموز مركبة معيارية معقدة متعددة السمات من قواميس القواعد؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Dictionary Symbology",
+          "ar": "رموز القاموس (Dictionary Symbology)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Unique Values",
+          "ar": "القيم الفريدة (Unique Values)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Single Symbol",
+          "ar": "الرمز المنفرد (Single Symbol)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Heat Map",
+          "ar": "الخريطة الحرارية (Heat Map)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Dictionary Symbology uses an external symbol dictionary to parse multiple attribute fields and synthesize complex, standardized military or emergency management symbols automatically.",
+      "ar": "تستخدم رموز القاموس (Dictionary Symbology) قاموس رموز خارجياً لقراءة حقول سمات متعددة وتوليد رموز عسكرية أو طوارئ مركبة ومعيارية بشكل آلي متكامل."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Unique values only categorizes on individual field lists.",
+        "C": "Single symbol uses one identical style.",
+        "D": "Heat map renders density rasters."
+      },
+      "ar": {
+        "B": "القيم الفريدة تصنف بحقول منفردة محدودة.",
+        "C": "الرمز المنفرد يطبق نمطاً موحداً.",
+        "D": "الخريطة الحرارية لكثافة النقط."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-023",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Identify how to control the coordinate system and geographic transformation in ArcGIS Pro",
+    "difficulty": "Beginner",
+    "type": "Troubleshooting",
+    "tools": [
+      "Geographic Transformation"
+    ],
+    "context": {
+      "en": "When adding a historical landmark layer based on the NAD 1927 datum into a project map set to NAD 1983 State Plane, ArcGIS Pro displays a notification stating that a transformation is missing.",
+      "ar": "عند إضافة طبقة معالم تاريخية تعتمد على مرجع NAD 1927 إلى خريطة مشروع مضبوطة على State Plane NAD 1983، ظهر إشعار يفيد بغياب تحويل المرجع (Transformation is missing)."
+    },
+    "question": {
+      "en": "What consequence occurs if the user dismisses this notification without setting a transformation?",
+      "ar": "ما النتيجة التي ستحدث إذا تجاهل المستخدم هذا الإشعار دون تحديد طريقة تحويل المرجع؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Features will draw with a spatial offset error (datum shift) of several tens of meters",
+          "ar": "ستُرسم المعالم بإزاحة مكانية خاطئة (إزاحة المرجع Datum shift) بمقدار عشرات الأمتار"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The computer operating system will crash",
+          "ar": "سيتعطل نظام تشغيل الحاسوب"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The attribute table will be deleted",
+          "ar": "سيتم حذف جدول البيانات السماتية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The map will be converted to a 3D scene",
+          "ar": "ستتحول الخريطة إلى مشهد ثلاثي الأبعاد"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "When underlying datums differ, coordinates reference different reference ellipsoids. Without a geographic transformation, ArcGIS Pro cannot align the features accurately, causing a visible datum shift.",
+      "ar": "عند اختلاف المراجع الإسنادية، ترتكز الإحداثيات على مجسمات أرضية مختلفة؛ ودون تطبيق تحويل جغرافي للمرجع، لا يستطيع البرنامج مطابقة المعالم بدقة، مما يسبب إزاحة مكانية واضحة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Software does not crash operating systems on missing datum transformations.",
+        "C": "Attribute data is unaffected.",
+        "D": "View modes do not change automatically."
+      },
+      "ar": {
+        "B": "البرنامج لا يعطل نظام التشغيل.",
+        "C": "البيانات السماتية تظل محفوظة.",
+        "D": "أنماط العرض لا تتغير تلقائياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Coordinate systems in maps and scenes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-024",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Time Slider"
+    ],
+    "context": {
+      "en": "An analyst animates historical oil spill contamination incidents over a 50-year period. Rather than having old spills vanish as time advances, the analyst wants all past spills to remain visible on the map as new ones appear.",
+      "ar": "يحتاج محلل لتحريك حوادث التلوث النفطي التاريخية على مدى 50 عاماً؛ وبدلاً من اختفاء البقع القديمة مع تقدم الزمن، يريد بقاء كافة البقع السابقة ظاهرة على الخريطة مع ظهور البقع الجديدة."
+    },
+    "question": {
+      "en": "What setting on the Time tab enables this cumulative temporal behavior?",
+      "ar": "ما الإعداد في تبويب الوقت (Time) الذي يفعل هذا السلوك الزمني التراكمي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Check 'Start time: None' or check 'Show data cumulatively'",
+          "ar": "تفعيل خيار العرض التراكمي للبيانات 'Show data cumulatively'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Set layer transparency to 0%",
+          "ar": "ضبط شفافية الطبقة على 0%"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Export to PNG",
+          "ar": "التصدير إلى PNG"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Delete future time stamps",
+          "ar": "حذف التواريخ المستقبلية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Enabling 'Show data cumulatively' (or unconstraining the start time) locks the start of the time window to the earliest record, accumulating features on screen as the slider moves forward.",
+      "ar": "يؤدي اختيار 'Show data cumulatively' إلى تثبيت بداية النافذة الزمنية عند أقدم سجل تاريخي، مما يراكم المعالم على الشاشة باستمرار مع تقدم المنزلق الزمني للأمام."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Transparency does not govern temporal query spans.",
+        "C": "PNG is a static export.",
+        "D": "Deleting records destroys data."
+      },
+      "ar": {
+        "B": "الشفافية لا تتحكم في النطاق الزمني.",
+        "C": "تصدير PNG صورة ثابتة.",
+        "D": "حذف التواريخ يدمر البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-025",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "3D Scenes"
+    ],
+    "context": {
+      "en": "A geotechnical engineering team models a tunnel excavation in a 3D Local Scene. They need the scene view to clip sharply along a 500-meter rectangular project boundary, hiding the surrounding regional terrain.",
+      "ar": "ينمذج فريق هندسة جيوتقنية حفر نفق في مشهد محلي ثلاثي الأبعاد؛ ويحتاج لقص عرض المشهد بصرامة عند حدود مستطيلة للمشروع بمسافة 500 متر لإخفاء التضاريس الإقليمية المحيطة."
+    },
+    "question": {
+      "en": "Where is this spatial boundary defined in a Local Scene?",
+      "ar": "أين يتم تحديد هذا النطاق المكاني في المشهد المحلي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Scene Properties > Extent > 'Use a custom extent' with clipping enabled",
+          "ar": "خصائص المشهد Scene Properties > تبويب Extent > اختيار 'Use a custom extent' مع تفعيل القص"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Layer Properties > Symbology",
+          "ar": "خصائص الطبقة > الرموز"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Catalog Pane > Folder Connections",
+          "ar": "نافذة الكتالوج > اتصالات المجلدات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Edit Ribbon > Snapping",
+          "ar": "شريط التحرير > الانجذاب"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In a Local Scene, the Extent tab in Scene Properties allows defining a custom rectangular bounding box and checking 'Clip to extent', cutting the 3D ground surface and layers sharply to the project boundaries.",
+      "ar": "في المشهد المحلي، يتيح تبويب Extent في خصائص المشهد تحديد مستطيل مخصص وتفعيل خيار 'Clip to extent'، مما يقتطع سطح الأرض ثلاثي الأبعاد والطبقات بصرامة عند حدود المشروع."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Symbology colors features.",
+        "C": "Catalog manages files.",
+        "D": "Snapping controls vertex edits."
+      },
+      "ar": {
+        "B": "الترميز لتلوين المعالم.",
+        "C": "الكتالوج لإدارة الملفات.",
+        "D": "الانجذاب للتحرير."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-026",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Select By Attributes"
+    ],
+    "context": {
+      "en": "An analyst needs to select all street centerlines in a city where the STREET_NAME contains the word 'Park' anywhere within the text string (e.g., 'Park Ave', 'South Park Road', 'Glenpark Drive').",
+      "ar": "يحتاج محلل لتحديد كافة محاور الشوارع في المدينة التي يحتوي فيها حقل STREET_NAME على كلمة 'Park' في أي موضع داخل النص (مثل 'Park Ave' أو 'South Park Road' أو 'Glenpark Drive')."
+    },
+    "question": {
+      "en": "Which SQL expression correctly retrieves all matching features?",
+      "ar": "أي تعبير SQL يسترجع كافة المعالم المطابقة بشكل صحيح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "STREET_NAME LIKE '%Park%'",
+          "ar": "STREET_NAME LIKE '%Park%'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "STREET_NAME = 'Park'",
+          "ar": "STREET_NAME = 'Park'"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "STREET_NAME IN ('Park')",
+          "ar": "STREET_NAME IN ('Park')"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "STREET_NAME LIKE '_Park_'",
+          "ar": "STREET_NAME LIKE '_Park_'"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The percent sign (%) wildcard matches any number of characters. Wrapping 'Park' with wildcards on both sides (%Park%) matches the substring anywhere in the field.",
+      "ar": "تطابق علامة النسبة المئوية (%) أي عدد من الحروف؛ ووضعها على جانبي الكلمة (%Park%) يضمن مطابقة الكلمة سواء وقعت في بداية النص أو وسطه أو نهايته."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Equality (=) only matches rows where the entire text is solely the four letters 'Park'.",
+        "C": "IN ('Park') matches exact string equality only.",
+        "D": "Underscore (_) matches exactly one single character, not variable text strings."
+      },
+      "ar": {
+        "B": "معامل المساواة يطابق الكلمة المنفردة فقط.",
+        "C": "معامل IN يطابق النص الدقيق فقط.",
+        "D": "الشرطة السفلية تطابق حرفاً واحداً فقط."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-027",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Select By Location"
+    ],
+    "context": {
+      "en": "A wildlife conservation department has a layer of national parks and a layer of endangered species sighting points. The biologist wants to select ONLY parks that encompass all sightings of a specific herd within their borders.",
+      "ar": "تمتلك إدارة حماية الحياة الفطرية طبقة للمتنزهات الوطنية وطبقة لنقاط رصد الأنواع المهددة؛ ويريد باحث الأحياء تحديد المتنزهات التي تحتوي كافة نقاط قطيع معين بالكامل داخل حدودها فقط."
+    },
+    "question": {
+      "en": "Which spatial relationship in Select By Location should be chosen with Input: Parks and Selecting Features: Herd Points?",
+      "ar": "أي علاقة مكانية في أداة Select By Location يجب اختيارها مع تحديد المدخلات: المتنزهات، ومعالم التحديد: نقاط القطيع؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Completely contains",
+          "ar": "Completely contains (تحتوي بالكامل)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Are within",
+          "ar": "Are within (تقع داخل)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Touch the boundary of",
+          "ar": "Touch the boundary of (تلامس حدود)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Are crossed by the outline of",
+          "ar": "Are crossed by the outline of (تقطعها حدود)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "When polygon parks are the Input Features and points are Selecting Features, 'Completely contains' selects polygons whose interior fully encloses the points.",
+      "ar": "عندما تكون مضلعات المتنزهات هي معالم الإدخال والنقاط هي معالم التحديد، فإن علاقة 'Completely contains' تحدد المضلعات التي تضم النقاط بالكامل داخل حدودها."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "'Are within' is the reverse relationship.",
+        "C": "Touch boundary requires edge coincidence.",
+        "D": "Crossed by outline requires line intersections."
+      },
+      "ar": {
+        "B": "علاقة Are within هي العلاقة العكسية.",
+        "C": "تلامس الحدود يتطلب اشتراكاً بالحواف.",
+        "D": "تقطعها الحدود لتقاطع الخطوط."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-028",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Classification"
+    ],
+    "context": {
+      "en": "An analyst uses Equal Interval with 5 classes to map city building values. A single landmark tower is valued at $500,000,000, while 99% of all other buildings are valued under $2,000,000. In the map, almost every building falls into Class 1, while Classes 2, 3, and 4 are completely empty.",
+      "ar": "استخدم محلل طريقة الفترات المتساوية (Equal Interval) بـ 5 فئات لتمثيل قيم مباني المدينة؛ وتبين وجود برج استثماري بقيمة 500 مليون دولار، بينما 99% من المباني قيمتها أقل من مليوني دولار، فظهرت جميع المباني تقريباً في الفئة الأولى وبقيت بقية الفئات فارغة تماماً."
+    },
+    "question": {
+      "en": "What fundamental limitation of Equal Interval caused this cartographic failure?",
+      "ar": "ما هو العيب الجوهري في طريقة الفترات المتساوية الذي تسبب في هذا الفشل الكارتوغرافي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Equal Interval divides the total numeric range evenly regardless of data clustering or extreme outliers",
+          "ar": "تقسم طريقة الفترات المتساوية المدى الرقمي بالتساوي بغض النظر عن تركز البيانات أو وجود قيم شاذة متطرفة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Equal Interval cannot handle integer numbers",
+          "ar": "لا تدعم الفترات المتساوية الأرقام الصحيحة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The map frame was not locked",
+          "ar": "لم يتم قفل إطار الخريطة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The layer lacked a spatial index",
+          "ar": "كانت الطبقة تفتقر لفهرس مكاني"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Equal interval divides the range (Max - Min) into equal numeric chunks. When extreme outliers exist, the wide ranges result in most features clustering into the lowest bucket while higher buckets remain empty.",
+      "ar": "تقسم طريقة الفترات المتساوية المدى الكلي (الأعلى - الأدنى) إلى فترات رقمية متطابقة الطول؛ ومع وجود قيم متطرفة شاذة، يتسع طول الفترات فتتكدس أغلب المعالم في الفئة الأولى وتبقى الفئات العليا فارغة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Equal Interval fully supports integers and floats.",
+        "C": "Map frame locking does not alter classification breaks.",
+        "D": "Spatial indexing optimizes search, not classification math."
+      },
+      "ar": {
+        "B": "تدعم الطريقة الأرقام الصحيحة والعشرية.",
+        "C": "قفل الإطار لا يغير فواصل التصنيف.",
+        "D": "الفهرس المكاني لتسريع البحث."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-029",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Classification"
+    ],
+    "context": {
+      "en": "A GIS demographer prepares a choropleth map of regional income distributions and wants to group data using Natural Breaks.",
+      "ar": "يقوم باحث ديموغرافي بإعداد خريطة كوروبليث لتوزيعات الدخل الإقليمية ويريد تصنيف البيانات باستخدام طريقة الكسور الطبيعية (Natural Breaks)."
+    },
+    "question": {
+      "en": "What mathematical objective function does the Natural Breaks (Jenks) optimization algorithm solve for?",
+      "ar": "ما هي الدالة الهدفية الرياضية التي تسعى خوارزمية جينكس (Natural Breaks) لتحقيقها في البيانات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Minimizes variance within classes while maximizing variance between classes",
+          "ar": "تقليل التباين الإحصائي داخل الفئة الواحدة لأدنى حد مع تعظيم التباين بين الفئات المختلفة لأقصى حد"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Forces every class to contain exactly 10 features",
+          "ar": "إجبار كل فئة على احتواء 10 معالم بالضبط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Calculates the geometric surface area of polygons",
+          "ar": "حساب المساحة السطحية الهندسية للمضلعات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Converts coordinates into polar space",
+          "ar": "تحويل الإحداثيات إلى الفضاء القطبي"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Jenks optimization algorithm seeks to reduce the variance within each class (sum of squared deviations from the class mean) while maximizing the difference between separate classes.",
+      "ar": "تسعى خوارزمية جينكس إلى تقليص التشتت والتباين الإحصائي الداخلي للقيم داخل كل فئة، مع زيادة الفروق والتباين بين الفئات المختلفة لإبراز الانقسامات والتجمعات الطبيعية في البيانات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Equal count is the objective of Quantile classification.",
+        "C": "Classification does not alter geometric surface areas.",
+        "D": "Coordinate transformations are handled by projections."
+      },
+      "ar": {
+        "B": "تساوي الأعداد هدف تصنيف Quantile.",
+        "C": "التصنيف لا يعدل المساحات.",
+        "D": "التحويلات الإسقاطية تديرها نظم الإحداثيات."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-030",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Maplex Label Engine"
+    ],
+    "context": {
+      "en": "A cartographer needs water body labels (e.g. 'Lake Michigan') to draw in the background so that city labels and road numbers draw directly on top of the lake labels without being suppressed or displaced.",
+      "ar": "يحتاج رسام خرائط لرسم تسميات المسطحات المائية (مثل 'بحيرة ميشيغان') في الخلفية، بحيث تُوضع تسميات المدن وأرقام الطرق فوقها مباشرة دون أن تُحجب أو تُزاح."
+    },
+    "question": {
+      "en": "Which Maplex label class setting treats lake labels as background text?",
+      "ar": "أي إعداد لفئة التسميات في Maplex يجعل تسميات البحيرة تُعامل كنصوص خلفية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Set Label Class type to 'Background label'",
+          "ar": "ضبط نوع فئة التسمية على تسمية خلفية (Background label)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Set Feature Weight to 1000",
+          "ar": "ضبط وزن المعلم على 1000"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Delete the city labels",
+          "ar": "حذف تسميات المدن"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Convert the lake to a 3D building",
+          "ar": "تحويل البحيرة لمبنى ثلاثي الأبعاد"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Flagging a label class as a 'Background label' tells Maplex that other competing labels are permitted to draw directly over it without triggering conflict suppression.",
+      "ar": "يؤدي تعيين فئة التسمية كـ 'Background label' إلى توجيه محرك Maplex للسماح للتسميات المتنافسة الأخرى بالرسم فوقها مباشرة دون اعتبار ذلك تصادماً يؤدي لحجب التسميات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Feature Weight 1000 creates an impassable obstacle, blocking labels.",
+        "C": "Deleting labels destroys city names.",
+        "D": "Lakes are water bodies, not 3D buildings."
+      },
+      "ar": {
+        "B": "وزن 1000 يمنع التسميات.",
+        "C": "حذف التسميات يدمر أسماء المدن.",
+        "D": "البحيرات مسطحات مائية وليست مباني."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-031",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Troubleshooting",
+    "tools": [
+      "Rematch Addresses"
+    ],
+    "context": {
+      "en": "During address rematching in ArcGIS Pro, an address displays a 'Tied' status with two candidates scoring 98.4%: '100 North Main Street' and '100 South Main Street'.",
+      "ar": "أثناء إعادة مطابقة العناوين، أظهر سجل حالة تعادل (Tied) مع مرشحين كلاهما بدرجة 98.4%: '100 North Main Street' و '100 South Main Street'."
+    },
+    "question": {
+      "en": "How must the technician resolve this candidate tie?",
+      "ar": "كيف يجب على الفني حسم هذا التعادل بين المرشحين؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Inspect reference data or source documents and manually pick the correct candidate match",
+          "ar": "فحص البيانات المرجعية أو وثائق المصدر واختيار المرشح المطابق الصحيح يدوياً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Let the computer randomly delete one candidate",
+          "ar": "ترك الحاسوب يحذف أحد المرشحين عشوائياً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Restart ArcGIS Pro",
+          "ar": "إعادة تشغيل ArcGIS Pro"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Change the layer coordinate system",
+          "ar": "تغيير نظام إحداثيات الطبقة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A Tied status indicates multiple candidates share the highest match score. The technician must review source records, pick the verified location in the Rematch pane, and click Match.",
+      "ar": "تشير حالة التعادل (Tied) لتساوي مرشحين في أعلى درجة تطابق؛ ويجب على الفني مراجعة الوثائق وتحديد الموقع الصحيح في نافذة Rematch ثم النقر على تأكيد المطابقة (Match)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "GIS software does not randomly delete data.",
+        "C": "Restarting does not resolve data ambiguity.",
+        "D": "Coordinate systems do not disambiguate street names."
+      },
+      "ar": {
+        "B": "البرنامج لا يحذف البيانات عشوائياً.",
+        "C": "إعادة التشغيل لا تحل غموض البيانات.",
+        "D": "أنظمة الإحداثيات لا تفصل في أسماء الشوارع."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-032",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symbology"
+    ],
+    "context": {
+      "en": "An oceanographic researcher tracks marine buoy sensors recording wave height and wave direction. Each buoy point must display as an arrow whose size reflects wave height and whose orientation points in the direction of wave travel.",
+      "ar": "يتابع باحث علوم بحار مجسات عائمات بحرية تسجل ارتفاع الموج واتجاهه؛ ويجب عرض كل نقطة كسهم يعبر حجمه عن ارتفاع الموج ويشير اتجاهه نحو مسار حركة الموج."
+    },
+    "question": {
+      "en": "Which symbology configuration in ArcGIS Pro achieves this dual-variable visualization?",
+      "ar": "أي تهيئة للرموز في ArcGIS Pro تحقق هذا التمثيل البصري ثنائي المتغيرات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Use 'Vary symbology by attribute' to bind Size to WAVE_HEIGHT and Rotation to WAVE_DIRECTION",
+          "ar": "استخدام 'Vary symbology by attribute' لربط الحجم بحقل WAVE_HEIGHT والتدوير بحقل WAVE_DIRECTION"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Create two duplicate feature classes and overlay them",
+          "ar": "إنشاء فئتي معالم مكررتين وتركيبهما فوق بعض"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Set layer transparency to 80%",
+          "ar": "ضبط شفافية الطبقة على 80%"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export to AutoCAD DWG",
+          "ar": "التصدير إلى أوتوكاد DWG"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The 'Vary symbology by attribute' capability in the Symbology pane allows secondary attribute fields to drive visual variables (such as rotation angle and symbol size) independently on a single layer.",
+      "ar": "تتيح ميزة 'Vary symbology by attribute' في نافذة الرموز ربط حقول سمات ثانوية للتحكم المستقل في المتغيرات البصرية (كزاوية التدوير وحجم الرمز) لنفس الطبقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Duplicating feature classes doubles storage redundantly.",
+        "C": "Transparency does not orient arrows.",
+        "D": "AutoCAD export is a file conversion."
+      },
+      "ar": {
+        "B": "تكرار الطبقات يضاعف التخزين بلا مبرر.",
+        "C": "الشفافية لا توجه الأسهم.",
+        "D": "تصدير أوتوكاد تحويل ملفات."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-033",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Maplex Label Engine"
+    ],
+    "context": {
+      "en": "A municipal cartographer configures an Abbreviation Dictionary in the Maplex Label Engine to abbreviate long street suffixes like 'Avenue' to 'Ave' on an urban street map.",
+      "ar": "يقوم رسام خرائط بلدي بتهيئة قاموس اختصارات في محرك Maplex لاختصار لواحق الشوارع الطويلة مثل 'Avenue' إلى 'Ave' في خريطة شوارع حضرية."
+    },
+    "question": {
+      "en": "What effect does the Maplex Abbreviation Dictionary have on the underlying geodatabase table attributes?",
+      "ar": "ما هو تأثير قاموس اختصارات Maplex على سمات جدول قاعدة البيانات الجغرافية الأصلية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The underlying table attributes remain completely unchanged; abbreviation occurs only on the screen display",
+          "ar": "تبقى سمات الجدول الأصلية دون أي تغيير إطلاقاً؛ وتحدث الاختصارات في العرض البصري على الشاشة فقط"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The table attributes are permanently abbreviated and overwritten on disk",
+          "ar": "تُختصر سمات الجدول نهائياً وتُستبدل على القرص"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The table is converted to a CSV file",
+          "ar": "يتحول الجدول إلى ملف CSV"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "All text fields are converted to Short Integer",
+          "ar": "تتحول كافة الحقول النصية إلى أرقام صحيحة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Maplex abbreviation dictionaries are dynamic cartographic presentation tools. They alter text strings strictly during label rendering on screen and layout, never touching source database records.",
+      "ar": "تعد قواميس اختصارات Maplex أدوات عرض كارتوغرافي ديناميكي؛ وتختصر النصوص أثناء رسم التسميات على الشاشة واللوحة فقط، دون المساس بسجلات قاعدة البيانات الأصلية إطلاقاً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Maplex never modifies source geodatabase tables.",
+        "C": "Table format remains intact.",
+        "D": "Field data types are not altered by labeling."
+      },
+      "ar": {
+        "B": "لا يعدل Maplex جداول البيانات الأصلية.",
+        "C": "تنسيق الجدول يظل ثابتاً.",
+        "D": "أنواع الحقول لا تتغير بالتسميات."
+      }
+    },
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-034",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Determine how to visualize temporal, ranged, or 3D data",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "3D Scenes"
+    ],
+    "context": {
+      "en": "In a flat coastal plain, subtle elevation changes of 5 to 10 feet are difficult to perceive in a 3D Scene.",
+      "ar": "في سهل ساحلي مستوٍ، يصعب ملاحظة الفروق الطبوغرافية الطفيفة في الارتفاع (من 5 إلى 10 أقدام) في المشهد ثلاثي الأبعاد."
+    },
+    "question": {
+      "en": "Which setting in the 3D Scene properties multiplies the vertical elevation scale relative to the horizontal scale to emphasize subtle terrain variations?",
+      "ar": "ما الإعداد في خصائص المشهد ثلاثي الأبعاد الذي يضاعف مقياس الارتفاع الرأسي بالنسبة للمقياس الأفقي لإبراز الفروق التضاريسية الطفيفة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Vertical Exaggeration",
+          "ar": "المبالغة الرأسية (Vertical Exaggeration)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Sun Azimuth",
+          "ar": "سمت الشمس (Sun Azimuth)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Field of View",
+          "ar": "زاوية الرؤية (Field of View)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Ambient Occlusion",
+          "ar": "الانسداد المحيطي (Ambient Occlusion)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Vertical Exaggeration applies an artificial multiplier (e.g. 2x, 5x, 10x) to Z-elevations, enhancing visual perception of subtle topographic relief in relatively flat landscapes.",
+      "ar": "تطبق المبالغة الرأسية (Vertical Exaggeration) معاملاً مضاعفاً (مثل 2x أو 5x) على الارتفاعات الرأسية Z، مما يبرز التباينات التضاريسية الطفيفة في المناطق السهلية والمستوية بصرياً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Sun Azimuth controls solar lighting direction.",
+        "C": "Field of View controls camera lens perspective.",
+        "D": "Ambient occlusion adds contact shading."
+      },
+      "ar": {
+        "B": "سمت الشمس يحدد اتجاه الضوء.",
+        "C": "زاوية الرؤية لعدسة الكاميرا.",
+        "D": "الانسداد المحيطي يضيف ظلال تلامس."
+      }
+    },
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-035",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Definition Query"
+    ],
+    "context": {
+      "en": "An analyst needs to filter a city building permits feature layer to display only permits issued during the current calendar year (2025).",
+      "ar": "يحتاج محلل إلى تصفية طبقة معالم تصاريح المباني بالمدينة لعرض التصاريح الصادرة خلال السنة الميلادية الحالية (2025) فقط."
+    },
+    "question": {
+      "en": "Which SQL expression in a Definition Query correctly isolates records where ISSUE_DATE falls between January 1, 2025 and December 31, 2025?",
+      "ar": "أي تعبير SQL في الاستعلام التعريفي يعزل السجلات التي يقع فيها حقل ISSUE_DATE بين 1 يناير 2025 و 31 ديسمبر 2025 بشكل صحيح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "ISSUE_DATE >= date '2025-01-01 00:00:00' AND ISSUE_DATE <= date '2025-12-31 23:59:59'",
+          "ar": "ISSUE_DATE >= date '2025-01-01 00:00:00' AND ISSUE_DATE <= date '2025-12-31 23:59:59'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "ISSUE_DATE = '2025'",
+          "ar": "ISSUE_DATE = '2025'"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "YEAR(ISSUE_DATE) == 'THIS_YEAR'",
+          "ar": "YEAR(ISSUE_DATE) == 'THIS_YEAR'"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "SELECT PERMITS IN 2025",
+          "ar": "SELECT PERMITS IN 2025"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In ArcGIS Pro standard SQL, date literals are specified using the date prefix `date 'YYYY-MM-DD hh:mm:ss'`, allowing precise chronological bounding.",
+      "ar": "في استعلامات SQL بـ ArcGIS Pro، تُكتب التواريخ باستخدام البادئة date بصيغة `date 'YYYY-MM-DD hh:mm:ss'`، مما يتيح تحديد النطاق الزمني بدقة متناهية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Date fields cannot be compared to single four-digit text strings.",
+        "C": "THIS_YEAR is not standard SQL.",
+        "D": "Natural language cannot be evaluated by query engines."
+      },
+      "ar": {
+        "B": "حقول التاريخ لا تقارن بنص من 4 أرقام.",
+        "C": "THIS_YEAR ليست دالة قياسية.",
+        "D": "اللغة النصية لا يفهمها محرك الاستعلام."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-036",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Apply Symbology From Layer"
+    ],
+    "context": {
+      "en": "An analyst uses the Apply Symbology From Layer tool to copy complex graduated colors from a 2020 census layer to a 2025 census layer. However, the target layer's population field is named 'POP_2025' while the source layer's field was named 'TOT_POP'.",
+      "ar": "استخدم محلل أداة Apply Symbology From Layer لنسخ ألوان متدرجة من طبقة تعداد 2020 إلى طبقة 2025؛ ولكن حقل السكان في طبقة الهدف اسمه 'POP_2025' بينما كان في المصدر 'TOT_POP'."
+    },
+    "question": {
+      "en": "What parameter in the tool dialog ensures the symbology maps to the correct attribute field?",
+      "ar": "ما المعامل في نافذة الأداة الذي يضمن تطبيق الرموز على الحقل السماتي الصحيح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Symbology Fields (Source Field to Target Field mapping)",
+          "ar": "حقول الرموز Symbology Fields (مطابقة حقل المصدر مع حقل الهدف)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Cell Size",
+          "ar": "حجم الخلية Cell Size"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Coordinate System",
+          "ar": "نظام الإحداثيات"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Cluster Tolerance",
+          "ar": "تسامح التجميع"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Apply Symbology From Layer tool provides a Symbology Fields mapping parameter where users match source classification fields to corresponding target layer fields when field names differ.",
+      "ar": "توفر أداة Apply Symbology From Layer معاملاً لمطابقة الحقول (Symbology Fields) يتيح للمستخدم تحديد الحقل المقابل في الطبقة الهدف عند اختلاف مسميات الحقول بين الطبقتين."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Cell size is a raster parameter.",
+        "C": "Coordinate system handles projections.",
+        "D": "Cluster tolerance belongs to topology."
+      },
+      "ar": {
+        "B": "حجم الخلية للراستر.",
+        "C": "نظام الإحداثيات للإسقاط.",
+        "D": "تسامح التجميع للطوبولوجيا."
+      }
+    },
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-037",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Manage layer properties using the ribbon and dialog boxes",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "Classification"
+    ],
+    "context": {
+      "en": "A real estate analyst maps commercial lease rates across a metropolitan region. The data is continuous, highly non-normal, and spans extreme ranges from $10/sq ft in rural warehouses to $1,500/sq ft in prime financial district skyscrapers.",
+      "ar": "يمثل محلل عقارات أسعار إيجارات العقارات التجارية؛ والبيانات مستمرة وشديدة الالتواء وتتفاوت بين 10 دولارات للقدم في المستودعات و 1500 دولار في ناطحات السحاب المركزية."
+    },
+    "question": {
+      "en": "Which classification method is mathematically designed specifically for continuous data that is not normally distributed, producing aesthetically pleasing class ranges based on a geometric progression?",
+      "ar": "أي طريقة تصنيف مصممة رياضياً للبيانات المستمرة غير الموزعة طبيعياً، وتنتج فئات متناسقة تعتمد على متوالية هندسية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Geometric Interval",
+          "ar": "الفترات الهندسية (Geometric Interval)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Equal Interval",
+          "ar": "الفترات المتساوية (Equal Interval)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Standard Deviation",
+          "ar": "الانحراف المعياري (Standard Deviation)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Defined Interval",
+          "ar": "الفترات المحددة (Defined Interval)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Geometric Interval creates class breaks based on a geometric series, minimizing sum of squares of elements per class and handling skewed continuous distributions gracefully.",
+      "ar": "تنشئ طريقة الفترات الهندسية (Geometric Interval) فواصل تعتمد على متوالية هندسية، مما يقلل مجموع مربعات العناصر لكل فئة ويتعامل مع البيانات المستمرة شديدة الالتواء ببراعة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Equal Interval produces empty classes when distributions are skewed.",
+        "C": "Standard Deviation requires normal bell-curve data.",
+        "D": "Defined Interval requires fixed step increments."
+      },
+      "ar": {
+        "B": "الفترات المتساوية تنتج فئات فارغة عند الالتواء.",
+        "C": "الانحراف المعياري يتطلب توزيعاً طبيعياً معتدلاً.",
+        "D": "الفترات المحددة تتطلب خطوات ثابتة."
+      }
+    },
+    "references": [
+      {
+        "title": "Data classification methods, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/data-classification-methods.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "VIZ-S-038",
+    "kind": "scenario",
+    "domain": "Visualization",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Select By Attributes"
+    ],
+    "context": {
+      "en": "A data cleanup specialist needs to select all road segments that have an assigned street name (excluding records where the NAME field was left empty or unpopulated).",
+      "ar": "يحتاج أخصائي تنظيف بيانات لتحديد كافة أجزاء الطرق التي تم إدخال اسم شارع لها (مستبعداً السجلات التي تُرِك فيها حقل الاسم فارغاً أو غير مدخل)."
+    },
+    "question": {
+      "en": "Which SQL clause correctly selects all records containing valid names?",
+      "ar": "أي جملة SQL تحدد كافة السجلات التي تحتوي على أسماء صالحة بشكل صحيح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "NAME IS NOT NULL AND NAME <> ''",
+          "ar": "NAME IS NOT NULL AND NAME <> ''"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "NAME != NULL",
+          "ar": "NAME != NULL"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "NAME = 'NOT NULL'",
+          "ar": "NAME = 'NOT NULL'"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "SELECT ALL POPULATED NAMES",
+          "ar": "SELECT ALL POPULATED NAMES"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In relational database SQL, testing for populated values requires `IS NOT NULL` to exclude database nulls, and `<> ''` to exclude blank empty text strings.",
+      "ar": "في قواعد بيانات SQL، يتطلب فحص السجلات الممتلئة استخدام `IS NOT NULL` لاستبعاد القيم الفارغة برمجياً، و `<> ''` لاستبعاد النصوص البيضاء الخالية من الحروف."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "`!= NULL` is invalid syntax in SQL for null testing.",
+        "C": "`'NOT NULL'` in quotes searches for the literal word string.",
+        "D": "Natural language cannot execute."
+      },
+      "ar": {
+        "B": "`!= NULL` صياغة غير صحيحة للتحقق من القيم الفارغة.",
+        "C": "وضع الكلمة بين علامات تنصيص يبحث عن الكلمة كنص.",
+        "D": "اللغة الطبيعية لا تنفذ."
+      }
+    },
+    "references": [
+      {
+        "title": "Select features by attributes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/exploring-maps/select-features-by-attributes.htm",
+        "kind": "official"
+      }
+    ]
+  }
+]

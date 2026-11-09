@@ -1,0 +1,497 @@
+[
+  {
+    "id": "TB-001",
+    "title": {
+      "en": "Resolving Missing Datum Transformations (Datum Shift Error)",
+      "ar": "حل مشكلة غياب تحويل المرجع الإسنادي (خطأ إزاحة المرجع)"
+    },
+    "domain": "Data Management",
+    "symptom": {
+      "en": "Layers do not align visually, displaying a systematic spatial offset of 10 to 100 meters, or ArcGIS Pro displays a missing transformation warning.",
+      "ar": "عدم تطابق الطبقات مكانياً وظهور إزاحة منتظمة بمقدار 10 إلى 100 متر أو ظهور تحذير Missing Transformation."
+    },
+    "rootCause": {
+      "en": "The layers use different underlying geographic datums (e.g. NAD 1927 vs NAD 1983) and no transformation method was configured.",
+      "ar": "اعتماد الطبقات على مراجع جيوديسية مختلفة (مثل NAD 1927 و NAD 1983) دون تحديد معادلة تحويل المرجع المناسبة."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Open Map Properties > Coordinate Systems > Transformations tab.",
+          "ar": "افتح Map Properties وانتقل لتبويب Coordinate Systems ثم Transformations."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Identify the source and target datums.",
+          "ar": "حدد المرجع الإسنادي للمصدر والمرجع المستهدف للخريطة."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "Select the Esri-recommended transformation method (e.g. NAD_1983_To_WGS_1984_5).",
+          "ar": "اختَر طريقة التحويل المعتمدة والموصى بها من Esri."
+        }
+      },
+      {
+        "step": 4,
+        "text": {
+          "en": "Click OK and verify features snap into precise spatial alignment.",
+          "ar": "انقر موافق وتأكد من انطباق المعالم بدقة مع خريطة الأساس."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Always standardize enterprise geodatabases on a single corporate coordinate system.",
+      "ar": "توحيد نظام الإحداثيات والمرجع الإسنادي في قواعد البيانات المؤسسية دائماً."
+    }
+  },
+  {
+    "id": "TB-002",
+    "title": {
+      "en": "Fixing Geoprocessing Error 000258: Output Already Exists",
+      "ar": "معالجة خطأ المعالجة الجغرافية 000258: الملف المخرج موجود مسبقاً"
+    },
+    "domain": "Analysis and Geoprocessing",
+    "symptom": {
+      "en": "Python scripts or ModelBuilder tools crash with 'ERROR 000258: Output dataset already exists'.",
+      "ar": "توقف السكربت أو النموذج مع ظهور رسالة ERROR 000258: Output dataset already exists."
+    },
+    "rootCause": {
+      "en": "ArcGIS Pro geoprocessing environment by default protects existing files from accidental overwriting.",
+      "ar": "إعدادات الأمان الافتراضية للبرنامج تمنع استبدال الملفات الموجودة على القرص دون إذن صريح."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "In Python scripts, add `arcpy.env.overwriteOutput = True` at the top of the file.",
+          "ar": "في سكربت بايثون، أضف السطر arcpy.env.overwriteOutput = True في بداية الكود."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "In ArcGIS Pro desktop UI, open Analysis > Geoprocessing Options > check 'Overwrite the outputs of geoprocessing operations'.",
+          "ar": "في واجهة البرنامج، افتح Analysis > Geoprocessing Options وفعل خيار السماح باستبدال المخرجات."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Always initialize overwriteOutput = True in automated recurring scheduled scripts.",
+      "ar": "احرص على تفعيل overwriteOutput = True في كافة السكربتات المجدولة آلياً."
+    }
+  },
+  {
+    "id": "TB-003",
+    "title": {
+      "en": "Clearing Schema Locks on Geodatabase Feature Classes",
+      "ar": "فك أقفال المخطط (Schema Locks) العالقة على قواعد البيانات الجغرافية"
+    },
+    "domain": "Data Management",
+    "symptom": {
+      "en": "Cannot add fields, delete feature classes, or modify domains; error 'Cannot acquire a schema lock'.",
+      "ar": "تعذر إضافة حقول أو حذف طبقات أو تعديل المجالات مع ظهور خطأ Cannot acquire a schema lock."
+    },
+    "rootCause": {
+      "en": "Another application, user session, or unclosed ArcPy cursor holds an active exclusive or shared lock.",
+      "ar": "وجود تطبيق آخر أو مستخدم أو مؤشر ArcPy لم يُغلق يحتفظ بقفل نشط على ملفات قاعدة البيانات."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Ensure all ArcPy scripts use `with arcpy.da.UpdateCursor(...) as cursor:` context managers to guarantee automatic lock release.",
+          "ar": "تأكد من استخدام صيغة with مع مؤشرات بايثون لضمان فك الأقفال تلقائياً فور انتهاء الحلقة."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Save edits and close all other ArcGIS Pro map views referencing the layer.",
+          "ar": "احفظ التعديلات وأغلق أي خرائط أخرى تعرض نفس الطبقة."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "If using File GDB, close ArcGIS Pro and check for orphaned `.lock` files in Windows Explorer.",
+          "ar": "إذا كانت قاعدة ملفية، أغلق البرنامج وتأكد من حذف ملفات .lock العالقة من المجلد."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Never leave active editing sessions open when modifying database schemas.",
+      "ar": "تجنب تعديل هيكل الجداول أثناء وجود جلسات تحرير نشطة."
+    }
+  },
+  {
+    "id": "TB-004",
+    "title": {
+      "en": "Resolving Half-Cell Shift in Raster Analysis",
+      "ar": "معالجة إزاحة أجزاء الخلايا في التحليل الراستري (Snap Raster)"
+    },
+    "domain": "Analysis and Geoprocessing",
+    "symptom": {
+      "en": "Output raster cells are misaligned with input rasters by fractional pixel distances, causing stair-stepped blur artifacts.",
+      "ar": "عدم محاذاة خلايا الراستر الناتج مع المدخلات بكسور بكسلية وظهور تشوهات بصرية متدرجة."
+    },
+    "rootCause": {
+      "en": "Snap Raster environment was not configured to match the master reference elevation grid.",
+      "ar": "عدم ضبط بيئة الراستر المرجعي للمحاذاة Snap Raster لتطابق شبكة الارتفاع الرئيسية."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Open tool Environments tab before running Raster Calculator or surface tools.",
+          "ar": "افتح تبويب البيئات في أداة التحليل قبل تنفيذ العملية."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Set Snap Raster to the primary baseline raster dataset.",
+          "ar": "حدد راستر الأساس في خيار Snap Raster."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "Set Cell Size to match the snap raster resolution.",
+          "ar": "اضبط حجم الخلية ليتطابق مع دقة الراستر المرجعي."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Set Snap Raster in project-level environments (Analysis > Environments) before starting raster projects.",
+      "ar": "اضبط Snap Raster على مستوى المشروع كاملاً قبل بدء أي نمذجة راستر."
+    }
+  },
+  {
+    "id": "TB-005",
+    "title": {
+      "en": "Clearing Sharing Analyzer Fatal Error 00068 (Invalid Spatial Reference)",
+      "ar": "حل الخطأ القاتل 00068 في فاحص المشاركة (مرجع إسقاطي غير صالح)"
+    },
+    "domain": "Layouts and Sharing",
+    "symptom": {
+      "en": "The 'Publish' button in Share As Web Layer is disabled, and Analyzer lists Error 00068.",
+      "ar": "تعطل زر النشر وظهور الخطأ 00068 في فاحص المشاركة عند محاولة نشر طبقة ويب."
+    },
+    "rootCause": {
+      "en": "One of the map layers has an Unknown Coordinate System or lacks spatial reference metadata.",
+      "ar": "إحدى طبقات الخريطة تفتقر لبيانات الإسقاط وتحمل حالة Unknown Coordinate System."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Double-click Error 00068 in Analyzer to select the offending layer in Contents.",
+          "ar": "انقر نقراً مزدوجاً على الخطأ في الفاحص لتحديد الطبقة المعنية في شجرة المحتويات."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Run Define Projection tool to assign the correct coordinate system metadata.",
+          "ar": "شغل أداة Define Projection لتعيين نظام الإحداثيات المعتمد للطبقة."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "Click Analyze again to verify the red error clears.",
+          "ar": "أعد النقر على Analyze وتأكد من زوال الخطأ الأحمر وتفعيل زر النشر."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Always verify layer source properties before sharing resources to web portals.",
+      "ar": "افحص خصائص مصادر الطبقات وتأكد من تعريف إسنادها قبل بدء إجراءات النشر."
+    }
+  },
+  {
+    "id": "TB-006",
+    "title": {
+      "en": "Resolving Scale Bar Mismatch in Multi-Frame Layouts",
+      "ar": "تصحيح عدم توافق مقياس الرسم في اللوحات متعددة الأطر"
+    },
+    "domain": "Layouts and Sharing",
+    "symptom": {
+      "en": "Scale bar displays distances that do not match the visual extent of the map underneath it.",
+      "ar": "عرض مقياس الرسم لمسافات غير واقعية ولا تطابق المدى المرئي للخريطة أسفله."
+    },
+    "rootCause": {
+      "en": "The scale bar is linked to the wrong Map Frame (e.g. linked to the overview locator frame instead of the main detail frame).",
+      "ar": "ارتباط مقياس الرسم بإطار خريطة خاطئ كربطه بخريطة الدليل بدلاً من الخريطة الرئيسية التفصيلية."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Select the Scale Bar in layout view.",
+          "ar": "حدد عنصر مقياس الرسم في لوحة الطباعة."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Open Element Properties pane > Scale Bar tab.",
+          "ar": "افتح نافذة خصائص العنصر وانتقل لتبويب مقياس الرسم."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "Under 'Map Frame', change the dropdown selection to the correct detailed Map Frame.",
+          "ar": "من القائمة المنسدلة Map Frame، اختر إطار الخريطة الرئيسي الصحيح."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Always give descriptive names to Map Frames (e.g. 'Main_Detail_Frame' vs 'Overview_Frame') in the Contents pane.",
+      "ar": "احرص على تسمية أطر الخرائط بأسماء واضحة في شجرة المحتويات لتمييزها فورياً."
+    }
+  },
+  {
+    "id": "TB-007",
+    "title": {
+      "en": "Fixing Broken Data Links (Red Exclamation Mark in Contents)",
+      "ar": "إصلاح مسارات البيانات المقطوعة (علامة التعجب الحمراء)"
+    },
+    "domain": "Data Management",
+    "symptom": {
+      "en": "Layers display a red exclamation mark in Contents pane and fail to draw on the map.",
+      "ar": "ظهور علامة تعجب حمراء بجوار الطبقة في المحتويات وفشلها في الظهور على الخريطة."
+    },
+    "rootCause": {
+      "en": "The source geodatabase or shapefile was renamed, moved, or deleted on the file system.",
+      "ar": "تغيير اسم أو مسار أو نقل مجلد قاعدة البيانات الجغرافية على القرص الصلب."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Click the red exclamation mark next to the layer in Contents.",
+          "ar": "انقر على علامة التعجب الحمراء بجوار الطبقة."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Browse to the new location of the source dataset and click OK.",
+          "ar": "تصفح للوصول للمسار الجديد لملف البيانات واضغط موافق."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "ArcGIS Pro will automatically repair paths for all other layers residing in the same geodatabase.",
+          "ar": "سيقوم البرنامج تلقائياً بإصلاح مسارات كافة الطبقات الأخرى الموجودة في نفس القاعدة."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Save projects with 'Store relative pathnames to data sources' enabled in Project Properties.",
+      "ar": "فعل خيار حفظ المسارات النسبية (Store relative pathnames) في خصائص المشروع."
+    }
+  },
+  {
+    "id": "TB-008",
+    "title": {
+      "en": "Fixing Spiky and Exaggerated Hillshade Rasters",
+      "ar": "معالجة التشوّه والتسنن المفرط في تظليل التضاريس (Z-Factor)"
+    },
+    "domain": "Analysis and Geoprocessing",
+    "symptom": {
+      "en": "Hillshade raster appears extremely spiky with harsh unnatural black shadows.",
+      "ar": "ظهور راستر التظليل التضاريسي بظلال سوداء حادة وتسننات مشوهة وغير واقعية."
+    },
+    "rootCause": {
+      "en": "Unit mismatch between horizontal ground coordinates (XY in feet or degrees) and vertical elevation coordinates (Z in meters), left with default Z-Factor 1.0.",
+      "ar": "عدم تطابق وحدات القياس الأفقية (أقدام أو درجات) مع الارتفاع الرأسي (أمتار) مع ترك معامل Z بقيمته الافتراضية 1.0."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Check XY and Z units in DEM Layer Properties > Source.",
+          "ar": "افحص وحدات XY ووحدات Z في خصائص الراستر."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "If XY is feet and Z is meters, set Z-Factor to 3.28084. If XY is degrees (GCS), apply the appropriate latitudinal conversion factor.",
+          "ar": "إذا كانت الوحدات أقداماً والارتفاع أمتاراً اضبط معامل Z على 3.28084، أو معامل درجات العرض المناسب."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Project elevation DEMs to a local Projected Coordinate System before running surface analysis.",
+      "ar": "أعد إسقاط راستر الارتفاع إلى نظام مسقط محلي قبل بدء التحليلات السطحية."
+    }
+  },
+  {
+    "id": "TB-009",
+    "title": {
+      "en": "Resolving Offline Map Download Failures in Field Maps",
+      "ar": "حل فشل تحميل الخرائط غير المتصلة في تطبيق Field Maps"
+    },
+    "domain": "Layouts and Sharing",
+    "symptom": {
+      "en": "Field workers receive 'Download Failed' when attempting to take map areas offline.",
+      "ar": "ظهور رسالة فشل التحميل Download Failed للمحررين الميدانيين عند تنزيل الخريطة للعمل دون إنترنت."
+    },
+    "rootCause": {
+      "en": "One of the feature layers in the web map lacks the 'Sync' capability or GlobalIDs.",
+      "ar": "إحدى الطبقات المنشورة تفتقر لتفعيل خاصية المزامنة Sync أو تفتقر لمعرفات GlobalIDs."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "In ArcGIS Pro, run 'Add Global IDs' on all feature classes.",
+          "ar": "شغل أداة Add Global IDs على كافة فئات المعالم في المشروع."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Re-share layer with 'Enable Sync' checked in Feature Properties.",
+          "ar": "أعد نشر الطبقة مع التأكد من تفعيل خيار Enable Sync في الخصائص."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "Ensure all layers reference the same enterprise geodatabase if using registered data.",
+          "ar": "تأكد من أن كافة الطبقات ترتبط بنفس قاعدة البيانات عند استخدام البيانات المسجلة."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Always run Add Global IDs before publishing layers intended for field workflows.",
+      "ar": "احرص دائماً على إضافة Global IDs قبل نشر أي طبقة موجهة للعمل الميداني."
+    }
+  },
+  {
+    "id": "TB-010",
+    "title": {
+      "en": "Preventing Geometry Calculation Failures in Shapefiles",
+      "ar": "تجنب أخطاء حساب المساحات والخصائص في ملفات Shapefile"
+    },
+    "domain": "Data Management",
+    "symptom": {
+      "en": "Field names truncated to 10 characters, or area calculations fail for files exceeding 2GB.",
+      "ar": "اقتصار أسماء الحقول على 10 أحرف وتوقف الحسابات للبيانات الأكبر من 2 جيجابايت."
+    },
+    "rootCause": {
+      "en": "Legacy Shapefile specifications impose strict 2GB file size limits, 10-character field name limits, and lack support for Null values.",
+      "ar": "القيود التاريخية لصيغة Shapefile التي تفرض حداً أقصى 2 جيجابايت و10 أحرف للحقل ولا تدعم القيم الفارغة."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Run 'Feature Class To Geodatabase' to migrate shapefiles into a File Geodatabase.",
+          "ar": "شغل أداة Feature Class To Geodatabase لنقل البيانات إلى قاعدة بيانات جغرافية حديثة."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Perform all calculations and edits within the geodatabase environment.",
+          "ar": "أجرِ كافة العمليات الحسابية والتحرير داخل بيئة قاعدة البيانات الجغرافية."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Never use shapefiles for production GIS workflows; migrate all incoming data to File Geodatabases.",
+      "ar": "تجنب استخدام shapefile في المشاريع الإنتاجية وقم بترحيلها لقواعد بيانات فور استلامها."
+    }
+  },
+  {
+    "id": "TB-011",
+    "title": {
+      "en": "Troubleshooting ModelBuilder Infinite Execution Loops",
+      "ar": "استكشاف وحل الحلقات التكرارية اللانهائية في ModelBuilder"
+    },
+    "domain": "Analysis and Geoprocessing",
+    "symptom": {
+      "en": "ModelBuilder runs continuously without terminating, endlessly overwriting the same output file.",
+      "ar": "استمرار النموذج في العمل دون توقف وإعادة كتابة نفس ملف المخرج باستمرار."
+    },
+    "rootCause": {
+      "en": "The tool output was saved into the same folder being iterated over by the iterator, feeding new outputs back into the loop.",
+      "ar": "حفظ ملفات الإخراج في نفس المجلد الذي يفحصه المكرر مما يعيد إدخال النتائج الجديدة في الحلقة."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Save tool outputs into a separate destination folder or geodatabase outside the input directory.",
+          "ar": "احفظ المخرجات في مجلد أو قاعدة بيانات منفصلة تماماً عن مجلد المدخلات."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Configure wildcards in the iterator to match only original source file patterns.",
+          "ar": "اضبط محددات Wildcard في المكرر لمطابقة ملفات المصدر الأصلية فقط."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Always isolate raw input data from derived analytical outputs in separate workspaces.",
+      "ar": "افصل دائماً بين مجلدات البيانات الخام ومجلدات المخرجات التحليلية في مساحات عمل مستقلة."
+    }
+  },
+  {
+    "id": "TB-012",
+    "title": {
+      "en": "Fixing Broken Dynamic Text Expressions in Map Series",
+      "ar": "إصلاح وسوم النصوص الديناميكية المعطلة في سلاسل الخرائط"
+    },
+    "domain": "Layouts and Sharing",
+    "symptom": {
+      "en": "Dynamic text displays raw XML tags (e.g. `<dyn type=\"page\".../>`) on the page layout rather than evaluated text.",
+      "ar": "عرض وسوم XML النصية الخام على لوحة الطباعة بدلاً من تقييمها وعرض النصوص الصحيحة."
+    },
+    "rootCause": {
+      "en": "Syntax typos in tag property names, unclosed tags, or referencing field names that do not exist in the index layer.",
+      "ar": "خطأ إملائي في خصائص الوسم أو عدم إغلاق الوسم أو استدعاء حقل غير موجود في طبقة الفهرس."
+    },
+    "resolutionSteps": [
+      {
+        "step": 1,
+        "text": {
+          "en": "Verify that Spatial Map Series is actively enabled in Layout Properties.",
+          "ar": "تأكد من تفعيل سلسلة الخرائط المكانية في خصائص اللوحة أولاً."
+        }
+      },
+      {
+        "step": 2,
+        "text": {
+          "en": "Check exact spelling and case sensitivity of attribute field names in the tag.",
+          "ar": "تحقق من مطابقة اسم الحقل المكتوب في الوسم مع اسم حقل طبقة الفهرس بدقة."
+        }
+      },
+      {
+        "step": 3,
+        "text": {
+          "en": "Use Insert > Dynamic Text dropdown menu rather than manually typing raw XML strings.",
+          "ar": "استخدم قائمة Insert > Dynamic Text لإدراج الوسوم الجاهزة بدلاً من كتابتها يدوياً."
+        }
+      }
+    ],
+    "preventionTip": {
+      "en": "Select dynamic text presets directly from the ribbon to prevent syntax typos.",
+      "ar": "اختر القوالب الجاهزة للنصوص الديناميكية من الشريط العلوي لتفادي الأخطاء الكتابية."
+    }
+  }
+]

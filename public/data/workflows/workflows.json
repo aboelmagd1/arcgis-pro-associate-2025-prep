@@ -1,0 +1,3121 @@
+[
+  {
+    "id": "WF-001",
+    "domain": "Data Management",
+    "difficulty": "Beginner",
+    "tools": [
+      "Create File Geodatabase",
+      "Enable Feature Class To Geodatabase"
+    ],
+    "relatedObjectives": [
+      "Identify how to manage spatial and non-spatial data",
+      "Describe geodatabase architecture and storage types"
+    ],
+    "references": [
+      {
+        "title": "File geodatabases, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Create and Configure an Enterprise-Scale File Geodatabase with High-Capacity Keywords",
+      "ar": "إنشاء وتهيئة قاعدة بيانات جغرافية موسعة باستخدام معامِلات السعة العالية"
+    },
+    "objective": {
+      "en": "Set up a new File Geodatabase (.gdb) on local storage, configure project default database, and enable MAX_FILE_SIZE_256TB configuration keyword for large spatial datasets.",
+      "ar": "إنشاء قاعدة بيانات جغرافية (.gdb) على القرص المحلي، وتعيينها كقاعدة بيانات افتراضية للمشروع، وتفعيل كلمة التهيئة MAX_FILE_SIZE_256TB للجداول الضخمة."
+    },
+    "initialData": {
+      "en": "ArcGIS Pro 3.3 installed, write access to local directory C:/Data.",
+      "ar": "تثبيت ArcGIS Pro 3.3 وتوفر صلاحية الكتابة في المجلد C:/Data."
+    },
+    "startingConditions": {
+      "en": "New empty project opened with Map template.",
+      "ar": "فتح مشروع جديد فارغ باستخدام قالب الخريطة (Map template)."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create File Geodatabase",
+          "ar": "إنشاء قاعدة بيانات جغرافية"
+        },
+        "instruction": {
+          "en": "Open Catalog pane, right-click target folder, select New > File Geodatabase. Name it 'Regional_Master.gdb'.",
+          "ar": "افتح نافذة الكتالوج، انقر بالزر الأيمن على المجلد واختَر New > File Geodatabase باسم Regional_Master.gdb."
+        },
+        "uiPath": "Catalog Pane > Databases > New File Geodatabase",
+        "tool": "Create File Geodatabase",
+        "parameters": {
+          "File GDB Name": "Regional_Master.gdb",
+          "File GDB Version": "CURRENT"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Set as Default Geodatabase",
+          "ar": "التعيين كقاعدة بيانات افتراضية"
+        },
+        "instruction": {
+          "en": "Right-click Regional_Master.gdb in Catalog pane and select 'Make Default Geodatabase' so all future geoprocessing outputs write here.",
+          "ar": "انقر بالزر الأيمن على القاعدة في الكتالوج واختر Make Default Geodatabase لتوجيه كافة المخرجات إليها."
+        },
+        "uiPath": "Catalog Pane > Databases > Regional_Master.gdb > Make Default",
+        "tool": "Set Default GDB",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Configure High Capacity Keyword",
+          "ar": "تهيئة كلمة السعة العالية 256TB"
+        },
+        "instruction": {
+          "en": "Open Geoprocessing pane, search for 'Create Feature Class', under Configuration Keyword enter 'MAX_FILE_SIZE_256TB' to exceed the standard 1TB per-table limit.",
+          "ar": "افتح نافذة المعالجة، وابحث عن أداة Create Feature Class، وتحت معامِل Configuration Keyword أدخل MAX_FILE_SIZE_256TB لتجاوز حد 1 تيرابايت للجدول."
+        },
+        "uiPath": "Geoprocessing Pane > Data Management Tools > Feature Class > Create Feature Class",
+        "tool": "Create Feature Class",
+        "parameters": {
+          "Output Location": "Regional_Master.gdb",
+          "Feature Class Name": "County_Parcels",
+          "Geometry Type": "Polygon",
+          "Configuration Keyword": "MAX_FILE_SIZE_256TB"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Regional_Master.gdb initialized as default project database, with County_Parcels feature class configured for up to 256TB storage.",
+      "ar": "إنشاء Regional_Master.gdb كقاعدة افتراضية، وتهيئة فئة معالم County_Parcels بسعة تخزين تصل إلى 256 تيرابايت."
+    },
+    "qualityControl": {
+      "en": "Verify in Catalog Pane that Regional_Master.gdb displays with home icon indicating default database, and inspect dataset properties in Database Properties.",
+      "ar": "تأكد من ظهور أيقونة المنزل على قاعدة البيانات في الكتالوج، وافحص خصائص فئة المعالم للتأكد من سعة التخزين."
+    },
+    "commonMistakes": {
+      "en": "Leaving default keyword which limits individual tables to 1TB; attempting to set 256TB on shapefiles.",
+      "ar": "ترك كلمة التهيئة فارغة مما يحدد الجدول بـ 1 تيرابايت فقط؛ أو محاولة تطبيقها على ملفات shapefile التي تقتصر على 2 جيجابايت."
+    },
+    "alternativeApproaches": {
+      "en": "Use Python: arcpy.management.CreateFileGDB() and arcpy.management.CreateFeatureclass(config_keyword='MAX_FILE_SIZE_256TB').",
+      "ar": "استخدام سكربت بايثون مع تحديد معامِل config_keyword='MAX_FILE_SIZE_256TB'."
+    }
+  },
+  {
+    "id": "WF-002",
+    "domain": "Data Management",
+    "difficulty": "Intermediate",
+    "tools": [
+      "CAD To Geodatabase",
+      "Make Feature Layer"
+    ],
+    "relatedObjectives": [
+      "Identify how to manage spatial and non-spatial data",
+      "Import CAD drawings and clean up geometry"
+    ],
+    "references": [
+      {
+        "title": "Supported CAD data formats, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/cad/supported-cad-formats.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Import AutoCAD DWG Drawings and Migrate to Geodatabase Feature Classes",
+      "ar": "استيراد رسومات AutoCAD DWG وتحويلها إلى فئات معالم داخل قاعدة البيانات"
+    },
+    "objective": {
+      "en": "Import civil engineering CAD drawings (.dwg), filter drawing layers, and convert CAD polylines into clean GIS parcel boundaries.",
+      "ar": "استيراد مخطط هندسي أوتوكاد (.dwg)، وتصفية طبقات الرسم، وتحويل خطوط CAD إلى حدود أراضٍ رقمية نظيفة."
+    },
+    "initialData": {
+      "en": "An AutoCAD .dwg file containing parcel lines, text annotations, and utility layers.",
+      "ar": "ملف أوتوكاد .dwg يحتوي على خطوط قطع أراضٍ ونصوص ومرافق."
+    },
+    "startingConditions": {
+      "en": "Project geodatabase connected, spatial reference of CAD drawing confirmed.",
+      "ar": "اتصال قاعدة بيانات المشروع، والتحقق من المرجع الإسقاطي لملف الرسم."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Inspect CAD Dataset in Catalog",
+          "ar": "فحص طبقات CAD في الكتالوج"
+        },
+        "instruction": {
+          "en": "Expand the .dwg file in Catalog pane to view the 5 virtual feature classes: Point, Polyline, Polygon, MultiPatch, and Annotation.",
+          "ar": "قم بتوسيع ملف .dwg في نافذة الكتالوج لمعاينة الطبقات الافتراضية الخمس: Point و Polyline و Polygon و MultiPatch و Annotation."
+        },
+        "uiPath": "Catalog Pane > Folder Connections > Engineering.dwg",
+        "tool": "Catalog Inspection",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Apply Definition Query to CAD Polyline",
+          "ar": "تصفية خطوط الأراضي عبر استعلام تعريفي"
+        },
+        "instruction": {
+          "en": "Add Polyline layer to map, open Properties > Definition Query, filter: `Layer = 'PROP_LINE'` to isolate boundary vectors.",
+          "ar": "أضف طبقة Polyline للخريطة، وافتح الخصائص > Definition Query، وصفّ البيانات: Layer = 'PROP_LINE' لعزل خطوط الملكية."
+        },
+        "uiPath": "Layer Properties > Definition Queries > New Query",
+        "tool": "Set Definition Query",
+        "parameters": {
+          "Where Clause": "Layer = 'PROP_LINE'"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Execute CAD To Geodatabase Tool",
+          "ar": "تنفيذ أداة CAD To Geodatabase"
+        },
+        "instruction": {
+          "en": "Run CAD To Geodatabase tool, specifying the input CAD drawing, target geodatabase, and reference scale.",
+          "ar": "شغل أداة CAD To Geodatabase مع تحديد ملف CAD المدخل وقاعدة البيانات المستهدفة ومقياس الرسم المرجعي."
+        },
+        "uiPath": "Geoprocessing > Conversion Tools > To Geodatabase > CAD To Geodatabase",
+        "tool": "CAD To Geodatabase",
+        "parameters": {
+          "Input CAD Files": "Engineering.dwg",
+          "Output Geodatabase": "Regional_Master.gdb",
+          "Dataset": "Engineering_Plan",
+          "Reference Scale": "1000"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Clean polygon and polyline feature classes imported into a new Feature Dataset inside Regional_Master.gdb.",
+      "ar": "فئات معالم نظيفة مستوردة داخل Feature Dataset جديد في قاعدة البيانات الجغرافية."
+    },
+    "qualityControl": {
+      "en": "Verify feature count and attribute fields (CAD layer names, elevations, colors) are properly transferred.",
+      "ar": "تأكد من عدد المعالم المنقولة وانتقال حقول السمات الأصلية مثل اسم الطبقة والارتفاع والألوان بدقة."
+    },
+    "commonMistakes": {
+      "en": "Converting the whole CAD drawing without filtering layers, resulting in thousands of title block border lines in parcels.",
+      "ar": "تحويل ملف CAD بالكامل دون تصفية الطبقات مما يؤدي إلى تداخل خطوط ترويسة اللوحة مع حدود الأراضي."
+    },
+    "alternativeApproaches": {
+      "en": "Use Feature Class To Feature Class with an SQL expression for lightweight individual layer extraction.",
+      "ar": "استخدام أداة Feature Class To Feature Class مع تعبير SQL لاستخراج طبقة منفردة بسرعة."
+    }
+  },
+  {
+    "id": "WF-003",
+    "domain": "Data Management",
+    "difficulty": "Beginner",
+    "tools": [
+      "Define Projection",
+      "Project"
+    ],
+    "relatedObjectives": [
+      "Identify how to manage spatial and non-spatial data",
+      "Control coordinate systems and geographic transformations"
+    ],
+    "references": [
+      {
+        "title": "Define Projection, ArcGIS Pro tool reference",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/define-projection.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Diagnose and Resolve Spatial Reference Mismatches: Define Projection vs Project",
+      "ar": "تشخيص وحل مشكلات الإسناد المكاني: الفرق بين Define Projection و Project"
+    },
+    "objective": {
+      "en": "Differentiate between repairing missing coordinate metadata (Define Projection) and transforming coordinates to a new coordinate system (Project).",
+      "ar": "التمييز الدقيق بين إصلاح بيانات الإسقاط الوصفية المفقودة (Define Projection) والتحويل الفعلي للإحداثيات (Project)."
+    },
+    "initialData": {
+      "en": "Historical municipal shapefile displaying 'Unknown Coordinate System' with coordinate extents in State Plane feet (X: 2,150,000; Y: 680,000).",
+      "ar": "ملف shapefile يعرض إحداثيات مجهولة Unknown Coordinate System رغم أن قيمه تمثل أقدام State Plane."
+    },
+    "startingConditions": {
+      "en": "ArcGIS Pro project map set to NAD 1983 State Plane Texas Central (US Feet).",
+      "ar": "خريطة المشروع مضبوطة على نظام State Plane Texas Central (أقدام)."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Inspect Layer Coordinate Properties",
+          "ar": "فحص خصائص إحداثيات الطبقة"
+        },
+        "instruction": {
+          "en": "Right-click layer > Properties > Source > Spatial Reference. Verify 'Unknown Coordinate System' and inspect XY Extent values.",
+          "ar": "انقر بالزر الأيمن على الطبقة > Properties > Source > Spatial Reference وتأكد من حالة Unknown وافحص قيم المدى."
+        },
+        "uiPath": "Layer Properties > Source > Spatial Reference",
+        "tool": "Examine Metadata",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Execute Define Projection",
+          "ar": "تنفيذ أداة Define Projection"
+        },
+        "instruction": {
+          "en": "Run Define Projection to assign NAD 1983 State Plane Texas Central without recalculating raw coordinate numbers.",
+          "ar": "شغل أداة Define Projection لتعيين نظام State Plane Texas Central الصحيح دون تعديل أرقام الإحداثيات."
+        },
+        "uiPath": "Geoprocessing > Data Management > Projections and Transformations > Define Projection",
+        "tool": "Define Projection",
+        "parameters": {
+          "Input Dataset": "Historical_Parcels.shp",
+          "Coordinate System": "NAD 1983 State Plane Texas Central (US Feet)"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Execute Project to Reproject to WGS 1984 Web Mercator",
+          "ar": "تنفيذ أداة Project لإعادة الإسقاط إلى Web Mercator"
+        },
+        "instruction": {
+          "en": "Run Project tool to transform the dataset into WGS 1984 Web Mercator Auxiliary Sphere, specifying geographic transformation NAD_1983_To_WGS_1984_5.",
+          "ar": "شغل أداة Project لتحويل البيانات إلى Web Mercator مع اختيار طريقة تحويل المرجع NAD_1983_To_WGS_1984_5."
+        },
+        "uiPath": "Geoprocessing > Data Management > Projections and Transformations > Project",
+        "tool": "Project",
+        "parameters": {
+          "Input Dataset": "Historical_Parcels.shp",
+          "Output Dataset": "Parcels_WebMercator",
+          "Output Coordinate System": "WGS 1984 Web Mercator Auxiliary Sphere",
+          "Geographic Transformation": "NAD_1983_To_WGS_1984_5"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Correctly defined spatial metadata on source layer, and a new reprojected feature class in Web Mercator with valid transformation.",
+      "ar": "تصحيح البيانات الوصفية للمصدر، وإنشاء فئة معالم جديدة مسقطة بنظام Web Mercator مع تحويل مرجع سليم."
+    },
+    "qualityControl": {
+      "en": "Overlay both layers over the World Imagery basemap to verify precise boundary alignment with zero datum shift.",
+      "ar": "مطابقة الطبقتين فوق مصور الأقمار الصناعية للتحقق من انطباق الحدود بدقة وانعدام أي إزاحة للمرجع."
+    },
+    "commonMistakes": {
+      "en": "Running Project on an Unknown Coordinate System dataset, corrupting the geometry permanently.",
+      "ar": "تشغيل أداة Project على بيانات مجهولة الإحداثيات مما يؤدي إلى تشويه وتلف الإحداثيات نهائياً."
+    },
+    "alternativeApproaches": {
+      "en": "Rely on On-the-Fly projection for temporary visualization, but run Project when performing area calculations.",
+      "ar": "الاعتماد على الإسقاط الآني للعرض المؤقت، ولكن تشغيل Project عند الحاجة لحساب المساحات الدقيقة."
+    }
+  },
+  {
+    "id": "WF-004",
+    "domain": "Data Management",
+    "difficulty": "Beginner",
+    "tools": [
+      "Create Coded Value Domain",
+      "Assign Domain To Field"
+    ],
+    "relatedObjectives": [
+      "Describe geodatabase architecture and storage types"
+    ],
+    "references": [
+      {
+        "title": "An overview of attribute domains, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/an-overview-of-attribute-domains.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Configure Attribute Domains with Custom Split and Merge Policies",
+      "ar": "تهيئة مجالات السمات مع سياسات الانقسام والدمج المخصصة"
+    },
+    "objective": {
+      "en": "Enforce data integrity on pipe materials and diameter using Coded Value and Range domains with Geometry Ratio split policies.",
+      "ar": "فرض نزاهة البيانات على أقطار وأنابيب المياه عبر مجالات القيم الكودية والنطاقات وسياسات الانقسام الهندسي."
+    },
+    "initialData": {
+      "en": "Water_Mains feature class in a File Geodatabase.",
+      "ar": "فئة معالم Water_Mains داخل قاعدة بيانات جغرافية."
+    },
+    "startingConditions": {
+      "en": "Geodatabase Domains view opened in ArcGIS Pro.",
+      "ar": "فتح نافذة Domains view لقاعدة البيانات."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Coded Value Domain",
+          "ar": "إنشاء مجال قيم مشفرة"
+        },
+        "instruction": {
+          "en": "In Domains view, add 'dm_PipeMaterial' (Field Type: Text), add codes: PVC (Polyvinyl Chloride), DI (Ductile Iron), ST (Steel).",
+          "ar": "في نافذة المجالات، أضف dm_PipeMaterial بنوع Text وأضف الأكواد: PVC و DI و ST."
+        },
+        "uiPath": "Catalog > GDB > Domains",
+        "tool": "Add Domain",
+        "parameters": {
+          "Domain Name": "dm_PipeMaterial",
+          "Field Type": "Text"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Split/Merge Policies",
+          "ar": "ضبط سياسات الانقسام والدمج"
+        },
+        "instruction": {
+          "en": "Set Split Policy to 'Geometry Ratio' for pipe length/cost, and Merge Policy to 'Sum Values'.",
+          "ar": "اضبط سياسة الانقسام على Geometry Ratio لخصائص الطول والتكلفة، وسياسة الدمج على Sum Values."
+        },
+        "uiPath": "Domains View > Split/Merge",
+        "tool": "Configure Policy",
+        "parameters": {
+          "Split Policy": "Geometry Ratio",
+          "Merge Policy": "Sum Values"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Assign Domain to Layer Field",
+          "ar": "ربط المجال بحقل الطبقة"
+        },
+        "instruction": {
+          "en": "Open Fields view of Water_Mains, select MATERIAL field, assign 'dm_PipeMaterial'.",
+          "ar": "افتح نافذة الحقول للطبقة، وحدد حقل MATERIAL واربطه بمجال dm_PipeMaterial."
+        },
+        "uiPath": "Layer > Fields View > Domain Dropdown",
+        "tool": "Assign Domain",
+        "parameters": {
+          "Field": "MATERIAL",
+          "Domain": "dm_PipeMaterial"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Restricted dropdown menu in attribute table preventing typos, with automated proportional splitting on edits.",
+      "ar": "قائمة خيارات منسدلة في جدول السمات تمنع الأخطاء الكتابية وتوزع القيم نسبياً عند تقسيم الأنابيب."
+    },
+    "qualityControl": {
+      "en": "Create a test feature in Edit tab and confirm dropdown displays only valid domain codes.",
+      "ar": "أنشئ معلماً تجريبياً في شريط التحرير وتأكد من ظهور الأكواد الصحيحة فقط في القائمة المنسدلة."
+    },
+    "commonMistakes": {
+      "en": "Setting Range domains on Text fields; forgetting to save changes in Fields tab ribbon.",
+      "ar": "محاولة تطبيق مجال النطاق الرقمي على حقل نصي؛ أو نسيان النقر على زر Save في شريط Fields."
+    },
+    "alternativeApproaches": {
+      "en": "Apply Domains via Python: arcpy.management.CreateDomain() and arcpy.management.AssignDomainToField().",
+      "ar": "تطبيق المجالات عبر بايثون باستخدام CreateDomain و AssignDomainToField."
+    }
+  },
+  {
+    "id": "WF-005",
+    "domain": "Data Management",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Set Subtype Field",
+      "Add Subtype"
+    ],
+    "relatedObjectives": [
+      "Describe geodatabase architecture and storage types"
+    ],
+    "references": [
+      {
+        "title": "Introduction to subtypes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/introduction-to-subtypes.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Configure Geodatabase Subtypes for Asset Categorization",
+      "ar": "تهيئة الأنماط الفرعية (Subtypes) لتصنيف الأصول وإدارة الخصائص"
+    },
+    "objective": {
+      "en": "Classify Road Centerlines into Local, Arterial, and Highway subtypes with distinct default speed limits and domains.",
+      "ar": "تصنيف خطوط محاور الطرق إلى شوارع محلية وشريانية وسريعة مع سرعات افتراضية ومجالات سمات مختلفة لكل نمط."
+    },
+    "initialData": {
+      "en": "Road_Centerlines feature class with a Long Integer field named 'ROAD_CLASS'.",
+      "ar": "فئة معالم محاور الطرق مع حقل رقم صحيح Long Integer باسم ROAD_CLASS."
+    },
+    "startingConditions": {
+      "en": "Road layer added to map, Subtypes view opened.",
+      "ar": "إضافة طبقة الطرق للخريطة وفتح نافذة Subtypes."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Set Subtype Field",
+          "ar": "تحديد حقل النمط الفرعي"
+        },
+        "instruction": {
+          "en": "In Subtypes view, set Subtype Field to 'ROAD_CLASS'.",
+          "ar": "في نافذة Subtypes، حدد حقل النمط الفرعي ليكون ROAD_CLASS."
+        },
+        "uiPath": "Design Ribbon > Subtypes View",
+        "tool": "Set Subtype Field",
+        "parameters": {
+          "Field": "ROAD_CLASS"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Define Subtype Codes",
+          "ar": "تعريف أكواد الأنماط الفرعية"
+        },
+        "instruction": {
+          "en": "Add Code 1: Local (Default Speed: 25), Code 2: Arterial (Default Speed: 45), Code 3: Highway (Default Speed: 65).",
+          "ar": "أضف كود 1: Local (السرعة 25)، وكود 2: Arterial (السرعة 45)، وكود 3: Highway (السرعة 65)."
+        },
+        "uiPath": "Subtypes Grid",
+        "tool": "Add Subtype Rows",
+        "parameters": {
+          "1": "Local",
+          "2": "Arterial",
+          "3": "Highway"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Assign Specific Domains Per Subtype",
+          "ar": "تخصيص مجالات مختلفة لكل نمط"
+        },
+        "instruction": {
+          "en": "For Code 1 (Local), restrict LANES domain to 2; for Code 3 (Highway), restrict LANES domain to 4-8.",
+          "ar": "للنمط 1 حدد عدد المسارات بـ 2، وللنمط 3 حدد المسارات بين 4 و 8 مسارات."
+        },
+        "uiPath": "Subtypes Field Tab",
+        "tool": "Set Domain Per Subtype",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Roads layer categorized into 3 subtypes, automatically generating 3 feature templates in Create Features pane.",
+      "ar": "تصنيف طبقة الطرق إلى 3 أنماط فرعية وتوليد 3 قوالب رسم تلقائياً في نافذة إنشاء المعالم."
+    },
+    "qualityControl": {
+      "en": "Open Create Features pane and verify three separate road templates appear with their default speed limits populated.",
+      "ar": "افتح نافذة Create Features وتأكد من ظهور 3 قوالب مستقلة بالسرعات الافتراضية المحددة."
+    },
+    "commonMistakes": {
+      "en": "Attempting to use a Text or Float field as the subtype field instead of Short or Long Integer.",
+      "ar": "محاولة استخدام حقل نصي أو عشري لحقل النمط الفرعي بدلاً من الأرقام الصحيحة."
+    },
+    "alternativeApproaches": {
+      "en": "Configure subtypes programmatically using arcpy.management.SetSubtypeField().",
+      "ar": "تهيئة الأنماط الفرعية برمجياً عبر بايثون باستخدام SetSubtypeField."
+    }
+  },
+  {
+    "id": "WF-006",
+    "domain": "Data Management",
+    "difficulty": "Advanced",
+    "tools": [
+      "Create Field Group",
+      "Add Contingent Value"
+    ],
+    "relatedObjectives": [
+      "Describe geodatabase architecture and storage types"
+    ],
+    "references": [
+      {
+        "title": "Contingent values, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/contingent-values.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Configure Contingent Values for Dependent Hierarchical Attributes",
+      "ar": "تهيئة القيم الشرطية (Contingent Values) للسمات التابعة هرمياً"
+    },
+    "objective": {
+      "en": "Build a Field Group linking Pole Material, Pole Height, and Transformer Class to eliminate invalid field combinations.",
+      "ar": "بناء مجموعة حقول تربط مادة العمود وارتفاعه وفئة المحول الكهربائي لمنع إدخال توليفات سمات غير متوافقة."
+    },
+    "initialData": {
+      "en": "Utility_Poles feature class with fields: MATERIAL, HEIGHT, TRANSFORMER.",
+      "ar": "فئة معالم أعمدة الكهرباء بحقول المادة والارتفاع وفئة المحول."
+    },
+    "startingConditions": {
+      "en": "Fields already configured with their individual Coded Value Domains.",
+      "ar": "ربط الحقول مسبقاً بمجالات القيم الكودية الخاصة بها."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Field Group",
+          "ar": "إنشاء مجموعة الحقول"
+        },
+        "instruction": {
+          "en": "Open Contingent Values view, click 'Field Groups' > New, name it 'fg_PoleConfiguration', add fields: MATERIAL, HEIGHT, TRANSFORMER.",
+          "ar": "افتح نافذة Contingent Values، وانقر Field Groups > New باسم fg_PoleConfiguration واختر الحقول الثلاثة."
+        },
+        "uiPath": "Data Ribbon > Contingent Values > Field Groups",
+        "tool": "Create Field Group",
+        "parameters": {
+          "Group Name": "fg_PoleConfiguration"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Define Valid Combinations",
+          "ar": "تعريف التوليفات الصالحة"
+        },
+        "instruction": {
+          "en": "Add valid rows: Wood -> 35ft -> SinglePhase; Concrete -> 50ft -> ThreePhase. Restrict Wood poles from holding heavy ThreePhase transformers.",
+          "ar": "أضف التوليفات الصحيحة: خشب -> 35 قدم -> SinglePhase؛ خرسانة -> 50 قدم -> ThreePhase، مع منع الأعمدة الخشبية من حمل محولات 3 فاز."
+        },
+        "uiPath": "Contingent Values Grid",
+        "tool": "Add Contingent Values",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Verify in Editing Session",
+          "ar": "التحقق أثناء جلسة التحرير"
+        },
+        "instruction": {
+          "en": "Create a new pole feature in map, select 'Wood', observe that HEIGHT and TRANSFORMER filter to matching valid choices.",
+          "ar": "أنشئ عموداً جديداً واختَر 'Wood' ولاحظ اقتصار خيارات الارتفاع والمحول على القيم المتوافقة فقط."
+        },
+        "uiPath": "Edit > Create Features",
+        "tool": "Interactive Test",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Dynamic cascading dropdown filters in Attributes pane that reject invalid equipment configurations.",
+      "ar": "قوائم منسدلة ديناميكية مترابطة في نافذة السمات تمنع اختيار معدات غير متطابقة هندسياً."
+    },
+    "qualityControl": {
+      "en": "Attempt to enter an invalid combination and verify ArcGIS Pro flags the record with a yellow warning badge.",
+      "ar": "حاول إدخال توليفة غير صالحة وتأكد من قيام البرنامج بوضع علامة تحذير صفراء على السجل."
+    },
+    "commonMistakes": {
+      "en": "Forgetting to define domains before setting up field groups.",
+      "ar": "نسيان إنشاء مجالات السمات أولاً قبل تهيئة مجموعات الحقول الشرطية."
+    },
+    "alternativeApproaches": {
+      "en": "Use Attribute Rules with Arcade as an alternative constraint check.",
+      "ar": "استخدام قواعد السمات مع Arcade كبديل لفرض قيود الإدخال."
+    }
+  },
+  {
+    "id": "WF-007",
+    "domain": "Data Management",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Create Topology",
+      "Validate Topology"
+    ],
+    "relatedObjectives": [
+      "Identify how to manage spatial and non-spatial data",
+      "Validate topology and clean up errors"
+    ],
+    "references": [
+      {
+        "title": "Geodatabase topology, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/geodatabase-topology.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Build, Validate, and Fix Geodatabase Topology for Land Parcels",
+      "ar": "بناء وفحص وتصحيح طوبولوجيا قاعدة البيانات الجغرافية لقطع الأراضي"
+    },
+    "objective": {
+      "en": "Ensure municipal parcel polygons do not overlap and have no unintended interior sliver gaps using Geodatabase Topology.",
+      "ar": "ضمان عدم تداخل مضلعات الأراضي وخلوها من الفجوات والشرائح البينية باستخدام طوبولوجيا قاعدة البيانات."
+    },
+    "initialData": {
+      "en": "Parcels feature class inside a Feature Dataset in a File Geodatabase.",
+      "ar": "فئة معالم قطع الأراضي داخل Feature Dataset في قاعدة بيانات جغرافية."
+    },
+    "startingConditions": {
+      "en": "Feature Dataset created with correct coordinate system.",
+      "ar": "إنشاء Feature Dataset بنظام الإحداثيات المعتمد."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Topology Item",
+          "ar": "إنشاء عنصر الطوبولوجيا"
+        },
+        "instruction": {
+          "en": "In Catalog pane, right-click Feature Dataset > New > Topology. Name it 'Parcels_Topology', set Cluster Tolerance to 0.001m.",
+          "ar": "في الكتالوج، انقر بالزر الأيمن على Feature Dataset > New > Topology باسم Parcels_Topology وتسامح 0.001م."
+        },
+        "uiPath": "Catalog > Feature Dataset > New > Topology",
+        "tool": "Create Topology",
+        "parameters": {
+          "Cluster Tolerance": "0.001 Meters"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Add Topology Rules",
+          "ar": "إضافة القواعد الطوبولوجية"
+        },
+        "instruction": {
+          "en": "Add rules: 1. 'Must Not Overlap' and 2. 'Must Not Have Gaps' (with boundary exception).",
+          "ar": "أضف قاعدتي: 1. 'Must Not Overlap' و 2. 'Must Not Have Gaps' (مع استثناء الحدود الخارجية)."
+        },
+        "uiPath": "Topology Wizard > Rules",
+        "tool": "Add Rules",
+        "parameters": {
+          "Rule 1": "Must Not Overlap",
+          "Rule 2": "Must Not Have Gaps"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Validate and Inspect Errors",
+          "ar": "فحص وتصحيح الأخطاء عبر Error Inspector"
+        },
+        "instruction": {
+          "en": "Add topology to map, open Edit > Error Inspector, click Validate. Use Fix: Create Feature for gaps, or Merge for overlaps.",
+          "ar": "أضف الطوبولوجيا للخريطة، وافتح Error Inspector، وانقر Validate؛ واستخدم Merge للتداخلات أو Create Feature للفجوات."
+        },
+        "uiPath": "Edit Ribbon > Error Inspector",
+        "tool": "Validate Topology",
+        "parameters": {
+          "Scope": "Full Extent"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Topology error-free parcel fabric dataset, with verified boundary adjacency and zero slivers.",
+      "ar": "طبقة مضلعات أراضٍ نظيفة وخالية من أخطاء الطوبولوجيا مع تطابق تام للحواف وانعدام الفجوات."
+    },
+    "qualityControl": {
+      "en": "Run Validate on Full Extent and confirm Error Inspector displays '0 Errors Found'.",
+      "ar": "شغل أداة الفحص لكامل النطاق وتأكد من أن نافذة فاحص الأخطاء تعرض 0 Errors Found."
+    },
+    "commonMistakes": {
+      "en": "Trying to create a Geodatabase Topology on standalone feature classes outside a Feature Dataset.",
+      "ar": "محاولة إنشاء طوبولوجيا قاعدة البيانات على فئات معالم منفردة خارج Feature Dataset."
+    },
+    "alternativeApproaches": {
+      "en": "Use Map Topology on the fly for simple shared-edge alignment during active editing.",
+      "ar": "استخدام طوبولوجيا الخريطة (Map Topology) للمحاذاة السريعة أثناء التحرير العادي."
+    }
+  },
+  {
+    "id": "WF-008",
+    "domain": "Data Management",
+    "difficulty": "Advanced",
+    "tools": [
+      "Add Attribute Rule"
+    ],
+    "relatedObjectives": [
+      "Identify how to manage spatial and non-spatial data",
+      "Apply attribute rules where appropriate"
+    ],
+    "references": [
+      {
+        "title": "An overview of attribute rules, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/an-overview-of-attribute-rules.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Implement Arcade-Based Immediate Calculation and Constraint Attribute Rules",
+      "ar": "إنشاء قواعد السمات للحساب الفوري والقيود باستخدام لغة Arcade"
+    },
+    "objective": {
+      "en": "Automatically calculate the geodesic area in acres on parcel sketch completion, and block creation of parcels under 0.25 acres.",
+      "ar": "حساب المساحة الجيوديسية بالفدان آلياً فور رسم المضلع، ومنع إنشاء أي عقار تقل مساحته عن 0.25 فدان."
+    },
+    "initialData": {
+      "en": "Parcels feature class with an 'ACREAGE' double field, GlobalIDs enabled.",
+      "ar": "فئة معالم الأراضي بحقل ACREAGE من نوع Double وتفعيل معرفات GlobalID."
+    },
+    "startingConditions": {
+      "en": "Attribute Rules view opened for Parcels layer.",
+      "ar": "فتح نافذة Attribute Rules لطبقة الأراضي."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Calculation Rule",
+          "ar": "إنشاء قاعدة حساب فوري للمساحة"
+        },
+        "instruction": {
+          "en": "Add Calculation Rule 'calc_Acreage', Trigger: Insert, Update. Script: `return Round(AreaGeodetic($feature, 'acres'), 2);` targeting ACREAGE field.",
+          "ar": "أضف قاعدة حساب calc_Acreage عند الإنشاء والتعديل، بكود: Round(AreaGeodetic($feature, 'acres'), 2) مستهدفاً حقل ACREAGE."
+        },
+        "uiPath": "Design > Attribute Rules > Calculation",
+        "tool": "Add Rule",
+        "parameters": {
+          "Name": "calc_Acreage",
+          "Field": "ACREAGE"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Create Constraint Rule",
+          "ar": "إنشاء قاعدة قيد لمنع المساحات الصغيرة"
+        },
+        "instruction": {
+          "en": "Add Constraint Rule 'check_MinLotSize', Trigger: Insert. Script: `if (AreaGeodetic($feature, 'acres') < 0.25) { return false; } return true;` with Error 1001.",
+          "ar": "أضف قاعدة قيد check_MinLotSize لمنع أي مضلع أقل من ربع فدان مع رسالة خطأ واضحة برقم 1001."
+        },
+        "uiPath": "Design > Attribute Rules > Constraint",
+        "tool": "Add Rule",
+        "parameters": {
+          "Name": "check_MinLotSize",
+          "Error Number": "1001"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Save and Test in Editor",
+          "ar": "حفظ القواعد واختبارها بالتحرير"
+        },
+        "instruction": {
+          "en": "Click Save on ribbon. Digitize a 0.1-acre polygon and verify save rejection; sketch a 2-acre parcel and verify acreage calculates instantly.",
+          "ar": "احفظ القواعد؛ ارسم مضلعاً بمساحة 0.1 فدان وتأكد من رفض الحفظ، ثم ارسم مضلعاً بمساحة فدانين وتأكد من حساب المساحة آلياً."
+        },
+        "uiPath": "Edit > Create Features",
+        "tool": "Test Rule",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Enforced business logic preventing substandard lot splits and eliminating manual area recalculations.",
+      "ar": "فرض منطق عمل يمنع الأراضي العشوائية دون مساحة معتمدة ويلغي الحاجة لحساب المساحات يدوياً."
+    },
+    "qualityControl": {
+      "en": "Inspect acreage field immediately after saving edit to ensure value is populated with 2 decimal places.",
+      "ar": "افحص حقل المساحة فور حفظ المعلم للتأكد من حساب القيمة بدقة منزلتين عشريتين."
+    },
+    "commonMistakes": {
+      "en": "Forgetting to enable GlobalIDs prior to creating attribute rules; forgetting to check Insert/Update triggers.",
+      "ar": "نسيان تفعيل GlobalIDs قبل إنشاء القواعد؛ أو نسيان تحديد محفزات التحرير Insert و Update."
+    },
+    "alternativeApproaches": {
+      "en": "Use Calculate Field in geoprocessing batch mode for retroactive processing of existing legacy features.",
+      "ar": "استخدام أداة Calculate Field لمعالجة المعالم القديمة الموجودة مسبقاً دفعة واحدة."
+    }
+  },
+  {
+    "id": "WF-009",
+    "domain": "Data Management",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Create Relationship Class",
+      "Enable Attachments"
+    ],
+    "relatedObjectives": [
+      "Describe geodatabase architecture and storage types"
+    ],
+    "references": [
+      {
+        "title": "Relationship classes, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/overview/relationship-classes.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Configure 1:Many Relationship Class with Photo Attachments",
+      "ar": "تهيئة فئة علاقات (1:Many) مع تفعيل المرفقات والصور الميدانية"
+    },
+    "objective": {
+      "en": "Link Tax Parcels to historical building permit records (1:Many) and enable photo attachments for code compliance inspections.",
+      "ar": "ربط قطع الأراضي بسجلات تصاريح البناء التاريخية وتفعيل إرفاق الصور لمخالفات كود البناء."
+    },
+    "initialData": {
+      "en": "Parcels feature class (Origin) and Building_Permits standalone table (Destination) with PARCEL_ID key.",
+      "ar": "فئة معالم الأراضي وجدول تصاريح البناء بحقل مفتاح مشترك PARCEL_ID."
+    },
+    "startingConditions": {
+      "en": "Both tables reside within the same File Geodatabase.",
+      "ar": "وجود الطبقتين داخل نفس قاعدة البيانات الجغرافية."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Relationship Class",
+          "ar": "إنشاء فئة العلاقات"
+        },
+        "instruction": {
+          "en": "Run Create Relationship Class tool: Origin: Parcels, Destination: Building_Permits, Type: Simple, Cardinality: One to Many (1:M).",
+          "ar": "شغل أداة Create Relationship Class: الأصل Parcels، والهدف Building_Permits، بنمط Simple وعلاقة 1:M."
+        },
+        "uiPath": "Geoprocessing > Data Management > Relationship Classes",
+        "tool": "Create Relationship Class",
+        "parameters": {
+          "Origin Table": "Parcels",
+          "Destination Table": "Building_Permits",
+          "Cardinality": "ONE_TO_MANY",
+          "Origin Primary Key": "PARCEL_ID",
+          "Origin Foreign Key": "PARCEL_ID"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Enable Attachments on Permits",
+          "ar": "تفعيل المرفقات على جدول التصاريح"
+        },
+        "instruction": {
+          "en": "Run Enable Attachments tool on Building_Permits table, generating the _ATTACH table and relationship class.",
+          "ar": "شغل أداة Enable Attachments على جدول التصاريح لتوليد جدول المرفقات وعلاقة الربط التلقائية."
+        },
+        "uiPath": "Geoprocessing > Data Management > Attachments > Enable Attachments",
+        "tool": "Enable Attachments",
+        "parameters": {
+          "Input Dataset": "Building_Permits"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Verify in Attributes Pane",
+          "ar": "التحقق في نافذة السمات"
+        },
+        "instruction": {
+          "en": "Select a parcel in map, open Attributes pane, expand parcel node to see related permits and add photo attachments.",
+          "ar": "حدد قطعة أرض في الخريطة، وافتح نافذة السمات وتأكد من ظهور التصاريح المرتبطة وزر إرفاق الصور."
+        },
+        "uiPath": "Map > Select > Attributes Pane",
+        "tool": "Inspect Relationships",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Bi-directional relationship linking parcels to inspection records with embedded photo viewing capabilities.",
+      "ar": "علاقة ارتباط ثنائية الاتجاه تربط الأراضي بالتصاريح مع إمكانية استعراض وإضافة الصور المرفقة."
+    },
+    "qualityControl": {
+      "en": "Select a parcel, verify related permit records expand hierarchically in Attributes pane tree view.",
+      "ar": "حدد عقاراً وتأكد من فتح شجرة السجلات المرتبطة به في نافذة السمات بسلاسة."
+    },
+    "commonMistakes": {
+      "en": "Using Composite relationship when child records should survive independent parcel sales (use Simple instead).",
+      "ar": "استخدام علاقة Composite بدلاً من Simple مما قد يؤدي لحذف التصاريح عند حذف الأرض."
+    },
+    "alternativeApproaches": {
+      "en": "Use Add Relate for quick ad-hoc map-level relating without geodatabase schema modification.",
+      "ar": "استخدام Add Relate للربط المؤقت على مستوى الخريطة دون تعديل هيكل قاعدة البيانات."
+    }
+  },
+  {
+    "id": "WF-010",
+    "domain": "Data Management",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Enable COGO",
+      "Traverse"
+    ],
+    "relatedObjectives": [
+      "Identify how to manage spatial and non-spatial data",
+      "Create and edit vector features"
+    ],
+    "references": [
+      {
+        "title": "COGO in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/cogo-overview.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Precision Land Survey Boundary Digitizing using COGO Traverse",
+      "ar": "رقمنة حدود مساحية دقيقة لقطع الأراضي باستخدام تقنية COGO Traverse"
+    },
+    "objective": {
+      "en": "Enter legal deed survey metes-and-bounds descriptions (bearings and quadrant distances) using the Traverse tool.",
+      "ar": "إدخال حدود الملكية القانونية من صك مساحي (زوايا الاتجاه ومسافات الأضلاع) باستخدام أداة Traverse."
+    },
+    "initialData": {
+      "en": "Boundary_Lines polyline feature class enabled with COGO fields (Direction, Distance, Radius).",
+      "ar": "فئة معالم خطية مفعل عليها حقول COGO (الاتجاه، المسافة، نصف القطر)."
+    },
+    "startingConditions": {
+      "en": "Legal deed metes-and-bounds survey call sheet with starting point coordinates.",
+      "ar": "صك مساحي قانوني يحدد إحداثيات نقطة البداية وقراءات الأضلاع."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Enable COGO on Layer",
+          "ar": "تفعيل حقول COGO على الطبقة"
+        },
+        "instruction": {
+          "en": "Run Enable COGO tool to populate standard survey fields (Direction, Distance, Curve parameters).",
+          "ar": "شغل أداة Enable COGO لإضافة الحقول المساحية القياسية للطبقة."
+        },
+        "uiPath": "Geoprocessing > Data Management > Fields > Enable COGO",
+        "tool": "Enable COGO",
+        "parameters": {
+          "Input Layer": "Boundary_Lines"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Launch Traverse Tool",
+          "ar": "تشغيل أداة المسار المساحي Traverse"
+        },
+        "instruction": {
+          "en": "In Edit ribbon, open Tools > Traverse. Set Starting Point coordinates from the deed legal description.",
+          "ar": "في شريط Edit، افتح Traverse وحدد إحداثيات نقطة البداية المذكورة في الصك."
+        },
+        "uiPath": "Edit Ribbon > Tools > Traverse",
+        "tool": "Set Start Point",
+        "parameters": {
+          "Start X": "2154300.5",
+          "Start Y": "685210.2"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Enter Survey Legs and Close",
+          "ar": "إدخال أضلاع المسار والإغلاق"
+        },
+        "instruction": {
+          "en": "Input calls: N 45-30-15 E 250.00 ft; S 88-12-00 E 180.50 ft; S 15-00-00 W 240.00 ft; Close back to start.",
+          "ar": "أدخل قراءات الأضلاع بدقة بالاتجاه والمسافة، ثم اضغط Close لإغلاق المضلع وحساب خطأ الإغلاق."
+        },
+        "uiPath": "Traverse Grid",
+        "tool": "Input Legs",
+        "parameters": {
+          "1": "N45-30-15E 250.00",
+          "2": "S88-12-00E 180.50",
+          "3": "Close"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Survey-grade parcel boundary with recorded COGO attributes and misclosure error report.",
+      "ar": "حدود عقارية دقيقة هندسياً ومطابقة للصك مع تسجيل سمات COGO وتقرير خطأ الإغلاق المساحي."
+    },
+    "qualityControl": {
+      "en": "Examine Traverse misclosure ratio (e.g. 1:25,000) to verify survey closure tolerances.",
+      "ar": "افحص نسبة خطأ الإغلاق في تقرير المسار للتأكد من مطابقتها للمعايير المساحية المقبولة."
+    },
+    "commonMistakes": {
+      "en": "Entering polar arithmetic angles instead of quadrant bearings (e.g. N 45° E vs 45°).",
+      "ar": "إدخال الزوايا بنظام الإحداثيات القطبية بدلاً من زوايا الأرباع المساحية (Quadrant Bearings)."
+    },
+    "alternativeApproaches": {
+      "en": "Use Ground to Grid correction to adjust survey distances for elevation scale factors and grid convergence.",
+      "ar": "تفعيل تصحيح Ground to Grid لتعديل مسافات القياس الميداني لتطابق شبكة الإسقاط."
+    }
+  },
+  {
+    "id": "WF-011",
+    "domain": "Visualization",
+    "difficulty": "Beginner",
+    "tools": [
+      "Apply Symbology From Layer",
+      "Graduated Colors"
+    ],
+    "relatedObjectives": [
+      "Manage layer properties using the ribbon and dialog boxes"
+    ],
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Quantitative Choropleth Mapping with Graduated Colors and Normalization",
+      "ar": "تصميم خرائط كوروبليث الكمية بالألوان المتدرجة وتوحيد البيانات بالنسب"
+    },
+    "objective": {
+      "en": "Map regional population density by dividing total population by land area (Normalization) to avoid misleading raw count representations.",
+      "ar": "تمثيل الكثافة السكانية بقسمة عدد السكان على المساحة (Normalization) لمنع التضليل الكارتوغرافي للأرقام المطلقة."
+    },
+    "initialData": {
+      "en": "Counties polygon feature class with 'TOT_POP' and 'SQ_MILES' numeric fields.",
+      "ar": "فئة معالم المقاطعات مع حقلي عدد السكان والمساحة بالميل المربع."
+    },
+    "startingConditions": {
+      "en": "Counties layer added to map with default Single Symbol.",
+      "ar": "إضافة طبقة المقاطعات للخريطة بالترميز الافتراضي."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Open Symbology Pane",
+          "ar": "فتح نافذة الرموز"
+        },
+        "instruction": {
+          "en": "Right-click Counties > Symbology. Select Primary symbology: 'Graduated Colors'.",
+          "ar": "انقر بالزر الأيمن على الطبقة > Symbology واختَر Graduated Colors."
+        },
+        "uiPath": "Layer Context Menu > Symbology",
+        "tool": "Set Symbology Type",
+        "parameters": {
+          "Type": "Graduated Colors"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Field and Normalization",
+          "ar": "تحديد حقل التصنيف وحقل التوحيد"
+        },
+        "instruction": {
+          "en": "Set Field to 'TOT_POP', set Normalization to 'SQ_MILES' (calculating Population per Square Mile).",
+          "ar": "حدد الحقل ليكون TOT_POP وحقل التوحيد ليكون SQ_MILES (لحساب الكثافة لكل ميل مربع)."
+        },
+        "uiPath": "Symbology Pane > Primary Tab",
+        "tool": "Set Fields",
+        "parameters": {
+          "Field": "TOT_POP",
+          "Normalization": "SQ_MILES"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Select Classification and Ramp",
+          "ar": "اختيار طريقة التصنيف ومدرج الألوان"
+        },
+        "instruction": {
+          "en": "Choose Method: 'Natural Breaks (Jenks)', Classes: 5, Color scheme: Light yellow to dark purple sequential ramp.",
+          "ar": "اختَر طريقة Natural Breaks (Jenks) بـ 5 فئات ومدرج ألوان متسلسل من الأصفر الفاتح إلى البنفسجي الداكن."
+        },
+        "uiPath": "Symbology Pane > Classes",
+        "tool": "Configure Breaks",
+        "parameters": {
+          "Method": "Natural Breaks (Jenks)",
+          "Classes": "5"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Statistically sound choropleth map showing true population density without polygon size bias.",
+      "ar": "خريطة كوروبليث علمية سليمة تبرز الكثافة السكانية الحقيقية دون انحياز لمساحات المقاطعات."
+    },
+    "qualityControl": {
+      "en": "Inspect class breaks in histogram view to confirm breaks match natural valleys in the data distribution.",
+      "ar": "افحص المدرج التكراري للبيانات للتأكد من وقوع فواصل الفئات عند الفجوات الطبيعية للتوزيع."
+    },
+    "commonMistakes": {
+      "en": "Mapping raw counts (total population) with graduated colors without normalization, biasing large area polygons.",
+      "ar": "تمثيل الأرقام المطلقة بتدرج لوني دون قسمتها على المساحة مما يضلل القارئ لصالح المضلعات الكبيرة."
+    },
+    "alternativeApproaches": {
+      "en": "Use Dot Density symbology as an alternative quantitative representation of raw population counts.",
+      "ar": "استخدام رموز كثافة النقط (Dot Density) كبديل بصري ممتاز لتمثيل الأعداد المطلقة."
+    }
+  },
+  {
+    "id": "WF-012",
+    "domain": "Visualization",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Vary Symbology By Attribute"
+    ],
+    "relatedObjectives": [
+      "Manage layer properties using the ribbon and dialog boxes"
+    ],
+    "references": [
+      {
+        "title": "Symbolize feature layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbolize-feature-layers.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Multi-Variable Visualization: Driving Symbol Size and Rotation Concurrently",
+      "ar": "التمثيل البصري متعدد المتغيرات: التحكم المتزامن في حجم الرمز وزاوية دورانه"
+    },
+    "objective": {
+      "en": "Symbolize weather station points using directional wind arrows where symbol size reflects wind speed and rotation reflects wind direction.",
+      "ar": "تمثيل محطات الأرصاد بأسهم رياح يتناسب حجمها مع سرعة الرياح وتدور زاوية السهم باتجاه هبوب الرياح."
+    },
+    "initialData": {
+      "en": "Weather_Stations point layer with 'WIND_SPEED' (knots) and 'WIND_DIR' (degrees 0-360).",
+      "ar": "طبقة نقاط محطات الأرصاد مع حقلي سرعة الرياح وزاوية اتجاهها."
+    },
+    "startingConditions": {
+      "en": "Layer symbolized with an arrow directional marker symbol.",
+      "ar": "ترميز الطبقة برمز سهم توجيهي."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Open Vary Symbology Tab",
+          "ar": "فتح تبويب التباين بالسمات"
+        },
+        "instruction": {
+          "en": "In Symbology pane, click the 'Vary symbology by attribute' icon (three sliders).",
+          "ar": "في نافذة الرموز، انقر على أيقونة Vary symbology by attribute (أيقونة المنزلقات الثلاثة)."
+        },
+        "uiPath": "Symbology Pane > Vary Symbology Tab",
+        "tool": "Open Vary Tab",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Size Variation",
+          "ar": "ضبط تباين الحجم وفق السرعة"
+        },
+        "instruction": {
+          "en": "Expand Size, check 'Vary size by attribute', select Field: 'WIND_SPEED'. Set min size 8pt and max size 36pt.",
+          "ar": "افتح قسم Size، وفعل تباين الحجم، وحدد حقل WIND_SPEED مع ضبط الحجم بين 8 و 36 نقطة."
+        },
+        "uiPath": "Vary Tab > Size",
+        "tool": "Configure Size",
+        "parameters": {
+          "Field": "WIND_SPEED",
+          "Min Size": "8 pt",
+          "Max Size": "36 pt"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Configure Rotation Variation",
+          "ar": "ضبط زاوية التدوير وفق الاتجاه"
+        },
+        "instruction": {
+          "en": "Expand Rotation, check 'Vary rotation by attribute', select Field: 'WIND_DIR', Rotation Type: 'Geographic' (0 = North, clockwise).",
+          "ar": "افتح قسم Rotation، وحدد حقل WIND_DIR بنمط Geographic (0 شمالاً مع عقارب الساعة)."
+        },
+        "uiPath": "Vary Tab > Rotation",
+        "tool": "Configure Rotation",
+        "parameters": {
+          "Field": "WIND_DIR",
+          "Type": "Geographic"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Dynamic bivariate map displaying wind velocity and directional heading simultaneously on a single layer.",
+      "ar": "خريطة ثنائية المتغيرات تعرض سرعة الرياح واتجاه حركتها في آن واحد على نفس الطبقة."
+    },
+    "qualityControl": {
+      "en": "Verify that a station with 0° wind points due North, and 90° points due East.",
+      "ar": "تأكد من أن المحطة ذات الزاوية 0 تشير شمالاً والمحطة ذات الزاوية 90 تشير شرقاً."
+    },
+    "commonMistakes": {
+      "en": "Selecting 'Arithmetic' rotation (0 = East, counter-clockwise) for compass data, resulting in 90-degree reversed headings.",
+      "ar": "اختيار التدوير الحسابي (Arithmetic) لبيانات البوصلة مما يعكس اتجاهات الرياح بمقدار 90 درجة."
+    },
+    "alternativeApproaches": {
+      "en": "Use Dictionary Symbology when standard military or emergency symbol rules govern multi-attribute styling.",
+      "ar": "استخدام رموز القاموس (Dictionary Symbology) للرموز المعيارية العسكرية المعقدة."
+    }
+  },
+  {
+    "id": "WF-013",
+    "domain": "Visualization",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Maplex Label Engine",
+      "Label Expression"
+    ],
+    "relatedObjectives": [
+      "Manage layer properties using the ribbon and dialog boxes"
+    ],
+    "references": [
+      {
+        "title": "Maplex Label Engine, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/maplex-label-engine.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Advanced Maplex Labeling with Arcade Expressions and Conflict Resolution",
+      "ar": "تسميات Maplex المتقدمة باستخدام لغة Arcade وحل تصادم التسميات"
+    },
+    "objective": {
+      "en": "Label commercial parcels with multi-line formatted text (Parcel ID in bold, owner name, assessed value formatted as currency) and prevent label overlaps.",
+      "ar": "كتابة تسميات عقارية متعددة الأسطر (رقم الأرض عريضاً، واسم المالك، والقيمة النقدية) ومنع تداخل التسميات."
+    },
+    "initialData": {
+      "en": "Parcels polygon layer with 'PARCEL_ID', 'OWNER', and 'ASSESSED_VAL' fields.",
+      "ar": "طبقة مضلعات الأراضي بحقول رقم العقار والمالك والقيمة."
+    },
+    "startingConditions": {
+      "en": "Maplex Label Engine enabled on the map view.",
+      "ar": "تفعيل محرك التسميات Maplex Label Engine في الخريطة."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Enable Labeling and Open Expression",
+          "ar": "تفعيل التسميات وفتح نافذة Arcade"
+        },
+        "instruction": {
+          "en": "Turn on labeling for Parcels. In Labeling ribbon, click Expression button, set Language: 'Arcade'.",
+          "ar": "فعل تسميات الطبقة، وانقر على زر التعبير في شريط Labeling مع اختيار لغة Arcade."
+        },
+        "uiPath": "Labeling Ribbon > Expression",
+        "tool": "Set Expression Language",
+        "parameters": {
+          "Language": "Arcade"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Write Formatted Arcade Script",
+          "ar": "كتابة كود التنسيق بلغة Arcade"
+        },
+        "instruction": {
+          "en": "Input: `<BOL>` + $feature.PARCEL_ID + `</BOL>` + TextFormatting.NewLine + $feature.OWNER + TextFormatting.NewLine + Text($feature.ASSESSED_VAL, '$#,###');",
+          "ar": "أدخل كود Arcade لتنسيق الخط العريض والسطر الجديد وتنسيق العملة."
+        },
+        "uiPath": "Label Expression Builder",
+        "tool": "Write Arcade",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Configure Maplex Placement and Fitting",
+          "ar": "ضبط قواعد الموضع والملاءمة في Maplex"
+        },
+        "instruction": {
+          "en": "Set Placement: 'Horizontal in polygon'. In Fitting Strategy, enable 'Font reduction' (lower limit: 7pt) and 'Abbreviation dictionary'.",
+          "ar": "اضبط الموضع داخل المضلع، وفعل استراتيجية تقليص الخط حتى 7 نقاط وقاموس الاختصارات."
+        },
+        "uiPath": "Labeling Properties > Placement",
+        "tool": "Configure Maplex",
+        "parameters": {
+          "Placement": "Horizontal in polygon",
+          "Min Font": "7 pt"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "High-density legible parcel labels showing rich multi-line financial information without overlaps.",
+      "ar": "تسميات عقارية منسقة واضحة تبرز البيانات المالية بدقة ودون أي تصادم أو حجب."
+    },
+    "qualityControl": {
+      "en": "Pan across dense parcel blocks; verify that labels shrink gracefully to fit small parcels without truncation.",
+      "ar": "تحرك عبر أحياء الأراضي الكثيفة وتأكد من تصغير الخط تلقائياً ليناسب القطع الصغيرة دون تشويه."
+    },
+    "commonMistakes": {
+      "en": "Forgetting to close HTML formatting tags (e.g. `<BOL>` without `</BOL>`), corrupting label rendering.",
+      "ar": "نسيان إغلاق وسوم التنسيق مثل `<BOL>` دون `</BOL>` مما يعطل رسم التسميات."
+    },
+    "alternativeApproaches": {
+      "en": "Convert labels to Geodatabase Annotation when individual manual text placement adjustments are required.",
+      "ar": "تحويل التسميات إلى ملاحظات (Annotation) عند الحاجة لتحريك بعض التسميات يدوياً للطباعة النهائية."
+    }
+  },
+  {
+    "id": "WF-014",
+    "domain": "Visualization",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Extrusion",
+      "Local Scene"
+    ],
+    "relatedObjectives": [
+      "Determine how to visualize temporal, ranged, or 3D data"
+    ],
+    "references": [
+      {
+        "title": "Scenes (3D), ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-views/scenes.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Build an Interactive 3D Local Scene with Building Footprint Extrusions",
+      "ar": "بناء مشهد محلي ثلاثي الأبعاد مع بثق مساقط المباني"
+    },
+    "objective": {
+      "en": "Convert 2D building footprints into a realistic 3D cityscape draped over a digital elevation surface with height extrusions.",
+      "ar": "تحويل مساقط مبانٍ ثنائية الأبعاد إلى مجسمات ثلاثية الأبعاد تستند لسطح التضاريس مع بثق الارتفاعات."
+    },
+    "initialData": {
+      "en": "Building_Footprints polygon feature class with 'STOREYS' or 'HEIGHT_M' numeric fields, and a 10m DEM surface.",
+      "ar": "فئة معالم مساقط المباني بحقل عدد الطوابق أو الارتفاع، مع راستر تضاريس 10م."
+    },
+    "startingConditions": {
+      "en": "New empty 3D Local Scene view opened in ArcGIS Pro.",
+      "ar": "فتح مشهد محلي ثلاثي الأبعاد (Local Scene) جديد."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Add Data and Set Elevation Surface",
+          "ar": "إضافة البيانات وتحديد سطح الارتفاع"
+        },
+        "instruction": {
+          "en": "Add DEM to 'Ground' elevation surfaces in Contents pane. Add Building_Footprints into '2D Layers'.",
+          "ar": "أضف راستر DEM لسطح الأرض Ground، وأضف مساقط المباني في قسم 2D Layers."
+        },
+        "uiPath": "Contents Pane > Elevation Surfaces > Ground",
+        "tool": "Add Elevation Surface",
+        "parameters": {
+          "Surface": "10m_DEM.tif"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Layer Elevation Properties",
+          "ar": "ضبط خصائص ارتفاع قاعدة المباني"
+        },
+        "instruction": {
+          "en": "Open Layer Properties > Elevation. Set 'Features are: On the ground' so polygon bases conform to terrain slope.",
+          "ar": "افتح خصائص الطبقة > Elevation واختَر Features are: On the ground لتلتصق القواعد بالتضاريس."
+        },
+        "uiPath": "Layer Properties > Elevation",
+        "tool": "Set Elevation Mode",
+        "parameters": {
+          "Mode": "On the ground"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Configure Extrusion Method",
+          "ar": "ضبط طريقة ومعامل بثق الجدران"
+        },
+        "instruction": {
+          "en": "In Feature Layer Appearance ribbon > Extrusion. Type: 'Base height', Expression: `$feature.STOREYS * 3.5` (or HEIGHT_M field).",
+          "ar": "في شريط Appearance، اختر Type: Base height، واكتب التعبير: $feature.STOREYS * 3.5 لأمتار الارتفاع."
+        },
+        "uiPath": "Appearance Ribbon > Extrusion",
+        "tool": "Set Extrusion",
+        "parameters": {
+          "Type": "Base height",
+          "Expression": "$feature.STOREYS * 3.5"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Realistic 3D urban skyline where building heights reflect true structural dimensions anchored to terrain.",
+      "ar": "مشهد عمراني مجسم ثلاثي الأبعاد تعبر فيه ارتفاعات المباني عن واقعها الهندسي وتستند بثبات على التضاريس."
+    },
+    "qualityControl": {
+      "en": "Tilt scene camera to oblique perspective; verify buildings rise vertically from hillsides without floating.",
+      "ar": "قم بإمالة الكاميرا وتأكد من ارتفاع جدران المباني رأسياً من سفوح التلال دون أن تطفو في الهواء."
+    },
+    "commonMistakes": {
+      "en": "Setting elevation to 'At an absolute height' of 0 meters, causing buildings to be buried inside hillsides.",
+      "ar": "ضبط الارتفاع على منسوب مطلق 0 متر مما يدفن المباني داخل التلال المرتفعة."
+    },
+    "alternativeApproaches": {
+      "en": "Convert extruded polygons into permanent 3D MultiPatch geometries using the 'Layer 3D To Feature Class' tool.",
+      "ar": "تحويل المضلعات المبثوقة إلى مجسمات MultiPatch دائمة باستخدام أداة Layer 3D To Feature Class."
+    }
+  },
+  {
+    "id": "WF-015",
+    "domain": "Visualization",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Time Slider",
+      "Layer Properties Time"
+    ],
+    "relatedObjectives": [
+      "Determine how to visualize temporal, ranged, or 3D data"
+    ],
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Configure Temporal Visualization and Smooth Playback with the Time Slider",
+      "ar": "تهيئة العرض الزمني والرسوم المتحركة التفاعلية باستخدام منزلق الوقت"
+    },
+    "objective": {
+      "en": "Configure time properties on historical seismic earthquake events to animate chronological progression over a 30-day period.",
+      "ar": "ضبط الخصائص الزمنية لبيانات الزلازل التاريخية لتحريك مسار حدوثها زمنياً على مدار 30 يوماً."
+    },
+    "initialData": {
+      "en": "Earthquakes point feature class with 'EVENT_DATE' timestamp field.",
+      "ar": "فئة معالم نقاط الزلازل مع حقل تاريخ وتوقيت الحدث EVENT_DATE."
+    },
+    "startingConditions": {
+      "en": "Earthquakes layer displayed in map view.",
+      "ar": "عرض طبقة الزلازل على خريطة المشروع."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Enable Time on Layer",
+          "ar": "تفعيل الزمن في خصائص الطبقة"
+        },
+        "instruction": {
+          "en": "Open Layer Properties > Time. Select 'Each feature has a single time field', set Time Field to 'EVENT_DATE'.",
+          "ar": "افتح خصائص الطبقة > Time، واختَر حقل زمن منفرد وحدد حقل EVENT_DATE."
+        },
+        "uiPath": "Layer Properties > Time",
+        "tool": "Configure Time",
+        "parameters": {
+          "Layer Time": "Each feature has a single time field",
+          "Time Field": "EVENT_DATE"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure On-Screen Time Slider",
+          "ar": "ضبط منزلق الوقت في واجهة العرض"
+        },
+        "instruction": {
+          "en": "On the Time ribbon tab, set Start Time and End Time extents. Set Step Interval to '1 Days'.",
+          "ar": "في شريط Time، اضبط نطاق البداية والنهاية، واضبط خطوة الانتقال الزمني Step Interval على يوم واحد."
+        },
+        "uiPath": "Time Ribbon > Step Interval",
+        "tool": "Configure Slider Steps",
+        "parameters": {
+          "Step": "1 Days"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Configure Cumulative Playback",
+          "ar": "ضبط العرض التراكمي للبيانات التاريخية"
+        },
+        "instruction": {
+          "en": "Check 'Show data cumulatively' so earlier earthquake points remain visible as new ones appear.",
+          "ar": "فعل خيار Show data cumulatively لتظل الزلازل السابقة ظاهرة مع ظهور الهزات الجديدة."
+        },
+        "uiPath": "Time Ribbon > Playback Settings",
+        "tool": "Set Cumulative",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Interactive chronological playback revealing seismic wave fault line progression across the study area.",
+      "ar": "عرض زمني متحرك يكشف تسلسل انتشار بؤر الهزات الارتدادية عبر خطوط الصدع الجيولوجي."
+    },
+    "qualityControl": {
+      "en": "Click Play on the Time Slider control; confirm features appear and accumulate in synchrony with date stamps.",
+      "ar": "انقر تشغيل وتأكد من ظهور وتراكم النقاط على الخريطة بتزامن تام مع تقدم عداد الأيام."
+    },
+    "commonMistakes": {
+      "en": "Selecting 'Each feature has start and end time fields' when the dataset only contains an instantaneous event point in time.",
+      "ar": "اختيار حقول بداية ونهاية لبيانات لحظية لا تحوي سوى تاريخ حدوث واحد فقط."
+    },
+    "alternativeApproaches": {
+      "en": "Export the temporal progression to an MP4 video or animated GIF via the Animation ribbon tab.",
+      "ar": "تصدير العرض الزمني إلى فيديو MP4 أو صورة متحركة GIF عبر شريط Animation."
+    }
+  },
+  {
+    "id": "WF-016",
+    "domain": "Visualization",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Range Slider"
+    ],
+    "relatedObjectives": [
+      "Determine how to visualize temporal, ranged, or 3D data"
+    ],
+    "references": [
+      {
+        "title": "Time in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Interactive Facility Floor Inspection Using the Range Slider",
+      "ar": "فحص طوابق المباني الداخلية تفاعلياً باستخدام منزلق المدى (Range Slider)"
+    },
+    "objective": {
+      "en": "Isolate and inspect indoor utility assets (security cameras, fire valves) floor-by-floor using an integer level range slider.",
+      "ar": "عزل وفحص أصول المباني الداخلية (كاميرات المراقبة، محابس الحريق) طابقاً بطابق باستخدام منزلق المدى الرقمي."
+    },
+    "initialData": {
+      "en": "Indoor_Assets 3D point layer with an integer 'FLOOR_LEVEL' field (values 1 through 10).",
+      "ar": "طبقة مجسمات أصول داخلية مع حقل رقمي FLOOR_LEVEL للأدوار من 1 إلى 10."
+    },
+    "startingConditions": {
+      "en": "Assets displayed in a 3D building interior view.",
+      "ar": "عرض الأصول داخل مشهد مجسم للمبنى."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Enable Range on Layer",
+          "ar": "تفعيل المدى في خصائص الطبقة"
+        },
+        "instruction": {
+          "en": "Open Layer Properties > Range. Set Range Field to 'FLOOR_LEVEL'.",
+          "ar": "افتح خصائص الطبقة > Range وحدد حقل FLOOR_LEVEL."
+        },
+        "uiPath": "Layer Properties > Range",
+        "tool": "Set Range Field",
+        "parameters": {
+          "Range Field": "FLOOR_LEVEL"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Range Slider Bounds",
+          "ar": "ضبط حدود منزلق المدى"
+        },
+        "instruction": {
+          "en": "On the Range ribbon tab, set Minimum: 1, Maximum: 10, Step: 1.",
+          "ar": "في شريط Range، اضبط الحد الأدنى 1 والأعلى 10 وخطوة الانتقال بـ 1."
+        },
+        "uiPath": "Range Ribbon > Extents",
+        "tool": "Configure Range",
+        "parameters": {
+          "Min": "1",
+          "Max": "10",
+          "Step": "1"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Step Through Floors",
+          "ar": "التنقل التفاعلي بين الأدوار"
+        },
+        "instruction": {
+          "en": "Use the on-screen Range Slider arrows to step from floor 1 to floor 5, isolating single floor levels.",
+          "ar": "استخدم أسهم منزلق المدى على الشاشة للانتقال بين الطوابق وعزل أصول كل طابق على حدة."
+        },
+        "uiPath": "On-Screen Range Control",
+        "tool": "Step Range",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Clear, clutter-free inspection of interior floor plans with zero visual occlusion from adjacent levels.",
+      "ar": "رؤية بصرية واضحة لأصول الطابق المستهدف دون تداخل أو حجب من طوابق المبنى الأخرى."
+    },
+    "qualityControl": {
+      "en": "Step to Floor 3; verify that all assets on floors 1, 2, 4, and 5 are completely hidden from view.",
+      "ar": "انتقل للطابق 3 وتأكد من اختفاء أصول كافة الطوابق الأخرى تماماً من شاشة العرض."
+    },
+    "commonMistakes": {
+      "en": "Attempting to configure Range on a Text field (Range requires numeric Short, Long, or Float fields).",
+      "ar": "محاولة تطبيق منزلق المدى على حقل نصي؛ فالمنزلق يتطلب حقولاً رقمية صحيحة أو عشرية."
+    },
+    "alternativeApproaches": {
+      "en": "Combine Range Slider and Time Slider concurrently to filter multi-story buildings over time.",
+      "ar": "دمج منزلق المدى مع منزلق الوقت لفحص تطابق المباني عبر فترات زمنية متعاقبة."
+    }
+  },
+  {
+    "id": "WF-017",
+    "domain": "Visualization",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Create Locator",
+      "Geocode Addresses",
+      "Rematch Addresses"
+    ],
+    "relatedObjectives": [
+      "Given a scenario, apply a query"
+    ],
+    "references": [
+      {
+        "title": "Geocoding in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-geocoding.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Build Custom Address Locator and Rematch Unmatched Addresses",
+      "ar": "بناء محدد عناوين مخصص ومطابقة العناوين غير المطابقة"
+    },
+    "objective": {
+      "en": "Create a PointAddress locator from municipal address points, batch geocode customer CSV records, and resolve candidate ties.",
+      "ar": "إنشاء محدد عناوين من نقاط العناوين البلدية، وتكويد جدول عملاء، وحسم حالات التعادل في المطابقة."
+    },
+    "initialData": {
+      "en": "City_Address_Points feature class and Customer_List.csv with ADDRESS, CITY, STATE, ZIP columns.",
+      "ar": "طبقة نقاط العناوين وجدول العملاء CSV متضمناً أعمدة العنوان والمدينة والرمز البريدي."
+    },
+    "startingConditions": {
+      "en": "ArcGIS Pro project connected to local data folder.",
+      "ar": "اتصال المشروع بمجلد البيانات المحلي."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Locator",
+          "ar": "إنشاء محدد العناوين"
+        },
+        "instruction": {
+          "en": "Run Create Locator tool: Role: Point Address, Reference Data: City_Address_Points, map HouseNumber and StreetName fields.",
+          "ar": "شغل أداة Create Locator: الدور Point Address، والبيانات المرجعية نقاط العناوين مع مطابقة الحقول."
+        },
+        "uiPath": "Geoprocessing > Geocoding Tools > Create Locator",
+        "tool": "Create Locator",
+        "parameters": {
+          "Role": "Point Address",
+          "Output Locator": "City_Locator"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Batch Geocode Addresses",
+          "ar": "تكويد جدول العناوين دفعة واحدة"
+        },
+        "instruction": {
+          "en": "Run Geocode Addresses tool using City_Locator and Customer_List.csv, producing Geocoded_Customers feature class.",
+          "ar": "شغل أداة Geocode Addresses باستخدام المحدد المنشأ وجدول العملاء لإنتاج طبقة العملاء المكانية."
+        },
+        "uiPath": "Geoprocessing > Geocoding Tools > Geocode Addresses",
+        "tool": "Geocode Addresses",
+        "parameters": {
+          "Input Table": "Customer_List.csv",
+          "Input Address Locator": "City_Locator"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Rematch Unmatched and Tied Records",
+          "ar": "إعادة مطابقة العناوين غير المطابقة والمتعادلة"
+        },
+        "instruction": {
+          "en": "Open Data ribbon > Rematch Addresses pane. Review 'Tied' and 'Unmatched' records, select correct candidates, and click Match.",
+          "ar": "افتح نافذة Rematch Addresses، وراجع السجلات المتعادلة وغير المطابقة، وحدد المرشح الصحيح يدوياً واضغط Match."
+        },
+        "uiPath": "Data Ribbon > Rematch Addresses Pane",
+        "tool": "Interactive Rematch",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Fully geocoded customer point feature class with 100% matched score verification.",
+      "ar": "طبقة معالم نقطية لجميع العملاء بمواقع مكانية دقيقة ونسبة مطابقة مكتملة 100%."
+    },
+    "qualityControl": {
+      "en": "Examine Rematch pane summary statistics to ensure 0 Unmatched and 0 Tied records remain.",
+      "ar": "افحص إحصائيات نافذة إعادة المطابقة للتأكد من وصول العناوين غير المطابقة والمتعادلة إلى صفر."
+    },
+    "commonMistakes": {
+      "en": "Assuming Tied addresses match automatically; candidate ties must be reviewed and confirmed manually.",
+      "ar": "الاعتقاد بأن العناوين المتعادلة تُطابق آلياً؛ بل يجب فحصها واعتماد المرشح الصحيح يدوياً."
+    },
+    "alternativeApproaches": {
+      "en": "Use ArcGIS World Geocoding Service for global addresses when local reference data is unavailable.",
+      "ar": "استخدام خدمة التكويد العالمية لـ ArcGIS Online في حال عدم توفر بيانات عناوين محلية."
+    }
+  },
+  {
+    "id": "WF-018",
+    "domain": "Analysis and Geoprocessing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Raster Calculator",
+      "Reclassify"
+    ],
+    "relatedObjectives": [
+      "Apply raster functions for raster and image processing"
+    ],
+    "references": [
+      {
+        "title": "What are raster functions?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/what-are-raster-functions.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Multi-Criteria Habitat Suitability Modeling with Map Algebra",
+      "ar": "نمذجة الملاءمة المكانية متعددة المعايير باستخدام جبر الخرائط"
+    },
+    "objective": {
+      "en": "Combine reclassified slope, elevation, and vegetation rasters using Raster Calculator to identify optimal wildlife conservation sites.",
+      "ar": "دمج طبقات الانحدار والارتفاع والغطاء النباتي المعاد تصنيفها باستخدام جبر الخرائط لتحديد مناطق المحميات المثالية."
+    },
+    "initialData": {
+      "en": "DEM elevation raster, Slope raster (degrees), and Land_Cover categorical raster.",
+      "ar": "راستر الارتفاع والانحدار بالدرجات والغطاء الأرضي."
+    },
+    "startingConditions": {
+      "en": "Spatial Analyst extension enabled in project.",
+      "ar": "تفعيل ترخيص Spatial Analyst بالمشروع."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Reclassify Continuous Inputs",
+          "ar": "إعادة تصنيف المدخلات المستمرة"
+        },
+        "instruction": {
+          "en": "Run Reclassify on Slope: slopes 0-5° -> 5 (optimal), 5-15° -> 3, >15° -> 1 (poor). Save as 'Reclass_Slope'.",
+          "ar": "شغل Reclassify على الانحدار: من 0-5 درجات القيمة 5، ومن 5-15 القيمة 3، وأكبر من 15 القيمة 1."
+        },
+        "uiPath": "Geoprocessing > Spatial Analyst > Reclass > Reclassify",
+        "tool": "Reclassify",
+        "parameters": {
+          "Input Raster": "Slope",
+          "Reclass field": "VALUE"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Snap Raster Environment",
+          "ar": "ضبط بيئة محاذاة الراستر Snap Raster"
+        },
+        "instruction": {
+          "en": "In Environments tab of Raster Calculator, set Snap Raster to 'DEM' and Extent to 'DEM' to prevent cell registration shift.",
+          "ar": "في تبويب بيئات Raster Calculator، اضبط Snap Raster على DEM لمنع إزاحة محاذاة الخلايا."
+        },
+        "uiPath": "Tool Environments Tab",
+        "tool": "Set Snap Raster",
+        "parameters": {
+          "Snap Raster": "DEM.tif"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Execute Map Algebra Expression",
+          "ar": "تنفيذ معادلة جبر الخرائط الموزونة"
+        },
+        "instruction": {
+          "en": "Run Raster Calculator: `(\"Reclass_Slope\" * 0.4) + (\"Reclass_Elev\" * 0.3) + (\"Reclass_Cover\" * 0.3)`.",
+          "ar": "نفذ معادلة الجمع الموزون في Raster Calculator لحساب درجات الملاءمة المركبة."
+        },
+        "uiPath": "Geoprocessing > Spatial Analyst > Map Algebra > Raster Calculator",
+        "tool": "Raster Calculator",
+        "parameters": {
+          "Expression": "(\"Reclass_Slope\" * 0.4) + (\"Reclass_Elev\" * 0.3) + (\"Reclass_Cover\" * 0.3)"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Standardized composite suitability raster with pixel values ranked from 1.0 (unsuitable) to 5.0 (optimal).",
+      "ar": "راستر ملاءمة نهائي موحد تتراوح قيمه بين 1.0 (غير ملائم) و 5.0 (ملائم ومثالي)."
+    },
+    "qualityControl": {
+      "en": "Verify that output raster cell boundaries align seamlessly with input DEM cells with zero pixel displacement.",
+      "ar": "تأكد من انطباق حدود خلايا الراستر الناتج تماماً مع خلايا DEM دون أي إزاحة بكسلية."
+    },
+    "commonMistakes": {
+      "en": "Combining continuous rasters with different measurement scales without reclassifying them first.",
+      "ar": "جمع طبقات الراستر المستمرة ذات الوحدات المختلفة دون توحيد مقاييسها بإعادة التصنيف أولاً."
+    },
+    "alternativeApproaches": {
+      "en": "Use the 'Weighted Overlay' or 'Suitability Modeler' interactive pane for visual sensitivity weighting.",
+      "ar": "استخدام أداة Weighted Overlay أو واجهة Suitability Modeler للأوزان التفاعلية."
+    }
+  },
+  {
+    "id": "WF-019",
+    "domain": "Analysis and Geoprocessing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Flow Direction",
+      "Flow Accumulation",
+      "Watershed"
+    ],
+    "relatedObjectives": [
+      "Given a scenario, determine the appropriate geoprocessing tool"
+    ],
+    "references": [
+      {
+        "title": "An overview of the Hydrology toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/an-overview-of-the-hydrology-tools.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Automated Drainage Basin and Watershed Delineation",
+      "ar": "تحديد أحواض التصريف وشبكات المجاري المائية آلياً"
+    },
+    "objective": {
+      "en": "Process a raw digital elevation model to remove pits, calculate surface drainage routing, and delineate watershed boundaries.",
+      "ar": "معالجة نموذج الارتفاع الرقمي لملء الحفر، وحساب اتجاه وتجمع الجريان، واستخلاص أحواض التصريف."
+    },
+    "initialData": {
+      "en": "Hydrologically clean 10m DEM and a pour point feature class (reservoir intake point).",
+      "ar": "راستر DEM بدقة 10م ونقاط مصب مائية (نقطة مأخذ خزان المياه)."
+    },
+    "startingConditions": {
+      "en": "Project spatial reference set to a projected coordinate system (UTM or State Plane).",
+      "ar": "ضبط نظام إحداثيات المشروع على نظام مسقط بأمتار أو أقدام."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Fill Sinks in DEM",
+          "ar": "ملء منخفضات وحفر السطح"
+        },
+        "instruction": {
+          "en": "Run Fill tool on raw DEM to eliminate spurious depressions and ensure continuous downslope flow.",
+          "ar": "شغل أداة Fill لملء الحفر والمنخفضات الوهمية لضمان استمرار الجريان الهيدرولوجي السطحي."
+        },
+        "uiPath": "Geoprocessing > Spatial Analyst > Hydrology > Fill",
+        "tool": "Fill",
+        "parameters": {
+          "Input Surface Raster": "Raw_DEM.tif"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Calculate Flow Direction and Accumulation",
+          "ar": "حساب اتجاه وتجمع الجريان السطحي"
+        },
+        "instruction": {
+          "en": "Run Flow Direction (D8 method) on Filled DEM. Then run Flow Accumulation on Flow Direction raster.",
+          "ar": "شغل Flow Direction بطريقة D8، ثم شغل Flow Accumulation لحساب الخلايا المتدفقة لكل بكسل."
+        },
+        "uiPath": "Geoprocessing > Spatial Analyst > Hydrology",
+        "tool": "Flow Direction & Accumulation",
+        "parameters": {
+          "Method": "D8"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Delineate Watershed Polygon",
+          "ar": "استخلاص حوض التصريف المائي"
+        },
+        "instruction": {
+          "en": "Run Snap Pour Point on intake point, then run Watershed using Flow Direction and snapped pour point.",
+          "ar": "شغل Snap Pour Point لمحاذاة نقطة المأخذ مع مجرى الجريان، ثم شغل أداة Watershed."
+        },
+        "uiPath": "Geoprocessing > Spatial Analyst > Hydrology > Watershed",
+        "tool": "Watershed",
+        "parameters": {
+          "Input Flow Direction": "FlowDir.tif"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Accurate drainage basin raster representing all terrain areas contributing runoff to the reservoir intake.",
+      "ar": "راستر حوض تصريف دقيق يمثل كافة مساحات التضاريس التي تصب مياهها في خزان السد."
+    },
+    "qualityControl": {
+      "en": "Convert watershed raster to polygon and verify that the pour point sits precisely at the basin outlet throat.",
+      "ar": "حول راستر الحوض لمضلع وتأكد من وقوع نقطة المصب عند مخرج الحوض بدقة متناهية."
+    },
+    "commonMistakes": {
+      "en": "Running Flow Direction on raw un-filled DEM, producing fragmented flow vectors terminated at micro-pits.",
+      "ar": "تشغيل اتجاه الجريان على راستر خام دون ملء الحفر مما يقطع شبكة الأودية عند المنخفضات الوهمية."
+    },
+    "alternativeApproaches": {
+      "en": "Use the online Hydrology Analysis tasks in ArcGIS Online for rapid server-based delineation.",
+      "ar": "استخدام أدوات التحليل الهيدرولوجي السحابية في ArcGIS Online للاستخلاص السريع."
+    }
+  },
+  {
+    "id": "WF-020",
+    "domain": "Analysis and Geoprocessing",
+    "difficulty": "Beginner",
+    "tools": [
+      "Slope",
+      "Aspect"
+    ],
+    "relatedObjectives": [
+      "Apply raster functions for raster and image processing"
+    ],
+    "references": [
+      {
+        "title": "An overview of the Surface toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/an-overview-of-the-surface-tools.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Terrain Morphometry: Slope Percentage and Solar Aspect Modeling",
+      "ar": "تحليل مورفومترية التضاريس: حساب نسبة الانحدار والواجهة الشمسية"
+    },
+    "objective": {
+      "en": "Calculate ground slope in percent rise for road grading compliance and determine compass aspect for solar energy capture.",
+      "ar": "حساب انحدار الأرض كنسبة مئوية لتصميم الطرق وتحديد الواجهة الجغرافية لتركيب ألواح الطاقة الشمسية."
+    },
+    "initialData": {
+      "en": "High-resolution LiDAR bare-earth DEM.",
+      "ar": "نموذج ارتفاع رقمي عالي الدقة من مسح ليدار."
+    },
+    "startingConditions": {
+      "en": "Spatial reference in planar linear meters.",
+      "ar": "نظام الإحداثيات بوحدات قياس مترية مستوية."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Calculate Slope in Percent Rise",
+          "ar": "حساب الانحدار كنسبة مئوية"
+        },
+        "instruction": {
+          "en": "Run Slope tool: Output measurement: 'PERCENT_RISE', Method: Geodesic. Z-Factor: 1.0.",
+          "ar": "شغل أداة Slope مع اختيار قياس PERCENT_RISE وطريقة جيوديسية ومعامل Z بقيمة 1.0."
+        },
+        "uiPath": "Geoprocessing > Spatial Analyst > Surface > Slope",
+        "tool": "Slope",
+        "parameters": {
+          "Output measurement": "PERCENT_RISE",
+          "Method": "GEODESIC"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Calculate Solar Aspect",
+          "ar": "حساب واجهة الانحدار Aspect"
+        },
+        "instruction": {
+          "en": "Run Aspect tool on DEM with Geodesic method, producing azimuths 0-360 degrees and -1 for flat cells.",
+          "ar": "شغل أداة Aspect على نموذج الارتفاع لإنتاج زوايا السمت من 0 إلى 360 درجة وقيمة -1 للمستوي."
+        },
+        "uiPath": "Geoprocessing > Spatial Analyst > Surface > Aspect",
+        "tool": "Aspect",
+        "parameters": {
+          "Method": "GEODESIC"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Filter Optimal Solar Cells",
+          "ar": "عزل الخلايا الملائمة شمسياً"
+        },
+        "instruction": {
+          "en": "Use Con in Raster Calculator to select cells where Slope < 10% AND Aspect between 135° and 225° (South-facing).",
+          "ar": "استخدم دالة Con في Raster Calculator لعزل الخلايا ذات الانحدار أقل من 10% والواجهة الجنوبية."
+        },
+        "uiPath": "Raster Calculator",
+        "tool": "Select Solar Sites",
+        "parameters": {
+          "Expression": "Con((\"Slope_Pct\" < 10) & (\"Aspect\" >= 135) & (\"Aspect\" <= 225), 1, 0)"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Binary suitability raster identifying gentle south-facing slopes optimal for solar farm construction.",
+      "ar": "راستر ملاءمة ثنائي يحدد المنحدرات اللطيفة المواجهة للجنوب والمثالية لبناء محطات الطاقة الشمسية."
+    },
+    "qualityControl": {
+      "en": "Verify flat water reservoirs in the Aspect raster evaluate to -1 and are excluded from solar suitability.",
+      "ar": "تأكد من أن المسطحات المائية المستوية أخذت القيمة -1 في راستر الواجهة واستُبعدت من الملاءمة."
+    },
+    "commonMistakes": {
+      "en": "Confusing DEGREE (0-90) with PERCENT_RISE (where 45° = 100%), miscalculating engineering grade constraints.",
+      "ar": "الخلط بين الدرجات الزاوية ونسبة الارتفاع المئوية مما يفسد حسابات الانحدار الهندسي."
+    },
+    "alternativeApproaches": {
+      "en": "Use dynamic Surface Raster Functions for zero-disk instant visual feedback.",
+      "ar": "استخدام دوال راستر السطح التفاعلية (Surface Raster Functions) للمعاينة الفورية دون كتابة ملفات."
+    }
+  },
+  {
+    "id": "WF-021",
+    "domain": "Analysis and Geoprocessing",
+    "difficulty": "Advanced",
+    "tools": [
+      "Create Space Time Cube By Aggregating Points",
+      "Emerging Hot Spot Analysis"
+    ],
+    "relatedObjectives": [
+      "Given a scenario, determine the appropriate geoprocessing tool"
+    ],
+    "references": [
+      {
+        "title": "Space Time Pattern Mining toolbox, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/space-time-pattern-mining/an-overview-of-the-space-time-pattern-mining-toolbox.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Spatio-Temporal Trend Analysis: Space-Time Cubes and Emerging Hot Spots",
+      "ar": "تحليل الاتجاهات المكانية الزمانية: مكعبات الزمان والمكان والبؤر الساخنة المتصاعدة"
+    },
+    "objective": {
+      "en": "Aggregate 10 years of vehicle theft points into a 3D NetCDF space-time lattice and detect intensifying vs diminishing hot spots.",
+      "ar": "تجميع بيانات سرقات السيارات على مدى 10 سنوات في مكعب NetCDF واكتشاف البؤر الساخنة المتصاعدة والمتلاشية."
+    },
+    "initialData": {
+      "en": "Vehicle_Thefts point layer with 'INCIDENT_DATETIME' timestamp across a metropolitan county.",
+      "ar": "طبقة نقاط جرائم سرقة المركبات متضمنة حقل التاريخ والوقت."
+    },
+    "startingConditions": {
+      "en": "Time and coordinate fields populated without nulls.",
+      "ar": "خلو حقول التواريخ والإحداثيات من القيم الفارغة."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Space Time Cube",
+          "ar": "إنشاء مكعب الزمان والمكان"
+        },
+        "instruction": {
+          "en": "Run Create Space Time Cube By Aggregating Points: Distance Interval: 1000m, Time Step: 1 Months, Aggregation Shape: Hexagon.",
+          "ar": "شغل أداة Create Space Time Cube: مسافة الخلية 1000م، والخطوة الزمنية شهر واحد، بشكل أشكال سداسية."
+        },
+        "uiPath": "Geoprocessing > Space Time Pattern Mining",
+        "tool": "Create Space Time Cube",
+        "parameters": {
+          "Time Step Interval": "1 Months",
+          "Distance Interval": "1000 Meters",
+          "Aggregation Shape": "HEXAGON_GRID"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Execute Emerging Hot Spot Analysis",
+          "ar": "تحليل البؤر الساخنة الصاعدة"
+        },
+        "instruction": {
+          "en": "Run Emerging Hot Spot Analysis using the generated .nc cube and Conceptualization of Spatial Relationships: Fixed Distance.",
+          "ar": "شغل أداة Emerging Hot Spot Analysis على ملف .nc المنشأ مع تحديد علاقة المسافة الثابتة."
+        },
+        "uiPath": "Geoprocessing > Space Time Pattern Mining",
+        "tool": "Emerging Hot Spot Analysis",
+        "parameters": {
+          "Input Space Time Cube": "Thefts.nc",
+          "Analysis Variable": "COUNT"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Interpret Categorical Trend Results",
+          "ar": "تفسير نتائج أنماط الاتجاهات"
+        },
+        "instruction": {
+          "en": "Symbolize results to identify 'New Hot Spots' (emerged in latest month) vs 'Intensifying Hot Spots' (long-term upward trend).",
+          "ar": "رمز النتائج لتمييز البؤر الساخنة الجديدة (ظهرت مؤخراً) عن البؤر المتصاعدة (ذات اتجاه تصاعدي مزمن)."
+        },
+        "uiPath": "Map Symbology",
+        "tool": "Symbolize Trends",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Actionable predictive crime map classifying neighborhoods into 17 spatio-temporal trend categories.",
+      "ar": "خريطة تنبؤية أمنية تصنف الأحياء إلى 17 نمطاً مكانياً زمانياً لدعم توجيه الدوريات."
+    },
+    "qualityControl": {
+      "en": "Review output summary charts and verify that statistical Mann-Kendall trend tests are statistically significant.",
+      "ar": "راجع الرسوم البيانية وتأكد من أن اختبارات مان-كندال الإحصائية للاتجاه ذات دلالة موثوقة."
+    },
+    "commonMistakes": {
+      "en": "Specifying a time-step interval that is too small (e.g. 1 hour) resulting in an empty, sparse cube with zero variance.",
+      "ar": "اختيار خطوة زمنية ضيقة جداً كساعة واحدة مما ينتج مكعباً مخلخلاً بأوعية فارغة تنعدم فيها الدلالة."
+    },
+    "alternativeApproaches": {
+      "en": "Visualize the 3D NetCDF cube directly in an ArcGIS Pro 3D Local Scene using the 'Visualize Space Time Cube in 3D' tool.",
+      "ar": "عرض المكعب ثلاثي الأبعاد في مشهد محلي باستخدام أداة Visualize Space Time Cube in 3D."
+    }
+  },
+  {
+    "id": "WF-022",
+    "domain": "Analysis and Geoprocessing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Make Service Area Analysis Layer",
+      "Solve"
+    ],
+    "relatedObjectives": [
+      "Given a scenario, determine the appropriate geoprocessing tool"
+    ],
+    "references": [
+      {
+        "title": "What is the ArcGIS Network Analyst extension?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/networks/what-is-network-analyst.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Multi-Modal Isochrone Catchment Modeling with Network Analyst",
+      "ar": "نمذجة نطاقات التغطية الزمنية المتعددة باستخدام محلل الشبكات"
+    },
+    "objective": {
+      "en": "Generate 5-minute, 10-minute, and 15-minute emergency ambulance drive-time coverage catchments around medical centers.",
+      "ar": "إنشاء نطاقات وصول سيارات الإسعاف خلال 5 و 10 و 15 دقيقة قيادة حول المستشفيات المركزية."
+    },
+    "initialData": {
+      "en": "Streets network dataset with travel time impedance, and Hospital point facilities.",
+      "ar": "شبكة طرق معرف عليها زمن الانتقال، وطبقة نقاط المستشفيات."
+    },
+    "startingConditions": {
+      "en": "Network Analyst extension licensed and enabled.",
+      "ar": "تفعيل ترخيص Network Analyst بالمشروع."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create Service Area Layer",
+          "ar": "إنشاء طبقة تحليل نطاق الخدمة"
+        },
+        "instruction": {
+          "en": "In Analysis ribbon > Network Analysis dropdown, select 'Service Area'.",
+          "ar": "في شريط Analysis، انقر على Network Analysis واختَر Service Area."
+        },
+        "uiPath": "Analysis Ribbon > Network Analysis > Service Area",
+        "tool": "Make Service Area",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Load Facilities and Set Cutoffs",
+          "ar": "تحميل المنشآت وضبط فترات الوصول"
+        },
+        "instruction": {
+          "en": "Open 'Import Facilities', load Hospitals. In Travel Settings, set Cutoffs: '5 10 15', Travel Mode: 'Driving Time', Direction: 'Away From Facilities'.",
+          "ar": "حمل المستشفيات في Facilities؛ وفي الإعدادات حدد Cutoffs: 5 10 15، ونمط Driving Time، والاتجاه بعيداً عن المنشآت."
+        },
+        "uiPath": "Service Area Ribbon > Cutoffs",
+        "tool": "Configure Cutoffs",
+        "parameters": {
+          "Cutoffs": "5 10 15",
+          "Travel Mode": "Driving Time"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Solve and Dissolve Polygons",
+          "ar": "حل الشبكة ودمج المضلعات المتطابقة"
+        },
+        "instruction": {
+          "en": "Set Polygon Output: 'Dissolve' (to merge overlapping hospital catchments), click 'Solve'.",
+          "ar": "اضبط نمط المضلعات على Dissolve لدمج النطاقات المتداخلة، ثم اضغط على زر Solve."
+        },
+        "uiPath": "Service Area Ribbon > Solve",
+        "tool": "Solve Network",
+        "parameters": {
+          "Polygon Mode": "Dissolve"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Three concentric travel-time polygon rings detailing ambulance accessibility under realistic traffic speed limits.",
+      "ar": "ثلاث حلقات مضلعية متحدة المركز تمثل أزمنة وصول الإسعاف وفق حدود سرعات الشوارع الحقيقية."
+    },
+    "qualityControl": {
+      "en": "Inspect highway corridors; verify that isochrone fingers extend further along high-speed expressways than local streets.",
+      "ar": "تأكد من امتداد أذرع النطاق لمسافات أطول على الطرق السريعة مقارنة بالشوارع المحلية الضيقة."
+    },
+    "commonMistakes": {
+      "en": "Using Euclidean buffer tool instead of network solver, completely ignoring street layout and one-way restrictions.",
+      "ar": "استخدام أداة النطاق الإقليدي الدائري العادي متجاهلاً مسارات الشوارع والاتجاهات الإجبارية."
+    },
+    "alternativeApproaches": {
+      "en": "Use 'Origin-Destination Cost Matrix' when calculating travel times without needing visual polygon geometries.",
+      "ar": "استخدام مصفوفة التكلفة (OD Cost Matrix) عند الحاجة لحساب أزمنة السفر في جداول دون مضلعات."
+    }
+  },
+  {
+    "id": "WF-023",
+    "domain": "Analysis and Geoprocessing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "ModelBuilder",
+      "Iterate Feature Classes"
+    ],
+    "relatedObjectives": [
+      "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow"
+    ],
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/modelbuilder/what-is-modelbuilder.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Build an Automated Multi-Layer Batch Pipeline with ModelBuilder",
+      "ar": "بناء مسار أتمتة لمعالجة طبقات متعددة دفعة واحدة في ModelBuilder"
+    },
+    "objective": {
+      "en": "Iterate through 20 district shapefiles, reproject to State Plane, buffer by 500m, and export using inline substitution `%Name%`.",
+      "ar": "التكرار عبر 20 ملف shapefile، وإعادة إسقاطها، وإنشاء نطاق عازل 500م، وتصديرها بأسماء ديناميكية."
+    },
+    "initialData": {
+      "en": "Folder containing 20 raw district polygon shapefiles.",
+      "ar": "مجلد يحتوي على 20 ملف shapefile لدوائر إدارية."
+    },
+    "startingConditions": {
+      "en": "ModelBuilder canvas opened from Analysis ribbon.",
+      "ar": "فتح لوحة ModelBuilder من شريط Analysis."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Add Iterator",
+          "ar": "إضافة أداة التكرار"
+        },
+        "instruction": {
+          "en": "In ModelBuilder ribbon > Insert > Iterators > select 'Iterate Feature Classes'. Set input folder and wildcard.",
+          "ar": "في شريط ModelBuilder، اختر Iterators > Iterate Feature Classes مع تحديد مجلد المدخلات."
+        },
+        "uiPath": "ModelBuilder Ribbon > Iterators",
+        "tool": "Iterate Feature Classes",
+        "parameters": {
+          "Feature Type": "Polygon"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Add Project and Buffer Tools",
+          "ar": "إضافة أدوات الإسقاط والنطاق العازل"
+        },
+        "instruction": {
+          "en": "Drag Project and Buffer tools onto canvas. Connect Iterator output to Project, and Project output to Buffer.",
+          "ar": "اسحب أداتي Project و Buffer للوحة؛ ووصل مخرج المكرر بـ Project ثم بـ Buffer."
+        },
+        "uiPath": "Catalog Pane > Drag Tools",
+        "tool": "Connect Tools",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Configure Dynamic Output Paths",
+          "ar": "ضبط مسار المخرجات بالاستبدال الضمني"
+        },
+        "instruction": {
+          "en": "In Buffer output path, enter: `%workspace%/Buffer_500m_%Name%` to name each file after its source shapefile.",
+          "ar": "في مسار مخرج Buffer، اكتب: `%workspace%/Buffer_500m_%Name%` لتسمية النتائج آلياً."
+        },
+        "uiPath": "Buffer Tool Dialog",
+        "tool": "Set Output Path",
+        "parameters": {
+          "Output": "%workspace%/Buffer_500m_%Name%"
+        }
+      },
+      {
+        "stepNumber": 4,
+        "title": {
+          "en": "Run and Verify",
+          "ar": "تشغيل النموذج والتحقق"
+        },
+        "instruction": {
+          "en": "Click 'Run' on ribbon. Observe tools flash in sequence, producing 20 distinct feature classes in the target geodatabase.",
+          "ar": "انقر Run، ولاحظ إضاءة الأدوات بالتتابع وتوليد 20 فئة معالم مستقلة في قاعدة البيانات."
+        },
+        "uiPath": "ModelBuilder Ribbon > Run",
+        "tool": "Run Model",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "20 uniformly reprojected and buffered feature classes generated automatically in minutes without repetitive manual clicks.",
+      "ar": "20 فئة معالم مسقطة ومحاطة بنطاق 500م أُنشئت آلياً في دقائق معدودة دون نقرات يدوية مكررة."
+    },
+    "qualityControl": {
+      "en": "Open target geodatabase in Catalog and verify exactly 20 new feature classes exist with correct '%Name%' suffixes.",
+      "ar": "افتح قاعدة البيانات وتأكد من وجود 20 فئة معالم جديدة بالأسماء المستبدلة ديناميكياً بدقة."
+    },
+    "commonMistakes": {
+      "en": "Attempting to add two iterators into the same model without nesting one inside a submodel.",
+      "ar": "محاولة إضافة مكررين في نفس النموذج دون بناء نموذج فرعي مما يعطل تشغيل النموذج."
+    },
+    "alternativeApproaches": {
+      "en": "Export the validated model to a clean Python script using 'Export To Python File' for server scheduling.",
+      "ar": "تصدير النموذج إلى سكربت بايثون عبر Export To Python File لجدولته على الخوادم."
+    }
+  },
+  {
+    "id": "WF-024",
+    "domain": "Analysis and Geoprocessing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "ArcPy",
+      "UpdateCursor"
+    ],
+    "relatedObjectives": [
+      "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow"
+    ],
+    "references": [
+      {
+        "title": "What is ArcPy?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Automate Feature Attribute Updates and Data Cleanup with ArcPy Cursors",
+      "ar": "أتمتة تحديث السمات وتنظيف البيانات برمجياً باستخدام مؤشرات ArcPy"
+    },
+    "objective": {
+      "en": "Write a standalone Python script to scan utility pipelines, flag missing pressure values, and calculate replacement costs.",
+      "ar": "كتابة سكربت بايثون لفحص خطوط الأنابيب، وتحديد قيم الضغط المفقودة، وحساب تكاليف الاستبدال التقديرية."
+    },
+    "initialData": {
+      "en": "Water_Mains feature class with LENGTH_FT, DIAMETER_IN, and REPLACEMENT_COST fields.",
+      "ar": "فئة معالم أنابيب المياه مع حقول الطول والقطر وتكلفة الاستبدال."
+    },
+    "startingConditions": {
+      "en": "Python window or external IDE (VS Code) open with arcpy environment.",
+      "ar": "نافذة بايثون في ArcGIS Pro أو محرر خارجي متصل ببيئة arcpy."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Import ArcPy and Set Workspace",
+          "ar": "استيراد المكتبة وضبط مساحة العمل"
+        },
+        "instruction": {
+          "en": "Import arcpy, set `arcpy.env.workspace = r'C:/Data/Water.gdb'` and `arcpy.env.overwriteOutput = True`.",
+          "ar": "استورد arcpy واضبط مسار قاعدة البيانات وسماحية استبدال الملفات."
+        },
+        "uiPath": "Python Script Header",
+        "tool": "Setup Environment",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Construct UpdateCursor with Context Manager",
+          "ar": "بناء مؤشر التحديث داخل مدير السياق with"
+        },
+        "instruction": {
+          "en": "Define fields: `['DIAMETER_IN', 'LENGTH_FT', 'REPLACEMENT_COST']`. Open cursor: `with arcpy.da.UpdateCursor('Water_Mains', fields) as cursor:`.",
+          "ar": "حدد الحقول المطلوبة، وافتح المؤشر باستخدام صيغة with لضمان تحرير أقفال قاعدة البيانات آلياً."
+        },
+        "uiPath": "Python Loop Structure",
+        "tool": "Initialize Cursor",
+        "parameters": {
+          "Fields": "['DIAMETER_IN', 'LENGTH_FT', 'REPLACEMENT_COST']"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Compute Values and Commit Edits",
+          "ar": "حساب القيم وحفظ التعديلات في السجلات"
+        },
+        "instruction": {
+          "en": "Inside loop: `cost_per_foot = row[0] * 12.5; row[2] = row[1] * cost_per_foot; cursor.updateRow(row)`.",
+          "ar": "داخل الحلقة: احسب التكلفة بناءً على القطر والطول، ثم استدعِ cursor.updateRow(row) لتثبيت الحفظ."
+        },
+        "uiPath": "Cursor Iteration Body",
+        "tool": "Update Row",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Fully updated feature class with thousands of replacement cost calculations executed in seconds with zero locks.",
+      "ar": "تحديث آلاف السجلات وحساب تكاليف الاستبدال بدقة متناهية وفي ثوانٍ معدودة مع فك الأقفال تلقائياً."
+    },
+    "qualityControl": {
+      "en": "Open attribute table in ArcGIS Pro and confirm that all REPLACEMENT_COST cells contain positive numeric values.",
+      "ar": "افتح جدول الطبقة وتأكد من ملء حقل التكلفة بقيم رقمية صحيحة لكافة السجلات دون أي خانات فارغة."
+    },
+    "commonMistakes": {
+      "en": "Modifying row array (`row[2] = ...`) without calling `cursor.updateRow(row)`, resulting in silent failure to save changes.",
+      "ar": "تعديل مصفوفة السجل دون استدعاء دالة cursor.updateRow(row) مما يؤدي لعدم حفظ التعديلات."
+    },
+    "alternativeApproaches": {
+      "en": "Use 'Calculate Field' geoprocessing tool with an Arcade or Python expression if coding a standalone script is not required.",
+      "ar": "استخدام أداة Calculate Field مع تعبير Arcade كبديل سريع دون الحاجة لكتابة سكربت كامل."
+    }
+  },
+  {
+    "id": "WF-025",
+    "domain": "Layouts and Sharing",
+    "difficulty": "Beginner",
+    "tools": [
+      "New Layout",
+      "Insert Map Frame",
+      "Insert Scale Bar"
+    ],
+    "relatedObjectives": [
+      "Determine how to create and manage map layouts and map series"
+    ],
+    "references": [
+      {
+        "title": "Layouts in ArcGIS Pro, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Design a Publication-Grade Map Layout with Multiple Linked Frames",
+      "ar": "تصميم لوحة خريطة احترافية للطباعة مع أطر متعددة مترابطة"
+    },
+    "objective": {
+      "en": "Compose an ANSI D (24x36 inch) presentation layout containing a main detailed map frame, overview locator frame, dynamic legend, and north arrow.",
+      "ar": "تصميم لوحة طباعة بمقاس 24×36 بوصة تحتوي إطار خريطة رئيسياً، وخريطة دليلية، ومقياس رسم ديناميكياً، وسهم الشمال."
+    },
+    "initialData": {
+      "en": "Completed 2D project map with styled layers and balanced visual hierarchy.",
+      "ar": "خريطة مشروع ثنائية مكتملة الرموز وذات تسلسل بصري متوازن."
+    },
+    "startingConditions": {
+      "en": "ArcGIS Pro project opened with Insert ribbon tab active.",
+      "ar": "فتح المشروع وتفعيل شريط Insert."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Create New Layout",
+          "ar": "إنشاء لوحة طباعة جديدة"
+        },
+        "instruction": {
+          "en": "Navigate to Insert > New Layout. Select ANSI D Landscape (36 x 24 inches).",
+          "ar": "انتقل إلى Insert > New Layout واختَر قياس ANSI D أفقي (36 × 24 بوصة)."
+        },
+        "uiPath": "Insert Ribbon > New Layout",
+        "tool": "Create Layout",
+        "parameters": {
+          "Page Size": "ANSI D Landscape (36 x 24 in)"
+        }
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Insert and Lock Main Map Frame",
+          "ar": "إدراج وتثبيت إطار الخريطة الرئيسي"
+        },
+        "instruction": {
+          "en": "Click Insert > Map Frame, draw large rectangle. Activate frame, zoom to 1:10,000 scale, and lock extent.",
+          "ar": "أدرج إطار الخريطة الرئيسي، واضبط مقياس الرسم على 1:10,000 واقفل الإطار لمنع تحريكه بالخطأ."
+        },
+        "uiPath": "Insert Ribbon > Map Frame",
+        "tool": "Insert Main Frame",
+        "parameters": {
+          "Scale": "1:10,000"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Insert Linked Overview Frame and Extent Indicator",
+          "ar": "إدراج خريطة الدليل ومؤشر النطاق"
+        },
+        "instruction": {
+          "en": "Insert a small 4x4 inch overview frame at 1:100,000 scale. Click Insert > Extent Indicator, link it to Main Map Frame.",
+          "ar": "أدرج إطار دليل صغيراً بمقياس 1:100,000، وأدرج Extent Indicator واربطه بالإطار الرئيسي."
+        },
+        "uiPath": "Insert Ribbon > Extent Indicator",
+        "tool": "Link Extent Indicator",
+        "parameters": {
+          "Source Frame": "Main Map Frame"
+        }
+      },
+      {
+        "stepNumber": 4,
+        "title": {
+          "en": "Add Scale Bar and Dynamic Legend",
+          "ar": "إضافة مقياس الرسم ودليل الخريطة الديناميكي"
+        },
+        "instruction": {
+          "en": "Insert Alternating Scale Bar linked to Main Frame. Insert Legend, check 'Only show features visible in map extent'.",
+          "ar": "أدرج مقياس رسم مرتبطاً بالإطار الرئيسي، ودليل خريطة مفعل عليه خيار إظهار المعالم المرئية فقط."
+        },
+        "uiPath": "Insert Ribbon > Map Surrounds",
+        "tool": "Add Surrounds",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Publication-ready cartographic layout meeting municipal presentation standards with dynamic element linking.",
+      "ar": "لوحة كارتوغرافية جاهزة للطباعة والنشر مطابقة للمعايير البلدية مع ارتباط ديناميكي لكافة العناصر."
+    },
+    "qualityControl": {
+      "en": "Pan the main map frame in an activated state; verify that the red extent indicator rectangle on the overview locator moves concurrently.",
+      "ar": "حرك الخريطة الرئيسية وتأكد من تحرك مستطيل مؤشر النطاق على الخريطة الدليلية بتزامن تام."
+    },
+    "commonMistakes": {
+      "en": "Linking the scale bar to the overview locator frame instead of the main frame, displaying incorrect scales.",
+      "ar": "ربط مقياس الرسم بخريطة الدليل بدلاً من الخريطة الرئيسية مما ينتج مقاييس رسم خاطئة تماماً."
+    },
+    "alternativeApproaches": {
+      "en": "Save the completed layout as a Layout File (.pagx) to reuse the layout composition across other department projects.",
+      "ar": "حفظ اللوحة كملف Layout File (.pagx) لإعادة استخدام تصميم وهوية اللوحة في مشاريع أخرى."
+    }
+  },
+  {
+    "id": "WF-026",
+    "domain": "Layouts and Sharing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Spatial Map Series",
+      "Dynamic Text"
+    ],
+    "relatedObjectives": [
+      "Determine how to create and manage map layouts and map series"
+    ],
+    "references": [
+      {
+        "title": "Map series, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Automate a Multi-Page Spatial Map Series with Dynamic Border Text",
+      "ar": "أتمتة إنتاج أطلس متعدد الصفحات عبر سلسلة الخرائط المكانية والنصوص الديناميكية"
+    },
+    "objective": {
+      "en": "Generate a 40-page county parcel map book from a single layout using parcel grid tiles as the index layer.",
+      "ar": "إنشاء أطلس عقاري للمقاطعة من 40 صفحة باستخدام شبكة مربعات الأراضي كطبقة فهرس عبر لوحة طباعة موحدة."
+    },
+    "initialData": {
+      "en": "Layout containing a Map Frame, and a Grid_Index polygon layer with 'PAGE_NAME' and 'PAGE_NUM' attributes.",
+      "ar": "لوحة طباعة مع طبقة شبكة الفهرس Grid_Index تحوي حقلي اسم ورقم الصفحة."
+    },
+    "startingConditions": {
+      "en": "Grid tiles completely cover the municipal jurisdiction.",
+      "ar": "تغطية شبكة الفهرس لكامل النطاق الجغرافي للبلدية."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Enable Spatial Map Series",
+          "ar": "تفعيل سلسلة الخرائط المكانية"
+        },
+        "instruction": {
+          "en": "In Layout view, click Layout ribbon > Map Series dropdown > 'Spatial'.",
+          "ar": "في شريط Layout، انقر على قائمة Map Series واختَر Spatial."
+        },
+        "uiPath": "Layout Ribbon > Map Series > Spatial",
+        "tool": "Enable Map Series",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Map Series Parameters",
+          "ar": "ضبط معاملات ومعايير السلسلة"
+        },
+        "instruction": {
+          "en": "Set Map Frame: 'Main Frame', Index Layer: 'Grid_Index', Name Field: 'PAGE_NAME', Sort Field: 'PAGE_NUM'.",
+          "ar": "حدد إطار الخريطة الرئيسي، وطبقة الفهرس Grid_Index، وحقل الاسم PAGE_NAME وحقل الترتيب PAGE_NUM."
+        },
+        "uiPath": "Map Series Options Pane",
+        "tool": "Set Index Parameters",
+        "parameters": {
+          "Index Layer": "Grid_Index",
+          "Name Field": "PAGE_NAME",
+          "Sort Field": "PAGE_NUM"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Insert Dynamic Title and Page Counters",
+          "ar": "إدراج العنوان وأرقام الصفحات الديناميكية"
+        },
+        "instruction": {
+          "en": "Insert Dynamic Text: Sheet `<dyn type=\"page\" property=\"name\"/>` and Page `<dyn type=\"page\" property=\"number\"/> of <dyn type=\"page\" property=\"count\"/>`.",
+          "ar": "أدرج نصوصاً ديناميكية لاسم اللوحة ورقم الصفحة الحالية وإجمالي عدد الصفحات."
+        },
+        "uiPath": "Insert Ribbon > Dynamic Text",
+        "tool": "Insert Page Tags",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 4,
+        "title": {
+          "en": "Export Multi-Page PDF Atlas",
+          "ar": "تصدير الأطلس كاملاً إلى ملف PDF"
+        },
+        "instruction": {
+          "en": "Click Share > Export Layout. Format: PDF, under Map Series export: 'All (40 pages)' into a single multi-page PDF document.",
+          "ar": "انقر Export Layout، واختَر صيغة PDF، وتحت خيارات Map Series حدد تصدير All (40 pages) في ملف مدمج."
+        },
+        "uiPath": "Share Ribbon > Export Layout",
+        "tool": "Export Multi-Page PDF",
+        "parameters": {
+          "Pages": "All",
+          "File": "County_Atlas.pdf"
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Complete 40-page indexed PDF map book generated automatically in a single export operation.",
+      "ar": "أطلس خرائط متكامل من 40 صفحة مفهرسة ومصدرة آلياً في عملية تصدير موحدة."
+    },
+    "qualityControl": {
+      "en": "Open the exported PDF; flip through consecutive pages and verify that titles, map extents, and page numbers increment accurately.",
+      "ar": "افتح ملف PDF وتصفح الصفحات وتأكد من تغير عناوين اللوحات وأرقام الصفحات ومواقع الخريطة بدقة."
+    },
+    "commonMistakes": {
+      "en": "Selecting a Sort Field with non-sequential or null values, causing jumbled and missing page sequences.",
+      "ar": "اختيار حقل ترتيب يحتوي على قيم فارغة أو غير متسلسلة مما يخل بترتيب صفحات الأطلس."
+    },
+    "alternativeApproaches": {
+      "en": "Configure a 'Clip to index feature' under Map Frame properties to visually hide features outside the active page boundary.",
+      "ar": "تفعيل خيار Clip to index feature في خصائص الإطار لحجب المعالم الواقعة خارج مربع الصفحة الحالية."
+    }
+  },
+  {
+    "id": "WF-027",
+    "domain": "Layouts and Sharing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Share Web Layer",
+      "Analyzer"
+    ],
+    "relatedObjectives": [
+      "Choose how to share content from ArcGIS Pro"
+    ],
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Publish an Editable Web Feature Layer with Offline Sync Enabled",
+      "ar": "نشر طبقة معالم ويب تفاعلية وقابلة للتحرير الميداني مع تفعيل المزامنة"
+    },
+    "objective": {
+      "en": "Publish asset layers to ArcGIS Online/Enterprise for mobile field inspections in ArcGIS Field Maps with offline capabilities.",
+      "ar": "نشر طبقة أصول إلى السحابة أو الخادم المؤسسي للاستخدام في تطبيق Field Maps مع دعم العمل دون إنترنت."
+    },
+    "initialData": {
+      "en": "Water_Valves feature class with GlobalIDs and Editor Tracking enabled.",
+      "ar": "فئة معالم محابس المياه مع تفعيل معرفات GlobalID وتتبع المحررين."
+    },
+    "startingConditions": {
+      "en": "Signed in to ArcGIS Online or ArcGIS Enterprise with Publisher/Administrator privileges.",
+      "ar": "تسجيل الدخول في البرنامج بحساب يملك صلاحيات النشر والإدارة."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Open Share Web Layer Pane",
+          "ar": "فتح نافذة مشاركة طبقة ويب"
+        },
+        "instruction": {
+          "en": "Right-click Water_Valves > Sharing > Share As Web Layer.",
+          "ar": "انقر بالزر الأيمن على الطبقة > Sharing > Share As Web Layer."
+        },
+        "uiPath": "Layer Context Menu > Sharing > Share As Web Layer",
+        "tool": "Open Share Pane",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Layer Type and Metadata",
+          "ar": "ضبط نوع الطبقة والبيانات الوصفية"
+        },
+        "instruction": {
+          "en": "Set Item Name: 'Water_Valves_Field', Summary and Tags. Under Layer Type, ensure 'Feature' is checked.",
+          "ar": "حدد اسم العنصر والوصف والوسوم، وتأكد من تفعيل نوع Feature في خانات الاختيار."
+        },
+        "uiPath": "Share Pane > General Tab",
+        "tool": "Set Details",
+        "parameters": {
+          "Layer Type": "Feature"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Enable Editing and Sync Capabilities",
+          "ar": "تفعيل صلاحيات التحرير والمزامنة الميدانية"
+        },
+        "instruction": {
+          "en": "In Configuration tab > Feature Properties, check 'Enable editing' and check 'Enable Sync' (required for offline maps).",
+          "ar": "في تبويب Configuration، فعل خياري Enable editing و Enable Sync لدعم التحميل الميداني دون إنترنت."
+        },
+        "uiPath": "Share Pane > Configuration > Feature Properties",
+        "tool": "Set Capabilities",
+        "parameters": {
+          "Enable Editing": true,
+          "Enable Sync": true
+        }
+      },
+      {
+        "stepNumber": 4,
+        "title": {
+          "en": "Analyze and Publish",
+          "ar": "فحص الأخطاء والنشر"
+        },
+        "instruction": {
+          "en": "Click 'Analyze'. Ensure 0 red errors appear. Click 'Publish'.",
+          "ar": "انقر Analyze، وتأكد من خلو الفاحص من أي أخطاء حمراء، ثم انقر Publish لبدء الرفع."
+        },
+        "uiPath": "Share Pane > Analyze & Publish",
+        "tool": "Publish Layer",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Operational hosted Feature Service ready for immediate interactive data collection in web and mobile field apps.",
+      "ar": "خدمة معالم سحابية منشورة وجاهزة لجمع وتحديث البيانات الميدانية عبر الهواتف وتطبيقات الويب."
+    },
+    "qualityControl": {
+      "en": "Open ArcGIS Online / Enterprise portal, inspect service item page, and confirm 'Sync' is listed under capabilities.",
+      "ar": "افتح صفحة العنصر في بوابة المؤسسة وتأكد من إدراج خاصية Sync ضمن إمكانيات الخدمة."
+    },
+    "commonMistakes": {
+      "en": "Forgetting to add GlobalIDs before attempting to enable Sync, triggering fatal Error 00231 in the Analyzer.",
+      "ar": "نسيان إضافة GlobalIDs قبل تفعيل المزامنة مما يطلق الخطأ الأحمر القاتل Error 00231 في الفاحص."
+    },
+    "alternativeApproaches": {
+      "en": "Choose 'Reference registered data' instead of 'Copy all data' when connecting to enterprise SQL Server databases.",
+      "ar": "اختيار Reference registered data بدلاً من نسخ البيانات عند الاتصال بقواعد بيانات مؤسسية حية."
+    }
+  },
+  {
+    "id": "WF-028",
+    "domain": "Layouts and Sharing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Create Vector Tile Package",
+      "Share Package"
+    ],
+    "relatedObjectives": [
+      "Choose how to share content from ArcGIS Pro"
+    ],
+    "references": [
+      {
+        "title": "Vector tile layers, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/vector-tile-layers.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Build, Package, and Host a High-Performance Vector Tile Basemap",
+      "ar": "بناء وتحزيم ونشر خريطة أساس متجهة فائقة الأداء (Vector Tiles)"
+    },
+    "objective": {
+      "en": "Compile multi-scale city road and land use vectors into a compressed vector tile package (.vtpk) for high-DPI displays.",
+      "ar": "تجميع طبقات الطرق واستخدامات الأراضي في حزمة قوالب متجهة (.vtpk) لعرضها بدقة فائقة على شاشات الهواتف."
+    },
+    "initialData": {
+      "en": "Map view with scale-dependent visibility ranges configured across road and parcel layers.",
+      "ar": "خريطة مهيأة بنطاقات ظهور معتمدة على مقياس الرسم لكافة الطبقات."
+    },
+    "startingConditions": {
+      "en": "Tiling scheme (ArcGIS Online / Bing Maps / Google Maps) confirmed.",
+      "ar": "تحديد نظام التقطيع القياسي للقوالب."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Set Scale Dependencies",
+          "ar": "ضبط حدود مقاييس ظهور الطبقات"
+        },
+        "instruction": {
+          "en": "Ensure detailed building footprints only draw at 1:5,000 or closer; major highways draw at all scales.",
+          "ar": "اضبط مساقط المباني لتظهر فقط عند مقياس 1:5,000 فما دون، والطرق السريعة في كافة المقاييس."
+        },
+        "uiPath": "Layer Properties > General > Visibility Range",
+        "tool": "Set Scale Limits",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Execute Create Vector Tile Package",
+          "ar": "إنشاء حزمة القوالب المتجهة vtpk"
+        },
+        "instruction": {
+          "en": "Run Create Vector Tile Package tool. Tiling Format: 'INDEXED', Min Scale: 1:500,000, Max Scale: 1:1,000.",
+          "ar": "شغل أداة Create Vector Tile Package بنمط INDEXED، ومقياس يبدأ من 1:500,000 حتى 1:1,000."
+        },
+        "uiPath": "Geoprocessing > Data Management > Packaging",
+        "tool": "Create Vector Tile Package",
+        "parameters": {
+          "Tiling Format": "INDEXED",
+          "Min Cached Scale": "500000",
+          "Max Cached Scale": "1000"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Share Vector Tile Package to Portal",
+          "ar": "مشاركة ورفع الحزمة للبوابة"
+        },
+        "instruction": {
+          "en": "Run Share Package tool to upload the .vtpk file to ArcGIS Online and automatically publish a Vector Tile Service.",
+          "ar": "شغل أداة Share Package لرفع ملف .vtpk إلى السحابة ونشر خدمة القوالب المتجهة تلقائياً."
+        },
+        "uiPath": "Geoprocessing > Data Management > Packaging > Share Package",
+        "tool": "Share Package",
+        "parameters": {
+          "Publish web layer": true
+        }
+      }
+    ],
+    "expectedOutput": {
+      "en": "Ultra-lightweight vector tile basemap delivering crisp rendering on retina displays with client-side restyling support.",
+      "ar": "خريطة أساس متجهة خفيفة وسريعة توفر رسومات بالغة الحدة على شاشات Retina مع دعم تغيير الألوان فورياً."
+    },
+    "qualityControl": {
+      "en": "Open the published vector tile layer in Map Viewer; zoom in to 1:500 scale and verify zero pixelation occurs.",
+      "ar": "افتح الطبقة في Map Viewer وكبر حتى 1:500 وتأكد من بقاء الخطوط والرموز حادة تماماً دون أي بكسلة."
+    },
+    "commonMistakes": {
+      "en": "Using 'FLAT' tiling format instead of 'INDEXED' for areas with uneven data distribution, inflating file size.",
+      "ar": "استخدام نمط التقطيع FLAT بدلاً من INDEXED في المناطق غير المتجانسة مما يضخم حجم الملف دون فائدة."
+    },
+    "alternativeApproaches": {
+      "en": "Customize the color palette in seconds without rebuilding tiles using the ArcGIS Vector Tile Style Editor.",
+      "ar": "تعديل ألوان خريطة الأساس في ثوانٍ باستخدام أداة ArcGIS Vector Tile Style Editor دون إعادة بناء القوالب."
+    }
+  },
+  {
+    "id": "WF-029",
+    "domain": "Layouts and Sharing",
+    "difficulty": "Intermediate",
+    "tools": [
+      "Share Web Layer",
+      "Analyzer"
+    ],
+    "relatedObjectives": [
+      "Choose how to share content from ArcGIS Pro"
+    ],
+    "references": [
+      {
+        "title": "Share a web layer, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/share-a-web-layer.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Diagnose and Resolve Fatal Errors in the Sharing Analyzer Pane",
+      "ar": "تشخيص ومعالجة الأخطاء القاتلة في نافذة فاحص المشاركة (Sharing Analyzer)"
+    },
+    "objective": {
+      "en": "Troubleshoot common web layer publishing blockers including missing spatial references and unsupported layer types.",
+      "ar": "معالجة المعوقات الشائعة التي تعطل نشر طبقات الويب مثل غياب المرجع الإسقاطي أو الطبقات غير المدعومة."
+    },
+    "initialData": {
+      "en": "Map containing a scratch CAD layer, a shapefile missing unique integer IDs, and a layer with an unprojected GCS.",
+      "ar": "خريطة تضم طبقة CAD مؤقتة، وملف shapefile يفتقر لمعرف فريد، وطبقة بإحداثيات غير مسقطة."
+    },
+    "startingConditions": {
+      "en": "Share As Web Layer pane opened with Publish button disabled.",
+      "ar": "فتح نافذة مشاركة طبقة ويب وظهور زر Publish معطلاً."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Click Analyze and Identify Red Errors",
+          "ar": "فحص الخريطة وتحديد الأخطاء الحمراء القاتلة"
+        },
+        "instruction": {
+          "en": "Click Analyze button. Review the Messages tab. Identify Error 00068 (missing projection) and Error 00160 (unsupported layer format).",
+          "ar": "انقر Analyze، وافحص رسائل الخطأ، وحدد Error 00068 (غياب الإسقاط) و Error 00160 (صيغة غير مدعومة)."
+        },
+        "uiPath": "Share Web Layer Pane > Analyze",
+        "tool": "Run Analyzer",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Resolve Error 00160 (Unsupported Layer)",
+          "ar": "حل خطأ 00160 بحذف أو تحويل الطبقة غير المدعومة"
+        },
+        "instruction": {
+          "en": "Right-click Error 00160. Select 'Select Layer in Contents'. Export CAD layer to a geodatabase feature class and remove the raw CAD drawing.",
+          "ar": "انقر بالزر الأيمن على الخطأ 00160، وحدد الطبقة في المحتويات، وقم بتصدير طبقة CAD إلى قاعدة البيانات واحذف الملف الخام."
+        },
+        "uiPath": "Contents Pane > Remove Layer",
+        "tool": "Fix Unsupported Format",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Resolve Error 00068 (Coordinate System)",
+          "ar": "حل خطأ 00068 بتعيين نظام إحداثيات سليم"
+        },
+        "instruction": {
+          "en": "Right-click Error 00068 > Select Layer. Open Layer Properties > Source > Spatial Reference, or run Define Projection to assign valid coordinates.",
+          "ar": "انقر بالزر الأيمن على الخطأ 00068، وعين نظام إحداثيات معتمداً للطبقة عبر أداة Define Projection."
+        },
+        "uiPath": "Geoprocessing > Define Projection",
+        "tool": "Fix Spatial Reference",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 4,
+        "title": {
+          "en": "Re-Analyze and Confirm Clearance",
+          "ar": "إعادة الفحص والتأكد من تفعيل زر النشر"
+        },
+        "instruction": {
+          "en": "Click 'Analyze' again. Confirm all red errors disappear. Warnings (yellow triangles) may remain. Click 'Publish'.",
+          "ar": "انقر Analyze مجدداً؛ وتأكد من زوال الأخطاء الحمراء بالكامل وتفعيل زر Publish للمتابعة."
+        },
+        "uiPath": "Share Web Layer Pane",
+        "tool": "Re-Analyze",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Fully validated map configuration with all publishing roadblocks cleared, successfully published to portal.",
+      "ar": "خريطة مستوفية لكافة المعايير البرمجية مع حل كافة العقبات ونشر الخدمة بنجاح إلى البوابة المؤسسية."
+    },
+    "qualityControl": {
+      "en": "Verify in Sharing pane that the red error count is 0 and the blue 'Publish' button is enabled and clickable.",
+      "ar": "تأكد من أن عدد الأخطاء الحمراء في الفاحص أصبح صفراً وزر النشر الأزرق أصبح متاحاً للنقر."
+    },
+    "commonMistakes": {
+      "en": "Attempting to bypass red errors; ArcGIS Pro strictly disables publishing until every red error is corrected.",
+      "ar": "محاولة تجاهل الأخطاء الحمراء؛ فالبرنامج يمنع النشر تماماً حتى إصلاح كافة الأخطاء الحمراء دون استثناء."
+    },
+    "alternativeApproaches": {
+      "en": "Yellow warnings do not block publishing and can often be safely ignored if minor symbology changes are acceptable.",
+      "ar": "التحذيرات الصفراء استشارية ولا تمنع النشر ويمكن تجاوزها إذا كان تبسيط بعض الرموز مقبولاً."
+    }
+  },
+  {
+    "id": "WF-030",
+    "domain": "Layouts and Sharing",
+    "difficulty": "Beginner",
+    "tools": [
+      "Package Project"
+    ],
+    "relatedObjectives": [
+      "Choose how to share content from ArcGIS Pro"
+    ],
+    "references": [
+      {
+        "title": "Package a project, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/package-a-project.htm",
+        "kind": "official"
+      }
+    ],
+    "title": {
+      "en": "Package and Archive a Complete Workspace as a Compressed Project Package (.ppkx)",
+      "ar": "تحزيم وأرشفة مساحة العمل المتكاملة في حزمة مشروع مدمجة (.ppkx)"
+    },
+    "objective": {
+      "en": "Bundle all 2D maps, 3D scenes, print layouts, custom Python tools, attachments, and underlying geodatabases into a single portable deliverable.",
+      "ar": "دمج كافة الخرائط والمشاهد واللوحات وأدوات بايثون والمرفقات وقواعد البيانات في ملف أرشيف واحد للتسليم."
+    },
+    "initialData": {
+      "en": "Multi-map engineering project ready for final archive and client delivery.",
+      "ar": "مشروع هندسي مكتمل الخرائط وجاهز للأرشفة النهائية والتسليم للعميل."
+    },
+    "startingConditions": {
+      "en": "Write permissions to local archive folder or active portal connection.",
+      "ar": "توفر صلاحية الكتابة في مجلد الأرشيف أو الاتصال بالبوابة السحابية."
+    },
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": {
+          "en": "Open Package Project Tool",
+          "ar": "فتح أداة تحزيم المشروع"
+        },
+        "instruction": {
+          "en": "Navigate to Share ribbon tab > Package group > click 'Project'.",
+          "ar": "انتقل إلى شريط Share، ومن مجموعة Package انقر على زر Project."
+        },
+        "uiPath": "Share Ribbon > Package > Project",
+        "tool": "Launch Package Tool",
+        "parameters": {}
+      },
+      {
+        "stepNumber": 2,
+        "title": {
+          "en": "Configure Packaging Options",
+          "ar": "ضبط خيارات وضغط الحزمة"
+        },
+        "instruction": {
+          "en": "Select 'Save package to file' and specify output path: `C:/Archive/Master_Project.ppkx`. Enter Summary and Description tags.",
+          "ar": "حدد خيار الحفظ كملف محلي باسم Master_Project.ppkx، وأدخل ملخص المشروع والوسوم المطلوبة."
+        },
+        "uiPath": "Package Project Pane",
+        "tool": "Set Package Options",
+        "parameters": {
+          "Output File": "Master_Project.ppkx"
+        }
+      },
+      {
+        "stepNumber": 3,
+        "title": {
+          "en": "Configure Data Inclusion and Geoprocessing History",
+          "ar": "تضمين البيانات وسجل المعالجة الجغرافية"
+        },
+        "instruction": {
+          "en": "Under Project Items, check 'Include toolboxes' and ensure 'Consolidate and package data' is selected so source files are bundled.",
+          "ar": "تحت عناصر المشروع، فعل تضمين صناديق الأدوات، وتأكد من تفعيل دمج وتحزيم البيانات لنسخ ملفات المصدر."
+        },
+        "uiPath": "Package Project Settings",
+        "tool": "Set Data Options",
+        "parameters": {
+          "Consolidate Data": true
+        }
+      },
+      {
+        "stepNumber": 4,
+        "title": {
+          "en": "Analyze and Package",
+          "ar": "فحص الحزمة وضغط الملف النهائي"
+        },
+        "instruction": {
+          "en": "Click 'Analyze' to verify paths, then click 'Package'. The tool consolidates databases and compresses into a single `.ppkx` file.",
+          "ar": "انقر Analyze للتأكد من سلامة المسارات، ثم انقر Package لضغط وتوليد ملف .ppkx النهائي."
+        },
+        "uiPath": "Package Project Pane > Package",
+        "tool": "Execute Packaging",
+        "parameters": {}
+      }
+    ],
+    "expectedOutput": {
+      "en": "Single self-contained .ppkx archive file that can be emailed or opened on any workstation with zero broken data links.",
+      "ar": "ملف حزمة مشروع .ppkx مدمج ومكتفٍ ذاتياً يمكن إرساله وفتحه على أي جهاز دون أي مسارات مكسورة."
+    },
+    "qualityControl": {
+      "en": "Double-click the .ppkx file on another computer or clean test folder; verify all maps, scenes, and layouts load immediately.",
+      "ar": "انقر نقراً مزدوجاً على ملف .ppkx وتأكد من فتح كافة الخرائط واللوحات وعملها فورياً دون فقدان للبيانات."
+    },
+    "commonMistakes": {
+      "en": "Unchecking 'Consolidate and package data', which leaves underlying datasets on local drives and produces broken paths for clients.",
+      "ar": "إلغاء خيار دمج البيانات مما يترك ملفات المصدر على القرص القديم وينتج مسارات معطلة لدى العميل."
+    },
+    "alternativeApproaches": {
+      "en": "Use 'Package Map' (.mpkx) when only a single map needs to be shared rather than the entire project workspace.",
+      "ar": "استخدام حزمة الخريطة (.mpkx) عند الرغبة في مشاركة خريطة واحدة فقط بدلاً من كامل المشروع."
+    }
+  }
+]

@@ -1,0 +1,4285 @@
+[
+  {
+    "id": "AGP-001",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Add Join",
+      "Add Relate"
+    ],
+    "question": {
+      "en": "An analyst needs to link a parcel feature class to an external table of property sales where each parcel has had multiple sales transactions over the past 10 years (1-to-Many cardinality). Why is Add Join inappropriate for this workflow?",
+      "ar": "يحتاج محلل إلى ربط طبقة قطع الأراضي بجدول مبيعات خارجي حيث تمت عدة صفقات بيع لكل قطعة خلال السنوات العشر الماضية (علاقة 1 إلى متعدد). لماذا يُعد أمر Add Join غير مناسب لهذا العمل؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Add Join is designed for 1-to-1 or Many-to-1 relationships and only appends the first matching record for each feature",
+          "ar": "أمر Add Join مصمم لعلاقات 1 إلى 1 أو متعدد إلى 1 ويقوم بإلحاق السجل المطابق الأول فقط لكل معلم متجاهلاً بقية السجلات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Add Join permanently deletes non-matching rows from the geodatabase",
+          "ar": "يحذف Add Join الصفوف غير المتطابقة نهائياً من قاعدة البيانات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Add Join can only join tables stored in Oracle databases",
+          "ar": "يعمل Add Join فقط مع الجداول المخزنة في قواعد بيانات Oracle"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Add Join requires both layers to have spatial polygon geometry",
+          "ar": "يتطلب Add Join أن يكون لكلا الطبقتين هندسة مضلعات مكانية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Add Join creates a flat virtual table join. In a 1-to-Many situation, only the first matching record from the join table is appended to the layer attribute table, hiding subsequent matching rows. An Add Relate or Geodatabase Relationship Class is required.",
+      "ar": "ينشئ Add Join ضماً جدولياً افتراضياً مسطحاً؛ وفي علاقات 1 إلى متعدد، يتم إلحاق السجل المطابق الأول فقط بجدول المعالم وإخفاء بقية السجلات المرتبطة. لذا يجب استخدام Add Relate أو فئات العلاقات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Add Join is a temporary session join and never deletes records.",
+        "C": "Add Join works across file geodatabases, mobile geodatabases, shapefiles, Excel, and enterprise DBMS.",
+        "D": "Tables joined via Add Join can be standalone non-spatial attribute tables."
+      },
+      "ar": {
+        "B": "أمر Add Join ضم مؤقت في جلسة العمل ولا يحذف أي سجلات.",
+        "C": "يعمل مع مختلف صيغ الملفات وقواعد البيانات.",
+        "D": "يمكن للجدول المضموم أن يكون جدولاً سماتياً مجرداً بلا هندسة."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-002",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Spatial Join"
+    ],
+    "question": {
+      "en": "An analyst needs to count how many crime incident points occurred within each police precinct polygon and calculate the average incident response time per precinct. Which tool and configuration achieves this in one step?",
+      "ar": "يحتاج محلل لحساب عدد نقاط بلاغات الجرائم داخل كل مضلع من مضلعات أقسام الشرطة مع حساب متوسط زمن الاستجابة لكل قسم. أي أداة وإعداد يحقق ذلك في خطوة واحدة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Spatial Join with Target: Precincts, Join: Crimes, Join Operation: Join one to one, and Mean merge rule on response time",
+          "ar": "Spatial Join مع تحديد الهدف: Precincts، والمصدر: Crimes، وعملية الضم: Join one to one، وتطبيق قاعدة الدمج Mean على زمن الاستجابة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Clip tool with Input: Crimes, Clip Features: Precincts",
+          "ar": "أداة Clip مع تحديد المدخل: Crimes، ومعالم القص: Precincts"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Add Join on Police_ID field",
+          "ar": "أمر Add Join على حقل Police_ID"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Intersect tool with Output Type: Point",
+          "ar": "أداة Intersect مع تحديد نوع المخرجات Point"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Spatial Join with target polygons and join points using 'Join one to one' computes the Join_Count field (total points in polygon) and allows specifying field merge rules (such as Mean, Sum, or Max) on numerical attributes of the join features.",
+      "ar": "تنتج أداة Spatial Join عند ضبط المضلعات كهدف والنقاط كمعالم ضم مع خيار 'Join one to one' حقلاً تلقائياً اسمه Join_Count يحسب عدد النقاط، مع إمكانية تطبيق قواعد دمج (مثل المتوسط Mean) على الحقول الرقمية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Clip cuts points by boundary but does not append summary statistics or counts to the polygons.",
+        "C": "Add Join requires an existing common foreign key attribute, not spatial containment.",
+        "D": "Intersect outputs intersected geometries, not polygon summaries with count fields."
+      },
+      "ar": {
+        "B": "تقص أداة Clip النقاط ولكنها لا تحسب إحصائيات ولا تضيف حقولاً للمضلعات.",
+        "C": "يتطلب Add Join وجود مفتاح جدولي مشترك ولا يعتمد على الاحتواء المكاني.",
+        "D": "تنتج Intersect معالم التقاطع ولا تضيف حقلاً لعدد النقاط الملخصة."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-003",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Clip",
+      "Intersect"
+    ],
+    "question": {
+      "en": "What is the key difference in output attributes between the Clip tool and the Intersect tool when clipping soil polygons by a county study area boundary?",
+      "ar": "ما هو الفرق الجوهري في السمات الجدولية للنتائج بين أداتي Clip و Intersect عند قص مضلعات التربة بحدود منطقة دراسة المحافظة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Clip retains attributes ONLY from the input soil layer; Intersect preserves attributes from BOTH the soil and county layers",
+          "ar": "تحتفظ أداة Clip بسمات طبقة التربة المدخلة فقط؛ بينما تحتفظ أداة Intersect بسمات كلا الطبقتين (التربة والمحافظة) معاً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Clip only outputs line features; Intersect only outputs raster cells",
+          "ar": "تُخرج أداة Clip معالم خطية فقط؛ وتُخرج أداة Intersect خلايا راستر فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Intersect deletes all overlapping areas; Clip combines them",
+          "ar": "تحذف أداة Intersect المساحات المتداخلة وتدمجها أداة Clip"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Both tools produce identical attribute tables",
+          "ar": "تنتج كلتا الأداتين جداول بيانات وصفية متطابقة تماماً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Clip acts like a cookie cutter: it slices the input geometries to the boundary of the clip features, but passes through attributes only from the Input layer. Intersect performs an analytical overlay, writing combined attributes from all participating layers into the output table.",
+      "ar": "تعمل أداة Clip كقالب تقطيع: تقتطع هندسة المدخلات عند حدود معالم القص، لكنها تحتفظ فقط ببيانات طبقة الإدخال. بينما أداة Intersect تجري تحليلاً تراكبياً يدمج سمات جميع الطبقات المشاركة في جدول المخرجات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both tools support polygon-to-polygon operations outputting polygons.",
+        "C": "Intersect preserves overlapping areas; Erase is the tool that removes them.",
+        "D": "Clip tables omit attributes from the boundary layer, making them fundamentally different from Intersect tables."
+      },
+      "ar": {
+        "B": "تدعم كلتا الأداتين العمليات بين المضلعات وتنتجان مضلعات.",
+        "C": "تحتفظ Intersect بالمناطق المتداخلة، بينما Erase هي التي تحذفها.",
+        "D": "تتجاهل جداول Clip بيانات طبقة الحدود فتختلف جوهرياً عن Intersect."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-004",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Geoprocessing Environments"
+    ],
+    "question": {
+      "en": "In ArcGIS Pro geoprocessing environment precedence, which level has the highest priority and will override all others?",
+      "ar": "في التسلسل الهرمي لأسبقية بيئات المعالجة الجغرافية بـ ArcGIS Pro، أي مستوى له الأولوية القصوى ويلغي جميع المستويات الأخرى؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Application-level Environment (Analysis > Environments)",
+          "ar": "بيئة مستوى التطبيق (Analysis > Environments)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Individual Tool Parameter",
+          "ar": "معامل الأداة الفردي (Tool Parameter)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Model-level Environment",
+          "ar": "بيئة مستوى النموذج (Model-level Environment)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Operating System Environment Variable",
+          "ar": "متغيرات بيئة نظام التشغيل (OS Environment Variable)"
+        }
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "en": "Environment settings follow a 4-level hierarchy: Level 1 (Highest) is explicit Tool Parameters; Level 2 is Tool-level environments; Level 3 is Model/Script environments; Level 4 (Lowest) is Application-level project environments.",
+      "ar": "تتبع بيئات التحليل تسلسلاً هرمياً من 4 مستويات: المستوى 1 (الأعلى) هو معاملات الأداة المباشرة؛ المستوى 2 بيئات الأداة الفردية؛ المستوى 3 بيئات النموذج/السكربت؛ المستوى 4 (الأدنى) بيئة المشروع العامة للتطبيق."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "A": "Application-level environments are Level 4, the lowest priority override.",
+        "C": "Model environments are Level 3, overridden by tool environments and tool parameters.",
+        "D": "OS variables do not override explicit geoprocessing tool parameters."
+      },
+      "ar": {
+        "A": "بيئة التطبيق تقع في المستوى الرابع وهي الأقل أولوية.",
+        "C": "بيئة النموذج في المستوى الثالث وتلغيها معاملات الأداة المباشرة.",
+        "D": "متغيرات نظام التشغيل لا تلغي معاملات أدوات التحليل."
+      }
+    },
+    "references": [
+      {
+        "title": "Geoprocessing environment settings, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-environment-settings.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-005",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Advanced",
+    "type": "Technical",
+    "tools": [
+      "Snap Raster"
+    ],
+    "question": {
+      "en": "During multi-criteria raster suitability modeling, what critical error is prevented by setting the 'Snap Raster' environment setting to a master elevation grid?",
+      "ar": "أثناء نمذجة الملاءمة المكانية للراستر متعددة المعايير، ما الخطأ الجسيم الذي يتم تجنبه بضبط بيئة 'Snap Raster' على شبكة الارتفاع الرئيسية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Unintended half-cell registration shift and resampling distortion between overlapping rasters",
+          "ar": "انزياح محاذاة البكسل بمقدار نصف خلية وتشوهات إعادة الاستعيان بين طبقات الراستر المتراكبة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Accidental deletion of the coordinate system .prj file",
+          "ar": "الحذف غير المقصود لملف نظام الإحداثيات .prj"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Exceeding the 2 GB shapefile size limit",
+          "ar": "تجاوز الحد الأقصى لسعة ملف shapefile البالغة 2 جيجابايت"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Overwriting the source geodatabase lock files",
+          "ar": "الكتابة فوق ملفات القفل لقاعدة البيانات الأصلية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Snap Raster aligns the cell corners and origin of the output raster precisely with an existing reference raster. Without Snap Raster, overlapping grids with slight extent discrepancies cause an unintended half-cell spatial shift and resampling artifacts.",
+      "ar": "تقوم بيئة Snap Raster بمطابقة زوايا الخلايا ونقطة الأصل للراستر الناتج تماماً مع راستر مرجعي قائم. وبدونها، يؤدي التفاوت البسيط في حدود النطاق إلى انزياح مكاني بمقدار نصف خلية وتشوهات استعيان."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Snap Raster controls raster grid origin alignment, not .prj metadata files.",
+        "C": "Raster processing does not involve shapefile 2GB table limits.",
+        "D": "Schema locks are managed by the geodatabase engine, not Snap Raster."
+      },
+      "ar": {
+        "B": "تتحكم Snap Raster بمحاذاة شبكة الخلايا ولا علاقة لها بملفات .prj.",
+        "C": "معالجة الراستر لا ترتبط بحدود حجم ملفات shapefile.",
+        "D": "أقفال المخطط يديرها محرك قواعد البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Geoprocessing environment settings, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-environment-settings.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-006",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "ModelBuilder"
+    ],
+    "question": {
+      "en": "In an ArcGIS Pro ModelBuilder workflow, what does a small blue letter 'P' displayed next to an input variable indicate?",
+      "ar": "في نموذج ModelBuilder بـ ArcGIS Pro، إلى ماذا يشير حرف 'P' الأزرق الصغير الظاهر بجوار متغير الإدخال؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The variable is exposed as a user-configurable Model Parameter when run from the Geoprocessing pane",
+          "ar": "المتغير معرّف كمعامل نموذج (Model Parameter) يظهر للمستخدم لضبطه عند تشغيل الأداة من نافذة التحليل"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The variable is marked as a Precondition for all tools in the model",
+          "ar": "المتغير محدد كشرط مسبق (Precondition) لجميع أدوات النموذج"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The variable will be purged permanently upon model completion as Intermediate Data",
+          "ar": "سيتم حذف المتغير نهائياً كبيانات وسيطة عند اكتمال تشغيل النموذج"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The variable is password-protected against editing",
+          "ar": "المتغير محمي بكلمة مرور ضد التعديل"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Flagging an element as 'Model Parameter' attaches the 'P' badge, exposing it as an input or output parameter in the geoprocessing tool dialog when other analysts execute the model.",
+      "ar": "يؤدي تعيين العنصر كـ 'Model Parameter' إلى ظهور علامة 'P'، مما يجعله مدخلاً أو مخرجاً يظهر في نافذة تشغيل الأداة ليتمكن المستخدمون الآخرون من تخصيصه."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Preconditions are visualized as dashed connecting lines, not the 'P' badge.",
+        "C": "Intermediate data is indicated by a flag in the model element properties, not 'P'.",
+        "D": "Password protection is set on the toolbox level, not by the 'P' icon."
+      },
+      "ar": {
+        "B": "الشروط المسبقة تظهر كخطوط متقطعة وليس كحرف P.",
+        "C": "البيانات الوسيطة تُحدد بخيار في الخصائص.",
+        "D": "حماية كلمة المرور تضبط على مستوى صندوق الأدوات."
+      }
+    },
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-007",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "ModelBuilder"
+    ],
+    "question": {
+      "en": "What visual cue in ModelBuilder indicates that a tool element and its output dataset have successfully executed and now physically exist on disk?",
+      "ar": "ما العلامة البصرية في ModelBuilder التي تشير إلى أن عنصر الأداة ومخرجاتها قد تم تنفيذها بنجاح وأصبحت موجودة فعلياً على القرص؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The tool and output elements display a distinct drop shadow behind them",
+          "ar": "تظهر خلف عنصر الأداة ومخرجاتها ظلال مسقطة مميزة (Drop Shadow)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The tool element turns bright red",
+          "ar": "يتحول عنصر الأداة إلى اللون الأحمر الفاقع"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The output oval changes from green to blue",
+          "ar": "يتغير لون الشكل البيضاوي للمخرجات من الأخضر إلى الأزرق"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A padlock icon appears on the canvas",
+          "ar": "يظهر رمز قفل على مساحة العمل"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ModelBuilder uses distinct states: White elements = Not ready to run; Solid yellow/green/blue = Ready to run; Elements with Drop Shadows = Has run (executed and output generated on disk).",
+      "ar": "يستخدم ModelBuilder حالات بصرية محددة: العناصر البيضاء = غير جاهزة للتشغيل؛ العناصر الملونة بدون ظلال = جاهزة للتشغيل؛ والعناصر ذات الظلال المسقطة (Drop Shadow) = تم تشغيلها ووجود المخرجات على القرص."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Red indicates an execution error or failure.",
+        "C": "Outputs remain green; blue represents inputs.",
+        "D": "Padlock icons indicate locked geoprocessing files, not completed execution."
+      },
+      "ar": {
+        "B": "اللون الأحمر يشير إلى حدوث خطأ أو فشل في التنفيذ.",
+        "C": "المخرجات تظل خضراء واللون الأزرق للمدخلات.",
+        "D": "رمز القفل يشير لملفات مقفلة."
+      }
+    },
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-008",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Raster Functions"
+    ],
+    "question": {
+      "en": "What is the key functional difference between executing a Raster Function and running a Geoprocessing Tool on satellite imagery?",
+      "ar": "ما هو الفرق الوظيفي الجوهري بين تنفيذ دالة راستر (Raster Function) وتشغيل أداة معالجة جغرافية (Geoprocessing Tool) على الصور الفضائية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Raster Functions process pixels on-the-fly in memory at display resolution without writing new files; GP tools process the entire dataset and write new files to disk",
+          "ar": "تعالج دوال الراستر البكسلات لحظياً في الذاكرة بدقة العرض دون كتابة ملفات؛ بينما تعالج أدوات التحليل كامل البيانات وتنشئ ملفات جديدة على القرص"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Raster Functions only work on vector point layers",
+          "ar": "تعمل دوال الراستر على طبقات النقاط الاتجاهية فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Geoprocessing tools can only be run once per calendar year",
+          "ar": "يمكن تشغيل أدوات المعالجة الجغرافية مرة واحدة فقط كل عام"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Raster Functions permanently delete source imagery bands",
+          "ar": "تحذف دوال الراستر نطاقات الصور الأصلية بشكل دائم"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Raster functions apply algorithms (such as NDVI, Hillshade, Slope) dynamically in-memory on only the visible pixels at the current display scale, providing instant visualization without consuming disk space.",
+      "ar": "تطبق دوال الراستر الخوارزميات (مثل NDVI والظلال التضاريسية) ديناميكياً في الذاكرة على البكسلات المعروضة على الشاشة فقط، مما يمنح استجابة فورية دون استهلاك مساحة تخزينية على القرص."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Raster functions are specifically built for grid and pixel imagery data, not vectors.",
+        "C": "Geoprocessing tools can be run infinitely on demand.",
+        "D": "Raster functions are non-destructive and never modify or delete source pixel files."
+      },
+      "ar": {
+        "B": "دوال الراستر مخصصة حصرياً لبيانات الصور والشبكات.",
+        "C": "يمكن تشغيل أدوات التحليل بلا حدود.",
+        "D": "دوال الراستر غير مدمرة ولا تعدل البيانات المصدرية أبداً."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-009",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "NDVI"
+    ],
+    "question": {
+      "en": "Which multispectral bands are used in the NDVI (Normalized Difference Vegetation Index) raster function to assess live green vegetation vigor?",
+      "ar": "ما هي النطاقات الطيفية المستخدمة في دالة الراستر NDVI (مؤشر الاختلاف الخضري الطبيعي) لتقييم صحة وكثافة الغطاء النباتي الحي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Near-Infrared (NIR) and Red",
+          "ar": "الأشعة تحت الحمراء القريبة (NIR) والأحمر (Red)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Thermal and Blue",
+          "ar": "الحراري (Thermal) والأزرق (Blue)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Green and Shortwave Infrared (SWIR)",
+          "ar": "الأخضر (Green) والأشعة تحت الحمراء قصيرة الموجة (SWIR)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Ultraviolet and Microwave",
+          "ar": "الأشعة فوق البنفسجية والموجات الدقيقة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "NDVI uses the formula (NIR - Red) / (NIR + Red). Chlorophyll strongly absorbs Red light for photosynthesis while cell structure strongly reflects Near-Infrared radiation.",
+      "ar": "تعتمد معادلة NDVI على: (الأشعة تحت الحمراء القريبة - الأحمر) / (الأشعة تحت الحمراء القريبة + الأحمر)؛ حيث يمتص الكلوروفيل الضوء الأحمر بشدة بينما تعكس البنية الخلوية النباتية الأشعة تحت الحمراء القريبة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Thermal measures surface kinetic temperature, not chlorophyll reflectance.",
+        "C": "Green/SWIR is used for moisture and snow indices, not standard NDVI.",
+        "D": "Ultraviolet and microwave are not used in standard optical vegetation indices."
+      },
+      "ar": {
+        "B": "النطاق الحراري يقيس درجة الحرارة السطحية.",
+        "C": "تُستخدم هذه النطاقات لمؤشرات الرطوبة والجليد.",
+        "D": "الموجات فوق البنفسجية لا تُستخدم في مؤشرات الغطاء النباتي البصرية."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-010",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Dissolve"
+    ],
+    "question": {
+      "en": "An analyst has a statewide soil polygon layer containing 50,000 individual polygons. They need to aggregate all polygons that share the same SOIL_TYPE code into single multi-part features, reducing the record count to 12. Which tool should be used?",
+      "ar": "لدى محلل طبقة مضلعات تربة على مستوى الولاية تحتوي على 50,000 مضلع؛ ويحتاج لتجميع كافة المضلعات التي تشترك في نفس كود SOIL_TYPE في معالم متعددة الأجزاء، لتقليص عدد السجلات إلى 12. أي أداة يجب استخدامها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Dissolve",
+          "ar": "Dissolve (دمج وتذويب)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Split Polygon",
+          "ar": "Split Polygon (تقسيم المضلع)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Identity",
+          "ar": "Identity (المطابقة)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Dissolve aggregates adjacent or non-adjacent features that share the same specified attribute value into single continuous or multi-part features, dissolving interior boundaries.",
+      "ar": "تقوم أداة Dissolve بتجميع المعالم المتجاورة أو المتباعدة التي تشترك في نفس القيمة السماتية المحددة في معالم أحادية أو متعددة الأجزاء مع إزالة الحدود الداخلية الفاصلة بينها."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Split divides features into smaller pieces.",
+        "C": "Buffer creates distance zones.",
+        "D": "Identity performs geometric overlay."
+      },
+      "ar": {
+        "B": "تقسم Split المعالم إلى أجزاء أصغر.",
+        "C": "تنشئ Buffer مناطق حرم حول المعالم.",
+        "D": "تجري Identity تراكباً هندسياً."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-011",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Buffer"
+    ],
+    "question": {
+      "en": "Which parameter in the Buffer tool ensures that overlapping buffer rings from nearby features merge into a single seamless continuous polygon area?",
+      "ar": "ما المعامل في أداة Buffer الذي يضمن دمج حلقات الحرم المتداخلة للمعالم المتقاربة في مساحة مضلع واحدة متصلة دون خطوط داخلية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Dissolve Type: Dissolve all output features into a single feature",
+          "ar": "Dissolve Type: دمج كافة المعالم في معلم واحد (Dissolve all)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Method: Planar",
+          "ar": "Method: Planar"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Side Type: Left only",
+          "ar": "Side Type: Left only"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "End Type: Flat",
+          "ar": "End Type: Flat"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Setting Dissolve Type to 'Dissolve all output features' (or by list) merges overlapping buffer boundaries into a unified shape, preventing concentric duplicate rings.",
+      "ar": "يؤدي ضبط نوع الدمج (Dissolve Type) على 'Dissolve all' إلى دمج حدود النطاقات المتداخلة في شكل هندسي موحد، مما يزيل الحلقات الداخلية المتكررة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Method specifies geodesic vs planar distance calculation.",
+        "C": "Side Type specifies which side of lines to buffer.",
+        "D": "End Type controls the capping style at line endpoints."
+      },
+      "ar": {
+        "B": "تحدد Method طريقة الحساب الجيوديسية أو المستوية.",
+        "C": "يحدد Side Type جانب الخط المراد إنشاء الحرم عليه.",
+        "D": "يحدد End Type شكل نهايات الخطوط (دائرية أو مسطحة)."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Proximity toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-proximity-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-012",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Union"
+    ],
+    "question": {
+      "en": "An analyst needs to combine two polygon layers (Zoning and Floodplains) such that all geometric boundaries and all attributes from both layers are preserved in a new comprehensive polygon layer. Which tool must be used?",
+      "ar": "يحتاج محلل إلى دمج طبقتي مضلعات (المخطط الهيكلي ومناطق الفيضانات) بحيث يتم الحفاظ على كافة الحدود الهندسية وكافة السمات من كلا الطبقتين في طبقة مضلعات شاملة جديدة. أي أداة يجب استخدامها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Union",
+          "ar": "Union (الاتحاد)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Intersect",
+          "ar": "Intersect (التقاطع)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip (القص)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Erase",
+          "ar": "Erase (المسح)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Union computes a geometric union of multiple input polygon layers. All polygons and their respective attribute values are written to the output, representing all overlapping and non-overlapping areas.",
+      "ar": "تحسب أداة Union الاتحاد الهندسي الشامل لطبقات المضلعات؛ وتكتب جميع المساحات المتداخلة وغير المتداخلة مع كافة بياناتها السماتية في طبقة المخرجات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Intersect preserves ONLY areas common to all inputs, discarding non-overlapping extents.",
+        "C": "Clip discards attributes of the clipping boundary layer.",
+        "D": "Erase deletes areas inside the erase features."
+      },
+      "ar": {
+        "B": "تحتفظ Intersect بالمناطق المشتركة فقط وتهمل المساحات غير المتداخلة.",
+        "C": "تتجاهل Clip بيانات طبقة القص.",
+        "D": "تحذف Erase المساحات الواقعة داخل معالم المسح."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-013",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Tasks"
+    ],
+    "question": {
+      "en": "In ArcGIS Pro, what is the primary role of an ArcGIS Task (.esriTasks file)?",
+      "ar": "في ArcGIS Pro، ما هو الدور الأساسي لمهام ArcGIS (ملف .esriTasks)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "To provide a structured, interactive step-by-step guided workflow that walks users through repeatable business procedures in the UI",
+          "ar": "توفير مسار عمل تفاعلي موجه خطوة بخطوة يرشد المستخدمين عبر الإجراءات التشغيلية المكررة في واجهة البرنامج"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To compile Python code into standalone executable files",
+          "ar": "ترجمة كود بايثون إلى ملفات تنفيذية مستقلة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To replace SQL database servers with local text files",
+          "ar": "استبدال خوادم قواعد بيانات SQL بملفات نصية محلية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To encrypt geodatabases with biometric passwords",
+          "ar": "تشفير قواعد البيانات الجغرافية بكلمات مرور حيوية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Tasks guide users through standard operating procedures step-by-step. Each task step can activate specific tools, set selection queries, toggle layer visibility, and prompt users with custom instructions.",
+      "ar": "ترشد مهام ArcGIS (Tasks) المستخدمين عبر إجراءات العمل المعيارية خطوة بخطوة؛ حيث يمكن لكل خطوة تفعيل أدوات معينة، وتحديد معالم، وضبط رؤية الطبقات، وإظهار تعليمات إرشادية مخصصة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Tasks are XML workflow scripts, not Python binary compilers.",
+        "C": "Tasks do not replace enterprise relational databases.",
+        "D": "Tasks do not manage database encryption."
+      },
+      "ar": {
+        "B": "المهام هي مسارات إرشادية في الواجهة وليست مترجمات بايثون.",
+        "C": "المهام لا علاقة لها بتعويض خوادم قواعد البيانات.",
+        "D": "المهام لا تدير التشفير الأمني."
+      }
+    },
+    "references": [
+      {
+        "title": "What is a task?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/tasks/what-is-a-task-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-014",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Batch Processing"
+    ],
+    "question": {
+      "en": "How can an analyst execute the Project tool on 50 different feature classes simultaneously without building a ModelBuilder model or writing Python code?",
+      "ar": "كيف يمكن للمحلل تشغيل أداة Project على 50 فئة معالم مختلفة في نفس الوقت دون بناء نموذج ModelBuilder أو كتابة أي كود بايثون؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Right-click the Project tool in the Geoprocessing pane and select 'Batch'",
+          "ar": "النقر بزر الماوس الأيمن على أداة Project في نافذة Geoprocessing واختيار 'Batch'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Run the tool 50 times manually one by one",
+          "ar": "تشغيل الأداة 50 مرة يدوياً واحدة تلو الأخرى"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Zip the geodatabase into a single archive",
+          "ar": "ضغط قاعدة البيانات في ملف أرشيف مضغوط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Rename the files with the prefix 'PROJ_'",
+          "ar": "إعادة تسمية الملفات بإضافة بادئة 'PROJ_'"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Right-clicking any geoprocessing tool and selecting 'Batch' opens the automated Batch Geoprocessing interface, enabling multi-dataset execution without programming.",
+      "ar": "يتيح النقر بالزر الأيمن على أي أداة واختيار 'Batch' فتح واجهة المعالجة بالدفعة التلقائية، مما يمكن من تطبيق الأداة على عشرات الطبقات دفعة واحدة دون الحاجة للبرمجة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Manual repetition is inefficient and error-prone.",
+        "C": "Zipping does not execute geoprocessing transformations.",
+        "D": "Renaming files does not reproject coordinate data."
+      },
+      "ar": {
+        "B": "التكرار اليدوي مضيعة للوقت ومعرض للأخطاء.",
+        "C": "الضغط لا ينفذ التحويلات المكانية.",
+        "D": "إعادة التسمية لا تغير أنظمة الإحداثيات."
+      }
+    },
+    "references": [
+      {
+        "title": "What is a task?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/tasks/what-is-a-task-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-015",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "ModelBuilder"
+    ],
+    "question": {
+      "en": "In ModelBuilder, an analyst needs to run an analysis tool for every shapefile located inside a folder. Which ModelBuilder element should be inserted?",
+      "ar": "في ModelBuilder، يحتاج محلل لتشغيل أداة تحليل على كل ملف shapefile موجود داخل مجلد معين. أي عنصر يجب إدراجه في النموذج؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Iterate Feature Classes",
+          "ar": "المكرر Iterate Feature Classes"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Stop tool",
+          "ar": "أداة Stop"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Feedback loop connector",
+          "ar": "رابط التغذية الراجعة Feedback loop"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Calculate Field with a while loop",
+          "ar": "أداة Calculate Field بحلقة while"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ModelBuilder Iterators (e.g. Iterate Feature Classes) loop through datasets in a workspace or folder, feeding each dataset sequentially into downstream tools using inline variable substitution.",
+      "ar": "تقوم مكررات ModelBuilder (مثل Iterate Feature Classes) بالمرور على جميع مجموعات البيانات في المجلد وتمريرها بالتتابع إلى الأدوات التالية في مسار العمل عبر استبدال المتغيرات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Stop tool terminates execution.",
+        "C": "Feedback loops are for recursive numerical algorithms.",
+        "D": "Calculate Field computes table columns, it does not loop over files."
+      },
+      "ar": {
+        "B": "أداة Stop توقف تشغيل النموذج.",
+        "C": "روابط التغذية الراجعة للخوارزميات الحسابية التكرارية.",
+        "D": "حساب الحقل يعدل قيم الجداول ولا يدور على الملفات."
+      }
+    },
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-016",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Join Field"
+    ],
+    "question": {
+      "en": "How does the Join Field geoprocessing tool differ from the Add Join layer command?",
+      "ar": "كيف تختلف أداة المعالجة الجغرافية Join Field عن أمر الطبقة Add Join؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Join Field permanently appends physical attribute fields into the target table on disk; Add Join creates a temporary in-memory session join",
+          "ar": "تضيف أداة Join Field حقول السمات فعلياً بشكل دائم إلى جدول الهدف على القرص؛ بينما ينشئ Add Join ضماً مؤقتاً في الذاكرة أثناء الجلسة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Join Field only works on Excel tables",
+          "ar": "تعمل أداة Join Field على جداول إكسل فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Add Join permanently modifies source data",
+          "ar": "يعدل Add Join البيانات الأصلية بشكل دائم"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Both tools operate identically in memory",
+          "ar": "تعمل كلتا الأداتين بشكل متطابق في الذاكرة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Join Field alters the target table schema on disk by adding columns and copying matching values permanently. Add Join maintains a virtual, dynamic join that disappears when the project is closed without saving.",
+      "ar": "تعدل أداة Join Field هيكل جدول الهدف على القرص بإضافة أعمدة ونسخ القيم بشكل دائم. بينما ينشئ Add Join ضماً ظاهرياً مؤقتاً يزول بمجرد إزالة الطبقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Join Field works on all geodatabase and shapefile tables.",
+        "C": "Add Join never touches disk schema.",
+        "D": "They have completely different architectural impacts (permanent disk write vs virtual view)."
+      },
+      "ar": {
+        "B": "تعمل Join Field على كافة جداول الجيوداتابيس والملفات.",
+        "C": "لا يعدل Add Join هيكل البيانات على القرص.",
+        "D": "تختلفان جوهرياً في الأثر (كتابة دائمة على القرص مقابل عرض مؤقت)."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-017",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Spatial Join"
+    ],
+    "question": {
+      "en": "When performing a Spatial Join between point addresses and police beats using 'Join one to many', what happens if an address falls directly on the shared boundary of two beats?",
+      "ar": "عند إجراء ضم مكاني (Spatial Join) بين نقاط العناوين ومناطق دوريات الشرطة بخيار 'Join one to many'، ماذا يحدث إذا وقعت نقطة عنوان مباشرة على الحد المشترك بين منطقتين؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The output feature class generates two duplicate point features, one joined to each matching police beat",
+          "ar": "تنتج فئة المعالم المخرجة نقطتين مكررتين، ترتبط كل واحدة منهما بإحدى منطقتي الدوريات"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The address point is deleted",
+          "ar": "يتم حذف نقطة العنوان"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "ArcGIS Pro throws an unhandled geometry exception",
+          "ar": "يظهر خطأ استثنائي في هندسة المعالم بالبرنامج"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The address is matched to a random beat in another state",
+          "ar": "يتم ربط العنوان بمنطقة عشوائية في ولاية أخرى"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In a 1-to-Many spatial join, every spatial intersection creates a separate output record. A feature that touches two boundaries produces two output records, each inheriting attributes from one of the overlapping boundaries.",
+      "ar": "في الضم المكاني من نوع واحد إلى متعدد (1-to-Many)، ينتج عن كل تقاطع مكاني سجل مخرج مستقل؛ فالمعلم الذي يلامس منطقتين يولد سجلين في المخرجات يرتبط كل منهما بإحدى المنطقتين."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Points are never deleted by spatial joins.",
+        "C": "Boundary intersections are completely valid topology states.",
+        "D": "Matches only occur with mathematically intersecting features."
+      },
+      "ar": {
+        "B": "لا تُحذف النقاط في عمليات الضم المكاني.",
+        "C": "تقاطعات الحدود حالات طوبولوجية صحيحة تماماً.",
+        "D": "المطابقة تتم فقط مع المعالم المتقاطعة مكانياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-018",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Erase"
+    ],
+    "question": {
+      "en": "An environmental analyst needs to remove all private property land parcels from a regional forest conservation study area. Which tool cuts out the private parcels, leaving only the public forest land?",
+      "ar": "يحتاج محلل بيئي إلى إزالة كافة قطع الأراضي الخاصة من منطقة دراسة حماية الغابات الإقليمية. أي أداة تقتطع الأراضي الخاصة وتترك أراضي الغابات العامة فقط؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Erase",
+          "ar": "Erase (المسح)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip (القص)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Union",
+          "ar": "Union (الاتحاد)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Dissolve",
+          "ar": "Dissolve (الدمج)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Erase tool removes portions of the input features that overlap with the erase features, creating a cookie-cutter hole.",
+      "ar": "تحذف أداة Erase أجزاء معالم الإدخال التي تتداخل مع معالم المسح، مما يفرغ المساحات المستبعدة مثل قالب تفريغ العجين."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Clip keeps what is inside the boundary, the exact opposite of Erase.",
+        "C": "Union combines all areas together.",
+        "D": "Dissolve aggregates by common attributes."
+      },
+      "ar": {
+        "B": "تحتفظ Clip بما هو داخل الحدود وهو عكس المطلوب.",
+        "C": "تجمع Union كافة المساحات معاً.",
+        "D": "تدمج Dissolve بالسمات المشتركة."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-019",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Near"
+    ],
+    "question": {
+      "en": "Which geoprocessing tool calculates the exact distance from each customer point to the closest warehouse, and appends the NEAR_DIST and NEAR_FID fields directly into the customer input attribute table?",
+      "ar": "أي أداة تحليل تحسب المسافة الدقيقة من كل نقطة عميل إلى أقرب مستودع، وتضيف حقلي NEAR_DIST و NEAR_FID مباشرة في جدول بيانات العملاء المدخل؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Near",
+          "ar": "Near"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Intersect",
+          "ar": "Intersect"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Spatial Join",
+          "ar": "Spatial Join"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Near tool calculates distance and closest feature IDs from input features to near features, modifying the input table directly by adding NEAR_DIST, NEAR_FID, and optional angle/coordinate fields.",
+      "ar": "تحسب أداة Near المسافة ومعرف أقرب معلم من معالم الإدخال إلى معالم الهدف، وتعدل جدول الإدخال مباشرة بإضافة حقلي NEAR_DIST و NEAR_FID وحقول الزوايا الإضافية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Buffer creates distance polygon rings.",
+        "C": "Intersect computes geometric overlap.",
+        "D": "Spatial Join writes a new output feature class rather than editing the input table directly."
+      },
+      "ar": {
+        "B": "تنشئ Buffer مضلعات نطاق حول المعالم.",
+        "C": "تحسب Intersect التداخل الهندسي.",
+        "D": "تكتب Spatial Join طبقة مخرجات جديدة ولا تعدل الجدول المدخل مباشرة."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Proximity toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-proximity-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-020",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Generate Near Table"
+    ],
+    "question": {
+      "en": "How does Generate Near Table differ from the Near tool?",
+      "ar": "كيف تختلف أداة Generate Near Table عن أداة Near؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Generate Near Table writes results to a new standalone table and can report multiple nearest features (e.g. top 3 closest warehouses)",
+          "ar": "تكتب أداة Generate Near Table نتائجها في جدول منفصل جديد وتستطيع استخراج عدة معالم قريبة (مثل أقرب 3 مستودعات)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Generate Near Table only works on raster files",
+          "ar": "تعمل أداة Generate Near Table على ملفات الراستر فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The Near tool creates 3D TIN surfaces",
+          "ar": "تنشئ أداة Near أسطح TIN ثلاثية الأبعاد"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Generate Near Table requires an internet connection",
+          "ar": "تتطلب أداة Generate Near Table اتصالاً بالإنترنت"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "While Near only finds the single closest feature and writes in-place, Generate Near Table outputs to a new table and supports reporting ranked multiple neighbors (Find closest: False) within a search radius.",
+      "ar": "بينما تكتفي أداة Near بإيجاد أقرب معلم منفرد وتعدل الجدول المدخل، فإن Generate Near Table تُخرج النتائج في جدول جديد وتدعم إيجاد عدة معالم قريبة مرتبة ضمن نصف قطر بحث."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both tools process vector points, lines, and polygons.",
+        "C": "Near does not create surface models.",
+        "D": "Both tools execute completely offline locally."
+      },
+      "ar": {
+        "B": "تعمل كلتا الأداتين على المعالم الاتجاهية.",
+        "C": "لا تنشئ Near نماذج أسطح.",
+        "D": "تنفذ كلتا الأداتين محلياً بالكامل دون إنترنت."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Proximity toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-proximity-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-021",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Advanced",
+    "type": "Technical",
+    "tools": [
+      "ModelBuilder"
+    ],
+    "question": {
+      "en": "Can a single ModelBuilder model contain two separate iterators at the same workflow level?",
+      "ar": "هل يمكن لنموذج ModelBuilder واحد أن يحتوي على مكررين (Iterators) مستقلين في نفس مستوى مسار العمل؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "No, a model can contain only one iterator; multiple iterators require embedding a submodel containing the secondary iterator",
+          "ar": "لا، يمكن للنموذج أن يحتوي على مكرر واحد فقط؛ ويتطلب استخدام مكررين تضمين نموذج فرعي (Submodel) يحتوي على المكرر الثاني"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Yes, up to 10 iterators can run in parallel in a single model",
+          "ar": "نعم، يمكن تشغيل حتى 10 مكررات بالتوازي في نفس النموذج"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Yes, but only if both iterate over tables",
+          "ar": "نعم، ولكن فقط إذا كان كلاهما يكرر على جداول"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Iterators are not supported in ModelBuilder",
+          "ar": "المكررات غير مدعومة في ModelBuilder"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "ArcGIS Pro ModelBuilder enforces a strict rule: only one iterator can exist per model. To create nested loops (e.g., iterate folders then iterate feature classes), the inner loop must be built as a separate submodel and added to the main model.",
+      "ar": "يفرض ModelBuilder في ArcGIS Pro قاعدة صارمة: مكرر واحد فقط لكل نموذج. ولإنشاء حلقات تكرار متداخلة (مثل المرور على المجلدات ثم على الطبقات داخلها)، يجب بناء الحلقة الداخلية كنموذج فرعي وإدراجه في النموذج الرئيسي."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Parallel multiple iterators in one model are strictly disallowed.",
+        "C": "The one-iterator rule applies universally to all iterator types.",
+        "D": "Iterators are a core automation component of ModelBuilder."
+      },
+      "ar": {
+        "B": "تعدد المكررات في نموذج واحد غير مسموح برمجياً.",
+        "C": "تنطبق قاعدة المكرر الواحد على كافة أنواع المكررات.",
+        "D": "المكررات عنصر أساسي في أتمتة ModelBuilder."
+      }
+    },
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-022",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "ModelBuilder"
+    ],
+    "question": {
+      "en": "In ModelBuilder, what is the syntax for inline variable substitution when dynamically naming output files based on an iterator variable named 'StateName'?",
+      "ar": "في ModelBuilder، ما هي الصياغة الصحيحة لاستبدال المتغيرات (Inline Variable Substitution) لتسمية ملفات المخرجات ديناميكياً بناءً على متغير مكرر اسمه 'StateName'؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "C:/Data/Output.gdb/Parcels_%StateName%",
+          "ar": "C:/Data/Output.gdb/Parcels_%StateName%"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "C:/Data/Output.gdb/Parcels_{StateName}",
+          "ar": "C:/Data/Output.gdb/Parcels_{StateName}"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "C:/Data/Output.gdb/Parcels_$StateName$",
+          "ar": "C:/Data/Output.gdb/Parcels_$StateName$"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "C:/Data/Output.gdb/Parcels_[StateName]",
+          "ar": "C:/Data/Output.gdb/Parcels_[StateName]"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In ArcGIS Pro ModelBuilder, enclosing a variable name in percent signs (%VariableName%) performs inline variable substitution, substituting the runtime value of the variable into tool parameters and output paths.",
+      "ar": "في ModelBuilder بـ ArcGIS Pro، يؤدي وضع اسم المتغير بين علامتي النسبة المئوية (%VariableName%) إلى استبدال قيمته أثناء التشغيل وإدراجها ديناميكياً في مسارات المخرجات والمعاملات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Curly brackets are used in Python format strings, not ModelBuilder paths.",
+        "C": "Dollar signs are used in Arcade profiles.",
+        "D": "Square brackets are used for SQL field delimiters."
+      },
+      "ar": {
+        "B": "الأقواس المعقوفة تُستخدم في صياغة بايثون وليس في ModelBuilder.",
+        "C": "علامة الدولار تُستخدم في لغة Arcade.",
+        "D": "الأقواس المربعة لحقول استعلامات SQL."
+      }
+    },
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-023",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "ModelBuilder"
+    ],
+    "question": {
+      "en": "What happens when you connect an output dataset variable to a tool using a 'Precondition' connector in ModelBuilder?",
+      "ar": "ماذا يحدث عند ربط متغير بيانات مخرجة بأداة باستخدام رابط 'الشرط المسبق' (Precondition) في ModelBuilder؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The downstream tool will not execute until the precondition dataset has been successfully created or verified",
+          "ar": "لن تبدأ الأداة التالية في التنفيذ حتى يتم إنشاء أو التحقق من وجود بيانات الشرط المسبق بنجاح"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The downstream tool will delete the precondition dataset immediately",
+          "ar": "ستقوم الأداة التالية بحذف بيانات الشرط المسبق فوراً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The precondition variable is converted into a PDF report",
+          "ar": "يتحول متغير الشرط المسبق إلى تقرير PDF"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The entire model execution speed is reduced by 50%",
+          "ar": "تنخفض سرعة تنفيذ النموذج بالكامل بمقدار 50%"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A Precondition (visualized as a dashed line) establishes execution order dependency without passing data as an input parameter, ensuring Tool B runs only after Dataset A is ready.",
+      "ar": "ينشئ الشرط المسبق (الظاهر كخط متقطع) تبعية في تسلسل التنفيذ تضمن ألا تبدأ الأداة الثانية بالعمل إلا بعد اكتمال إنتاج أو التحقق من بيانات الشرط المسبق."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Preconditions control timing, not dataset deletion.",
+        "C": "Preconditions do not generate PDF reports.",
+        "D": "Preconditions optimize workflow logic without artificial performance throttling."
+      },
+      "ar": {
+        "B": "تتحكم الشروط المسبقة في توقيت التنفيذ ولا تحذف البيانات.",
+        "C": "لا تولد تقارير PDF.",
+        "D": "تنظم الشروط المسبقة منطق العمل دون إبطاء الأداء."
+      }
+    },
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-024",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Raster Functions"
+    ],
+    "question": {
+      "en": "An analyst needs to apply an elevation tint color ramp and hillshade surface effect to a 10-meter DEM for presentation. Which raster function combines both elevation color and shaded relief on-the-fly?",
+      "ar": "يحتاج محلل لتطبيق تدرج لوني للارتفاعات مع تأثير التظليل التضاريسي على نموذج ارتفاع رقمي DEM بدقة 10 أمتار للعرض. أي دالة راستر تدمج ألوان الارتفاع مع التظليل آنياً في الذاكرة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Shaded Relief function",
+          "ar": "Shaded Relief function (دالة التضاريس المظللة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Contour function",
+          "ar": "Contour function (دالة الكنتور)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Zonal Statistics function",
+          "ar": "Zonal Statistics function (دالة إحصائيات المناطق)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Sample function",
+          "ar": "Sample function (دالة أخذ العينات)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Shaded Relief raster function creates a shaded surface model combining elevation color ramping with hillshade illumination dynamically in memory.",
+      "ar": "تنتج دالة الراستر Shaded Relief نموذج سطح مظلل يجمع بين تدرج ألوان الارتفاعات والإضاءة التضاريسية التفاعلية ديناميكياً في الذاكرة دون الحاجة لملفات وسيطة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Contour generates vector or raster isolines.",
+        "C": "Zonal Statistics summarizes grid values by zones.",
+        "D": "Sample extracts cell values to table points."
+      },
+      "ar": {
+        "B": "تولد Contour خطوط كنتور.",
+        "C": "تلخص Zonal Statistics القيم حسب المناطق.",
+        "D": "تستخرج Sample قيم الخلايا لنقاط جدولية."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-025",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Raster Function Template"
+    ],
+    "question": {
+      "en": "What is the file format used to save, export, and share a reusable custom chain of raster functions in ArcGIS Pro?",
+      "ar": "ما هي صيغة الملف المستخدمة لحفظ وتصدير ومشاركة سلسلة مخصصة قابلة لإعادة الاستخدام من دوال الراستر في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Raster Function Template (.rft.xml)",
+          "ar": "Raster Function Template (.rft.xml)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Shapefile (.shp)",
+          "ar": "Shapefile (.shp)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Layer Package (.lpkx)",
+          "ar": "Layer Package (.lpkx)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Map File (.mapx)",
+          "ar": "Map File (.mapx)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Raster Function Templates (.rft.xml) encapsulate complex function chains, parameters, and algorithms into a portable XML template that can be applied to any raster or mosaic dataset.",
+      "ar": "تخزن قوالب دوال الراستر (Raster Function Templates بصيغة .rft.xml) سلاسل الدوال والمعاملات في قالب XML مرن يمكن تطبيقه بسهولة على أي راستر أو مجموعة موزاييك."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Shapefiles store vector geometry.",
+        "C": "Layer packages bundle vector/raster data with symbology.",
+        "D": "Map files store 2D map layouts."
+      },
+      "ar": {
+        "B": "ملفات Shapefile تخزن معالم اتجاهية.",
+        "C": "حزم الطبقات تجمع البيانات برموزها.",
+        "D": "ملفات mapx تخزن الخرائط."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-026",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Cost Distance"
+    ],
+    "question": {
+      "en": "Which Spatial Analyst tool calculates the least accumulative travel cost from a set of source locations across a cost surface raster representing slope, land cover resistance, and barriers?",
+      "ar": "أي أداة في Spatial Analyst تحسب أقل تكلفة انتقال تراكمية من مجموعة مواقع مصدرية عبر سطح تكلفة يمثل الانحدار ومقاومة الغطاء الأرضي والحواجز؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Cost Distance",
+          "ar": "Cost Distance (مسافة التكلفة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Euclidean Distance",
+          "ar": "Euclidean Distance (المسافة الإقليدية)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Line Density",
+          "ar": "Line Density (كثافة الخطوط)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Cost Distance determines the shortest weighted travel cost to the nearest source based on a friction/cost surface grid.",
+      "ar": "تحسب أداة Cost Distance أقل تكلفة انتقال تراكمية إلى أقرب مصدر بالاعتماد على شبكة سطح المقاومة والتكلفة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Euclidean distance measures straight-line planar distance ignoring terrain friction.",
+        "C": "Buffer creates fixed-distance polygon zones.",
+        "D": "Line density calculates linear concentration."
+      },
+      "ar": {
+        "B": "تقيس المسافة الإقليدية المسافة المستقيمة في خط مستقيم متجاهلة وعورة التضاريس.",
+        "C": "تنشئ Buffer نطاقات بمسافات ثابتة.",
+        "D": "تحسب كثافة الخطوط تركز المعالم الخطية."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Proximity toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-proximity-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-027",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Zonal Statistics as Table"
+    ],
+    "question": {
+      "en": "An analyst needs to calculate the average elevation and maximum slope within each wildlife management zone polygon. Which tool summarizes raster cell values within polygon zones and outputs a summary table?",
+      "ar": "يحتاج محلل لحساب متوسط الارتفاع وأقصى انحدار داخل كل مضلع من مضلعات مناطق إدارة الحياة الفطرية. أي أداة تلخص قيم خلايا الراستر داخل مضلعات المناطق وتُخرج جدول ملخصات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Zonal Statistics as Table",
+          "ar": "Zonal Statistics as Table"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Tabulate Intersection",
+          "ar": "Tabulate Intersection"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Extract by Mask",
+          "ar": "Extract by Mask"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Raster to Polygon",
+          "ar": "Raster to Polygon"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Zonal Statistics as Table summarizes values of a raster grid within the boundaries of defined zones (vector polygons or categorical rasters), reporting statistics like Mean, Max, Min, and Sum in a table.",
+      "ar": "تلخص أداة Zonal Statistics as Table قيم شبكة الراستر الواقعة داخل حدود مناطق محددة (مضلعات أو فئات راستر)، وتُخرج إحصائيات مثل المتوسط والأعلى والأدنى والمجموع في جدول مستقل."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Tabulate Intersection computes area percentages of overlapping polygons.",
+        "C": "Extract by Mask cuts a raster grid.",
+        "D": "Raster to Polygon vectorizes raster cells."
+      },
+      "ar": {
+        "B": "تحسب Tabulate Intersection نسب المساحات المتقاطعة.",
+        "C": "تقص Extract by Mask خلايا الراستر.",
+        "D": "تحول Raster to Polygon البكسلات إلى متجهات."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-028",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Spatial Join"
+    ],
+    "question": {
+      "en": "When performing a 1-to-1 Spatial Join of parcel polygons to census tracts, how can you ensure the total parcel assessed values are aggregated correctly?",
+      "ar": "عند إجراء ضم مكاني (Spatial Join) بنمط 1 إلى 1 بين مضلعات الأراضي ومناطق التعداد، كيف تضمن تجميع إجمالي القيم التقديرية للأراضي بشكل صحيح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Configure the Field Map merge rule for the assessed value field to 'Sum'",
+          "ar": "ضبط قاعدة دمج خريطة الحقول (Merge Rule) لحقل القيمة التقديرية على خيار 'Sum'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Set the search radius to 0 meters",
+          "ar": "ضبط نصف قطر البحث على 0 متر"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Convert the parcels to points",
+          "ar": "تحويل قطع الأراضي إلى نقاط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Change the layer transparency",
+          "ar": "تغيير شفافية الطبقة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In Spatial Join's Field Map parameter, setting the Merge Rule of a numeric field to 'Sum' adds together all values from matching join features that fall within the target polygon.",
+      "ar": "في إعدادات خريطة الحقول بأداة Spatial Join، يؤدي اختيار قاعدة الدمج 'Sum' إلى جمع قيم كافة المعالم المرتبطة الواقعة داخل مضلع الهدف."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Search radius controls proximity distance, not attribute math.",
+        "C": "Converting to points is unnecessary and does not aggregate values by itself.",
+        "D": "Transparency is a visual property."
+      },
+      "ar": {
+        "B": "نصف قطر البحث يتحكم بالمسافة وليس بالعمليات الحسابية.",
+        "C": "تحويل الأراضي لنقاط لا يجمع القيم تلقائياً.",
+        "D": "الشفافية خاصية بصرية."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-029",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Spatial Join",
+      "Add Join"
+    ],
+    "question": {
+      "en": "Under what fundamental condition must an analyst choose a Spatial Join instead of an Add Join?",
+      "ar": "تحت أي ظرف أساسي يجب على المحلل اختيار الضم المكاني (Spatial Join) بدلاً من الضم الجدولي (Add Join)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "When the two datasets share no common tabular key field, but share a geographic spatial relationship (e.g., location, containment, proximity)",
+          "ar": "عندما لا تشترك الطبقتان في أي حقل مفتاحي جدولي، ولكنهما تشتركان في علاقة مكانية جغرافية (مثل الموقع، الاحتواء، التقارب)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "When both datasets are in Excel format",
+          "ar": "عندما يكون كلا الملفين بصيغة إكسل"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "When joining a table to itself",
+          "ar": "عند ضم الجدول إلى نفسه"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "When working exclusively in 3D local scenes",
+          "ar": "عند العمل في المشاهد المحلية ثلاثية الأبعاد فقط"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Add Join requires an exact matching key field (foreign key). When datasets lack common attribute keys, Spatial Join matches features purely on their geographic position (intersect, within, closest).",
+      "ar": "يتطلب Add Join وجود حقل مفتاحي متطابق (Foreign Key)؛ وعند غياب المفاتيح الجدولية، فإن Spatial Join يربط البيانات بالاعتماد الصرف على العلاقات المكانية الجغرافية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Excel lacks spatial coordinates until plotted.",
+        "C": "Self-joins can be done via attribute keys.",
+        "D": "Spatial joins work in standard 2D and 3D contexts."
+      },
+      "ar": {
+        "B": "ملفات إكسل تفتقر للهندسة حتى يتم إسقاطها.",
+        "C": "يمكن ضم الجدول لنفسه بالسمات.",
+        "D": "يعمل الضم المكاني في البيئات ثنائية وثلاثية الأبعاد."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-030",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Relationship Class",
+      "Add Relate"
+    ],
+    "question": {
+      "en": "Why would an organization choose to create a Geodatabase Relationship Class instead of using the map-level Add Relate command?",
+      "ar": "لماذا تفضل المؤسسة إنشاء فئة علاقات (Relationship Class) في قاعدة البيانات بدلاً من استخدام أمر Add Relate على مستوى الخريطة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Relationship Classes persist permanently in the geodatabase schema and support composite cascade deletes and messaging",
+          "ar": "تُخزن فئات العلاقات بشكل دائم في مخطط قاعدة البيانات وتدعم الحذف التسلسلي المركب والتنبيهات التلقائية"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Relationship Classes only work in free web viewers",
+          "ar": "تعمل فئات العلاقات في متصفحات الويب المجانية فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Add Relate converts vector data into raster grids",
+          "ar": "يحول Add Relate البيانات الاتجاهية إلى راستر"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Relationship classes do not support 1-to-Many cardinality",
+          "ar": "لا تدعم فئات العلاقات علاقة 1 إلى متعدد"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Relationship Classes are permanent geodatabase objects that persist across all maps and projects. They enforce referential integrity and enable advanced behaviors like composite cascade deletion.",
+      "ar": "فئات العلاقات عناصر دائمة في هيكل قاعدة البيانات تظل محفوظة عبر كافة المشاريع والخرائط، وتفرض التكامل المرجعي وتدعم الحذف التسلسلي والتنبيهات المتقدمة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Relationship classes are enterprise and file geodatabase structures.",
+        "C": "Add Relate is a tabular association, not a raster tool.",
+        "D": "Relationship classes fully support 1:1, 1:M, and M:N cardinalities."
+      },
+      "ar": {
+        "B": "فئات العلاقات هياكل قواعد بيانات متقدمة.",
+        "C": "أمر Add Relate ارتباط جدولي وليس راستر.",
+        "D": "تدعم فئات العلاقات كافة أنواع العلاقات."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-031",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Symmetrical Difference"
+    ],
+    "question": {
+      "en": "Which overlay tool outputs only the areas of two overlapping polygon layers that do NOT overlap each other, omitting the shared intersecting area?",
+      "ar": "أي أداة تراكب تُخرج فقط المساحات غير المتداخلة بين طبقتي مضلعات، مع استبعاد المساحة المشتركة المتقاطعة بينهما؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Symmetrical Difference",
+          "ar": "Symmetrical Difference (الفرق المتماثل)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Intersect",
+          "ar": "Intersect (التقاطع)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Union",
+          "ar": "Union (الاتحاد)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip (القص)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Symmetrical Difference writes only the features or parts of features from input and update layers that do not overlap each other (the inverse of Intersect).",
+      "ar": "تُخرج أداة Symmetrical Difference الأجزاء أو المعالم التي لا تتداخل بين الطبقتين، مستبعدة منطقة التقاطع المشتركة (عكس أداة Intersect)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Intersect outputs ONLY the overlapping shared area.",
+        "C": "Union outputs both overlapping and non-overlapping areas.",
+        "D": "Clip cuts by an extent."
+      },
+      "ar": {
+        "B": "تُخرج Intersect المساحة المشتركة فقط.",
+        "C": "تُخرج Union كافة المساحات.",
+        "D": "تقص Clip المعالم وفق حدود."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-032",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Identity"
+    ],
+    "question": {
+      "en": "An analyst runs the Identity tool with Input: Roads and Identity Features: Municipalities. What geometric features will be present in the output?",
+      "ar": "قام محلل بتشغيل أداة Identity مع تحديد المدخل: الطرق، ومعالم المطابقة: البلديات. ما المعالم الهندسية التي ستظهر في المخرجات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "All input roads are preserved, with municipal attributes appended to the segments falling inside municipalities",
+          "ar": "يتم الحفاظ على كافة الطرق المدخلة، مع إلحاق سمات البلديات بأجزاء الطرق الواقعة داخل حدودها فقط"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Only roads outside municipalities are kept",
+          "ar": "يتم الاحتفاظ بالطرق الواقعة خارج البلديات فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "All roads are deleted and only municipality polygons remain",
+          "ar": "تُحذف جميع الطرق وتتبقى مضلعات البلديات فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Roads are converted into polygon buffers",
+          "ar": "تتحول الطرق إلى مضلعات حرم"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Identity computes a geometric intersection where all input features are retained; portions that overlap identity features inherit identity attributes, while portions outside receive NULL identity attributes.",
+      "ar": "تحتفظ أداة Identity بكافة معالم طبقة الإدخال؛ وتكتسب الأجزاء المتداخلة مع طبقة المطابقة سماتها، بينما تأخذ الأجزاء الخارجية قيماً فارغة NULL."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Erase is the tool that keeps features outside.",
+        "C": "Input features are never discarded by Identity.",
+        "D": "Line geometry type is preserved."
+      },
+      "ar": {
+        "B": "أداة Erase هي التي تحتفظ بما هو خارج الحدود.",
+        "C": "لا يتم إهمال معالم الإدخال في أداة Identity.",
+        "D": "يتم الحفاظ على نوع الهندسة الخطية."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-033",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Union"
+    ],
+    "question": {
+      "en": "What geometric restriction applies to the inputs of the Union tool that does NOT apply to the Intersect tool?",
+      "ar": "ما هو القيد الهندسي المفروض على مدخلات أداة Union والذي لا ينطبق على أداة Intersect؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "All inputs to Union MUST be polygon feature layers",
+          "ar": "يجب أن تكون جميع مدخلات أداة Union طبقات مضلعات (Polygons) حصراً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Inputs to Union must have Z-values",
+          "ar": "يجب أن تحتوي مدخلات Union على قيم ارتفاع Z"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Union requires raster datasets",
+          "ar": "تتطلب Union مجموعات بيانات راستر"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Union inputs must be stored in shapefile format",
+          "ar": "يجب تخزين مدخلات Union بصيغة shapefile"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Union only supports polygon inputs. In contrast, Intersect accepts any mix of vector geometry types (points, lines, or polygons).",
+      "ar": "تقبل أداة Union طبقات المضلعات فقط؛ بينما تقبل أداة Intersect أي مزيج من أنواع المعالم الاتجاهية (نقاط، خطوط، أو مضلعات)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Z-values are optional in both tools.",
+        "C": "Union is strictly a vector geoprocessing tool.",
+        "D": "Both tools support all geodatabase formats."
+      },
+      "ar": {
+        "B": "قيم Z اختيارية في كلتا الأداتين.",
+        "C": "أداة Union أداة اتجاهية وليست للراستر.",
+        "D": "تدعم كلتا الأداتين كافة صيغ الجيوداتابيس."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-034",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Euclidean Distance"
+    ],
+    "question": {
+      "en": "Which tool creates a continuous raster surface where each cell value represents the straight-line distance to the nearest point source?",
+      "ar": "أي أداة تنشئ سطح راستر مستمر بحيث تمثل قيمة كل خلية فيه المسافة في خط مستقيم إلى أقرب نقطة مصدرية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Euclidean Distance",
+          "ar": "Euclidean Distance (المسافة الإقليدية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Cost Distance",
+          "ar": "Cost Distance (مسافة التكلفة)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Kernel Density",
+          "ar": "Kernel Density (كثافة كيرنز)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "IDW",
+          "ar": "IDW"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Euclidean Distance calculates planar or geodesic straight-line distance from each cell to the nearest source feature, outputting a continuous distance grid.",
+      "ar": "تحسب أداة Euclidean Distance المسافة المستقيمة المستوية أو الجيوديسية من كل خلية إلى أقرب معلم مصدري، وتُخرج شبكة مسافات مستمرة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Cost Distance considers friction and impedance surfaces.",
+        "C": "Kernel Density calculates feature concentration, not distance.",
+        "D": "IDW interpolates attribute surface values."
+      },
+      "ar": {
+        "B": "تأخذ مسافة التكلفة وعورة ومقاومة السطح بالحسبان.",
+        "C": "تحسب كثافة كيرنز تركيز المعالم وليس المسافة.",
+        "D": "تستوفي IDW قيماً سماتية للأسطح."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Proximity toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-proximity-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-035",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Reclassify"
+    ],
+    "question": {
+      "en": "An analyst needs to convert a continuous slope raster (0° to 60°) into 3 suitability categories (1 = Unsuitable, 2 = Moderately Suitable, 3 = Highly Suitable). Which tool should be used?",
+      "ar": "يحتاج محلل لتحويل راستر انحدار مستمر (من 0 إلى 60 درجة) إلى 3 فئات ملاءمة (1 = غير ملائم، 2 = متوسط، 3 = عالي الملاءمة). أي أداة يجب استخدامها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Reclassify",
+          "ar": "Reclassify (إعادة التصنيف)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Raster Calculator",
+          "ar": "Raster Calculator (حاسبة الراستر)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Resample",
+          "ar": "Resample (إعادة الاستعيان)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Clip Raster",
+          "ar": "Clip Raster (قص الراستر)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Reclassify tool reassigns ranges of raster cell values to new discrete integer class codes, a foundational step in multi-criteria raster suitability modeling.",
+      "ar": "تعيد أداة Reclassify تعيين نطاقات قيم خلايا الراستر إلى أكواد فئات رقمية صحيحة جديدة، وهي خطوة أساسية في نمذجة الملاءمة المكانية للراستر."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Raster Calculator evaluates mathematical map algebra equations.",
+        "C": "Resample alters cell resolution size.",
+        "D": "Clip Raster cuts raster boundaries."
+      },
+      "ar": {
+        "B": "تقيم حاسبة الراستر معادلات جبر الخرائط.",
+        "C": "تغير Resample دقة حجم الخلية.",
+        "D": "تقص Clip Raster حدود الراستر."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-036",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Raster Calculator"
+    ],
+    "question": {
+      "en": "Which Map Algebra expression in the Raster Calculator correctly creates a binary mask where cells with slope less than 10 degrees AND elevation greater than 500 meters evaluate to 1, and all others to 0?",
+      "ar": "أي تعبير جبر خرائط في Raster Calculator ينشئ قناعاً ثنائياً بحيث تأخذ الخلايا ذات الانحدار أقل من 10 درجات والارتفاع أكبر من 500 متر القيمة 1، وتأخذ بقية الخلايا 0؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "(Raster('Slope') < 10) & (Raster('Elevation') > 500)",
+          "ar": "(Raster('Slope') < 10) & (Raster('Elevation') > 500)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Slope < 10 OR Elevation > 500",
+          "ar": "Slope < 10 OR Elevation > 500"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "IF Slope < 10 THEN 1 ELSE 0",
+          "ar": "IF Slope < 10 THEN 1 ELSE 0"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "SELECT WHERE Slope < 10 AND Elevation > 500",
+          "ar": "SELECT WHERE Slope < 10 AND Elevation > 500"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In Python Map Algebra, boolean AND is represented by the ampersand operator (&), with individual conditional expressions wrapped in parentheses.",
+      "ar": "في جبر الخرائط بلغة بايثون، يُستخدم الرمز (&) للتعبير عن الرابط المنطقي AND، مع وضع كل شرط بين قوسين مستقلين لتقييم النتائج الثنائية (1 و 0)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "OR requires either condition, not both simultaneously.",
+        "C": "IF/THEN is not valid syntax in Raster Calculator expressions.",
+        "D": "SELECT WHERE is a SQL vector statement, not Map Algebra."
+      },
+      "ar": {
+        "B": "الرابط OR يتطلب تحقق أحد الشرطين وليس كلاهما.",
+        "C": "صيغة IF/THEN غير صحيحة نحوياً في حاسبة الراستر.",
+        "D": "صيغة SQL للمتجهات وليست لجبر الخرائط."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-037",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Geoprocessing Environments"
+    ],
+    "question": {
+      "en": "When setting the 'Extent' environment setting to an existing polygon layer, what rectangular coordinates are actually passed to the tool?",
+      "ar": "عند ضبط بيئة 'Extent' على طبقة مضلعات قائمة، ما هي الإحداثيات المستطيلة التي تُمرر فعلياً إلى الأداة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The minimum bounding rectangle (XMin, YMin, XMax, YMax) encompassing all features in that layer",
+          "ar": "المستطيل المحيط الأدنى (XMin, YMin, XMax, YMax) الذي يحتوي كافة معالم تلك الطبقة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The exact irregular boundary of each polygon",
+          "ar": "الحدود المتعرجة الدقيقة لكل مضلع"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The coordinates of the map center point only",
+          "ar": "إحداثيات النقطة المركزية للخريطة فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The entire bounding box of the planet Earth",
+          "ar": "كامل النطاق المحيط للكرة الأرضية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Extent environment specifies a rectangular bounding box defined by XMin, YMin, XMax, YMax. To restrict processing to an irregular polygon shape, the 'Mask' environment must be used instead.",
+      "ar": "تحدد بيئة Extent مستطيلاً محيطاً بإحداثيات XMin و YMin و XMax و YMax؛ وإذا أراد المستخدم تقييد التحليل داخل شكل المضلع المتعرج بدقة فيجب استخدام بيئة Mask (القناع)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Irregular shape clipping is performed by Mask, not Extent.",
+        "C": "A point cannot define an extent bounding box.",
+        "D": "Global extents only apply if explicitly chosen."
+      },
+      "ar": {
+        "B": "تحديد الأشكال المتعرجة يتم عبر بيئة Mask.",
+        "C": "النقطة لا يمكنها تعريف نطاق مكاني.",
+        "D": "النطاق العالمي يطبق فقط عند اختياره صراحة."
+      }
+    },
+    "references": [
+      {
+        "title": "Geoprocessing environment settings, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-environment-settings.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-038",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Geoprocessing Environments"
+    ],
+    "question": {
+      "en": "What happens to raster cells that fall outside the boundary of a Mask polygon during Spatial Analyst tool execution?",
+      "ar": "ماذا يحدث لخلايا الراستر التي تقع خارج حدود مضلع القناع (Mask) أثناء تشغيل أدوات Spatial Analyst؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They are assigned the NoData value in the output raster",
+          "ar": "يتم تعيين قيمة لا بيانات (NoData) لها في الراستر الناتج"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They are deleted along with their underlying disk files",
+          "ar": "تُحذف مع ملفاتها الأصلية على القرص"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "They are assigned the value 0 and included in statistical averages",
+          "ar": "تأخذ القيمة 0 وتدخل في حساب المتوسطات الإحصائية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "They are converted into vector point features",
+          "ar": "تتحول إلى معالم نقطية اتجاهية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Mask environment confines raster analysis to cells falling inside the mask shape. Cells outside the mask receive NoData values and are excluded from subsequent calculations.",
+      "ar": "تقيد بيئة Mask التحليل بالخلايا الواقعة داخل حدود القناع فقط؛ وتتحول جميع الخلايا الواقعة بالخارج إلى خلايا NoData وتُستبعد من الحسابات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Mask does not delete source files.",
+        "C": "Zero is a real numeric value that would skew averages; NoData is correctly assigned.",
+        "D": "Vector conversion requires conversion tools."
+      },
+      "ar": {
+        "B": "القناع لا يحذف الملفات الأصلية.",
+        "C": "الصفر قيمة عددية تشوه المتوسطات بينما NoData تمثل غياب البيانات.",
+        "D": "التحويل لمتجهات يتطلب أدوات تحويل مستقلة."
+      }
+    },
+    "references": [
+      {
+        "title": "Geoprocessing environment settings, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-environment-settings.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-039",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, use tasks, batch processing, models, or scripts for a complex workflow",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "ModelBuilder"
+    ],
+    "question": {
+      "en": "Why should temporary intermediate scratch datasets in a long ModelBuilder workflow be flagged as 'Intermediate Data'?",
+      "ar": "لماذا يجب تمييز مجموعات البيانات المؤقتة في مسار ModelBuilder الطويل بأنها 'Intermediate Data'؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "So ArcGIS Pro automatically purges the temporary datasets from disk once the entire model run finishes",
+          "ar": "حتى يقوم ArcGIS Pro بحذف وتطهير هذه الملفات المؤقتة تلقائياً من القرص بمجرد اكتمال تشغيل النموذج"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "To prevent the model from completing successfully",
+          "ar": "لمنع النموذج من الاكتمال بنجاح"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "To publish the temporary data directly to ArcGIS Online",
+          "ar": "لنشر البيانات المؤقتة مباشرة إلى ArcGIS Online"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "To convert vector files to raster format",
+          "ar": "لتحويل الملفات الاتجاهية إلى راستر"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Marking outputs as Intermediate ensures that temporary scratch files created by intervening tools are deleted automatically upon completion, saving disk space.",
+      "ar": "يضمن تمييز المخرجات كوسيطة (Intermediate) قيام ArcGIS Pro بحذف الملفات المؤقتة الناتجة عن الأدوات البينية تلقائياً فور انتهاء التشغيل، مما يوفر مساحة التخزين."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Intermediate flags improve workflow hygiene and do not cause errors.",
+        "C": "Publishing requires explicit sharing tools.",
+        "D": "Conversion requires conversion tools."
+      },
+      "ar": {
+        "B": "البيانات الوسيطة تحسن تنظيم الملفات ولا تسبب أخطاء.",
+        "C": "النشر يتطلب أدوات مشاركة صريحة.",
+        "D": "التحويل يتطلب أدوات تحويل."
+      }
+    },
+    "references": [
+      {
+        "title": "What is ModelBuilder?, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-040",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Viewshed"
+    ],
+    "question": {
+      "en": "Which tool in Spatial Analyst determines which terrain raster cells can be seen from one or more observation point locations, taking observer elevation and surface topography into account?",
+      "ar": "أي أداة في Spatial Analyst تحدد خلايا الراستر التضاريسية التي يمكن رؤيتها من نقطة رصد أو أكثر، آخذة بعين الاعتبار ارتفاع الراصد وتضاريس السطح؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Viewshed",
+          "ar": "Viewshed (مجال الرؤية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Slope",
+          "ar": "Slope (الانحدار)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Aspect",
+          "ar": "Aspect (اتجاه الانحدار)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Hillshade",
+          "ar": "Hillshade (التظليل التضاريسي)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Viewshed identifies visible raster cells on an elevation surface from observer points or lines, factoring in observer height offsets (OFFSETA), target heights (OFFSETB), and view angles.",
+      "ar": "تحدد أداة Viewshed الخلايا المرئية على سطح الارتفاع من نقاط أو خطوط المراقبة، مع مراعاة ارتفاع الراصد وارتفاع الهدف وزوايا الرؤية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Slope measures rate of elevation change.",
+        "C": "Aspect identifies downslope compass direction.",
+        "D": "Hillshade calculates visual illumination shadows."
+      },
+      "ar": {
+        "B": "يقيس الانحدار معدل التغير الرأسي.",
+        "C": "يحدد Aspect الاتجاه البوصلي للانحدار.",
+        "D": "يحسب Hillshade إضاءة وظلال التضاريس."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-041",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Slope"
+    ],
+    "question": {
+      "en": "What two measurement unit options are available for the output of the Slope geoprocessing tool?",
+      "ar": "ما هما خيارا وحدات القياس المتاحان لمخرجات أداة التحليل Slope؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Degree and Percent rise",
+          "ar": "الدرجات (Degree) والنسبة المئوية (Percent rise)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Meters and Feet",
+          "ar": "الأمتار والأقدام"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Radians and Gradians",
+          "ar": "الراديان والغراديان"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Acres and Hectares",
+          "ar": "الأفدنة والهكتارات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Slope tool outputs terrain steepness either as Degrees of slope (0° to 90°) or as Percent rise (0% to infinity).",
+      "ar": "تُخرج أداة Slope درجة وعورة التضاريس إما بالدرجات الزاوية (Degree من 0 إلى 90) أو بالنسبة المئوية للميل (Percent rise من 0 إلى ما لا نهاية)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Meters and feet are linear elevation distance units.",
+        "C": "Radians are not standard output choices in the Slope tool.",
+        "D": "Acres and hectares are area measurements."
+      },
+      "ar": {
+        "B": "الأمتار والأقدام وحدات مسافة خطية.",
+        "C": "الراديان ليس خياراً متاحاً في الأداة.",
+        "D": "الأفدنة والهكتارات وحدات مساحة."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-042",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Aspect"
+    ],
+    "question": {
+      "en": "What does the Aspect tool calculate on a digital elevation model (DEM)?",
+      "ar": "ماذا تحسب أداة Aspect على نموذج الارتفاع الرقمي (DEM)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The compass direction that the downhill slope face points (0° to 360°)",
+          "ar": "الاتجاه البوصلي الذي يواجهه انحدار السطح نحو الأسفل (من 0 إلى 360 درجة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The depth of underground water tables",
+          "ar": "عمق المياه الجوفية تحت الأرض"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The volume of cut and fill soil",
+          "ar": "حجم الحفر والردم للتربة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The atmospheric barometric pressure",
+          "ar": "الضغط الجوي للغلاف الجوي"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Aspect identifies the compass direction of the maximum rate of change in elevation from each cell to its neighbors (0° is North, 90° is East, 180° is South, 270° is West; flat areas evaluate to -1).",
+      "ar": "تحسب أداة Aspect الاتجاه البوصلي لأقصى ميل للسطح نحو الأسفل (0 للشمال، 90 للشرق، 180 للجنوب، 270 للغرب؛ والمناطق المستوية تأخذ -1)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Aspect does not measure subsurface hydrology.",
+        "C": "Cut and Fill tool calculates earthwork volumes.",
+        "D": "Aspect is purely geometric terrain orientation."
+      },
+      "ar": {
+        "B": "لا تقيس المياه الجوفية.",
+        "C": "أداة Cut and Fill هي المسؤولة عن حجوم الحفر والردم.",
+        "D": "أداة Aspect اتجاه تضاريسي صرف."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-043",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Contour"
+    ],
+    "question": {
+      "en": "Which tool creates a polyline feature class of elevation isolines connecting points of equal height from a continuous raster surface?",
+      "ar": "أي أداة تنشئ فئة معالم خطية تمثل خطوط تساوي الارتفاع التي تربط النقاط ذات الارتفاع المتطابق من سطح راستر مستمر؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Contour",
+          "ar": "Contour (خطوط الكنتور)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Slope",
+          "ar": "Slope (الانحدار)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Viewshed",
+          "ar": "Viewshed (مجال الرؤية)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Contour tool generates isolines (lines of equal elevation) from a raster surface grid based on a specified contour interval.",
+      "ar": "تولد أداة Contour خطوط الكنتور (خطوط المناسيب المتساوية) من شبكة راستر بناءً على فاصل كنتوري محدد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Slope measures angle steepness.",
+        "C": "Buffer creates proximity zones.",
+        "D": "Viewshed evaluates visibility."
+      },
+      "ar": {
+        "B": "يقيس الانحدار زاوية الميل.",
+        "C": "تنشئ Buffer مناطق حرم.",
+        "D": "تحسب Viewshed مناطق الرؤية."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-044",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Split By Attributes"
+    ],
+    "question": {
+      "en": "An analyst needs to divide a nationwide counties feature class into separate individual feature classes for each state and save them into a geodatabase. Which tool performs this in one step?",
+      "ar": "يحتاج محلل إلى تقسيم فئة معالم المقاطعات على مستوى الدولة إلى فئات معالم منفصلة لكل ولاية على حدة وحفظها في قاعدة بيانات. أي أداة تؤدي ذلك في خطوة واحدة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Split By Attributes",
+          "ar": "Split By Attributes (تقسيم حسب السمات)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Dissolve",
+          "ar": "Dissolve (الدمج)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Merge",
+          "ar": "Merge (الجمع)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Intersect",
+          "ar": "Intersect (التقاطع)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Split By Attributes splits an input dataset into multiple individual feature classes based on unique values in one or more attribute fields.",
+      "ar": "تقسم أداة Split By Attributes مجموعة بيانات الإدخال إلى عدة فئات معالم مستقلة بناءً على القيم الفريدة في حقل أو أكثر من حقول السمات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Dissolve aggregates features into a single layer.",
+        "C": "Merge combines multiple layers into one.",
+        "D": "Intersect computes overlay."
+      },
+      "ar": {
+        "B": "تدمج Dissolve المعالم في طبقة واحدة.",
+        "C": "تجمع Merge عدة طبقات في ملف واحد.",
+        "D": "تحسب Intersect التراكب المكاني."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-045",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Spatial Join"
+    ],
+    "question": {
+      "en": "Which spatial match rule in the Spatial Join tool should be selected when joining parcel polygon attributes to building centroid points that fall entirely within them?",
+      "ar": "أي قاعدة مطابقة مكانية في أداة Spatial Join يجب اختيارها عند ضم بيانات مضلعات الأراضي لنقاط مراكز المباني الواقعة بالكامل بداخلها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Completely contains (or Within)",
+          "ar": "Completely contains (أو Within)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Shares a line segment with",
+          "ar": "Shares a line segment with (تشترك في قطعة خطية)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Crosses outline of",
+          "ar": "Crosses outline of (تقطع حدود)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Are identical to",
+          "ar": "Are identical to (تتطابق مع)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "When points are enclosed within polygons, 'Within' (or 'Completely contains' depending on which is Target vs Join) establishes accurate interior spatial relationship.",
+      "ar": "عندما تكون النقاط محاطة بمضلعات، فإن علاقة 'Within' أو 'Completely contains' (بحسب تحديد الهدف والمصدر) تحدد الاحتواء المكاني الداخلي بدقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Points have no line segments to share.",
+        "C": "Points cannot cross outlines.",
+        "D": "Point and polygon geometries cannot be geometrically identical."
+      },
+      "ar": {
+        "B": "النقاط ليس لها قطع خطية لتشترك فيها.",
+        "C": "النقاط لا تقطع الحدود.",
+        "D": "النقاط والمضلعات تختلف في نوع الهندسة ولا يمكن أن تتطابق."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-046",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Tabulate Intersection"
+    ],
+    "question": {
+      "en": "Which tool computes the exact area and percentage of overlap between two polygon layers (e.g. percentage of each school district covered by wetlands) and outputs the results in a cross-tabulated table?",
+      "ar": "أي أداة تحسب المساحة الدقيقة ونسبة التداخل المئوية بين طبقتي مضلعات (مثل نسبة تغطية الأراضي الرطبة في كل منطقة تعليمية) وتُخرج النتائج في جدول متقاطع؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Tabulate Intersection",
+          "ar": "Tabulate Intersection"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Erase",
+          "ar": "Erase"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Tabulate Intersection cross-tabulates the intersection between two feature classes, calculating overlapping area, length, and percentage of the input area occupied.",
+      "ar": "تحسب أداة Tabulate Intersection التداخل المتقاطع بين طبقتين، وتستخرج المساحة والطول ونسبة التداخل المئوية من مساحة معالم الإدخال."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Clip creates clipped features without cross-tabulation percentages.",
+        "C": "Buffer creates distance rings.",
+        "D": "Erase removes areas."
+      },
+      "ar": {
+        "B": "تقتطع Clip المعالم ولا تحسب نسب مئوية جدولية.",
+        "C": "تنشئ Buffer مساحات حرم.",
+        "D": "تحذف Erase المساحات."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-047",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Resample"
+    ],
+    "question": {
+      "en": "When changing a raster's cell size from 30 meters to 10 meters using the Resample tool, does this operation increase the real spatial detail of the original sensor capture?",
+      "ar": "عند تغيير حجم خلية الراستر من 30 متراً إلى 10 أمتار باستخدام أداة Resample، هل تؤدي هذه العملية إلى زيادة التفاصيل المكانية الحقيقية لالتقاط الحساس الأصلي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "No, it divides existing pixels into smaller interpolated cells without adding new real-world spatial information",
+          "ar": "لا، بل تقسم البكسلات القائمة إلى خلايا أصغر مستوفاة رياضياً دون إضافة أي معلومات مكانية حقيقية جديدة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Yes, it increases satellite sensor resolution by 300%",
+          "ar": "نعم، تزيد دقة الحساس الفضائي بنسبة 300%"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Yes, but only if run on a weekend",
+          "ar": "نعم، ولكن فقط إذا شُغلت في عطلة نهاية الأسبوع"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "It converts the raster to vector contours automatically",
+          "ar": "تحول الراستر إلى خطوط كنتور تلقائياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Downsampling or refining cell size divides cells mathematically (using nearest neighbor, bilinear, or cubic methods), but cannot recreate fine-grained spatial information not captured by the physical sensor.",
+      "ar": "إن تصغير حجم الخلية يقسم البكسلات حسابياً عبر الاستيفاء الرياضي، لكنه لا يستطيع استحداث تفاصيل مكانية حقيقية لم يلتقطها الحساس الأصلي."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Software resampling cannot alter physical satellite optics.",
+        "C": "Calendar timing is irrelevant to algorithms.",
+        "D": "Resample preserves raster structure."
+      },
+      "ar": {
+        "B": "إعادة الاستعيان البرمجية لا تغير بصريات الأقمار الصناعية.",
+        "C": "التوقيت لا علاقة له بالخوارزميات.",
+        "D": "تحافظ أداة Resample على بنية الراستر."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-048",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Focal Statistics"
+    ],
+    "question": {
+      "en": "Which Spatial Analyst tool calculates neighborhood statistics (e.g., Mean, Majority, Standard Deviation) for each raster cell based on the values within a specified roving moving window (such as a 3x3 rectangle)?",
+      "ar": "أي أداة في Spatial Analyst تحسب إحصائيات الجوار (مثل المتوسط، الأغلبية، الانحراف المعياري) لكل خلية راستر بناءً على القيم الواقعة ضمن نافذة متحركة محددة (مثل مستطيل 3x3)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Focal Statistics",
+          "ar": "Focal Statistics (إحصائيات الجوار البؤرية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Zonal Statistics",
+          "ar": "Zonal Statistics (إحصائيات المناطق)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Summary Statistics",
+          "ar": "Summary Statistics (إحصائيات الملخص)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Tabulate Area",
+          "ar": "Tabulate Area (جدولة المساحة)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Focal Statistics calculates statistics for each input cell location based on values within a defined moving neighborhood around that cell (roving window smoothing or filtering).",
+      "ar": "تحسب أداة Focal Statistics إحصائيات لكل خلية بناءً على قيم الخلايا المجاورة الواقعة ضمن نافذة متحركة محددة حولها (لتنعيم الأسطح أو ترشيح الشوائب)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Zonal Statistics uses fixed irregular zone boundaries, not a roving window.",
+        "C": "Summary Statistics works on standalone tables.",
+        "D": "Tabulate Area cross-tabulates zone areas."
+      },
+      "ar": {
+        "B": "تستخدم إحصائيات المناطق حدوداً ثابتة وليس نافذة متحركة.",
+        "C": "تعمل إحصائيات الملخص على الجداول.",
+        "D": "تحسب Tabulate Area مساحات المناطق."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-049",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "Focal Statistics"
+    ],
+    "question": {
+      "en": "What is the difference between Focal Statistics and Block Statistics?",
+      "ar": "ما هو الفرق بين إحصائيات الجوار البؤرية (Focal Statistics) وإحصائيات الكتل (Block Statistics)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Focal Statistics moves cell-by-cell in an overlapping roving window; Block Statistics processes mutually exclusive non-overlapping blocks",
+          "ar": "تتحرك Focal Statistics خلية بخلية في نافذة متداخلة متحركة؛ بينما تعالج Block Statistics كُتلاً مستقلة غير متداخلة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Focal Statistics only works on vector files",
+          "ar": "تعمل Focal Statistics على الملفات الاتجاهية فقط"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Block Statistics is obsolete and removed from Pro",
+          "ar": "أداة Block Statistics ملغاة من البرنامج"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Both tools produce mathematically identical surfaces",
+          "ar": "تنتج كلتا الأداتين أسطحاً متطابقة رياضياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Focal Statistics uses a sliding overlapping neighborhood centered on each cell, producing smooth continuous surfaces. Block Statistics divides the raster into distinct non-overlapping blocks, assigning the calculated statistic to all cells in that block.",
+      "ar": "تستخدم Focal Statistics نافذة متحركة متداخلة متمحورة حول كل خلية فتنتج أسطحاً ناعمة؛ بينما تقسم Block Statistics الراستر إلى كتل مربعة منفصلة غير متداخلة وتعطي كل خلية في الكتلة نفس القيمة المحسوبة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both tools process raster grids.",
+        "C": "Block statistics is an active core tool in ArcGIS Pro.",
+        "D": "Their outputs look fundamentally different (smooth continuous vs blocky mosaic)."
+      },
+      "ar": {
+        "B": "تعمل كلتا الأداتين على شبكات الراستر.",
+        "C": "أداة Block Statistics أداة قائمة ومعتمدة.",
+        "D": "تختلف مخرجاتهما جوهرياً (سطح ناعم مقابل كتل مجزأة)."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-050",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Fill"
+    ],
+    "question": {
+      "en": "Before performing Flow Direction and Flow Accumulation modeling on a DEM, which tool should be run to eliminate small surface depressions and artificial pits?",
+      "ar": "قبل إجراء نمذجة اتجاه الجريان وتراكم الجريان السطحي على نموذج الارتفاع DEM، أي أداة يجب تشغيلها لإزالة المنخفضات السطحية الصغيرة والبرك الاصطناعية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Fill",
+          "ar": "Fill (ملء المنخفضات)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Sink",
+          "ar": "Sink (تحديد المصارف)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Flow Length",
+          "ar": "Flow Length (طول الجريان)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Basin",
+          "ar": "Basin (حوض التصريف)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Fill tool fills sinks and depressions in an elevation raster to remove imperfect pits where water would get trapped, creating a continuous hydrologically correct surface.",
+      "ar": "تملأ أداة Fill المنخفضات والبرك غير المنفذة في راستر الارتفاع لمنع احتباس تدفق المياه الافتراضي، مما ينتج سطحاً هيدرولوجياً متصلاً وسليماً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Sink identifies depressions but does not fill them.",
+        "C": "Flow Length measures upstream or downstream flow path distance.",
+        "D": "Basin delineates drainage basins."
+      },
+      "ar": {
+        "B": "تحدد أداة Sink المنخفضات ولكنها لا تسويها.",
+        "C": "تقيس Flow Length مسافة مسار الجريان.",
+        "D": "تحدد Basin أحواض التصريف المائي."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-051",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Flow Direction"
+    ],
+    "question": {
+      "en": "In ArcGIS Pro hydrological modeling using the D8 flow method, how many discrete flow directions are modeled from each cell to its steepest downslope neighbor?",
+      "ar": "في النمذجة الهيدرولوجية بـ ArcGIS Pro باستخدام طريقة D8، كم عدد اتجاهات الجريان المنفصلة التي يتم نمذجتها من كل خلية إلى الخلية المجاورة الأكثر انحداراً؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "8 valid directional codes (1, 2, 4, 8, 16, 32, 64, 128)",
+          "ar": "8 أكواد اتجاهية صالحة (1، 2، 4، 8، 16، 32، 64، 128)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "360 continuous degrees",
+          "ar": "360 درجة مستمرة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "4 cardinal directions only",
+          "ar": "4 اتجاهات رئيسية فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Unlimited directions based on wind speed",
+          "ar": "اتجاهات غير محدودة بناءً على سرعة الرياح"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The D8 algorithm models water flowing from each cell to one of its eight neighboring cells, encoding directions as powers of two (East=1, SE=2, South=4, SW=8, West=16, NW=32, North=64, NE=128).",
+      "ar": "تنمذج خوارزمية D8 تدفق المياه من كل خلية نحو إحدى الخلايا الثماني المجاورة لها، مستخدمة قوى الرقم 2 لترميز الاتجاهات (الشرق=1، الجنوب الشرقي=2، الجنوب=4، ... والشمال الشرقي=128)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "D8 uses 8 discrete integer codes, not continuous floating-point angles.",
+        "C": "D8 includes 4 cardinal and 4 diagonal directions (8 total).",
+        "D": "Surface hydrology is driven by gravity and topography, not wind."
+      },
+      "ar": {
+        "B": "تستخدم D8 أكواداً صحيحة منفصلة وليس زوايا كسرية.",
+        "C": "تشمل D8 الاتجاهات الأربعة الرئيسية والأربعة الفرعية.",
+        "D": "تعتمد الهيدرولوجيا على التضاريس والجاذبية وليس الرياح."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-052",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Flow Accumulation"
+    ],
+    "question": {
+      "en": "What does a high cell value in a Flow Accumulation raster represent?",
+      "ar": "ماذا تمثل القيمة العالية للخلية في راستر تراكم الجريان (Flow Accumulation)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "A high number of upstream cells drain through that cell, indicating a stream channel or concentrated drainage path",
+          "ar": "تصريف عدد كبير من الخلايا العليا عبر هذه الخلية، مما يشير إلى وجود مجرى مائي أو مسار تصريف رئيسي"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "An area of extreme high elevation on a mountain peak",
+          "ar": "منطقة ذات منسوب ارتفاع شاهق على قمة جبل"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "An area where rain never falls",
+          "ar": "منطقة لا تسقط عليها الأمطار إطلاقاً"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "A cell with high vegetation canopy density",
+          "ar": "خلية ذات كثافة غطاء نباتي مرتفعة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Flow Accumulation calculates accumulated flow as the accumulated weight of all upstream cells flowing into each downslope cell. Cells with high accumulation identify concentrated stream channels and rivers.",
+      "ar": "تحسب Flow Accumulation التدفق التراكمي كوزن مجمع لكافة الخلايا العليا المتدفقة نحو كل خلية؛ وتشير القيم المرتفعة إلى مجاري الأودية ومسارات الأنهار المركزة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Mountain peaks have an accumulation of 0 because no cells drain into them.",
+        "C": "Accumulation models terrain drainage, not weather rainfall absence.",
+        "D": "Vegetation canopy is measured by NDVI, not Flow Accumulation."
+      },
+      "ar": {
+        "B": "قمم الجبال تأخذ قيمة تراكم 0 لعدم وجود خلايا تصب فيها.",
+        "C": "النموذج يمثل تضاريس التصريف وليس الجفاف.",
+        "D": "الغطاء النباتي يقاس بـ NDVI."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-053",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Aggregate Points"
+    ],
+    "question": {
+      "en": "Which cartographic geoprocessing tool aggregates clusters of point features into polygon shapes based on a specified clustering distance?",
+      "ar": "أي أداة معالجة كارتوغرافية تجمع كتل المعالم النقطية المتقاربة في أشكال مضلعات بناءً على مسافة تجميع محددة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Aggregate Points",
+          "ar": "Aggregate Points (تجميع النقاط)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Spatial Join",
+          "ar": "Spatial Join (الضم المكاني)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Dissolve",
+          "ar": "Dissolve (الدمج)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Aggregate Points creates polygons representing clusters of proximate points within a specified distance threshold.",
+      "ar": "تنشئ أداة Aggregate Points مضلعات تعبر عن تجمعات النقاط المتقاربة ضمن مسافة محددة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Buffer creates circular zones around individual points.",
+        "C": "Spatial Join attaches attributes.",
+        "D": "Dissolve operates on existing polygons/lines with common attributes."
+      },
+      "ar": {
+        "B": "تنشئ Buffer دوائر حول النقاط.",
+        "C": "يربط Spatial Join السمات.",
+        "D": "تدمج Dissolve معالم قائمة تشترك في السمات."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-054",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Calculate Field"
+    ],
+    "question": {
+      "en": "In the Calculate Field tool, which expression language is the modern default and recommended standard for cross-platform ArcGIS field calculations?",
+      "ar": "في أداة Calculate Field، ما هي لغة التعبير التي تُعد الخيار الافتراضي الحديث والمعيار الموصى به لحسابات الحقول عبر منصات ArcGIS؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Arcade",
+          "ar": "Arcade"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "VBScript",
+          "ar": "VBScript"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Fortran",
+          "ar": "Fortran"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "COBOL",
+          "ar": "COBOL"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Arcade is Esri's lightweight, secure expression language designed specifically for use across all ArcGIS platforms (Pro, Online, Enterprise, Field Maps). Python 3 is also supported for advanced desktop automation.",
+      "ar": "تعد Arcade لغة التعبيرات الآمنة والخفيفة من Esri المصممة للعمل عبر كافة منصات ArcGIS (المكتبي، السحابي، المؤسسي، والميداني)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "VBScript is deprecated and only supported in legacy 32-bit ArcMap.",
+        "C": "Fortran is not a GIS expression language.",
+        "D": "COBOL is a legacy business language."
+      },
+      "ar": {
+        "B": "لغة VBScript مهملة ومدعومة في ArcMap القديم فقط.",
+        "C": "ليست لغة تعبيرات جغرافية.",
+        "D": "لغة تجارية قديمة لا علاقة لها بنظم المعلومات الجغرافية."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-055",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Feature To Point"
+    ],
+    "question": {
+      "en": "An analyst needs to generate a point feature class where each point represents the geographic center of a parcel polygon. Which tool should be used, and what option ensures the point falls strictly inside irregular C-shaped parcels?",
+      "ar": "يحتاج محلل لتوليد فئة معالم نقطية تمثل المراكز الجغرافية لمضلعات الأراضي. أي أداة يجب استخدامها، وما الخيار الذي يضمن وقوع النقطة داخل المضلعات غير المنتظمة (كالمضلعات على شكل حرف C)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Feature To Point with 'Inside' parameter checked",
+          "ar": "أداة Feature To Point مع تفعيل خيار 'Inside'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Buffer with negative distance",
+          "ar": "أداة Buffer بمسافة سالبة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Add Join on centroid field",
+          "ar": "أمر Add Join على حقل المركز"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "XY Table To Point",
+          "ar": "أداة XY Table To Point"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Feature To Point creates centroids. When 'Inside' is checked, it guarantees the generated point falls strictly inside the polygon boundary rather than at the mathematical center outside a concave or donut shape.",
+      "ar": "تولد أداة Feature To Point مراكز المعالم؛ ويضمن تفعيل خيار 'Inside' وقوع النقطة حتماً داخل حدود المضلع، متجنباً وقوعها خارج المضلعات الهلالية أو ذات الفجوات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Negative buffer shrinks polygons but does not output point feature classes.",
+        "C": "Add Join joins attributes.",
+        "D": "XY Table to Point reads X/Y table coordinates."
+      },
+      "ar": {
+        "B": "الحرم السالب يقلص المضلع ولا يُخرج طبقة نقاط.",
+        "C": "يربط Add Join الجداول.",
+        "D": "تسقط XY Table to Point النقاط من إحداثيات الجدول."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Overlay toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-056",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Point Distance"
+    ],
+    "question": {
+      "en": "Which tool computes point-to-point distances between every point in an input layer and every point in a near layer, outputting a complete matrix table of all distances?",
+      "ar": "أي أداة تحسب المسافات من نقطة إلى نقطة بين كل نقطة في طبقة الإدخال وكل نقطة في طبقة الهدف، وتُخرج مصفوفة جدولية كاملة لجميع المسافات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Point Distance",
+          "ar": "Point Distance"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Dissolve",
+          "ar": "Dissolve"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Union",
+          "ar": "Union"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Point Distance computes the distance from each point in the input features to all points in the near features within a specified search radius, outputting a table with INPUT_FID, NEAR_FID, and DISTANCE.",
+      "ar": "تحسب أداة Point Distance المسافة من كل نقطة مدخلة إلى كافة نقاط طبقة المقارنة ضمن مسافة بحث محددة، وتُخرج جدولاً يحتوي على معرفات النقاط والمسافة المحسوبة بين كل زوج."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Clip cuts features.",
+        "C": "Dissolve aggregates geometries.",
+        "D": "Union overlays polygons."
+      },
+      "ar": {
+        "B": "تقص Clip المعالم.",
+        "C": "تدمج Dissolve الأشكال.",
+        "D": "تجري Union تراكباً للمضلعات."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Proximity toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-proximity-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-057",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Append"
+    ],
+    "question": {
+      "en": "An analyst has field survey points collected today in a shapefile and needs to append them directly into an existing enterprise geodatabase feature class schema. Which tool should be used?",
+      "ar": "لدى محلل نقاط مسح ميداني جُمعت اليوم في ملف shapefile ويحتاج لإضافتها مباشرة إلى فئة معالم قائمة في قاعدة بيانات مؤسسية. أي أداة يجب استخدامها؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Append",
+          "ar": "Append (إلحاق السجلات)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Spatial Join",
+          "ar": "Spatial Join"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Intersect",
+          "ar": "Intersect"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Create Feature Class",
+          "ar": "Create Feature Class"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Append inserts features and records from one or more input datasets into an existing target dataset, with field mapping capabilities (TEST or NO_TEST schema matching).",
+      "ar": "تضيف أداة Append المعالم والسجلات من طبقة أو أكثر إلى طبقة هدف قائمة بالفعل، مع دعم مطابقة الحقول (بخياري TEST أو NO_TEST)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Spatial Join creates a new file.",
+        "C": "Intersect calculates geometric intersections.",
+        "D": "Create Feature Class creates an empty schema."
+      },
+      "ar": {
+        "B": "ينشئ Spatial Join ملفاً جديداً.",
+        "C": "تحسب Intersect التقاطع الهندسي.",
+        "D": "تنشئ Create Feature Class مخططاً فارغاً."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-058",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Compare table joins and relates, relationship classes, and spatial joins",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Merge",
+      "Append"
+    ],
+    "question": {
+      "en": "What is the key operational difference between the Merge geoprocessing tool and the Append geoprocessing tool?",
+      "ar": "ما هو الفرق التشغيلي الأساسي بين أداة Merge وأداة Append في المعالجة الجغرافية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Merge creates an entirely new output dataset; Append loads features into an already existing target dataset",
+          "ar": "تنشئ أداة Merge ملف مخرجات جديد بالكامل؛ بينما تقوم أداة Append بتحميل وإضافة المعالم إلى طبقة هدف موجودة مسبقاً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Merge only works on raster files; Append works on vector files",
+          "ar": "تعمل Merge على الراستر فقط بينما Append على المتجهات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Append deletes all original records in the target layer before writing",
+          "ar": "تحذف أداة Append جميع السجلات الأصلية في الطبقة الهدف قبل الإضافة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Both tools perform identical operations and exist only for backwards compatibility",
+          "ar": "تؤدي كلتا الأداتين نفس العملية تماماً ووجودهما للتوافق مع الإصدارات القديمة فقط"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Merge combines multiple input feature classes or tables into a brand new output dataset. Append adds rows directly into an existing target dataset without creating a new file.",
+      "ar": "تجمع أداة Merge عدة فئات معالم أو جداول في ملف مخرجات جديد كلياً. بينما تضيف أداة Append الصفوف والمعالم مباشرة داخل طبقة هدف قائمة دون إنشاء ملف جديد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Both tools are vector feature and tabular tools.",
+        "C": "Append preserves existing target records and appends new ones to the bottom.",
+        "D": "They serve fundamentally different workflow roles (new file creation vs loading into existing schema)."
+      },
+      "ar": {
+        "B": "كلتا الأداتين مخصصتان للبيانات الاتجاهية والجداول.",
+        "C": "تحافظ أداة Append على السجلات القائمة وتضيف السجلات الجديدة إليها.",
+        "D": "تختلفان وظيفياً (إنشاء ملف جديد مقابل تحميل بيانات في هيكل قائم)."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-059",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, apply a query",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Select Layer By Location"
+    ],
+    "question": {
+      "en": "How can an analyst select all water wells that do NOT fall within a 500-meter contamination buffer zone using Select Layer By Location?",
+      "ar": "كيف يمكن للمحلل تحديد كافة آبار المياه التي لا تقع ضمن نطاق التلوث البالغ 500 متر باستخدام أداة Select Layer By Location؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Configure the spatial relationship to 'Within a distance' of 500 meters and check the 'Invert Spatial Relationship' box",
+          "ar": "ضبط العلاقة المكانية على 'Within a distance' بمسافة 500 متر مع تفعيل خيار 'Invert Spatial Relationship'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete the contamination buffer layer",
+          "ar": "حذف طبقة حرم التلوث"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Change the wells symbology to red",
+          "ar": "تغيير رموز الآبار إلى اللون الأحمر"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export the wells to an Excel spreadsheet",
+          "ar": "تصدير الآبار إلى جدول إكسل"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Checking 'Invert Spatial Relationship' selects features that do NOT satisfy the specified spatial relationship, cleanly selecting all points situated outside the buffer.",
+      "ar": "يؤدي تفعيل خيار 'Invert Spatial Relationship' إلى عكس نتيجة التحديد المكاني واختيار المعالم التي لا ينطبق عليها الشرط، مما يحدد كافة الآبار الواقعة خارج النطاق."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Deleting data loses spatial reference.",
+        "C": "Symbology is visual.",
+        "D": "Excel does not evaluate spatial proximity inversion."
+      },
+      "ar": {
+        "B": "حذف البيانات يفقد المرجع المكاني.",
+        "C": "الرموز للعرض البصري.",
+        "D": "إكسل لا يعكس العلاقات المكانية."
+      }
+    },
+    "references": [
+      {
+        "title": "Joins and relates overview, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/tables/joins-and-relates-overview.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-060",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Polygon to Raster"
+    ],
+    "question": {
+      "en": "When using Polygon to Raster to convert land use polygons into a grid, which parameter dictates which attribute code is assigned to cells that overlap two different land use polygons?",
+      "ar": "عند استخدام أداة Polygon to Raster لتحويل مضلعات استخدامات الأراضي إلى شبكة، أي معامل يحدد كود السمة الذي يُعطى للخلايا التي تتداخل مع مضلعي استخدام مختلفين؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Cell assignment type (e.g. CELL_CENTER, MAXIMUM_AREA, MAXIMUM_COMBINED_AREA)",
+          "ar": "نوع تخصيص الخلية (مثل CELL_CENTER، MAXIMUM_AREA، MAXIMUM_COMBINED_AREA)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Output Coordinate System",
+          "ar": "نظام الإحداثيات المخرج"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Geographic Transformation",
+          "ar": "التحويل الجغرافي"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Spatial Reference Tolerance",
+          "ar": "تسامح المرجع المكاني"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Cell Assignment Type parameter controls how the value of a cell is determined when more than one feature overlaps it (e.g., assigning based on which polygon covers the cell center or covers the largest surface area).",
+      "ar": "يتحكم معامل Cell Assignment Type في كيفية تحديد قيمة الخلية عند اشتراك أكثر من معلم في تغطيتها (مثل تخصيص القيمة بناءً على المضلع الذي يغطي مركز الخلية أو يغطي المساحة الأكبر)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Coordinate system defines spatial reference, not cell assignment.",
+        "C": "Datum transformation handles shifts.",
+        "D": "Tolerance controls vertex snapping."
+      },
+      "ar": {
+        "B": "نظام الإحداثيات يحدد الإسقاط.",
+        "C": "التحويل الجغرافي يعالج المراجع.",
+        "D": "التسامح يتحكم في الانجذاب."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-061",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Given a scenario, determine the appropriate geoprocessing tool",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Multiple Ring Buffer"
+    ],
+    "question": {
+      "en": "Which tool creates a series of concentric buffer rings at multiple specified distances (e.g., 100m, 200m, and 500m) around a central fire station in a single execution?",
+      "ar": "أي أداة تنشئ سلسلة من حلقات الحرم متحدة المركز بمسافات متعددة محددة (مثل 100م و 200م و 500م) حول مركز إطفاء في عملية تشغيل واحدة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Multiple Ring Buffer",
+          "ar": "Multiple Ring Buffer (نطاقات الحلقات المتعددة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق البسيط)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip (القص)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Near",
+          "ar": "Near (الأقرب)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Multiple Ring Buffer creates multiple concentric buffer polygons at user-specified distance intervals around input features in one step.",
+      "ar": "تنشئ أداة Multiple Ring Buffer عدة حلقات حرم متحدة المركز بمسافات يحددها المستخدم حول معالم الإدخال في خطوة واحدة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Standard Buffer only supports a single distance parameter per execution.",
+        "C": "Clip cuts boundaries.",
+        "D": "Near calculates distances to points."
+      },
+      "ar": {
+        "B": "أداة Buffer القياسية تدعم مسافة واحدة فقط في كل تشغيل.",
+        "C": "تقص Clip الحدود.",
+        "D": "تحسب Near المسافات للنقاط."
+      }
+    },
+    "references": [
+      {
+        "title": "An overview of the Proximity toolset, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/an-overview-of-the-proximity-toolset.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "AGP-062",
+    "kind": "mcq",
+    "domain": "Analysis and Geoprocessing",
+    "objective": "Apply raster functions for raster and image processing",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Con"
+    ],
+    "question": {
+      "en": "Which Spatial Analyst conditional tool performs an if/else conditional evaluation on raster cells, outputting one value if a condition is true and an alternative value if false?",
+      "ar": "أي أداة شرطية في Spatial Analyst تجري تقييماً شرطياً (if/else) على خلايا الراستر، بحيث تُخرج قيمة معينة إذا تحقق الشرط وقيمة بديلة إذا لم يتحقق؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Con",
+          "ar": "Con (الأداة الشرطية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Set Null",
+          "ar": "Set Null"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Pick",
+          "ar": "Pick"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Test",
+          "ar": "Test"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Con (Conditional) tool evaluates an input conditional raster expression and returns values from the 'true' raster/constant if true, or the 'false' raster/constant if false.",
+      "ar": "تقوم أداة Con (الشرطية) بتقييم تعبير شرطي على الراستر وتُعيد قيمة مخصصة إذا كان الشرط صحيحاً (True)، أو قيمة بديلة إذا كان خاطئاً (False)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Set Null converts matching cells to NoData.",
+        "C": "Pick selects values from a list of rasters based on an index.",
+        "D": "Test evaluates boolean true/false returning 1/0 only."
+      },
+      "ar": {
+        "B": "تحول Set Null الخلايا المطابقة إلى NoData.",
+        "C": "تختار Pick قيماً من قائمة راستر.",
+        "D": "ترجع Test القيمة 1 أو 0 فقط."
+      }
+    },
+    "references": [
+      {
+        "title": "Raster functions, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/raster-functions/raster-functions.htm",
+        "kind": "official"
+      }
+    ]
+  }
+]

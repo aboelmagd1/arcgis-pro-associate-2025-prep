@@ -1,0 +1,3509 @@
+[
+  {
+    "id": "DM-S-001",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Troubleshooting",
+    "tools": [
+      "Split",
+      "Split Policy"
+    ],
+    "context": {
+      "en": "A municipal tax department splits a 20-acre commercial parcel with an assessed value of $1,000,000 into two equal 10-acre parcels using the Split editing tool. After saving edits, the attribute table shows that both new parcels list an assessed value of $1,000,000 each, artificially doubling the recorded value on the tax roll.",
+      "ar": "قام قسم الضرائب العقارية بتقسيم قطعة أرض تجارية مساحتها 20 فداناً وقيمتها التقديرية 1,000,000 دولار إلى قطعتين متساويتين (10 أفدنة لكل منهما) باستخدام أداة Split. بعد حفظ التعديلات، أظهر جدول البيانات أن كلا القطعتين تحملان قيمة 1,000,000 دولار، مما ضاعف القيمة المسجلة."
+    },
+    "question": {
+      "en": "What geodatabase configuration error caused this duplicate valuation?",
+      "ar": "ما هو خطأ تهيئة قاعدة البيانات الجغرافية الذي تسبب في هذه القيمة المكررة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The Split Policy for the assessed value field was set to Duplicate instead of Geometry Ratio",
+          "ar": "كانت سياسة التقسيم (Split Policy) لحقل القيمة التقديرية مضبوطة على Duplicate بدلاً من Geometry Ratio"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The feature class was missing an attribute index",
+          "ar": "كانت فئة المعالم تفتقر إلى فهرس سماتي"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The map coordinate system was set to WGS 1984 Web Mercator",
+          "ar": "كان نظام إحداثيات الخريطة مضبوطاً على WGS 1984 Web Mercator"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Branch versioning was not enabled on the geodatabase",
+          "ar": "لم يتم تفعيل التفريع النسخي على قاعدة البيانات"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A field's Split Policy dictates attribute behavior when a feature is cut. The 'Duplicate' policy copies the original value into all resultant parts, whereas 'Geometry Ratio' divides the value proportionally based on the resulting area ratios.",
+      "ar": "تحدد سياسة التقسيم (Split Policy) سلوك القيم عند قطع المعلم؛ وتنسخ سياسة Duplicate القيمة الأصلية بالكامل لكل جزء ناتج، بينما تقسم سياسة Geometry Ratio القيمة تناسبياً بحسب مساحة كل قطعة ناتجة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Attribute indexes optimize search query speeds and do not govern editing split behaviors.",
+        "C": "Coordinate projections do not alter attribute split policies.",
+        "D": "Branch versioning manages multi-user editing concurrency, not attribute division logic."
+      },
+      "ar": {
+        "B": "الفهارس السماتية تسرع الاستعلامات ولا تتحكم في سلوك التقسيم.",
+        "C": "أنظمة الإحداثيات لا تغير سياسات تقسيم السمات.",
+        "D": "التفريع النسخي يدير التزامن التحريري ولا يقسم السمات."
+      }
+    },
+    "references": [
+      {
+        "title": "Subtypes and attribute domains, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/subtypes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-002",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage coordinate systems to preserve the desired spatial properties",
+    "difficulty": "Beginner",
+    "type": "Troubleshooting",
+    "tools": [
+      "Define Projection"
+    ],
+    "context": {
+      "en": "A GIS technician imports a civil engineering CAD drawing (.dwg) containing water mains into ArcGIS Pro. When added to the map, a warning appears stating 'Unknown Coordinate System'. Examining the layer extent reveals coordinate numbers such as X: 2,154,320 and Y: 685,410, which exactly match the local State Plane coordinate system in US Survey Feet.",
+      "ar": "استورد فني GIS رسم CAD هندسي (.dwg) لشبكات مياه إلى ArcGIS Pro، وظهر تحذير 'نظام إحداثيات غير معروف'. وبفحص نطاق الطبقة تبين أن الأرقام مثل X: 2,154,320 و Y: 685,410 تتطابق تماماً مع نظام State Plane المحلي بالأقدام المساحية الأمريكية."
+    },
+    "question": {
+      "en": "What should the technician do to correctly register this dataset in ArcGIS Pro?",
+      "ar": "ما الذي يجب على الفني فعله لتسجيل هذه البيانات بشكل صحيح في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Run the Define Projection tool and assign the matching State Plane Projected Coordinate System",
+          "ar": "تشغيل أداة Define Projection وتعيين نظام الإحداثيات المسقط State Plane المطابق"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Run the Project tool to reproject the dataset to WGS 1984",
+          "ar": "تشغيل أداة Project لإعادة إسقاط البيانات إلى WGS 1984"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Change the Windows system locale to United States",
+          "ar": "تغيير إعدادات المنطقة لنظام تشغيل ويندوز إلى الولايات المتحدة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Delete the CAD file and request a shapefile instead",
+          "ar": "حذف ملف CAD وطلب ملف shapefile بدلاً منه"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The coordinates already physically exist in the correct coordinate space; only the metadata definition (.prj) is missing. Define Projection assigns the coordinate system definition without altering the coordinate values.",
+      "ar": "الإحداثيات الفعلية موجودة بالفعل بالنظام الصحيح، والمفقود هو ملف التعريف (.prj) فقط؛ لذا تُستخدم أداة Define Projection لتعريف النظام دون المساس بأرقام الإحداثيات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Running Project on an Unknown coordinate system produces invalid transformed data.",
+        "C": "Operating system regional locale does not define GIS projections.",
+        "D": "CAD files are fully supported natively in ArcGIS Pro."
+      },
+      "ar": {
+        "B": "تشغيل Project على نظام غير معروف ينتج بيانات مشوهة.",
+        "C": "إعدادات نظام التشغيل لا تعرف الإسقاط.",
+        "D": "ملفات CAD مدعومة بالكامل في البرنامج."
+      }
+    },
+    "references": [
+      {
+        "title": "Map projections and coordinate systems, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-003",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Workflow-based",
+    "tools": [
+      "Subtypes",
+      "Coded Value Domain"
+    ],
+    "context": {
+      "en": "A water utility maintains a single line feature class named Water_Mains. Transmission mains must only allow pipe diameters of 16, 24, 36, and 48 inches. Distribution mains must only allow diameters of 4, 6, 8, and 12 inches. Field workers must be prevented from entering invalid diameters.",
+      "ar": "تدير شركة مياه فئة معالم خطية واحدة باسم Water_Mains. خطوط النقل الرئيسية يجب أن تسمح فقط بأقطار 16 و 24 و 36 و 48 بوصة؛ بينما خطوط التوزيع يجب أن تسمح فقط بأقطار 4 و 6 و 8 و 12 بوصة. ويجب منع العاملين من إدخال أقطار خاطئة."
+    },
+    "question": {
+      "en": "How should the geodatabase schema be architected to enforce this requirement within a single feature class?",
+      "ar": "كيف يجب تصميم مخطط قاعدة البيانات لفرض هذا المتطلب داخل فئة معالم واحدة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Configure Subtypes on a Pipe_Type integer field, and assign distinct Coded Value Domains for diameter to each subtype",
+          "ar": "تهيئة تصنيفات فرعية (Subtypes) على حقل Pipe_Type، وتعيين نطاقات قيم مشفرة (Domains) مختلفة للقطر لكل تصنيف"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Create two separate feature classes and link them with a relationship class",
+          "ar": "إنشاء فئتي معالم منفصلتين وربطهما بفئة علاقة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Configure a single Range Domain from 4 to 48 on the diameter field",
+          "ar": "تهيئة نطاق مدى واحد (Range Domain) من 4 إلى 48 على حقل القطر"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Add an attribute rule in Python to restart the database on invalid edits",
+          "ar": "إضافة قاعدة سمات ببايثون لإعادة تشغيل قاعدة البيانات عند الخطأ"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Subtypes allow a single feature class to categorize features and assign unique default values and distinct Coded Value Domains to other fields based on the subtype category.",
+      "ar": "تتيح التصنيفات الفرعية (Subtypes) تصنيف معالم الطبقة الواحدة وتعيين قيم افتراضية ونطاقات قيم مشفرة (Coded Value Domains) مستقلة لكل تصنيف على حدة لضبط جودة الإدخال."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Splitting into multiple feature classes creates unnecessary data fragmentation.",
+        "C": "A single range domain allows transmission pipes to mistakenly receive 4-inch diameters.",
+        "D": "Attribute rules run Arcade, not Python database restart scripts."
+      },
+      "ar": {
+        "B": "تجزئة البيانات لفئات متعددة يسبب تشتت البيانات.",
+        "C": "نطاق المدى الواحد يسمح باختيار أقطار غير مناسبة لنوع الخط.",
+        "D": "قواعد السمات تعمل بـ Arcade ولا تعيد تشغيل الخوادم."
+      }
+    },
+    "references": [
+      {
+        "title": "Subtypes and attribute domains, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/subtypes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-004",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Attribute Rules"
+    ],
+    "context": {
+      "en": "A municipal gas pipeline operator requires that whenever an editor creates or edits a valve feature, the system must immediately reject the transaction, roll back the edit, and display an error message if the recorded pressure exceeds the maximum rated pressure of the connected pipe.",
+      "ar": "تتطلب شركة أنابيب غاز أنه عند إنشاء أو تعديل محبس، يجب على النظام رفض العملية فوراً والتراجع عن التعديل وعرض رسالة خطأ للمحرر إذا تجاوز الضغط المسجل الحد الأقصى المسموح به للأنبوب المتصل."
+    },
+    "question": {
+      "en": "Which type of Geodatabase Attribute Rule must be implemented?",
+      "ar": "أي نوع من قواعد السمات (Attribute Rules) في قاعدة البيانات الجغرافية يجب تطبيقه؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Constraint Attribute Rule",
+          "ar": "قاعدة سمات مقيدة (Constraint Attribute Rule)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Calculation Attribute Rule (Immediate)",
+          "ar": "قاعدة سمات حسابية فورية (Immediate Calculation)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Validation Attribute Rule",
+          "ar": "قاعدة سمات تحققية (Validation Attribute Rule)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Batch Calculation Attribute Rule",
+          "ar": "قاعدة سمات حسابية مجمعة (Batch Calculation)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Constraint rules evaluate Arcade expressions during the edit operation; if the expression evaluates to false, the edit is completely blocked, the transaction is rolled back, and a custom error message is presented.",
+      "ar": "تُقيم قواعد القيد (Constraint Rules) تعبيرات Arcade أثناء عملية التحرير مباشرة؛ وإذا كانت النتيجة False، يتم حظر التعديل كلياً والتراجع عن المعاملة وإظهار رسالة خطأ مخصصة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Calculation rules populate field values, they do not block invalid transactions.",
+        "C": "Validation rules evaluate asynchronously via the Error Inspector without blocking the edit.",
+        "D": "Batch calculation runs on demand across multiple rows."
+      },
+      "ar": {
+        "B": "القواعد الحسابية تملأ قيم الحقول ولا تحظر المعاملات.",
+        "C": "قواعد التحقق تُقيم لاحقاً في Error Inspector دون منع الحفظ.",
+        "D": "الحساب المجمع يعمل عند الطلب ولا يحظر الإدخال المباشر."
+      }
+    },
+    "references": [
+      {
+        "title": "Attribute rules for data integrity, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/an-overview-of-attribute-rules.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-005",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Troubleshooting",
+    "tools": [
+      "Geodatabase Topology"
+    ],
+    "context": {
+      "en": "A county tax assessor's office requires that parcel boundaries must fit together seamlessly like a puzzle: no parcel polygon may overlap another, and no unintended empty gaps may exist between adjacent lots.",
+      "ar": "يتطلب مكتب التقييم العقاري تطابق حدود قطع الأراضي بسلاسة كقطع الأحجية: لا يجوز لأي مضلع أرض التداخل مع آخر، ولا يجوز وجود فجوات فراغية بين القطع المتجاورة."
+    },
+    "question": {
+      "en": "Which pair of Geodatabase Topology rules should be created inside the parcel feature dataset?",
+      "ar": "أي زوج من قواعد طوبولوجيا قاعدة البيانات الجغرافية يجب إنشاؤه داخل مجموعة بيانات الأراضي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "'Must Not Overlap' and 'Must Not Have Gaps'",
+          "ar": "'Must Not Overlap' و 'Must Not Have Gaps'"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "'Point Must Be Covered By Line' and 'Must Not Self-Intersect'",
+          "ar": "'Point Must Be Covered By Line' و 'Must Not Self-Intersect'"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "'Must Be Inside' and 'Contains Point'",
+          "ar": "'Must Be Inside' و 'Contains Point'"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "'Must Be Larger Than 1 Acre' and 'Snap to Road'",
+          "ar": "'Must Be Larger Than 1 Acre' و 'Snap to Road'"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "For cadastral parcel fabrics and parcel boundaries, 'Must Not Overlap' prevents overlapping property claims and 'Must Not Have Gaps' flags slivers and unmapped voids between lots.",
+      "ar": "لقطع الأراضي المساحية، تمنع قاعدة 'Must Not Overlap' نزاعات الملكية الناتجة عن التداخل، وتكتشف قاعدة 'Must Not Have Gaps' الفجوات والشرائح غير الممسوحة بين القطع."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Point rules do not apply to polygon parcel boundaries.",
+        "C": "These are not standard geodatabase topology rule names.",
+        "D": "Acreage thresholds are attribute constraints, not spatial topology rules."
+      },
+      "ar": {
+        "B": "قواعد النقاط لا تنطبق على مضلعات الأراضي.",
+        "C": "ليست أسماء قواعد طوبولوجيا قياسية.",
+        "D": "حدود المساحات قيود سمات وليست قواعد طوبولوجيا مكانية."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase topology and error inspection, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/topology-in-arcgis.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-006",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Error Inspector"
+    ],
+    "context": {
+      "en": "During topology validation of a city road centerline layer with the rule 'Must Not Have Dangles', cul-de-sacs (dead-end streets) are correctly flagged as dangle errors. However, cul-de-sacs are legitimate design features that should remain unconnected.",
+      "ar": "أثناء التحقق الطوبولوجي من طبقة محاور شوارع المدينة بقاعدة 'Must Not Have Dangles'، تم وضع علامة خطأ تعليق (Dangle) على الشوارع المسدودة (Cul-de-sacs)، مع أنها شوارع مصممة نظامياً كنهايات مغلقة."
+    },
+    "question": {
+      "en": "How should the GIS technician resolve these valid dead-end streets in the Error Inspector pane?",
+      "ar": "كيف يجب على فني نظم المعلومات الجغرافية معالجة هذه الشوارع المسدودة النظامية في نافذة Error Inspector؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Mark each valid dead-end street error as an Exception",
+          "ar": "تمييز كل خطأ شارع مسدود نظامي كاستثناء (Mark as Exception)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete the cul-de-sac features from the road network",
+          "ar": "حذف معالم الشوارع المسدودة من شبكة الطرق"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Extend the dead ends until they cross a highway",
+          "ar": "مد نهايات الشوارع المسدودة حتى تقطع طريقاً سريعاً"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Delete the geodatabase topology permanently",
+          "ar": "حذف طوبولوجيا قاعدة البيانات نهائياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In ArcGIS Pro topology management, real-world conditions that intentionally violate a rule (like genuine cul-de-sacs under a dangle rule) should be marked as Exceptions in the Error Inspector so they are excluded from future error reports.",
+      "ar": "في إدارة الطوبولوجيا، تُعتبر الحالات الواقعية المصممة عمداً كاستثناءات (مثل النهايات المسدودة الطبيعية) معالم صحيحة؛ ويجب تمييزها كاستثناء (Mark as Exception) لإخفائها من تقارير الأخطاء اللاحقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Deleting valid streets destroys accurate transportation inventory.",
+        "C": "Artificially extending streets invents false geographic connections.",
+        "D": "Deleting topology removes quality control for the entire network."
+      },
+      "ar": {
+        "B": "حذف الشوارع النظامية يدمر بيانات شبكة النقل.",
+        "C": "مد الشوارع بشكل وهمي يختلق بيانات مضللة.",
+        "D": "حذف الطوبولوجيا يلغي مراقبة الجودة عن كامل الشبكة."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase topology and error inspection, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/topology-in-arcgis.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-007",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Contingent Values"
+    ],
+    "context": {
+      "en": "An electric utility models utility poles. If Pole_Material is 'Wood', the Pole_Height field must only offer 30, 35, and 40 feet, and Pole_Class must offer 1, 2, and 3. If Pole_Material is 'Steel', Pole_Height must offer 60, 80, and 100 feet, and Pole_Class must offer A, B, and C.",
+      "ar": "تدير شركة كهرباء أعمدة الإنارة. إذا كانت مادة العمود 'Wood'، يجب أن يقدم حقل الارتفاع خيارات 30 و 35 و 40 قدماً فقط، وحقل الفئة 1 و 2 و 3. وإذا كانت المادة 'Steel'، يجب أن يقدم الارتفاع 60 و 80 و 100 قدم، والفئة A و B و C."
+    },
+    "question": {
+      "en": "Which geodatabase feature capability configures interdependent drop-down domain lists across multiple related fields?",
+      "ar": "أي ميزة في قاعدة البيانات الجغرافية تُهيئ قوائم منسدلة مترابطة ومرتهنة ببعضها عبر عدة حقول سماتية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Contingent Values (Field Groups)",
+          "ar": "القيم المشروطة Contingent Values (مجموعات الحقول Field Groups)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Subtypes alone without domains",
+          "ar": "التصنيفات الفرعية بمفردها دون نطاقات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Simple Relationship Class",
+          "ar": "فئة علاقة بسيطة Simple Relationship Class"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Raster Mosaic Dataset",
+          "ar": "مجموعة بيانات موزاييك راستر"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Contingent Values create field groups where valid choices in secondary fields depend directly on the value selected in primary fields, preventing invalid combinations during editing.",
+      "ar": "تنشئ القيم المشروطة (Contingent Values) مجموعات حقول مترابطة بحيث ترتهن الخيارات المتاحة في الحقول التابعة بالقيمة المختارة في الحقل الرئيسي، مما يمنع المدخلات غير المتوافقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Subtypes only branch on a single integer field, not multi-tier dependent choices.",
+        "C": "Relationship classes link distinct tables, they do not filter in-line field domains.",
+        "D": "Mosaic datasets manage imagery collections."
+      },
+      "ar": {
+        "B": "التصنيفات الفرعية تعتمد على حقل واحد فقط ولا تدعم اختيارات متسلسلة متعددة.",
+        "C": "فئات العلاقات تربط جداول مستقلة ولا تدير قوائم منسدلة.",
+        "D": "مجموعات الموزاييك مخصصة للصور الفضائية."
+      }
+    },
+    "references": [
+      {
+        "title": "Subtypes and attribute domains, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/subtypes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-008",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Compact"
+    ],
+    "context": {
+      "en": "An editor deletes 250,000 obsolete records from a large File Geodatabase table. However, checking Windows File Explorer reveals that the .gdb directory size on disk has not decreased at all.",
+      "ar": "قام محرر بحذف 250,000 سجل قديم من جدول كبير في File Geodatabase؛ ولكن عند فحص حجم مجلد .gdb في متصفح ملفات ويندوز تبين أن المساحة المستهلكة على القرص لم تنقص إطلاقاً."
+    },
+    "question": {
+      "en": "Which tool must be executed to reclaim the unused disk space and reorganize internal database storage?",
+      "ar": "أي أداة يجب تشغيلها لاستعادة المساحة الفارغة غير المستخدمة على القرص وإعادة تنظيم التخزين الداخلي لقاعدة البيانات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Compact",
+          "ar": "Compact (ضغط وتنسيق قاعدة البيانات)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Add Global IDs",
+          "ar": "Add Global IDs"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Enable Archiving",
+          "ar": "Enable Archiving"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Register As Versioned",
+          "ar": "Register As Versioned"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Compact tool cleans up fragmented storage in file and mobile geodatabases, freeing unused disk space left behind after extensive deletes and edits, and rebuilds spatial and attribute indexes.",
+      "ar": "تقوم أداة Compact بتنظيف التخزين المجزأ واستعادة المساحات الفارغة غير المستخدمة بعد عمليات الحذف الضخمة، وتعيد ترتيب السجلات وبناء الفهارس لتحسين الأداء وتقليص الحجم."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Global IDs add unique identifier columns.",
+        "C": "Enable Archiving logs historical edits, which actually increases database size.",
+        "D": "Register As Versioned enables multi-user versioning."
+      },
+      "ar": {
+        "B": "تضيف Global IDs أعمدة معرفات فريدة.",
+        "C": "تفعيل الأرشفة يسجل التغييرات ويزيد حجم القاعدة.",
+        "D": "التسجيل بإصدارات يدير التحرير التشاركي."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-009",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Troubleshooting",
+    "tools": [
+      "Repair Geometry"
+    ],
+    "context": {
+      "en": "An analyst attempts to calculate polygon area using Calculate Field, but the tool fails with an error indicating 'Self-intersection' and 'Null geometry' in several features.",
+      "ar": "حاول محلل حساب مساحة مضلعات باستخدام أداة Calculate Field، لكن الأداة فشلت وظهرت رسالة خطأ تفيد بوجود 'تقاطع ذاتي' (Self-intersection) وهندسة فارغة (Null geometry) في عدة معالم."
+    },
+    "question": {
+      "en": "Which tool should be run to inspect and automatically fix these invalid geometric vertices in the feature class?",
+      "ar": "أي أداة يجب تشغيلها لفحص وإصلاح هذه الرؤوس الهندسية غير الصالحة تلقائياً في فئة المعالم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Repair Geometry",
+          "ar": "Repair Geometry (إصلاح الهندسة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Project",
+          "ar": "Project (إعادة الإسقاط)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Add Field",
+          "ar": "Add Field (إضافة حقل)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Calculate Geometry Attributes",
+          "ar": "Calculate Geometry Attributes"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Repair Geometry modifies invalid geometries in-place, fixing self-intersections, removing null vertices, and correcting incorrect exterior/interior ring orientations.",
+      "ar": "تعدل أداة Repair Geometry المعالم المعطوبة مباشرة في مكانها، فتصلح التقاطعات الذاتية وتحذف الرؤوس الفارغة وتصحح اتجاهات الحلقات الداخلية والخارجية للمضلعات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Project transforms coordinate systems and will fail or corrupt invalid geometries.",
+        "C": "Add Field creates new table columns.",
+        "D": "Calculate Geometry Attributes calculates properties on valid geometries."
+      },
+      "ar": {
+        "B": "أداة Project ستفشل مع المعالم ذات الهندسة الفاسدة.",
+        "C": "إضافة حقل تنشئ عموداً جديداً.",
+        "D": "حساب السمات الهندسية يتطلب هندسة سليمة أولاً."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-010",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Workflow-based",
+    "tools": [
+      "Make Route Event Layer"
+    ],
+    "context": {
+      "en": "A Department of Transportation maintains a highway polyline layer calibrated with M-values representing mileposts. An Excel spreadsheet contains accident logs with fields: HIGHWAY_ID, MILEPOST, and ACCIDENT_SEVERITY.",
+      "ar": "تدير وزارة النقل طبقة محاور طرق سريعة معايرة بقيم M تمثل علامات الأميال (Mileposts). ويحتوي جدول إكسل على سجلات الحوادث بحقول: HIGHWAY_ID، و MILEPOST، و ACCIDENT_SEVERITY."
+    },
+    "question": {
+      "en": "Which tool dynamically plots these accident locations along the highway lines based on their milepost values without requiring X/Y coordinates?",
+      "ar": "أي أداة تسقط مواقع هذه الحوادث ديناميكياً على طول مسارات الطرق بالاعتماد على قيم علامات الأميال دون الحاجة لإحداثيات X و Y؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Make Route Event Layer",
+          "ar": "Make Route Event Layer"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "XY Table To Point",
+          "ar": "XY Table To Point"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Spatial Join",
+          "ar": "Spatial Join"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Geocode Addresses",
+          "ar": "Geocode Addresses"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Make Route Event Layer matches route identifiers and measure values (M-values) from an event table against a measured route layer to dynamically generate point or line features (dynamic segmentation).",
+      "ar": "تطابق أداة Make Route Event Layer معرفات الطرق وقيم المقاييس (قيم M) من جدول الأحداث مع طبقة المسارات المعايرة لتوليد معالم نقطية أو خطية ديناميكياً (التجزئة الديناميكية)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "XY Table To Point requires explicit X/Y Cartesian coordinates.",
+        "C": "Spatial Join requires pre-existing spatial geometries.",
+        "D": "Geocode Addresses requires street address text and locators."
+      },
+      "ar": {
+        "B": "تتطلب XY Table To Point إحداثيات X و Y صريحة.",
+        "C": "يتطلب Spatial Join وجود هندسة مكانية مسبقة.",
+        "D": "تتطلب Geocode Addresses عناوين نصية ومحدد مواقع."
+      }
+    },
+    "references": [
+      {
+        "title": "Linear referencing and dynamic segmentation, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/an-overview-of-linear-referencing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-011",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Create Feature Dataset"
+    ],
+    "context": {
+      "en": "An analyst attempts to import a parcel shapefile projected in State Plane NAD 1983 into an existing Feature Dataset whose spatial reference is defined as UTM Zone 15N. The import tool throws a schema conflict error.",
+      "ar": "حاول محلل استيراد ملف shapefile لقطع الأراضي مسقط بنظام State Plane NAD 1983 إلى Feature Dataset معرف بنظام UTM Zone 15N، ففشلت الأداة وظهر خطأ تعارض في المخطط."
+    },
+    "question": {
+      "en": "What is the cause of this error in ArcGIS Pro?",
+      "ar": "ما هو سبب هذا الخطأ في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "All feature classes inside a Feature Dataset MUST share the exact same coordinate system and spatial reference",
+          "ar": "يجب أن تشترك كافة فئات المعالم داخل Feature Dataset في نفس نظام الإحداثيات والمرجع المكاني تماماً"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Shapefiles cannot be imported into geodatabases",
+          "ar": "لا يمكن استيراد ملفات shapefile إلى الجيوداتابيس"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Feature datasets only support raster data",
+          "ar": "تدعم Feature datasets بيانات الراستر فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The analyst's computer has insufficient RAM",
+          "ar": "ذاكرة الحاسوب RAM غير كافية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "A Feature Dataset enforces a common spatial reference. Every dataset inside must share identical coordinate system, resolution, and tolerance values.",
+      "ar": "تفرض مجموعة بيانات المعالم (Feature Dataset) مرجعاً مكانياً موحداً؛ لذا يجب أن تتطابق جميع فئات المعالم بداخلها في نظام الإحداثيات وقيم الدقة والتسامح."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Shapefiles can be imported into geodatabases seamlessly.",
+        "C": "Feature datasets only hold vector feature classes.",
+        "D": "Schema rules are enforced by software logic, not RAM."
+      },
+      "ar": {
+        "B": "يمكن استيراد ملفات shapefile بسهولة.",
+        "C": "تحتوي مجموعات البيانات على معالم اتجاهية فقط.",
+        "D": "قواعد المخطط يفرضها البرنامج ولا علاقة لها بالذاكرة."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-012",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Workflow-based",
+    "tools": [
+      "Rematch Addresses"
+    ],
+    "context": {
+      "en": "After geocoding a table of 10,000 customer addresses against a composite locator, 350 addresses receive an 'Unmatched' status due to misspelled street names and missing postal codes.",
+      "ar": "بعد تكويد جدول يحتوي على 10,000 عنوان عميل جغرافياً عبر محدد مواقع مركب، حصل 350 عنواناً على حالة 'Unmatched' بسبب أخطاء إملائية في أسماء الشوارع وغياب الرموز البريدية."
+    },
+    "question": {
+      "en": "What interface in ArcGIS Pro provides an interactive environment to review candidate matches, correct addresses, and match remaining records?",
+      "ar": "ما هي الواجهة في ArcGIS Pro التي توفر بيئة تفاعلية لمراجعة العناوين المرشحة وتصحيح العناوين ومطابقة السجلات المتبقية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Rematch Addresses pane",
+          "ar": "نافذة إعادة مطابقة العناوين Rematch Addresses"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Error Inspector pane",
+          "ar": "نافذة Error Inspector"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Topology Properties dialog",
+          "ar": "نافذة خصائص الطوبولوجيا"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Catalog Options",
+          "ar": "خيارات الكتالوج"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Rematch Addresses pane allows filtering by status (Unmatched, Tied, Matched), reviewing candidate scores, manually correcting address text, and picking matched locations.",
+      "ar": "تتيح نافذة Rematch Addresses تصفية العناوين بحسب حالتها (غير مطابقة، متعادلة، مطابقة)، واستعراض درجات المرشحين وتصحيح الأخطاء الإملائية وتأكيد المطابقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Error Inspector reviews topology errors, not geocoding results.",
+        "C": "Topology properties configure geometric rules.",
+        "D": "Catalog options manage project settings."
+      },
+      "ar": {
+        "B": "نافذة Error Inspector خاصة بأخطاء الطوبولوجيا.",
+        "C": "خصائص الطوبولوجيا لضبط القواعد المكانية.",
+        "D": "خيارات الكتالوج تدير إعدادات المشروع."
+      }
+    },
+    "references": [
+      {
+        "title": "Geocoding and locators, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-geocoding-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-013",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Enable Attachments"
+    ],
+    "context": {
+      "en": "A building inspection department needs inspectors using mobile tablets to take multiple on-site photos of building violations and attach them directly to the corresponding parcel feature.",
+      "ar": "يحتاج قسم تفتيش المباني لتمكين المفتشين الميدانيين عبر الأجهزة اللوحية من التقاط صور متعددة لمخالفات البناء وإرفاقها مباشرة بالمعلم الجغرافي المقابل لقطعة الأرض."
+    },
+    "question": {
+      "en": "What tool must be run on the parcel feature class to enable storing photo files?",
+      "ar": "أي أداة يجب تشغيلها على فئة معالم قطع الأراضي لتمكين تخزين ملفات الصور المرفقة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Enable Attachments",
+          "ar": "Enable Attachments (تفعيل المرفقات)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Add Field of type Date",
+          "ar": "إضافة حقل من نوع Date"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Export Features",
+          "ar": "Export Features"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Compact",
+          "ar": "Compact"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Enable Attachments creates an attachment table (_ATTACH) and a composite relationship class linking features to multiple photos, documents, and media files.",
+      "ar": "تنشئ أداة Enable Attachments جدول مرفقات مستقل وفئة علاقة مركبة تربط كل معلم بصور وملفات متعددة في قاعدة البيانات."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Date fields store timestamps, not binary photos.",
+        "C": "Export Features copies data.",
+        "D": "Compact defragments disk space."
+      },
+      "ar": {
+        "B": "حقول التاريخ تخزن تواريخ وليس صوراً.",
+        "C": "تصدير المعالم ينسخ البيانات.",
+        "D": "أداة Compact تنظف المساحات الفارغة."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-014",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Attribute Rules"
+    ],
+    "context": {
+      "en": "Whenever a technician creates a new water meter point in ArcGIS Pro, the system must automatically populate its 'MUNICIPALITY' attribute field by performing a spatial query against an underlying city boundaries polygon layer.",
+      "ar": "كلما أنشأ فني نقطة عداد مياه جديدة في ArcGIS Pro، يجب على النظام ملء حقل 'MUNICIPALITY' تلقائياً بإجراء استعلام مكاني على طبقة حدود البلديات الواقعة أسفل النقطة."
+    },
+    "question": {
+      "en": "Which type of Attribute Rule and Arcade feature-set function should be configured?",
+      "ar": "أي نوع من القواعد السماتية ودوال Arcade لمجموعات المعالم يجب إعداده؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Immediate Calculation Attribute Rule using FeatureSetByName() and Intersects()",
+          "ar": "قاعدة حسابية فورية (Immediate Calculation) باستخدام دالتي FeatureSetByName() و Intersects()"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Constraint Attribute Rule using Length()",
+          "ar": "قاعدة مقيدة باستخدام دالة Length()"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Validation Attribute Rule using AreaGeodetic()",
+          "ar": "قاعدة تحقق باستخدام دالة AreaGeodetic()"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Topology rule 'Must Not Overlap'",
+          "ar": "قاعدة طوبولوجيا 'Must Not Overlap'"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Immediate Calculation rules execute during feature creation. Using FeatureSetByName($datastore, 'Cities') and Intersects() queries intersecting boundary attributes and populates the field instantly.",
+      "ar": "تنفذ القواعد الحسابية الفورية (Immediate Calculation) عند إنشاء المعلم؛ وتتيح دالتا FeatureSetByName و Intersects استعلام بيانات مضلع البلدية المتقاطع وحفظ اسمه تلقائياً في حقل النقطة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Constraint rules evaluate boolean conditions to block edits.",
+        "C": "Validation rules evaluate asynchronously in batch.",
+        "D": "Topology rules manage vector geometry coincident borders, not attribute transfer."
+      },
+      "ar": {
+        "B": "قواعد القيد تقيم شروطاً منطقية لمنع التعديل.",
+        "C": "قواعد التحقق تعمل بشكل مجمع لاحقاً.",
+        "D": "قواعد الطوبولوجيا تدير الحدود الهندسية وليس نقل البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Attribute rules for data integrity, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/an-overview-of-attribute-rules.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-015",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Map Topology"
+    ],
+    "context": {
+      "en": "An analyst needs to quickly move a shared boundary line between two zoning polygons in a standalone shapefile during an active edit session without creating a feature dataset or setting up persistent geodatabase rules.",
+      "ar": "يحتاج محلل لتحريك حد مشترك سريعاً بين مضلعي مخطط هيكلي في ملف shapefile مستقل أثناء جلسة تحرير، دون الحاجة لإنشاء Feature Dataset أو ضبط قواعد جيوداتابيس معقدة."
+    },
+    "question": {
+      "en": "Which editing capability should the analyst activate on the Edit ribbon?",
+      "ar": "أي ميزة تحرير يجب على المحلل تفعيلها في شريط التحرير (Edit Ribbon)؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Map Topology",
+          "ar": "طوبولوجيا الخريطة (Map Topology)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Geodatabase Topology",
+          "ar": "طوبولوجيا قاعدة البيانات (Geodatabase Topology)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Branch Versioning",
+          "ar": "التفريع النسخي (Branch Versioning)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Raster Snapping",
+          "ar": "انجذاب الراستر (Raster Snapping)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Map Topology allows editors to edit shared edges and vertices across coincident layers on-the-fly during an edit session without requiring geodatabase topology setups, working on shapefiles and CAD as well.",
+      "ar": "تتيح طوبولوجيا الخريطة (Map Topology) للمحررين تعديل الحواف والرؤوس المشتركة بين الطبقات المتطابقة آنياً أثناء جلسة التحرير دون الحاجة لإنشاء قواعد جيوداتابيس، وتعمل على ملفات shapefile أيضاً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Geodatabase Topology requires a Feature Dataset in a geodatabase.",
+        "C": "Branch versioning requires enterprise DBMS.",
+        "D": "Raster snapping snaps to raster cells, not shared vector edges."
+      },
+      "ar": {
+        "B": "طوبولوجيا الجيوداتابيس تتطلب Feature Dataset.",
+        "C": "التفريع النسخي يتطلب قواعد بيانات مؤسسية.",
+        "D": "انجذاب الراستر ينجذب للبكسلات."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase topology and error inspection, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/topology-in-arcgis.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-016",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Reshape"
+    ],
+    "context": {
+      "en": "An editor needs to update a section of a curved forest boundary polygon to match a recently realigned river channel.",
+      "ar": "يحتاج محرر لتحديث جزء من حد مضلع غابة متعرج ليتطابق مع مسار قناة نهرية تم تعديل مسارها حديثاً."
+    },
+    "question": {
+      "en": "Which editing tool allows drawing a replacement sketch across the polygon edge to update its shape?",
+      "ar": "أي أداة تحرير تتيح رسم مسار بديل عبر حافة المضلع لتحديث شكله؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Reshape",
+          "ar": "Reshape (إعادة التشكيل)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Divide",
+          "ar": "Divide (التقسيم)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Merge",
+          "ar": "Merge (الدمج)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Reshape tool replaces a portion of a line or polygon boundary with a new sketched geometry that starts and ends across the original feature edge.",
+      "ar": "تتيح أداة Reshape استبدال جزء من حدود المضلع أو الخط بمسار مرسوم جديد يبدأ وينتهي قاطعاً الحد الأصلي للمعلم لتحديث شكله بسلاسة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Buffer creates distance rings around features.",
+        "C": "Divide splits features into separate parts.",
+        "D": "Merge combines multiple features into one."
+      },
+      "ar": {
+        "B": "تنشئ Buffer مناطق حرم.",
+        "C": "تقسم أداة Divide المعالم.",
+        "D": "تدمج أداة Merge معالم متعددة."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-017",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Align Edge"
+    ],
+    "context": {
+      "en": "During boundary editing, a technician notices small sliver gaps between adjacent property lots.",
+      "ar": "أثناء تحرير الحدود، لاحظ الفني وجود فجوات وفواصل شريطية دقيقة بين قطع أراضٍ متجاورة."
+    },
+    "question": {
+      "en": "Which tool matches an edge to a coincident path in an adjacent layer within a search tolerance to eliminate sliver gaps?",
+      "ar": "أي أداة تطابق الحافة لتتبع مساراً مطابقاً في طبقة مجاورة ضمن مسافة تسامح لإزالة الفجوات الشريطية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Align Edge",
+          "ar": "Align Edge (محاذاة الحافة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip (القص)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Generalize",
+          "ar": "Generalize (التعميم)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Smooth",
+          "ar": "Smooth (التنعيم)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Align Edge conforms an edge of a polygon or polyline to match an adjoining edge within a search tolerance distance, cleanly closing sliver gaps.",
+      "ar": "تطابق أداة Align Edge حافة مضلع أو خط مع حافة مجاورة ضمن مسافة تسامح محددة، مما يغلق الفجوات الشريطية بدقة واحترافية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Clip cuts features by an extent.",
+        "C": "Generalize simplifies vertices.",
+        "D": "Smooth curves lines."
+      },
+      "ar": {
+        "B": "تقص أداة Clip المعالم.",
+        "C": "تبسط أداة Generalize الرؤوس.",
+        "D": "تنعم أداة Smooth الخطوط."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-018",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Traverse"
+    ],
+    "context": {
+      "en": "A surveyor enters boundary courses from a legal land deed: 'North 45 degrees East, 250.5 feet; thence South 80 degrees East, 180 feet'.",
+      "ar": "يقوم مساح بإدخال أضلاع مسار حدودي من صك أرض قانوني: 'شمال 45 درجة شرقاً، مسافة 250.5 قدم؛ ثم جنوب 80 درجة شرقاً، مسافة 180 قدماً'."
+    },
+    "question": {
+      "en": "Which tool should be used in the Modify Features pane to construct these boundary lines sequentially?",
+      "ar": "أي أداة يجب استخدامها في نافذة Modify Features لإنشاء هذه الخطوط الحدودية بالتتابع؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Traverse",
+          "ar": "Traverse (المضلع المساحي)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Reshape",
+          "ar": "Reshape (إعادة التشكيل)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Split",
+          "ar": "Split (التقسيم)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Simplify",
+          "ar": "Simplify (التبسيط)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Traverse tool enters sequential coordinate geometry (COGO) courses using directions, distances, curve radii, and arc lengths directly from survey records.",
+      "ar": "تتيح أداة Traverse إدخال أضلاع المسح المساحي (الهندسة الإحداثية COGO) بالاتجاهات والمسافات وأنصاف الأقطار مباشرة من الصكوك وسجلات المسح."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Reshape edits existing lines.",
+        "C": "Split cuts features.",
+        "D": "Simplify reduces vertices."
+      },
+      "ar": {
+        "B": "تعدل Reshape خطوطاً قائمة.",
+        "C": "تقطع أداة Split المعالم.",
+        "D": "تبسط أداة Simplify الرؤوس."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-019",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Check Geometry"
+    ],
+    "context": {
+      "en": "A quality control manager requires generating an audit report table detailing all topological flaws and self-intersections in a statewide pipeline dataset without making any modifications to the dataset.",
+      "ar": "طلب مدير مراقبة الجودة تقرير تدقيق جدولي يسرد كافة العيوب الطوبولوجية والتقاطعات الذاتية في شبكة أنابيب على مستوى الولاية دون إجراء أي تعديل على بيانات الطبقة."
+    },
+    "question": {
+      "en": "Which tool satisfies this read-only inspection requirement?",
+      "ar": "أي أداة تلبي هذا المطلب الفحصي للقراءة فقط دون تعديل البيانات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Check Geometry",
+          "ar": "Check Geometry (فحص الهندسة)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Repair Geometry",
+          "ar": "Repair Geometry (إصلاح الهندسة)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Delete Identical",
+          "ar": "Delete Identical (حذف المتطابق)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Simplify Line",
+          "ar": "Simplify Line (تبسيط الخطوط)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Check Geometry scans vector features and writes identified geometry problems (self-intersections, null geometries, incorrect ring order) into a standalone report table without modifying features.",
+      "ar": "تفحص أداة Check Geometry المعالم الاتجاهية وتكتب المشكلات الهندسية المكتشفة في جدول تقرير مستقل دون تعديل البيانات الأصلية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Repair Geometry fixes errors in-place, modifying the dataset.",
+        "C": "Delete Identical deletes records.",
+        "D": "Simplify Line alters line geometry."
+      },
+      "ar": {
+        "B": "تصلح Repair Geometry الأخطاء مباشرة وتعدل البيانات.",
+        "C": "تحذف Delete Identical السجلات المتطابقة.",
+        "D": "تبسط Simplify Line هندسة الخطوط."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-020",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Mobile Geodatabase"
+    ],
+    "context": {
+      "en": "An organization develops an offline mobile inspection workflow using ArcGIS Field Maps on Android and iOS tablets.",
+      "ar": "تطور مؤسسة مسار عمل للتفتيش الميداني بدون إنترنت عبر ArcGIS Field Maps على أجهزة أندرويد و iOS اللوحية."
+    },
+    "question": {
+      "en": "Which geodatabase format is packaged as a single portable file on disk based on the SQLite/SpatiaLite engine?",
+      "ar": "أي صيغة قواعد بيانات جغرافية تُحفظ كملف مفرد محمول على القرص وتعتمد على محرك SQLite/SpatiaLite؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Mobile Geodatabase (.geodatabase)",
+          "ar": "قاعدة البيانات الجغرافية المحمولة Mobile Geodatabase (.geodatabase)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "File Geodatabase (.gdb folder)",
+          "ar": "قاعدة البيانات الملفية File Geodatabase (.gdb)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Personal Geodatabase (.mdb)",
+          "ar": "قاعدة البيانات الشخصية Personal Geodatabase (.mdb)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Shapefile (.shp)",
+          "ar": "ملف الشكل Shapefile (.shp)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Mobile Geodatabases (.geodatabase) are single-file databases built on SQLite and SpatiaLite, specifically designed for cross-platform mobile apps, offline sync, and fast field performance.",
+      "ar": "تُعد Mobile Geodatabase (.geodatabase) قاعدة بيانات ملفية واحدة مبنية على محرك SQLite و SpatiaLite، ومصممة خصيصاً للتطبيقات الميدانية المحمولة والمزامنة غير المتصلة بالإنترنت."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "File Geodatabases are stored as folders containing dozens of binary files, awkward for mobile apps.",
+        "C": "Personal Geodatabases are 32-bit legacy Microsoft Access files.",
+        "D": "Shapefiles lack geodatabase capabilities like domains and subtypes."
+      },
+      "ar": {
+        "B": "تتكون File Geodatabase من مجلد ملفات ثنائية عديدة.",
+        "C": "تعتمد Personal Geodatabase على محرك Access القديم.",
+        "D": "تفتقر ملفات shapefile للنطاقات والتصنيفات الفرعية."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-021",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Create Mosaic Dataset"
+    ],
+    "context": {
+      "en": "A remote sensing team creates a Mosaic Dataset to catalog 5,000 aerial orthophotos. Some images contain black border pixels with pixel values of 0 along their tilted edges that obscure overlapping adjacent images.",
+      "ar": "أنشأ فريق استشعار عن بعد مجموعة بيانات موزاييك لفهرسة 5,000 صورة جوية. تحتوي بعض الصور على حواف سوداء بقيمة بكسل 0 على أطرافها المائلة مما يحجب الصور المجاورة المتراكبة."
+    },
+    "question": {
+      "en": "Which tool in the Mosaic Dataset toolset recalculates the boundary polygon of each raster item to clip out the black border pixels?",
+      "ar": "أي أداة في صندوق أدوات الموزاييك تعيد حساب مضلع حدود كل صورة لاقتطاع البكسلات السوداء المحيطة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Build Footprints",
+          "ar": "Build Footprints (بناء إطارات المعالم)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Build Overviews",
+          "ar": "Build Overviews (بناء المناظر العامة)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Define Overviews",
+          "ar": "Define Overviews (تعريف المناظر العامة)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Export Tile Package",
+          "ar": "Export Tile Package (تصدير حزمة البلاطات)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Build Footprints recomputes the extent polygon of each raster in a mosaic dataset, allowing exclusion of black border pixels (value 0) or white borders (value 255) so overlapping images blend seamlessly.",
+      "ar": "تعيد أداة Build Footprints حساب مضلع حدود كل صورة في الموزاييك، وتتيح استبعاد البكسلات السوداء (قيمة 0) أو البيضاء، مما يدمج الصور المتداخلة بسلاسة تامة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Build Overviews builds reduced-resolution display tiles.",
+        "C": "Define Overviews sets overview parameters.",
+        "D": "Export Tile Package caches tiles."
+      },
+      "ar": {
+        "B": "تبني Overviews بلاطات مخفضة الدقة.",
+        "C": "تحدد Define Overviews معاملات العرض.",
+        "D": "تصدير حزمة البلاطات ينشئ كاش للخرائط."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-022",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Add Global IDs"
+    ],
+    "context": {
+      "en": "An enterprise GIS team prepares two-way geodatabase replication between headquarters and a regional office. During replica creation, the wizard fails stating that several feature classes lack unique global identifiers.",
+      "ar": "يجهز فريق نظم المعلومات الجغرافية عملية نسخ متماثل ثنائي الاتجاه (Two-way Replication) بين المقر الرئيسي وفرع إقليمي، ففشل المعالج بسبب افتقار بعض الطبقات لمعرفات فريدة عالمية."
+    },
+    "question": {
+      "en": "Which tool must be run on those datasets before replica creation can proceed?",
+      "ar": "أي أداة يجب تشغيلها على تلك الطبقات قبل التمكن من إنشاء النسخ المتماثل؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Add Global IDs",
+          "ar": "Add Global IDs (إضافة معرفات عالمية)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Calculate Field",
+          "ar": "Calculate Field (حساب الحقل)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Rebuild Indexes",
+          "ar": "Rebuild Indexes (إعادة بناء الفهارس)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Create Topology",
+          "ar": "Create Topology (إنشاء طوبولوجيا)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Two-way and one-way geodatabase replication requires GlobalID fields on all participating feature classes to track row identities across independent database systems.",
+      "ar": "يتطلب النسخ المتماثل للجيوداتابيس وجود حقول GlobalID في كافة الطبقات المشاركة لتتبع هوية السجلات عبر خوادم قواعد البيانات المختلفة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Calculate Field does not generate certified geodatabase UUID columns.",
+        "C": "Rebuilding indexes optimizes search speed.",
+        "D": "Topology manages geometric rules."
+      },
+      "ar": {
+        "B": "حساب الحقل لا ينشئ أعمدة UUID المعتمدة للجيوداتابيس.",
+        "C": "إعادة بناء الفهارس تسرع البحث.",
+        "D": "الطوبولوجيا تدير القواعد الهندسية."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-023",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage coordinate systems to preserve the desired spatial properties",
+    "difficulty": "Intermediate",
+    "type": "Troubleshooting",
+    "tools": [
+      "Project Raster"
+    ],
+    "context": {
+      "en": "A forestry analyst reprojects a classified Vegetation Type raster (with discrete integer codes: 1=Pine, 2=Oak, 3=Maple) from WGS84 to UTM Zone 18N. After projection, the raster attribute table contains bizarre decimal values like 1.45 and 2.87.",
+      "ar": "أعاد محلل غابات إسقاط راستر لأنواع الأشجار (بأكواد صحيحة منفصلة: 1=صنوبر، 2=بلوط، 3=قيقب) من WGS84 إلى UTM 18N؛ وبعد الإسقاط، ظهرت في الجدول قيم عشرية غريبة مثل 1.45 و 2.87."
+    },
+    "question": {
+      "en": "What mistake did the analyst make during the Project Raster tool execution?",
+      "ar": "ما هو الخطأ الذي ارتكبه المحلل أثناء تشغيل أداة Project Raster؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "They used Bilinear or Cubic resampling instead of Nearest Neighbor",
+          "ar": "استخدم طريقة إعادة استعيان Bilinear أو Cubic بدلاً من Nearest Neighbor"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "They forgot to build raster overviews",
+          "ar": "نسي بناء المناظر العامة للراستر"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "They exported the raster to a JPEG file",
+          "ar": "قام بتصدير الراستر إلى ملف JPEG"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "They did not set a mask environment",
+          "ar": "لم يحدد بيئة القناع Mask"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Bilinear Interpolation and Cubic Convolution calculate weighted mathematical averages of neighboring pixels, which produces artificial fractional values when applied to categorical/discrete class codes. Nearest Neighbor preserves original integer codes.",
+      "ar": "تحسب طريقتا Bilinear و Cubic متوسطات حسابية موزونة للبكسلات المجاورة، مما ينتج أرقاماً كسرية مشوهة عند تطبيقها على تصنيفات فئوية منفصلة؛ والواجب استخدام Nearest Neighbor للحفاظ على الأكواد الأصلية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Overviews accelerate display and do not alter projection cell math.",
+        "C": "JPEG export does not explain projection tool parameter errors.",
+        "D": "Mask environments clip extents, not cell interpolation values."
+      },
+      "ar": {
+        "B": "المناظر العامة تسرع العرض ولا تغير حسابات البكسل.",
+        "C": "تصدير JPEG لا يفسر خطأ معاملات الأداة.",
+        "D": "القناع يقص الحدود ولا يغير الاستيفاء."
+      }
+    },
+    "references": [
+      {
+        "title": "Map projections and coordinate systems, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-024",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Advanced",
+    "type": "Conceptual",
+    "tools": [
+      "Branch Versioning"
+    ],
+    "context": {
+      "en": "An enterprise municipal utility is modernizing its enterprise geodatabase to deploy web-based editing across service-oriented ArcGIS web apps and field devices.",
+      "ar": "تحدث بلدية قاعدة بياناتها المؤسسية لنشر التحرير عبر خدمات الويب وتطبيقات الجوال الميدانية."
+    },
+    "question": {
+      "en": "Which versioning model is required to support multi-user editing over web feature services?",
+      "ar": "أي نموذج إصدارات مطلوب لدعم التحرير التشاركي متعدد المستخدمين عبر خدمات معالم الويب؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Branch Versioning",
+          "ar": "التفريع النسخي Branch Versioning"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Traditional Versioning without GlobalIDs",
+          "ar": "النسخ التقليدي بدون GlobalIDs"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Non-versioned single user editing",
+          "ar": "التحرير غير النسخي لمستخدم مفرد"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "File Geodatabase local locking",
+          "ar": "القفل المحلي لقواعد البيانات الملفية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Branch Versioning is the modern, service-based versioning architecture in ArcGIS Enterprise that supports multi-user editing, undo/redo, reconciliation, and validation directly through web services.",
+      "ar": "يُعد التفريع النسخي (Branch Versioning) النموذج المعماري الحديث القائم على الخدمات في ArcGIS Enterprise لدعم التحرير التشاركي والتراجع والمطابقة والتحقق مباشرة عبر خدمات الويب."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Traditional versioning is designed for direct desktop enterprise database connections.",
+        "C": "Non-versioned editing does not support multi-editor isolation.",
+        "D": "File geodatabases do not support web versioning."
+      },
+      "ar": {
+        "B": "النسخ التقليدي مخصص للاتصال المكتبي المباشر.",
+        "C": "التحرير غير النسخي لا يدعم عزل تعديلات المحررين.",
+        "D": "قواعد البيانات الملفية لا تدعم النسخ عبر الويب."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-025",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Enable COGO"
+    ],
+    "context": {
+      "en": "A land records department enables COGO on its boundary lines. When editors draft parcel lines, they need the line attributes to automatically record the surveyed quadrant bearing and ground distance.",
+      "ar": "فعل قسم السجلات العقارية خاصية COGO على خطوط الحدود. وعند رسم خطوط الأراضي، يحتاج المحررون لتسجيل انحراف الربع المساحي والمسافة الأرضية تلقائياً في سمات الخط."
+    },
+    "question": {
+      "en": "Which geoprocessing tool inspects existing line geometry and calculates standard COGO direction and distance attributes into the COGO fields?",
+      "ar": "أي أداة معالجة تفحص هندسة الخطوط القائمة وتحسب سمات اتجاه ومسافة COGO المعيارية في حقول COGO؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Update COGO",
+          "ar": "Update COGO (تحديث أبعاد COGO)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Calculate Geometry Attributes",
+          "ar": "Calculate Geometry Attributes"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Repair Geometry",
+          "ar": "Repair Geometry"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Snap",
+          "ar": "Snap"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Update COGO tool recalculates Direction and Distance attributes for selected line features based on their physical coordinate geometry, synchronizing COGO fields with drawn lines.",
+      "ar": "تحسب أداة Update COGO قيم الاتجاه والمسافة لمعالم الخطوط المحددة بالاعتماد على إحداثياتها الهندسية الفعلية، مما يزامن حقول COGO مع الخطوط المرسومة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Calculate Geometry Attributes writes coordinates or lengths, but not specialized COGO bearing strings.",
+        "C": "Repair Geometry fixes topology errors.",
+        "D": "Snap moves vertices."
+      },
+      "ar": {
+        "B": "تحسب أطوالاً وإحداثيات وليس صياغات الانحراف المساحي.",
+        "C": "تصلح Repair Geometry العيوب الهندسية.",
+        "D": "أداة Snap تحرك الرؤوس."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-026",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Divide"
+    ],
+    "context": {
+      "en": "A land developer purchases a 50-acre parcel and sells off exactly 12.5 acres from the western side along a north-south bearing line.",
+      "ar": "اشترى مطور عقاري قطعة أرض بمساحة 50 فداناً، وباع منها 12.5 فداناً بالضبط من الجانب الغربي بمحاذاة خط شمال-جنوب."
+    },
+    "question": {
+      "en": "Which tool in the Modify Features pane splits the polygon by entering an exact area measurement?",
+      "ar": "أي أداة في نافذة Modify Features تقسم المضلع بإدخال مساحة رقمية دقيقة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Divide (Specified Area)",
+          "ar": "Divide بخيار المساحة المحددة (Specified Area)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Clip",
+          "ar": "Clip (القص)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Reshape",
+          "ar": "Reshape (إعادة التشكيل)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Divide tool with the 'Specified Area' method allows carving off a lot of exact square footage or acreage along a user-specified directional angle.",
+      "ar": "تتيح أداة Divide بخيار 'Specified Area' اقتطاع مساحة رقمية دقيقة بالأفدنة أو الأمتار المربعة على امتداد زاوية اتجاه يحددها المستخدم."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Buffer creates concentric zones.",
+        "C": "Clip cuts by an extent.",
+        "D": "Reshape alters boundary paths."
+      },
+      "ar": {
+        "B": "تنشئ Buffer نطاقات.",
+        "C": "تقص Clip بالحدود.",
+        "D": "تعدل Reshape مسار الحدود."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-027",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Beginner",
+    "type": "Technical",
+    "tools": [
+      "Snapping"
+    ],
+    "context": {
+      "en": "An editor working on detailed utility connections finds that the cursor snaps to nearby vertices prematurely when they are still 30 pixels away, making precision sketching difficult.",
+      "ar": "وجد محرر يعمل على توصيلات مرافق تفصيلية أن المؤشر ينجذب مبكراً نحو الرؤوس المجاورة وهو على بعد 30 بكسل، مما يصعب الرسم الدقيق."
+    },
+    "question": {
+      "en": "Where can the editor decrease the snapping pixel distance in ArcGIS Pro?",
+      "ar": "أين يمكن للمحرر تقليص مسافة تسامح الانجذاب بالبكسل في ArcGIS Pro؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Edit ribbon > Snapping group > Snapping Options > Snapping Tolerance",
+          "ar": "شريط Edit > مجموعة Snapping > خيارات Snapping Options > ضبط Snapping Tolerance"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Catalog pane > Project Options",
+          "ar": "نافذة Catalog > خيارات المشروع"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Layer Properties > Metadata",
+          "ar": "خصائص الطبقة > البيانات الوصفية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Analysis > Environments",
+          "ar": "شريط التحليل > البيئات Environments"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Snapping Tolerance (measured in screen pixels) is configured under Snapping Options on the Edit ribbon, allowing editors to tighten or loosen magnetic snapping sensitivity.",
+      "ar": "يتم ضبط تسامح الانجذاب (Snapping Tolerance بوحدات بكسل الشاشة) في خيارات الانجذاب بشريط Edit، مما يمكن المحرر من تضييق أو توسيع حساسية الانجذاب المغناطيسي."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Catalog options manage file defaults.",
+        "C": "Metadata documents datasets.",
+        "D": "Environments manage geoprocessing."
+      },
+      "ar": {
+        "B": "خيارات الكتالوج للملفات.",
+        "C": "البيانات الوصفية لتوثيق البيانات.",
+        "D": "البيئات للمعالجة الجغرافية."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-028",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Advanced",
+    "type": "Technical",
+    "tools": [
+      "Geodatabase Topology"
+    ],
+    "context": {
+      "en": "An administrator builds a Geodatabase Topology for surveyed parcel lines. If the Cluster Tolerance is set accidentally to 5 meters instead of 0.05 meters, what catastrophic error will occur during validation?",
+      "ar": "أنشأ مسؤول طوبولوجيا لقواعد البيانات لخطوط مسح عقاري؛ وإذا تم ضبط تسامح التجميع (Cluster Tolerance) بالخطأ على 5 أمتار بدلاً من 0.05 متر، ما الخطأ الكارثي الذي سيحدث أثناء التحقق؟"
+    },
+    "question": {
+      "en": "What is the expected outcome of setting an excessively large cluster tolerance?",
+      "ar": "ما النتيجة المتوقعة لضبط تسامح تجميع كبير للغاية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Vertices within 5 meters of each other will snap together and collapse, severely distorting boundaries and creating false coincidence",
+          "ar": "ستنجذب الرؤوس الواقعة ضمن 5 أمتار وتنهار معاً، مما يشوه الحدود المساحية بشدة ويدمج معالم متجاورة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The geodatabase file will be deleted from the server",
+          "ar": "سيتم حذف ملف قاعدة البيانات من الخادم"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "All lines will be converted to 3D elevation rasters",
+          "ar": "ستتحول كافة الخطوط إلى راستر ارتفاع ثلاثي الأبعاد"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The coordinate system will switch to Martian coordinates",
+          "ar": "سيتحول نظام الإحداثيات إلى إحداثيات كوكب المريخ"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Cluster Tolerance defines the distance within which vertices are considered coincident and snapped together. An excessively large cluster tolerance collapses real geometric features and severely corrupts spatial precision.",
+      "ar": "يحدد تسامح التجميع (Cluster Tolerance) المسافة التي تعتبر الرؤوس الواقعة ضمنها متطابقة فيدمجها معاً؛ وضبط قيمة كبيرة جداً يؤدي إلى انهيار المعالم الهندسية وتشويه دقة الحدود المساحية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Validation does not delete database files.",
+        "C": "Vector lines remain vectors.",
+        "D": "Coordinate systems are not modified by topology."
+      },
+      "ar": {
+        "B": "التحقق لا يحذف ملفات قواعد البيانات.",
+        "C": "الخطوط تظل متجهات.",
+        "D": "أنظمة الإحداثيات لا تتغير بالطوبولوجيا."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase topology and error inspection, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/topology-in-arcgis.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-029",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Domains",
+      "Merge Policy"
+    ],
+    "context": {
+      "en": "A land records department merges three adjacent agricultural parcels into a single combined farming parcel. The 'Estimated_Corn_Yield' attribute on the three parcels was 5,000, 8,000, and 12,000 bushels. After the merge edit, the combined parcel shows an Estimated_Corn_Yield of 25,000 bushels.",
+      "ar": "دمجت دائرة الأراضي 3 قطع زراعية متجاورة في قطعة واحدة؛ وكانت قيم إنتاج الذرة المقدر عليها 5,000 و 8,000 و 12,000 بوشل؛ وبعد الدمج أظهرت القطعة الموحدة إنتاجاً قدره 25,000 بوشل."
+    },
+    "question": {
+      "en": "Which geodatabase Merge Policy was active on the corn yield attribute field?",
+      "ar": "أي سياسة دمج (Merge Policy) كانت مفعلة على حقل إنتاج الذرة في قاعدة البيانات؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Sum Values",
+          "ar": "Sum Values (جمع القيم)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Duplicate",
+          "ar": "Duplicate (التكرار)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Weighted Average",
+          "ar": "Weighted Average (المتوسط الموزون)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Geometry Ratio",
+          "ar": "Geometry Ratio (النسبة الهندسية)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The 'Sum Values' merge policy adds together the numeric attribute values of all merged features, calculating the combined total (5,000 + 8,000 + 12,000 = 25,000).",
+      "ar": "تجمع سياسة الدمج 'Sum Values' القيم الرقمية لكافة المعالم المدمجة وتضع المجموع الكلي في المعلم الجديد الناتج (5000 + 8000 + 12000 = 25000)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Duplicate would assign the value of the primary selected feature.",
+        "C": "Weighted Average would calculate an area-weighted mean.",
+        "D": "Geometry Ratio is a split policy, not a merge policy."
+      },
+      "ar": {
+        "B": "سياسة Duplicate تعطي قيمة أحد المعالم فقط.",
+        "C": "المتوسط الموزون يحسب متوسطاً موزوناً بالمساحة.",
+        "D": "النسبة الهندسية سياسة تقسيم وليست سياسة دمج."
+      }
+    },
+    "references": [
+      {
+        "title": "Subtypes and attribute domains, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/subtypes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-030",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Attribute Rules"
+    ],
+    "context": {
+      "en": "An electric utility wants to inspect existing transmission pole features across 3 counties to identify poles that violate minimum ground clearance rules without interrupting ongoing field data collection.",
+      "ar": "تريد شركة كهرباء فحص أعمدة النقل القائمة عبر 3 مقاطعات لاكتشاف الأعمدة المخالفة لمسافات الخلوص الأرضي دون مقاطعة أو إيقاف عمليات التحرير الميداني الجارية."
+    },
+    "question": {
+      "en": "Which type of Attribute Rule evaluates data on demand or on a schedule, generating error features that can be reviewed and managed in the Error Inspector?",
+      "ar": "أي نوع من قواعد السمات يقيم البيانات عند الطلب أو وفق جدول زمني، مولداً معالم أخطاء يمكن مراجعتها وإدارتها في نافذة Error Inspector؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Validation Attribute Rule",
+          "ar": "قاعدة سمات تحققية (Validation Attribute Rule)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Constraint Attribute Rule",
+          "ar": "قاعدة سمات مقيدة (Constraint Attribute Rule)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Calculation Attribute Rule (Immediate)",
+          "ar": "قاعدة سمات حسابية فورية (Immediate Calculation)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Simple Relationship Class",
+          "ar": "فئة علاقة بسيطة (Simple Relationship Class)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Validation rules evaluate data quality asynchronously across existing datasets, logging non-compliant features into GDB error tables so analysts can inspect and fix them via the Error Inspector without blocking edits.",
+      "ar": "تُقيم قواعد التحقق (Validation Rules) جودة البيانات القائمة عند الطلب دون تعطيل التحرير، وتسجل المعالم المخالفة في جداول أخطاء ليراجعها المحللون في نافذة Error Inspector."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Constraint rules block edits immediately at commit time.",
+        "C": "Immediate calculation rules compute field values.",
+        "D": "Relationship classes link tables."
+      },
+      "ar": {
+        "B": "قواعد القيد تحظر التعديل فوراً أثناء الحفظ.",
+        "C": "القواعد الفورية تحسب القيم الحقلية.",
+        "D": "فئات العلاقات لربط الجداول."
+      }
+    },
+    "references": [
+      {
+        "title": "Attribute rules for data integrity, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/an-overview-of-attribute-rules.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-031",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Enable Attachments"
+    ],
+    "context": {
+      "en": "A county parks department configures photo attachments on its trails layer.",
+      "ar": "قام قسم متنزهات المحافظة بتهيئة مرفقات الصور على طبقة مسارات المشي."
+    },
+    "question": {
+      "en": "What type of relationship class is automatically generated by ArcGIS Pro when attachments are enabled on a feature class?",
+      "ar": "ما هو نوع فئة العلاقة التي ينشئها ArcGIS Pro تلقائياً عند تفعيل المرفقات (Enable Attachments) على فئة معالم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Composite Relationship Class (where deleting a feature automatically cascade-deletes its attachments)",
+          "ar": "فئة علاقة مركبة Composite (بحيث يؤدي حذف المعلم إلى حذف مرفقاته تلقائياً بالتتابع)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Simple Relationship Class (where attachments remain orphan files if features are deleted)",
+          "ar": "فئة علاقة بسيطة Simple (بحيث تظل المرفقات كملفات يتيمة عند حذف المعلم)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Many-to-Many Bridge Table without keys",
+          "ar": "جدول وسيط متعدد إلى متعدد بدون مفاتيح"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Spatial Join relationship",
+          "ar": "علاقة ضم مكاني"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Attachments use a Composite Relationship Class. Because an attachment's existence depends entirely on the parent feature, deleting a feature automatically cascades and purges all of its associated photo/document attachments.",
+      "ar": "تستخدم المرفقات فئة علاقة مركبة (Composite Relationship Class)؛ ولأن وجود المرفق مرهون بوجود المعلم الأصلي، فإن حذف المعلم يؤدي تلقائياً إلى حذف جميع صوره ومستنداته المرفقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Simple relationships do not cascade delete dependent records.",
+        "C": "Attachment relationships maintain explicit foreign keys.",
+        "D": "Attachments are tabular relational links, not spatial joins."
+      },
+      "ar": {
+        "B": "العلاقات البسيطة لا تحذف السجلات التابعة.",
+        "C": "علاقات المرفقات تحافظ على مفاتيح ربط صريحة.",
+        "D": "المرفقات علاقات جدولية وليست ضماً مكانياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-032",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Create Locator"
+    ],
+    "context": {
+      "en": "A 911 dispatch agency creates an address locator for emergency vehicle routing.",
+      "ar": "تنشئ هيئة طوارئ محدد مواقع للعناوين لتوجيه سيارات الإسعاف والشرطة."
+    },
+    "question": {
+      "en": "When using the Create Locator tool in ArcGIS Pro, which locator role should be selected when reference data consists of parcel address points with exact building rooftop coordinates?",
+      "ar": "عند استخدام أداة Create Locator في ArcGIS Pro، أي دور لمحدد المواقع (Locator Role) يجب اختياره عندما تتكون البيانات المرجعية من نقاط عناوين بأسطح المباني الدقيقة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Point Address",
+          "ar": "Point Address (عناوين النقاط)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Street Address (dual range lines)",
+          "ar": "Street Address (خطوط ترقيم الشوارع)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Postal code centroid",
+          "ar": "مراكز الرموز البريدية"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Administrative area polygon",
+          "ar": "مضلعات المناطق الإدارية"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The 'Point Address' role is designed for reference feature classes of address points that represent individual structure rooftops or parcel centroids with specific house numbers and street names.",
+      "ar": "صُمم دور 'Point Address' لفئات المعالم النقطية التي تمثل عناوين أسطح المباني الفردية أو مراكز قطع الأراضي التي تحمل أرقام منازل وأسماء شوارع دقيقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Street Address is for polyline street centerlines with address ranges.",
+        "C": "Postal code centroids represent broad postal areas.",
+        "D": "Admin areas represent cities or counties."
+      },
+      "ar": {
+        "B": "Street Address مخصص لخطوط الشوارع ذات نطاقات الترقيم.",
+        "C": "مراكز الرموز البريدية تمثل مناطق بريدية عامة.",
+        "D": "المناطق الإدارية للمدن والمحافظات."
+      }
+    },
+    "references": [
+      {
+        "title": "Geocoding and locators, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/what-is-geocoding-.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-033",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage coordinate systems to preserve the desired spatial properties",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "On-the-fly Projection"
+    ],
+    "context": {
+      "en": "An analyst works on a regional emergency map containing layers in WGS84, State Plane, and UTM coordinates.",
+      "ar": "يعمل محلل على خريطة طوارئ إقليمية تحتوي على طبقات بإحداثيات WGS84 و State Plane و UTM."
+    },
+    "question": {
+      "en": "When multiple layers in different coordinate systems are projected on the fly in an ArcGIS Pro map, which coordinate system determines the linear units of measurement for interactive distance measurement tools?",
+      "ar": "عند عرض طبقات متعددة بأنظمة إحداثيات مختلفة وإسقاطها آنياً (On the fly) في خريطة ArcGIS Pro، أي نظام إحداثيات يحدد وحدات القياس الخطية لأدوات قياس المسافات التفاعلية؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The Coordinate System of the active Map Frame",
+          "ar": "نظام إحداثيات إطار الخريطة النشط (Map Frame)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The coordinate system of the oldest shapefile on the hard drive",
+          "ar": "نظام إحداثيات أقدم ملف shapefile على القرص"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "WGS 1984 permanently regardless of map settings",
+          "ar": "نظام WGS 1984 بشكل دائم متجاهلاً إعدادات الخريطة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The coordinate system of the Windows operating system",
+          "ar": "نظام إحداثيات نظام تشغيل ويندوز"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Interactive tools, distance measurements, and visual display on the canvas operate in the coordinate system assigned to the active Map Frame.",
+      "ar": "تعمل الأدوات التفاعلية وقياسات المسافات والعرض البصري وفق نظام الإحداثيات المعين لإطار الخريطة النشط (Map Frame)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "File age has no bearing on software map coordinate mechanics.",
+        "C": "Maps can be set to any projected or geographic system.",
+        "D": "Operating systems do not possess geographic coordinate systems."
+      },
+      "ar": {
+        "B": "تاريخ إنشاء الملفات لا علاقة له بإسقاط الخريطة.",
+        "C": "يمكن ضبط الخريطة على أي نظام إسقاط.",
+        "D": "نظام التشغيل ليس له أنظمة إحداثيات جغرافية."
+      }
+    },
+    "references": [
+      {
+        "title": "Map projections and coordinate systems, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-034",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Intermediate",
+    "type": "Conceptual",
+    "tools": [
+      "Create Relationship Class"
+    ],
+    "context": {
+      "en": "An analyst configures a Simple 1-to-Many Relationship Class between a Building feature class (origin) and an Occupants table (destination).",
+      "ar": "أنشأ محلل فئة علاقة بسيطة (Simple) من 1 إلى متعدد بين فئة المباني (المصدر) وجدول السكان (الهدف)."
+    },
+    "question": {
+      "en": "If an editor deletes a Building feature, what happens to the related records in the Occupants table?",
+      "ar": "إذا قام محرر بحذف معلم مبنى، ماذا يحدث للسجلات المرتبطة به في جدول السكان؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The related occupant records are preserved, and their foreign key values are unlinked (or set to null)",
+          "ar": "يتم الحفاظ على سجلات السكان المرتبطة، وتبقى في الجدول مع فك ارتباط المفتاح الأجنبي"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The related occupant records are deleted automatically",
+          "ar": "تُحذف سجلات السكان المرتبطة تلقائياً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The entire geodatabase is corrupted",
+          "ar": "تتلف قاعدة البيانات بالكامل"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The building feature is restored automatically",
+          "ar": "يستعاد معلم المبنى تلقائياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "In a Simple relationship, origin and destination objects exist independently. Deleting the origin does not delete related destination records; only in a Composite relationship does cascade deletion occur.",
+      "ar": "في العلاقات البسيطة (Simple)، تكون الكائنات مستقلة في دورة حياتها؛ لذا فإن حذف كائن المصدر لا يحذف سجلات الهدف المرتبطة به، على عكس العلاقات المركبة (Composite) التي تطبق الحذف التسلسلي."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Cascade deletion is the exclusive behavior of Composite relationships.",
+        "C": "Simple deletions do not damage databases.",
+        "D": "Deleted features are not resurrected."
+      },
+      "ar": {
+        "B": "الحذف التسلسلي خاص بالعلاقات المركبة فقط.",
+        "C": "الحذف لا يتلف قاعدة البيانات.",
+        "D": "المعالم المحذوفة لا تعود تلقائياً."
+      }
+    },
+    "references": [
+      {
+        "title": "Subtypes and attribute domains, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/subtypes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-035",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Traverse"
+    ],
+    "context": {
+      "en": "After entering deed courses in the Traverse tool for a closed parcel boundary, the ending point does not coincide with the starting point, leaving a closure gap of 0.45 feet.",
+      "ar": "بعد إدخال أضلاع الصك في أداة Traverse لمضلع أرض مغلق، لم تتطابق نقطة النهاية مع نقطة البداية، وبقيت فجوة خطأ قفل قدرها 0.45 قدم."
+    },
+    "question": {
+      "en": "What option in the Traverse tool adjusts vertices to distribute the misclose error mathematically?",
+      "ar": "ما الخيار في أداة Traverse الذي يعدل الرؤوس لتوزيع خطأ القفل رياضياً؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Close and adjust traverse (using Compass, Transit, or Crandall rule)",
+          "ar": "إغلاق وضبط المسار (Close and adjust) باستخدام قواعد البوصلة أو الترانزيت"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete the traverse line",
+          "ar": "حذف خط المسار"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Run Project Raster",
+          "ar": "تشغيل أداة Project Raster"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Convert the traverse to a TIN surface",
+          "ar": "تحويل المسار إلى سطح TIN"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Traverse tool includes closure adjustment methods (Compass Rule, Transit Rule, Crandall Rule) that mathematically distribute the closure discrepancy across all courses to close the boundary cleanly.",
+      "ar": "تتضمن أداة Traverse طرقاً لضبط القفل (مثل قاعدة البوصلة Compass Rule وقاعدة الترانزيت) التي توزع خطأ القفل رياضياً وتناسبياً على كافة أضلاع المسار لإغلاق مضلع الأرض بدقة مساحية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Deleting the line loses the entered data.",
+        "C": "Project Raster reprojects imagery.",
+        "D": "TIN surfaces model terrain elevations."
+      },
+      "ar": {
+        "B": "حذف الخط يفقد البيانات المدخلة.",
+        "C": "إسقاط الراستر للصور.",
+        "D": "أسطح TIN للتضاريس."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-036",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Enable Archiving"
+    ],
+    "context": {
+      "en": "A historical preservation team enables Geodatabase Archiving on a municipal zoning dataset.",
+      "ar": "فعل فريق التراث العمراني خاصية الأرشفة (Geodatabase Archiving) على بيانات المخطط الهيكلي."
+    },
+    "question": {
+      "en": "How can an analyst view and query the exact zoning boundaries as they existed on January 1, 2015?",
+      "ar": "كيف يمكن للمحلل استعراض والاستعلام عن حدود المخطط كما كانت قائمة بالضبط في 1 يناير 2015؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Set the Historical Moment in the Map properties or Layer Properties to January 1, 2015",
+          "ar": "ضبط اللحظة التاريخية (Historical Moment) في خصائص الخريطة أو الطبقة على تاريخ 1 يناير 2015"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Manually restore a backup tape drive",
+          "ar": "استعادة شريط نسخ احتياطي يدوياً"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Change the Windows system clock to 2015",
+          "ar": "تغيير ساعة نظام تشغيل ويندوز إلى 2015"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Re-enter all 2015 parcels manually",
+          "ar": "إعادة إدخال كافة أراضي 2015 يدوياً"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Geodatabase Archiving allows connecting to specific 'Historical Moments' using GDB_FROM_DATE and GDB_TO_DATE timestamps, allowing seamless point-in-time reconstruction of historical states.",
+      "ar": "تتيح أرشفة الجيوداتابيس الاتصال بـ 'لحظات تاريخية' (Historical Moments) محددة بالاعتماد على حقول التواريخ الموثقة، مما يمكن من إعادة بناء واستعراض حالة البيانات في أي تاريخ ماضٍ بدقة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Physical backup restoration is unnecessary with archiving enabled.",
+        "C": "Changing the PC clock does not alter database historical records.",
+        "D": "Manual re-entry is redundant."
+      },
+      "ar": {
+        "B": "لا حاجة لاستعادة نسخ احتياطية مع وجود الأرشفة.",
+        "C": "تغيير ساعة الجهاز لا يغير بيانات قاعدة البيانات.",
+        "D": "إعادة الإدخال اليدوي مضيعة للوقت."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-037",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Given a scenario, determine the appropriate existing geodatabase elements to use",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Subtypes"
+    ],
+    "context": {
+      "en": "In a road feature class with Subtypes on the ROAD_CLASS field (1=Highway, 2=Arterial, 3=Local), editors need values to populate instantly.",
+      "ar": "في طبقة طرق ذات تصنيفات فرعية (Subtypes) على حقل ROAD_CLASS (1=سريع، 2=شرياني، 3=محلي)، يحتاج المحررون لملء القيم فورياً."
+    },
+    "question": {
+      "en": "What capability allows ArcGIS Pro to automatically populate SPEED_LIMIT with 65 for Highways and 25 for Local roads as soon as features are drawn?",
+      "ar": "ما الميزة التي تجعل البرنامج يملأ حقل SPEED_LIMIT تلقائياً بالقيمة 65 للطرق السريعة و 25 للمحلية فور رسم المعلم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Subtype-specific Default Values",
+          "ar": "القيم الافتراضية المخصصة لكل تصنيف فرعي (Subtype Default Values)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Geoprocessing Environments Cell Size",
+          "ar": "حجم خلية بيئات التحليل"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Maplex Label Stacking",
+          "ar": "تكدس تسميات مابلكس"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Raster Function Templates",
+          "ar": "قوالب دوال الراستر"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Each subtype can have unique default values assigned to each attribute field, ensuring correct standard values populate automatically upon feature creation.",
+      "ar": "يمكن لكل تصنيف فرعي (Subtype) امتلاك قيم افتراضية مخصصة ومستقلة لكل حقل من حقول السمات، مما يضمن ملء القيم القياسية الصحيحة تلقائياً عند إنشاء المعالم الجديدة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Cell size is a raster resolution setting.",
+        "C": "Maplex stacking is for label text formatting.",
+        "D": "Raster templates process imagery."
+      },
+      "ar": {
+        "B": "حجم الخلية للراستر.",
+        "C": "تكدس مابلكس للنصوص.",
+        "D": "قوالب الراستر لمعالجة الصور."
+      }
+    },
+    "references": [
+      {
+        "title": "Subtypes and attribute domains, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/subtypes.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-038",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Best-practice",
+    "tools": [
+      "Add Attribute Index"
+    ],
+    "context": {
+      "en": "An analyst joins a 2,000,000-row tax parcels layer to an external assessor table using the PARCEL_ID field. The join operations and subsequent spatial queries take several minutes to render.",
+      "ar": "قام محلل بضم طبقة أراضٍ تحتوي على 2,000,000 سجل إلى جدول خارجي باستخدام حقل PARCEL_ID، فاستغرقت عمليات الضم والاستعلامات المكانية عدة دقائق للظهور."
+    },
+    "question": {
+      "en": "What database optimization should be applied to both tables to maximize join and query execution speed?",
+      "ar": "ما هو إجراء تحسين أداء قاعدة البيانات الذي يجب تطبيقه على كلا الجدولين لتسريع عمليات الضم والاستعلام لأقصى حد؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Create an Attribute Index on the PARCEL_ID field in both tables",
+          "ar": "إنشاء فهرس سماتي (Attribute Index) على حقل PARCEL_ID في كلا الجدولين"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Convert both tables to text CSV files",
+          "ar": "تحويل كلا الجدولين إلى ملفات CSV نصية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Delete the Shape geometry field",
+          "ar": "حذف حقل هندسة الشكل Shape"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Increase the monitor refresh rate to 144 Hz",
+          "ar": "زيادة معدل تحديث الشاشة إلى 144 هرتز"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Adding an Attribute Index on fields used in WHERE clauses or join keys dramatically accelerates table lookups and join performance, especially in tables exceeding thousands of records.",
+      "ar": "يؤدي إنشاء فهرس سماتي (Attribute Index) على الحقول المستخدمة كمفاتيح ربط أو في استعلامات البحث إلى تسريع الاستعلامات وعمليات الضم الجدولي بشكل كبير، خاصة في الجداول المليونية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "CSV files lack indexed search structures and perform slower.",
+        "C": "Deleting the Shape field destroys spatial coordinates.",
+        "D": "Monitor hardware refresh rate does not accelerate database queries."
+      },
+      "ar": {
+        "B": "ملفات CSV تفتقر للفهارس وأداؤها أبطأ.",
+        "C": "حذف حقل الشكل يدمر البيانات المكانية.",
+        "D": "معدل تحديث الشاشة لا يسرع قواعد البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-039",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Generalize"
+    ],
+    "context": {
+      "en": "When simplifying natural river centerlines for small-scale mapping, a cartographer evaluates simplification methods.",
+      "ar": "عند تبسيط خطوط محاور الأنهار الطبيعية للخرائط ذات مقاييس الرسم الصغيرة، يقيم رسام الخرائط طرق التبسيط المتاحة."
+    },
+    "question": {
+      "en": "Why is Bend Simplify preferred over Point Remove (Douglas-Peucker) for river centerlines?",
+      "ar": "لماذا يُفضل استخدام خوارزمية Bend Simplify على Point Remove (دوغلاس-بيكر) لخطوط محاور الأنهار؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Bend Simplify identifies significant geographic bends and preserves natural aesthetic meanders, whereas Douglas-Peucker creates harsh unnatural angular spikes",
+          "ar": "تتعرف Bend Simplify على الانحناءات الجغرافية الهامة وتحافظ على التعرجات الطبيعية الجمالية، بينما تنتج خوارزمية دوغلاس-بيكر زوايا حادة مصطنعة"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Bend Simplify converts rivers into polygon lakes",
+          "ar": "تحول Bend Simplify الأنهار إلى بحيرات مضلعة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Douglas-Peucker is only compatible with 3D scenes",
+          "ar": "خوارزمية دوغلاس-بيكر تعمل في المشاهد ثلاثية الأبعاد فقط"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "There is no difference between them",
+          "ar": "لا يوجد أي فرق بينهما"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Bend Simplify (Wang-Müller algorithm) eliminates minor bends while preserving the characteristic sinuosity of natural features, preventing the sharp unnatural zigzag corners produced by distance-based Point Remove.",
+      "ar": "تزيل خوارزمية Bend Simplify الانحناءات البسيطة مع الحفاظ على التعرجات المميزة للمعالم الطبيعية، متجنبة الزوايا الحادة المصطنعة الناتجة عن طريقة Point Remove المعتمدة على المسافة العمودية."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "It simplifies line geometry, it does not create polygon lakes.",
+        "C": "Both algorithms work in 2D and 3D.",
+        "D": "They use fundamentally distinct mathematical reduction principles."
+      },
+      "ar": {
+        "B": "تبسط الخطوط ولا تنشئ بحيرات مضلعة.",
+        "C": "تعمل كلتا الخوارزميتين في البيئتين.",
+        "D": "تختلفان في المبدأ الرياضي الكارتوغرافي."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-040",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Calibrate Routes"
+    ],
+    "context": {
+      "en": "A state highway department recalibrates its route measures because road realignment altered physical distances between milepost markers.",
+      "ar": "أعادت وزارة النقل معايرة مقاييس الطرق بعد تعديل مسار طريق غير المسافات بين علامات الأميال."
+    },
+    "question": {
+      "en": "Which tool recalculates M-values along routes using point features with known measure values?",
+      "ar": "أي أداة تعيد حساب قيم M على طول المسارات باستخدام معالم نقطية ذات قيم مقاييس معلومة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Calibrate Routes",
+          "ar": "Calibrate Routes (معايرة المسارات)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Create Routes",
+          "ar": "Create Routes (إنشاء المسارات)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Project",
+          "ar": "Project (إعادة الإسقاط)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Calibrate Routes recalculates route measures (M-values) using a set of calibration points with known measure attributes, interpolating new measures between calibration points.",
+      "ar": "تقوم أداة Calibrate Routes بإعادة احتساب مقاييس المسار (قيم M) باستخدام نقاط معايرة معلومة المقاييس، مستوفيةً قيماً جديدة بين نقاط المعايرة على طول الخط."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Create Routes builds initial routes from lines.",
+        "C": "Buffer creates distance polygons.",
+        "D": "Project handles coordinate transformations."
+      },
+      "ar": {
+        "B": "أداة Create Routes تنشئ المسارات لأول مرة.",
+        "C": "أداة Buffer تنشئ مساحات حرم.",
+        "D": "أداة Project تتعامل مع الإسقاط."
+      }
+    },
+    "references": [
+      {
+        "title": "Linear referencing and dynamic segmentation, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/an-overview-of-linear-referencing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-041",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Shapefile"
+    ],
+    "context": {
+      "en": "An analyst exports a massive 15,000,000-row point dataset to a shapefile, but the export tool crashes halfway through with a write error.",
+      "ar": "قام محلل بتصدير 15,000,000 نقطة إلى ملف shapefile، فتعطلت الأداة في منتصف العملية مع ظهور خطأ في الكتابة."
+    },
+    "question": {
+      "en": "What technical file format limitation caused the export failure?",
+      "ar": "ما هو القيد التقني في تنسيق الملف الذي تسبب في هذا الفشل؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The shapefile component files (.shp, .dbf) exceeded the hard 2 GB file size limit",
+          "ar": "تجاوزت ملفات مكونات shapefile (.shp و .dbf) الحد الأقصى الصارم لسعة الملف البالغ 2 جيجابايت"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Shapefiles cannot store point features",
+          "ar": "ملفات shapefile لا تدعم المعالم النقطية"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "The Windows operating system only supports 100 files per folder",
+          "ar": "نظام تشغيل ويندوز يدعم 100 ملف فقط في المجلد"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The analyst selected the wrong color palette",
+          "ar": "اختار المحلل بالتة ألوان خاطئة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Shapefiles are bound by a rigid 2 GB file size limit on each component file (.shp, .dbf, etc.). Datasets exceeding this capacity must be stored in File Geodatabases (1 TB default, up to 256 TB) or Enterprise Geodatabases.",
+      "ar": "ملفات shapefile مقيدة بحد أقصى صارم لسعة كل ملف من مكوناتها (.shp و .dbf) يبلغ 2 جيجابايت؛ والبيانات الضخمة التي تتجاوز هذا الحجم يجب تخزينها في File Geodatabase (بسعة 1 تيرابايت افتراضياً وحتى 256 تيرابايت)."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Shapefiles fully support points, lines, and polygons.",
+        "C": "Windows file systems support millions of files per directory.",
+        "D": "Color palettes are visual and unrelated to disk write limits."
+      },
+      "ar": {
+        "B": "ملفات shapefile تدعم النقاط والخطوط والمضلعات.",
+        "C": "يدعم نظام ويندوز ملايين الملفات.",
+        "D": "بالتات الألوان لا علاقة لها بسعة الملفات."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-042",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Beginner",
+    "type": "Conceptual",
+    "tools": [
+      "Shapefile"
+    ],
+    "context": {
+      "en": "When exporting a geodatabase feature class to a shapefile, an attribute field named 'POPULATION_GROWTH_RATE' is truncated to 'POPULATIO_'.",
+      "ar": "عند تصدير فئة معالم من الجيوداتابيس إلى shapefile، تم اقتطاع اسم الحقل 'POPULATION_GROWTH_RATE' إلى 'POPULATIO_'."
+    },
+    "question": {
+      "en": "What causes this attribute field name truncation?",
+      "ar": "ما سبب اقتطاع اسم هذا الحقل السماتي؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "The dBASE (.dbf) table specification used by shapefiles limits field names to a maximum of 10 characters",
+          "ar": "مواصفات جدول dBASE (.dbf) المستخدم في ملفات shapefile تقيد أسماء الحقول بحد أقصى 10 أحرف فقط"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "The coordinate system does not support long words",
+          "ar": "نظام الإحداثيات لا يدعم الكلمات الطويلة"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "ArcGIS Pro requires an Advanced license for longer column names",
+          "ar": "يتطلب ArcGIS Pro ترخيصاً متقدماً لأسماء الأعمدة الطويلة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "The font size in the table was set to 10 points",
+          "ar": "كان حجم الخط في الجدول مضبوطاً على 10 نقاط"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The legacy dBASE format (.dbf) underlying shapefiles restricts column names to exactly 10 characters, truncating longer names. Geodatabases support field names up to 64 characters (or 31 in some RDBMS).",
+      "ar": "يقيد تنسيق dBASE (.dbf) القديم المعتمد في shapefile أسماء الأعمدة بـ 10 محارف كحد أقصى فيقتطع الأسماء الطويلة؛ بينما تدعم قواعد بيانات الجيوداتابيس أسماء حقول حتى 64 حرفاً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Coordinate systems manage spatial math, not database column headers.",
+        "C": "Column name limits are defined by file format specifications, not license levels.",
+        "D": "Font display sizes do not alter database schemas."
+      },
+      "ar": {
+        "B": "أنظمة الإحداثيات تدير الإسقاط ولا علاقة لها برؤوس الأعمدة.",
+        "C": "حدود أسماء الأعمدة تحددها مواصفات صيغة الملف.",
+        "D": "أحجام الخطوط لا تغير هيكل قواعد البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-043",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Snapping"
+    ],
+    "context": {
+      "en": "An editor needs to place a water valve symbol exactly at the geometric crossing point where a water main crosses under a gas pipeline.",
+      "ar": "يحتاج محرر لوضع رمز محبس مياه عند نقطة التقاطع الهندسي الدقيقة التي يمر فيها خط مياه رئيسي أسفل أنبوب غاز."
+    },
+    "question": {
+      "en": "Which snapping agent should be enabled to snap directly to the line crossing?",
+      "ar": "أي نمط انجذاب يجب تفعيله للانجذاب مباشرة إلى تقاطع الخطين؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Intersection Snapping",
+          "ar": "انجذاب التقاطعات (Intersection Snapping)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Point Snapping",
+          "ar": "انجذاب النقاط (Point Snapping)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Tangent Snapping",
+          "ar": "انجذاب المماس (Tangent Snapping)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Midpoint Snapping",
+          "ar": "انجذاب المنتصف (Midpoint Snapping)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Intersection Snapping snaps the editing pointer directly to the point where two lines, edges, or boundaries cross or intersect geometrically.",
+      "ar": "يجذب نمط Intersection Snapping مؤشر الرسم مباشرة إلى النقطة التي يتقاطع أو يتعامد فيها خطان أو حافتان هندسياً."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Point snapping snaps to existing point features.",
+        "C": "Tangent snapping snaps tangent to a curve.",
+        "D": "Midpoint snapping snaps to segment centers."
+      },
+      "ar": {
+        "B": "ينجذب Point snapping للنقاط القائمة.",
+        "C": "ينجذب Tangent للمماس المنحني.",
+        "D": "ينجذب Midpoint لمنتصف القطعة."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-044",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Merge"
+    ],
+    "context": {
+      "en": "An analyst selects three adjacent parcel polygons in the active edit layer and opens the Merge tool in the Modify Features pane.",
+      "ar": "حدد محلل 3 مضلعات أراضٍ متجاورة في الطبقة النشطة وفتح أداة Merge في نافذة Modify Features."
+    },
+    "question": {
+      "en": "What choice must the analyst make before completing the merge operation?",
+      "ar": "ما الاختيار الذي يجب على المحلل اتخاذه قبل إتمام عملية الدمج؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Choose which original feature's attributes will be preserved in the merged feature",
+          "ar": "اختيار أي من المعالم الأصلية سيتم الحفاظ على سماتها في المعلم المدمج الناتج"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Specify the raster cell size",
+          "ar": "تحديد حجم خلية الراستر"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Choose a map projection transformation",
+          "ar": "اختيار تحويل إسقاط الخريطة"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Enter a password to encrypt the parcels",
+          "ar": "إدخال كلمة مرور لتشفير الأراضي"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "When merging features in-place, the editing Merge tool requires selecting the target feature whose attributes will be retained in the resulting unified feature.",
+      "ar": "عند دمج المعالم في مكانها، تطلب أداة Merge في نافذة التحرير اختيار المعلم المستهدف الذي سيتم الاحتفاظ بسماته وبياناته في المعلم الموحد الجديد."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Merge feature editing is purely vector.",
+        "C": "Coordinate transformations do not occur during in-place merges.",
+        "D": "Geodatabase editing does not password-protect features."
+      },
+      "ar": {
+        "B": "دمج المعالم اتجاهي صرف ولا علاقة له بالراستر.",
+        "C": "لا تحدث تحويلات إسقاطية أثناء الدمج.",
+        "D": "التحرير لا يشفر المعالم بكلمات مرور."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-045",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Technical",
+    "tools": [
+      "Rebuild Indexes"
+    ],
+    "context": {
+      "en": "After appending 500,000 records into a feature class, pan and zoom performance in the map slows significantly.",
+      "ar": "بعد إضافة 500,000 سجل جديد إلى فئة معالم، أصبح أداء التحريك والتكبير على الخريطة بطيئاً جداً."
+    },
+    "question": {
+      "en": "Which tool should be run to optimize spatial search trees on the feature class?",
+      "ar": "أي أداة يجب تشغيلها لتحسين شجرة البحث المكاني على فئة المعالم؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Rebuild Indexes (rebuilding the Spatial Index)",
+          "ar": "Rebuild Indexes (إعادة بناء الفهرس المكاني)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Project",
+          "ar": "Project"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Calculate Field",
+          "ar": "Calculate Field"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Enable COGO",
+          "ar": "Enable COGO"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Rebuilding the Spatial Index recalculates the bounding R-tree or spatial grid index, reflecting the new geometry distribution and restoring rapid spatial query retrieval.",
+      "ar": "تُعيد أداة Rebuild Indexes حساب الفهرس المكاني (Spatial Index) ليتوافق مع توزيع المعالم الجديدة، مما يستعيد سرعة الاستعلامات المكانية والتصفح السلس."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Project transforms coordinate systems.",
+        "C": "Calculate field edits attribute values.",
+        "D": "Enable COGO adds surveying fields."
+      },
+      "ar": {
+        "B": "أداة Project تعيد الإسقاط.",
+        "C": "حساب الحقل يعدل السمات.",
+        "D": "تفعيل COGO يضيف حقول المسح."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-046",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Use ArcGIS Pro editing functionality to create, modify, and delete features and attributes",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Split"
+    ],
+    "context": {
+      "en": "An editor splitting a parcel polygon needs the split line to run at an exact 90-degree angle (perpendicular) from the existing front street property line.",
+      "ar": "يحتاج محرر يقسم مضلع أرض إلى جعل خط التقسيم ينطلق بزاوية 90 درجة بالضبط (عمودي) على خط واجهة الشارع القائم."
+    },
+    "question": {
+      "en": "What sketch constraint shortcut or context menu command should be used?",
+      "ar": "ما هو اختصار قيد الرسم أو أمر القائمة الذي يجب استخدامه لفرض الزاوية القائمة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Deflection (or Perpendicular constraint)",
+          "ar": "قيد الانحراف Deflection (أو القيد العمودي Perpendicular)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Distance constraint",
+          "ar": "قيد المسافة Distance"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Radius constraint",
+          "ar": "قيد نصف القطر Radius"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Z-value constraint",
+          "ar": "قيد الارتفاع Z"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "The Deflection constraint (or Perpendicular command) locks the sketch angle to a specific angular offset or exact 90° deflection relative to an existing segment.",
+      "ar": "يقفل قيد الانحراف (Deflection أو الأمر العمودي Perpendicular) زاوية خط الرسم لتنطلق بزاوية متعامدة (90 درجة) بدقة بالنسبة لقطعة الخط القائمة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Distance locks length, not angle.",
+        "C": "Radius locks curve curvature.",
+        "D": "Z-value sets elevation height."
+      },
+      "ar": {
+        "B": "قيد المسافة يثبت الطول وليس الزاوية.",
+        "C": "قيد نصف القطر للمنحنيات.",
+        "D": "قيد Z يضبط الارتفاع الرأسي."
+      }
+    },
+    "references": [
+      {
+        "title": "Editing workflows and tools, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/overview-of-desktop-editing.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-047",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Intermediate",
+    "type": "Tool-based",
+    "tools": [
+      "Upgrade Geodatabase"
+    ],
+    "context": {
+      "en": "An analyst attempts to configure Contingent Values in a File Geodatabase created in legacy ArcGIS Desktop 10.5. The Contingent Values view is grayed out and disabled.",
+      "ar": "حاول محلل تهيئة قيم مشروطة (Contingent Values) في File Geodatabase تم إنشاؤها بإصدار قديم ArcGIS Desktop 10.5، فظهرت النافذة غير مفعلة (Grayed out)."
+    },
+    "question": {
+      "en": "What procedure must be performed first to enable modern geodatabase functionality?",
+      "ar": "ما الإجراء الذي يجب تنفيذه أولاً لتمكين إمكانيات الجيوداتابيس الحديثة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Run the Upgrade Geodatabase tool to update the system tables to the current ArcGIS Pro release",
+          "ar": "تشغيل أداة Upgrade Geodatabase لتحديث جداول النظام إلى إصدار ArcGIS Pro الحالي"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Delete the geodatabase and re-enter all data",
+          "ar": "حذف قاعدة البيانات وإعادة إدخال كافة البيانات"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Reinstall Windows",
+          "ar": "إعادة تثبيت نظام ويندوز"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Change the monitor resolution",
+          "ar": "تغيير دقة الشاشة"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Modern geodatabase capabilities (such as Contingent Values and Attribute Rules) require upgrading older geodatabase system tables using the Upgrade Geodatabase tool.",
+      "ar": "تتطلب إمكانيات الجيوداتابيس الحديثة (مثل القيم المشروطة والقواعد السماتية) ترقية جداول النظام لقواعد البيانات القديمة باستخدام أداة Upgrade Geodatabase لتتوافق مع إصدار Pro."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Upgrading preserves all existing data without deletion.",
+        "C": "Operating system reinstallation is completely unrelated.",
+        "D": "Monitor resolution has no effect on database capabilities."
+      },
+      "ar": {
+        "B": "الترقية تحافظ على كافة البيانات القائمة.",
+        "C": "إعادة تثبيت النظام لا علاقة لها بإصدار الجيوداتابيس.",
+        "D": "دقة الشاشة لا تؤثر على قواعد البيانات."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  },
+  {
+    "id": "DM-S-048",
+    "kind": "scenario",
+    "domain": "Data Management",
+    "objective": "Manage geospatial data (raster, vector, tabular)",
+    "difficulty": "Beginner",
+    "type": "Tool-based",
+    "tools": [
+      "Export Features"
+    ],
+    "context": {
+      "en": "An analyst needs to create a new feature class containing only active hydrants (STATUS = 'Active') from a master hydrant dataset of 100,000 features, while excluding unnecessary inspection history fields.",
+      "ar": "يحتاج محلل لإنشاء فئة معالم جديدة تحتوي فقط على محابس الإطفاء النشطة (STATUS = 'Active') من طبقة رئيسية تضم 100,000 معلم، مع استبعاد حقول سجلات التفتيش القديمة غير الضرورية."
+    },
+    "question": {
+      "en": "Which tool performs filtering and field mapping in a single export step?",
+      "ar": "أي أداة تؤدي التصفية وتعديل الحقول في خطوة تصدير واحدة؟"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "en": "Export Features (with SQL Expression and Field Map configuration)",
+          "ar": "Export Features (مع كتابة تعبير SQL وضبط خريطة الحقول Field Map)"
+        }
+      },
+      {
+        "id": "B",
+        "text": {
+          "en": "Buffer",
+          "ar": "Buffer (النطاق)"
+        }
+      },
+      {
+        "id": "C",
+        "text": {
+          "en": "Check Geometry",
+          "ar": "Check Geometry (فحص الهندسة)"
+        }
+      },
+      {
+        "id": "D",
+        "text": {
+          "en": "Enable Archiving",
+          "ar": "Enable Archiving (تفعيل الأرشفة)"
+        }
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "en": "Export Features (formerly Feature Class to Feature Class) supports an inline SQL filter expression and comprehensive Field Mapping to rename, reorder, or drop fields during export.",
+      "ar": "تدعم أداة Export Features كتابة استعلام SQL لتصفية المعالم أثناء التصدير، مع توفير خريطة الحقول (Field Map) لحذف أو إعادة تسمية الحقول غير المطلوبة في خطوة واحدة."
+    },
+    "incorrectOptionsExplanation": {
+      "en": {
+        "B": "Buffer creates proximity zones.",
+        "C": "Check Geometry identifies topological errors.",
+        "D": "Enable Archiving tracks edit history."
+      },
+      "ar": {
+        "B": "تنشئ Buffer مناطق حرم.",
+        "C": "تفحص Check Geometry العيوب الهندسية.",
+        "D": "تتبع Enable Archiving التعديلات التاريخية."
+      }
+    },
+    "references": [
+      {
+        "title": "Geodatabase architecture and schema design, ArcGIS Pro documentation",
+        "url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.htm",
+        "kind": "official"
+      }
+    ]
+  }
+]

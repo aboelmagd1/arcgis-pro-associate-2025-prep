@@ -1,0 +1,682 @@
+[
+  {
+    "id": "GTK-T-001",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/add-layers-to-a-map.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Browses to local files, enterprise databases, or ArcGIS Living Atlas to add vector and raster datasets to the active map.",
+      "ar": "استعراض الملفات المحلية أو قواعد البيانات أو Living Atlas لإضافة الطبقات المتجهة والراستر للخريطة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-002",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/map-authoring/scenes.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Transforms a 2D map into a 3D Local Scene supporting projected coordinate systems (PCS), custom extents, and subsurface navigation.",
+      "ar": "تحويل الخريطة ثنائية الأبعاد إلى مشهد محلي 3D يدعم الإسقاطات المسقطة واقتطاع النطاق والملاحة تحت الأرض."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-003",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/extrude-features-to-3d-symbology.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Vertically projects 2D polygon building footprints into 3D volumetric blocks based on a numeric height attribute.",
+      "ar": "رفع بصمات المباني ثنائية الأبعاد رأسياً إلى مجسمات كتلية ثلاثية الأبعاد بناءً على حقل الارتفاع."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-004",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/interactive-mapping-tools.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Interactively peels back an overlying layer to visually inspect spatial changes or historic imagery underneath.",
+      "ar": "سحب تفاعلي للطبقة العليا لكشف وفحص الطبقات أو الصور الفضائية التاريخية الواقعة أسفلها بصرياً."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-005",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/bookmarks.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Saves a specific geographic extent and camera viewing angle for instantaneous navigation and Map Series bookmark generation.",
+      "ar": "حفظ نطاق جغرافي وزاوية رؤية محددة للرجوع السريع إليها أو لإنشاء سلاسل خرائط العلامات المرجعية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-006",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/select-layer-by-attribute.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Creates a temporary subset selection of features based on an SQL query (e.g., POPULATION > 50000).",
+      "ar": "إنشاء تحديد مؤقت لمجموعة معالم بناءً على استعلام SQL شرطي دون إنشاء طبقة جديدة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-007",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/conversion/export-features.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Writes currently selected features (or entire layer) permanently into a new feature class or shapefile.",
+      "ar": "كتابة وحفظ المعالم المحددة حالياً (أو كامل الطبقة) بشكل دائم داخل فئة معالم أو ملف Shapefile جديد."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-008",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-join.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Appends fields from a secondary table in memory based on a common key. Best for 1:1 and M:1 relationships.",
+      "ar": "ضم أعمدة جدول خارجي في الذاكرة بالاعتماد على حقل مشترك، ومثالي لعلاقات 1:1 و M:1 فقط."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-009",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/calculate-field.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Populates attribute values using Python 3 (!Field!) or Arcade ($feature.Field) formulas.",
+      "ar": "ملء وحساب قيم الحقول باستخدام معادلات لغة Python 3 أو لغة Arcade."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-010",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/summary-statistics.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Calculates statistical aggregations (Sum, Mean, Min, Max, Count) grouped optionally by a Case Field.",
+      "ar": "حساب مقاييس إحصائية تجميعية (مجموع، متوسط، أعلى، أدنى، عدد) مجمعة بحقل تصنيف اختياري."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-011",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/spatial-join.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Appends attributes from one layer to another based on spatial proximity or overlay (Intersect, Within, Contains).",
+      "ar": "ضم سمات طبقة إلى أخرى بالاعتماد على التراكب أو التقارب المكاني مع قواعد دمج الحقول (Sum, Mean)."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-012",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-feature-class.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Creates an empty vector table for points, lines, polygons, or multipoints with assigned coordinate system.",
+      "ar": "إنشاء طبقة معالم متجهة فارغة (نقاط، خطوط، مضلعات) داخل قاعدة البيانات مع تحديد نظام الإحداثيات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-013",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-domain.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Defines allowable discrete choices (Coded Value) or numeric bounds (Range) to enforce data integrity.",
+      "ar": "تعريف قائمة الخيارات المسموحة (قيمة مشفرة) أو الحدود الرقمية (مدى) لضمان دقة البيانات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-014",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/snapping.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Enables Point, Vertex, Edge, and Intersection snapping to ensure precise geometric alignment during digitizing.",
+      "ar": "تفعيل الالتقاط عند الرؤوس والحواف ونقاط التقاطع لضمان دقة الاتصال الهندسي أثناء الرسم الرقمي."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-015",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/split-a-feature.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Divides a polygon or line based on a sketch cut, or unites contiguous features applying Split/Merge policies.",
+      "ar": "تقسيم المضلع أو الخط بخط قطع مع تطبيق سياسات التجزئة، أو دمج معالم متجاورة في معلم واحد."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-016",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/reshape-a-feature.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Modifies boundary vertices or aligns a shared boundary with an adjacent feature to prevent slivers and gaps.",
+      "ar": "تعديل مسار حدود المضلع أو مطابقة حافته مع حافة مجاورة لمنع الفجوات والتداخلات المشوهة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-017",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/editing/traverse.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Enables Coordinate Geometry fields (direction, distance, radius) and sequential metes-and-bounds survey entry.",
+      "ar": "تفعيل حقول القياس المساحي (الاتجاه، المسافة، القوس) وإدخال الأوصاف المساحية للأراضي خطوة بخطوة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-018",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/tasks/what-is-a-task-.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Authors interactive, step-by-step guided workflows with Auto-Run commands to enforce enterprise best practices.",
+      "ar": "بناء مسارات عمل إرشادية وتفاعلية بخطوات موجهة وتشغيل تلقائي للأدوات لضمان الالتزام بمعايير العمل."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-019",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Visual programming interface to chain geoprocessing tools with variables, model parameters [P], and iterators.",
+      "ar": "واجهة أتمتة بصرية لربط أدوات المعالجة مع المتغيرات والمعاملات [P] والبيانات الوسيطة والمكررات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-020",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Interactive Python command-line interface supporting Copy Python Command, script execution, and spatial cursors.",
+      "ar": "واجهة تفاعلية لتنفيذ أكواد بايثون ونسخ أوامر الأدوات الجاهزة وتشغيل مؤشرات قراءة البيانات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-021",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/geocoding/create-locator.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Builds an address locator from reference street centerlines and parcel points to enable address matching.",
+      "ar": "بناء محدد عناوين من خطوط الشوارع وقطع الأراضي لتحويل العناوين النصية لنقاط مكانية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-022",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/geocoding/geocode-addresses.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Batch-converts address tables into point feature classes with Match_addr and Status scores.",
+      "ar": "تحويل جداول العناوين النصية بدفعة مجمعة إلى نقاط مكانية مع حساب درجة التطابق وحالته."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-023",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geocoding/rematch-a-geocoded-feature-class.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Interactive review pane to resolve Unmatched addresses or Tied candidates with identical match scores.",
+      "ar": "لوحة مراجعة تفاعلية لمعالجة العناوين غير المتطابقة أو المتساوية في درجات التطابق (Tied)."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-024",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/pairwise-buffer.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Calculates buffer zones around features using parallel multi-threaded computing algorithms for maximum speed.",
+      "ar": "حساب نطاقات الحرم المكاني حول المعالم بخوارزميات المعالجة المتوازية متعددة الأنوية لتسريع الأداء."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-025",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/pairwise-clip.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Extracts intersecting geometries or merges adjacent polygons sharing identical attributes with high throughput.",
+      "ar": "اقتطاع المعالم أو دمج المضلعات المشتركة في نفس القيمة بأداء فائق عبر المعالجة المتوازية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-026",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/kernel-density.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Calculates magnitude-per-unit-area from point or polyline features using a smooth kernel function.",
+      "ar": "حساب الكثافة السطحية الملساء لكل وحدة مساحة لنقاط الأحداث باستخدام دالة النواة الإحصائية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-027",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/optimized-hot-spot-analysis.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Identifies statistically significant spatial clusters of high values (hot spots) and low values (cold spots) with Z-scores and P-values.",
+      "ar": "تحديد التجمعات المكانية ذات الدلالة الإحصائية للقيم المرتفعة والمنخفضة بحساب درجات Z وقيم P."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-028",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/space-time-pattern-mining/create-space-time-cube.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Aggregates point incidents into 3D spacetime bins structured in a netCDF (.nc) multidimensional array.",
+      "ar": "تجميع نقاط الأحداث عبر أبعاد المكان والزمان في خلايا ثلاثية الأبعاد بصيغة netCDF (.nc)."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-029",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/space-time-pattern-mining/emerging-hot-spot-analysis.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Evaluates temporal trends across Space-Time Cubes using Mann-Kendall statistics (New, Intensifying, Persistent Hot Spots).",
+      "ar": "فحص اتجاهات التغير الزمني في مكعبات الزمان والمكان لتصنيف البؤر (جديدة، متزايدة، مستمرة)."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-030",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/time/time-slider.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Dynamic interface sliders to animate temporal phenomena over time or filter non-temporal numeric values (e.g., building floors).",
+      "ar": "أشرطة تمرير تفاعلية لتحريك البيانات عبر الزمن أو تصفية الأبعاد الرقمية كأرقام الطوابق."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-031",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/extract-by-mask.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Clips a raster dataset to the exact boundary of a polygon or mask raster, converting outside cells to NoData.",
+      "ar": "اقتطاع ملف الراستر بدقة حدود مضلع أو قناع، مع تحويل الخلايا الخارجية إلى قيمة لا-بيانات NoData."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-032",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/an-overview-of-the-surface-tools.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Derives terrain metrics: Slope (degrees or percent rise), Aspect (compass direction 0-360), and Hillshade (evaluating Z-Factor).",
+      "ar": "اشتقاق خصائص التضاريس: درجة الانحدار، اتجاه المنحدر، وتظليل التضاريس ثلاثي الأبعاد مع ضبط Z-Factor."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-033",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/reclassify.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Standardizes disparate raster values into a common suitability scale (e.g., 1 to 5) for multi-criteria overlay.",
+      "ar": "إعادة تقسيم وتوحيد قيم الراستر المختلفة على مقياس ملاءمة موحد (مثل 1 إلى 5) للتراكب الموزون."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-034",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/raster-calculator.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Executes complex mathematical and boolean Map Algebra expressions across multiple raster grids.",
+      "ar": "تنفيذ معادلات رياضية وشروط بولينية مركبة باستخدام لغة جبر الخرائط على طبقات الراستر."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-035",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/analysis/spatial-analyst/suitability-modeler/what-is-the-suitability-modeler.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Interactive environment for criteria weighting, transformation functions, and locating optimal contiguous sites.",
+      "ar": "بيئة متكاملة لوزن المعايير، وتطبيق دوال التحويل، واختيار أفضل المواقع المترابطة مكانياً."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-036",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/symbol-layer-drawing.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Controls the rendering order of symbol components to connect highway casings seamlessly without overlapping borders.",
+      "ar": "التحكم في ترتيب رسم طبقات الرموز المركبة لدمج حواف الشوارع دون تداخل خطوط الحدود."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-037",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/text/labeling-basics.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "High-performance placement engine supporting Stacking, Font Reduction, Overrun, Abbreviation Dictionaries, and Weights.",
+      "ar": "محرك التسميات القياسي المتقدم الداعم للتكديس وتصغير الخط وقواميس الاختصارات وأوزان التعارض."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-038",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/cartography/convert-labels-to-annotation.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Converts dynamic on-the-fly labels into permanent geodatabase annotation features allowing individual manual repositioning.",
+      "ar": "تحويل التسميات الديناميكية إلى معالم حواشٍ دائمة بالجيوداتابيز تتيح تحريك وتعديل كل نص منفرداً."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-039",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/layouts/map-series.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "",
+      "ar": "توليد أطلس متعدد الصفحات من قالب مخطط واحد بالاعتماد على طبقة الفهرس ونصوص ديناميكية تفاعلية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "GTK-T-040",
+    "category": "Analysis",
+    "name": "Tool",
+    "name_ar": "",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/package-project.htm",
+    "arcpy_syntax": "",
+    "ui_path": "",
+    "description": {
+      "en": "Consolidates and compresses the entire workspace (all maps, scenes, layouts, toolboxes, and source data) into a single file.",
+      "ar": "حزم وضغط بيئة المشروع بالكامل (الخرائط، المشاهد، المخططات، الأدوات، والبيانات) في ملف واحد محمول."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  }
+]

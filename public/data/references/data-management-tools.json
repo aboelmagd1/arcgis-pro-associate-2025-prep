@@ -1,0 +1,886 @@
+[
+  {
+    "id": "DM-T-001",
+    "category": "Feature Class",
+    "name": "Create Feature Class",
+    "name_ar": "إنشاء فئة معالم متجهة فارغة داخل قاعدة بيانات جغرافية أو Sha",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-feature-class.htm",
+    "arcpy_syntax": "arcpy.management.CreateFeatureclass(out_path, out_name, geometry_type, template, has_m, has_z, spatial_reference)",
+    "ui_path": "Catalog Pane > Right-click GDB or Feature Dataset > New > Feature Class",
+    "description": {
+      "en": "Creates an empty feature class in a geodatabase or shapefile with specified geometry (POINT, POLYLINE, POLYGON, MULTIPOINT) and coordinate system.",
+      "ar": "إنشاء فئة معالم متجهة فارغة داخل قاعدة بيانات جغرافية أو Shapefile بنوع هندسي ونظام إحداثيات محدد."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-002",
+    "category": "Feature Class",
+    "name": "Calculate Areas",
+    "name_ar": "إضافة حقل 'F_AREA' إلى مضلعات المعالم وحساب المساحة الهندسية",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/calculate-areas.htm",
+    "arcpy_syntax": "arcpy.management.CalculateAreas(in_features, out_feature_class)",
+    "ui_path": "Geoprocessing > Search 'Calculate Areas'",
+    "description": {
+      "en": "Adds an 'F_AREA' field to polygon features and computes geometric planar or geodetic area.",
+      "ar": "إضافة حقل 'F_AREA' إلى مضلعات المعالم وحساب المساحة الهندسية المستوية أو الجيوديسية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-003",
+    "category": "Feature Class",
+    "name": "Integrate",
+    "name_ar": "فحص إحداثيات رؤوس المعالم عبر عدة طبقات وتقريب الرؤوس المشتر",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/integrate.htm",
+    "arcpy_syntax": "arcpy.management.Integrate(in_features, cluster_tolerance)",
+    "ui_path": "Geoprocessing > Search 'Integrate'",
+    "description": {
+      "en": "Analyzes coordinate locations of feature vertices across multiple feature classes and snaps coincident vertices within the cluster tolerance.",
+      "ar": "فحص إحداثيات رؤوس المعالم عبر عدة طبقات وتقريب الرؤوس المشتركة الواقعة ضمن مسافة التسامح العنقودي."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-004",
+    "category": "Features",
+    "name": "Add XY Coordinates",
+    "name_ar": "إضافة حقول POINT_X و POINT_Y إلى طبقة النقاط وحساب قيم إحداث",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-xy-coordinates.htm",
+    "arcpy_syntax": "arcpy.management.AddXY(in_features)",
+    "ui_path": "Geoprocessing > Search 'Add XY Coordinates'",
+    "description": {
+      "en": "Adds POINT_X and POINT_Y (and POINT_Z / POINT_M if present) fields to a point feature class and calculates coordinate numbers.",
+      "ar": "إضافة حقول POINT_X و POINT_Y إلى طبقة النقاط وحساب قيم إحداثياتها تلقائياً في نفس الجدول."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-005",
+    "category": "Features",
+    "name": "Check Geometry",
+    "name_ar": "توليد جدول تقرير تشخيصي يحدد أخطاء سلامة الهندسة المكانية (ت",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/check-geometry.htm",
+    "arcpy_syntax": "arcpy.management.CheckGeometry(in_features, out_table, validation_method)",
+    "ui_path": "Geoprocessing > Search 'Check Geometry'",
+    "description": {
+      "en": "Generates a diagnostic report table identifying geometric validity violations (self-intersections, null geometry, duplicate vertices).",
+      "ar": "توليد جدول تقرير تشخيصي يحدد أخطاء سلامة الهندسة المكانية (تقاطعات ذاتية، معالم فارغة، رؤوس مكررة)."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-006",
+    "category": "Features",
+    "name": "Repair Geometry",
+    "name_ar": "إصلاح المشاكل الهندسية كالتقاطعات الذاتية والثقوب المعكوسة و",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/repair-geometry.htm",
+    "arcpy_syntax": "arcpy.management.RepairGeometry(in_features, delete_null, validation_method)",
+    "ui_path": "Geoprocessing > Search 'Repair Geometry'",
+    "description": {
+      "en": "Fixes topological geometry problems like self-intersecting polygon rings, inverted holes, and unmatched vertices in place.",
+      "ar": "إصلاح المشاكل الهندسية كالتقاطعات الذاتية والثقوب المعكوسة وتعديل الملف في مكانه مباشرة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-007",
+    "category": "Features",
+    "name": "Multipart To Singlepart",
+    "name_ar": "تفكيك المعالم متعددة الأجزاء (مثل أرخبيل جزر يشترك في سجل سم",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/multipart-to-singlepart.htm",
+    "arcpy_syntax": "arcpy.management.MultipartToSinglepart(in_features, out_feature_class)",
+    "ui_path": "Geoprocessing > Search 'Multipart To Singlepart'",
+    "description": {
+      "en": "Splits multipart features (e.g., an archipelago of islands sharing a single attribute row) into separate individual feature rows.",
+      "ar": "تفكيك المعالم متعددة الأجزاء (مثل أرخبيل جزر يشترك في سجل سمات واحد) إلى صفوف وسجلات مستقلة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-008",
+    "category": "Features",
+    "name": "Feature To Point",
+    "name_ar": "إنشاء نقاط تمثل المراكز الهندسية (Centroids) للخطوط أو المضل",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/feature-to-point.htm",
+    "arcpy_syntax": "arcpy.management.FeatureToPoint(in_features, out_feature_class, point_location)",
+    "ui_path": "Geoprocessing > Search 'Feature To Point'",
+    "description": {
+      "en": "Generates points representing centroids of input lines or polygons.",
+      "ar": "إنشاء نقاط تمثل المراكز الهندسية (Centroids) للخطوط أو المضلعات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-009",
+    "category": "Features",
+    "name": "Feature To Line",
+    "name_ar": "تحويل حدود المضلعات إلى خطوط وتجزئة الخطوط عند كل نقطة التقا",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/feature-to-line.htm",
+    "arcpy_syntax": "arcpy.management.FeatureToLine(in_features, out_feature_class, cluster_tolerance, attributes)",
+    "ui_path": "Geoprocessing > Search 'Feature To Line'",
+    "description": {
+      "en": "Converts polygon boundaries into polyline features, splitting lines wherever polygons touch or intersect.",
+      "ar": "تحويل حدود المضلعات إلى خطوط وتجزئة الخطوط عند كل نقطة التقاء أو تقاطع بين المضلعات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-010",
+    "category": "Features",
+    "name": "Feature To Polygon",
+    "name_ar": "تجميع الخطوط المغلقة وتحويلها إلى معالم مضلعات.",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/feature-to-polygon.htm",
+    "arcpy_syntax": "arcpy.management.FeatureToPolygon(in_features, out_feature_class, cluster_tolerance, attributes, label_features)",
+    "ui_path": "Geoprocessing > Search 'Feature To Polygon'",
+    "description": {
+      "en": "Assembles closed polyline loops into polygon features.",
+      "ar": "تجميع الخطوط المغلقة وتحويلها إلى معالم مضلعات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-011",
+    "category": "Features",
+    "name": "Points To Line",
+    "name_ar": "ربط النقاط المتتابعة وتحويلها لخطوط مستمرة بالاعتماد على حقل",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/points-to-line.htm",
+    "arcpy_syntax": "arcpy.management.PointsToLine(Input_Features, Output_Feature_Class, Line_Field, Sort_Field, Close_Line)",
+    "ui_path": "Geoprocessing > Search 'Points To Line'",
+    "description": {
+      "en": "Connects sequential point features into continuous polylines based on a Sort Field (e.g., GPS timestamp).",
+      "ar": "ربط النقاط المتتابعة وتحويلها لخطوط مستمرة بالاعتماد على حقل ترتيب (مثل التوقيت الزمني GPS)."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-012",
+    "category": "Features",
+    "name": "XY To Point",
+    "name_ar": "إنشاء طبقة نقاط دائمة من جدول إحداثيات Excel أو CSV مع تحديد",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm",
+    "arcpy_syntax": "arcpy.management.XYToPoint(in_table, out_feature_class, x_field, y_field, z_field, coordinate_system)",
+    "ui_path": "Geoprocessing > Search 'XY Table To Point'",
+    "description": {
+      "en": "Creates a permanent point feature class from an Excel or CSV coordinate table.",
+      "ar": "إنشاء طبقة نقاط دائمة من جدول إحداثيات Excel أو CSV مع تحديد نظام الإحداثيات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-013",
+    "category": "Features",
+    "name": "Minimum Bounding Geometry",
+    "name_ar": "حساب الأشكال المحيطية الدنيا (Convex Hull، دائرة، مستطيل، أو",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/minimum-bounding-geometry.htm",
+    "arcpy_syntax": "arcpy.management.MinimumBoundingGeometry(in_features, out_feature_class, geometry_type, group_option, group_field)",
+    "ui_path": "Geoprocessing > Search 'Minimum Bounding Geometry'",
+    "description": {
+      "en": "Computes enclosing bounding shapes (Convex Hull, Circle, Rectangle by Area/Width, Envelope) around features.",
+      "ar": "حساب الأشكال المحيطية الدنيا (Convex Hull، دائرة، مستطيل، أو غلاف Envelope) حول المعالم."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-014",
+    "category": "Features",
+    "name": "Subdivide Polygon",
+    "name_ar": "تجزئة مضلعات الأراضي إلى أقسام متساوية المساحة أو متساوية ال",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/subdivide-polygon.htm",
+    "arcpy_syntax": "arcpy.management.SubdividePolygon(in_polygons, out_feature_class, method, num_areas, target_area)",
+    "ui_path": "Geoprocessing > Search 'Subdivide Polygon'",
+    "description": {
+      "en": "Divides parcel polygons into smaller equal-area or equal-width sections.",
+      "ar": "تجزئة مضلعات الأراضي إلى أقسام متساوية المساحة أو متساوية العرض تلقائياً."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-015",
+    "category": "Fields",
+    "name": "Add Field",
+    "name_ar": "إضافة عمود جديد إلى جدول أو طبقة معالم وتحديد نوع البيانات و",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-field.htm",
+    "arcpy_syntax": "arcpy.management.AddField(in_table, field_name, field_type, field_precision, field_scale, field_length, field_alias, field_is_nullable)",
+    "ui_path": "Data tab on Ribbon > Fields group > Add Field (or GP tool)",
+    "description": {
+      "en": "Adds a new column to a table or feature class (TEXT, FLOAT, DOUBLE, SHORT, LONG, DATE, BLOB, GLOBALID).",
+      "ar": "إضافة عمود جديد إلى جدول أو طبقة معالم وتحديد نوع البيانات والخصائص."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-016",
+    "category": "Fields",
+    "name": "Delete Field",
+    "name_ar": "حذف عمود أو عدة أعمدة نهائياً من جدول البيانات أو فئة المعال",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/delete-field.htm",
+    "arcpy_syntax": "arcpy.management.DeleteField(in_table, drop_field)",
+    "ui_path": "Fields view > Delete (or GP tool)",
+    "description": {
+      "en": "Permanently drops one or more columns from a table or feature class.",
+      "ar": "حذف عمود أو عدة أعمدة نهائياً من جدول البيانات أو فئة المعالم."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-017",
+    "category": "Fields",
+    "name": "Calculate Field",
+    "name_ar": "حساب وتعبئة قيم الحقول للسجلات المحددة باستخدام صيغ لغة Pyth",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/calculate-field.htm",
+    "arcpy_syntax": "arcpy.management.CalculateField(in_table, field, expression, expression_type, code_block)",
+    "ui_path": "Right-click column header > Calculate Field",
+    "description": {
+      "en": "Populates attribute values across selected records using Python 3 or Arcade formulas.",
+      "ar": "حساب وتعبئة قيم الحقول للسجلات المحددة باستخدام صيغ لغة Python 3 أو Arcade."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-018",
+    "category": "Fields",
+    "name": "Alter Field",
+    "name_ar": "إعادة تسمية الحقل أو تغيير اسمه المستعار (Alias) أو تعديل طو",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/alter-field.htm",
+    "arcpy_syntax": "arcpy.management.AlterField(in_table, field, new_field_name, new_field_alias, new_field_type, new_field_length)",
+    "ui_path": "Data tab > Fields view > Rename / Change Alias",
+    "description": {
+      "en": "Renames a field, updates its alias, or adjusts field length in geodatabases.",
+      "ar": "إعادة تسمية الحقل أو تغيير اسمه المستعار (Alias) أو تعديل طوله داخل الجيوداتابيز."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-019",
+    "category": "Fields",
+    "name": "Assign Default To Field",
+    "name_ar": "تعيين قيمة افتراضية تُملأ آلياً عند رسم محرر لمعلم جديد.",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/assign-default-to-field.htm",
+    "arcpy_syntax": "arcpy.management.AssignDefaultToField(in_table, field_name, default_value, subtype_code)",
+    "ui_path": "Fields view > Default Value column",
+    "description": {
+      "en": "Sets an automatic default value whenever an editor digitizes a new feature.",
+      "ar": "تعيين قيمة افتراضية تُملأ آلياً عند رسم محرر لمعلم جديد."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-020",
+    "category": "Fields",
+    "name": "Enable COGO",
+    "name_ar": "إضافة حقول القياس المساحي COGO القياسية (الاتجاه، المسافة، ن",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/enable-cogo.htm",
+    "arcpy_syntax": "arcpy.management.EnableCOGO(in_line_feature_class)",
+    "ui_path": "Catalog Pane > Right-click line FC > Manage > Enable COGO",
+    "description": {
+      "en": "Adds standard Coordinate Geometry fields (Direction, Distance, Radius, ArcLength, Radius2) to a line feature class.",
+      "ar": "إضافة حقول القياس المساحي COGO القياسية (الاتجاه، المسافة، نصف القطر) إلى طبقة خطية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-021",
+    "category": "Domains",
+    "name": "Create Domain",
+    "name_ar": "إنشاء مجال سمات على مستوى قاعدة البيانات الجغرافية (مشفر أو",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-domain.htm",
+    "arcpy_syntax": "arcpy.management.CreateDomain(in_workspace, domain_name, domain_description, field_type, domain_type, split_policy, merge_policy)",
+    "ui_path": "Catalog Pane > Right-click GDB > Manage > Domains",
+    "description": {
+      "en": "Creates an attribute domain at the geodatabase level (CODED or RANGE) with defined Split and Merge policies.",
+      "ar": "إنشاء مجال سمات على مستوى قاعدة البيانات الجغرافية (مشفر أو مدى) مع ضبط سياسات التجزئة والدمج."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-022",
+    "category": "Domains",
+    "name": "Add Coded Value To Domain",
+    "name_ar": "إضافة زوج كود/وصف جديد إلى قائمة الخيارات المسموحة في مجال ق",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-coded-value-to-domain.htm",
+    "arcpy_syntax": "arcpy.management.AddCodedValueToDomain(in_workspace, domain_name, code, code_description)",
+    "ui_path": "Domains view > Coded Values table",
+    "description": {
+      "en": "Adds an allowable Code/Description pair into an existing Coded Value Domain.",
+      "ar": "إضافة زوج كود/وصف جديد إلى قائمة الخيارات المسموحة في مجال قيم مشفرة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-023",
+    "category": "Domains",
+    "name": "Assign Domain To Field",
+    "name_ar": "ربط مجال سمات بحقل جدول معين، مع إمكانية قصر الربط على نوع ف",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/assign-domain-to-field.htm",
+    "arcpy_syntax": "arcpy.management.AssignDomainToField(in_table, field_name, domain_name, subtype_code)",
+    "ui_path": "Fields view > Domain column dropdown",
+    "description": {
+      "en": "Binds a domain to an attribute field, optionally restricting the binding to a specific Subtype.",
+      "ar": "ربط مجال سمات بحقل جدول معين، مع إمكانية قصر الربط على نوع فرعي (Subtype) محدد."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-024",
+    "category": "Domains",
+    "name": "Set Value For Range Domain",
+    "name_ar": "تحديد الحدود الدنيا والقصوى المسموح بها لمجال مدى رقمي أو زم",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/set-value-for-range-domain.htm",
+    "arcpy_syntax": "arcpy.management.SetValueForRangeDomain(in_workspace, domain_name, min_value, max_value)",
+    "ui_path": "Domains view > Min/Max value cells",
+    "description": {
+      "en": "Specifies valid minimum and maximum numeric or date boundaries for a Range Domain.",
+      "ar": "تحديد الحدود الدنيا والقصوى المسموح بها لمجال مدى رقمي أو زمني."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-025",
+    "category": "Domains",
+    "name": "Domain To Table",
+    "name_ar": "تصدير أكواد وأوصاف مجال السمات إلى جدول مستقل للتوثيق أو الن",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/domain-to-table.htm",
+    "arcpy_syntax": "arcpy.management.DomainToTable(in_workspace, domain_name, out_table, code_field, description_field)",
+    "ui_path": "Geoprocessing > Search 'Domain To Table'",
+    "description": {
+      "en": "Exports a geodatabase domain's codes and descriptions into a standalone table.",
+      "ar": "تصدير أكواد وأوصاف مجال السمات إلى جدول مستقل للتوثيق أو النقل."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-026",
+    "category": "Subtypes",
+    "name": "Set Subtype Field",
+    "name_ar": "تعيين حقل رقمي صحيح كحقل تصنيف للأنواع الفرعية داخل فئة المع",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/set-subtype-field.htm",
+    "arcpy_syntax": "arcpy.management.SetSubtypeField(in_table, field)",
+    "ui_path": "Data tab on Ribbon > Design group > Subtypes view",
+    "description": {
+      "en": "Designates an integer field as the subtype classifier for a feature class.",
+      "ar": "تعيين حقل رقمي صحيح كحقل تصنيف للأنواع الفرعية داخل فئة المعالم."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-027",
+    "category": "Subtypes",
+    "name": "Add Subtype",
+    "name_ar": "إضافة كود رقمي ووصف نصي لإنشاء تصنيف فرعي جديد داخل الطبقة.",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-subtype.htm",
+    "arcpy_syntax": "arcpy.management.AddSubtype(in_table, subtype_code, subtype_description)",
+    "ui_path": "Subtypes view > Insert new row",
+    "description": {
+      "en": "Adds a specific integer code and descriptive label to partition features into logical groups.",
+      "ar": "إضافة كود رقمي ووصف نصي لإنشاء تصنيف فرعي جديد داخل الطبقة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-028",
+    "category": "Contingent Values",
+    "name": "Create Field Group",
+    "name_ar": "تعريف مجموعة حقول مترابطة لفرض قواعد تحقق تسلسلية وشجرية بين",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-field-group.htm",
+    "arcpy_syntax": "arcpy.management.CreateFieldGroup(target_table, name, fields)",
+    "ui_path": "Data tab > Design group > Contingent Values > Field Groups",
+    "description": {
+      "en": "Defines a group of dependent fields to enforce tree-like cross-field validation rules.",
+      "ar": "تعريف مجموعة حقول مترابطة لفرض قواعد تحقق تسلسلية وشجرية بين عدة حقول."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-029",
+    "category": "Contingent Values",
+    "name": "Add Contingent Value",
+    "name_ar": "تحديد توليفة مسموحة من القيم بين الحقول المترابطة (مثل: نوع",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-contingent-value.htm",
+    "arcpy_syntax": "arcpy.management.AddContingentValue(target_table, field_group_name, values, subtype)",
+    "ui_path": "Contingent Values view > Add row",
+    "description": {
+      "en": "Defines an allowable combination of values across the field group (e.g., Pavement=Asphalt -> Speed=35).",
+      "ar": "تحديد توليفة مسموحة من القيم بين الحقول المترابطة (مثل: نوع الرصف=أسفلت -> السرعة=35)."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-030",
+    "category": "Attribute Rules",
+    "name": "Add Attribute Rule",
+    "name_ar": "إضافة قاعدة سمات مبرمجة بلغة Arcade للحساب الآلي أو التقييد",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-attribute-rule.htm",
+    "arcpy_syntax": "arcpy.management.AddAttributeRule(in_table, name, type, script_expression, is_editable, triggering_events, error_number, error_message, description, subtype, field, exclude_from_client_evaluation)",
+    "ui_path": "Data tab > Design group > Attribute Rules view",
+    "description": {
+      "en": "Adds an Arcade-driven rule to calculate attributes automatically, enforce constraints, or evaluate data validation.",
+      "ar": "إضافة قاعدة سمات مبرمجة بلغة Arcade للحساب الآلي أو التقييد الصارم أو التحقق المجمّع."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-031",
+    "category": "Attribute Rules",
+    "name": "Enable / Disable Attribute Rules",
+    "name_ar": "تعطيل أو تفعيل قواعد السمات مؤقتاً أثناء التحميل الضخم للبيا",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/enable-attribute-rules.htm",
+    "arcpy_syntax": "arcpy.management.EnableAttributeRules(in_table, names, type) / DisableAttributeRules",
+    "ui_path": "Attribute Rules view > Toggle Enable checkbox",
+    "description": {
+      "en": "Temporarily pauses rule evaluation during bulk data loads to accelerate performance.",
+      "ar": "تعطيل أو تفعيل قواعد السمات مؤقتاً أثناء التحميل الضخم للبيانات لتسريع الأداء."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-032",
+    "category": "Topology",
+    "name": "Create Topology",
+    "name_ar": "إنشاء طوبولوجيا قاعدة البيانات داخل Feature Dataset لفرض قوا",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-topology.htm",
+    "arcpy_syntax": "arcpy.management.CreateTopology(in_dataset, out_name, in_cluster_tolerance)",
+    "ui_path": "Catalog Pane > Right-click Feature Dataset > New > Topology",
+    "description": {
+      "en": "Creates a geodatabase topology within a Feature Dataset to enforce strict spatial integrity.",
+      "ar": "إنشاء طوبولوجيا قاعدة البيانات داخل Feature Dataset لفرض قواعد النزاهة المكانية الصارمة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-033",
+    "category": "Topology",
+    "name": "Add Rule To Topology",
+    "name_ar": "إضافة قواعد هندسية مثل عدم التداخل وعدم وجود فجوات وعدم وجود",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-rule-to-topology.htm",
+    "arcpy_syntax": "arcpy.management.AddRuleToTopology(in_topology, rule_type, in_feature_class, subtype, in_feature_class2, subtype2)",
+    "ui_path": "Topology Properties > Rules tab > Add",
+    "description": {
+      "en": "Adds spatial geometric rules such as 'Must Not Overlap', 'Must Not Have Gaps', or 'Must Not Have Dangles'.",
+      "ar": "إضافة قواعد هندسية مثل عدم التداخل وعدم وجود فجوات وعدم وجود خطوط معلقة للشبكات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-034",
+    "category": "Topology",
+    "name": "Validate Topology",
+    "name_ar": "تنفيذ التقريب العنقودي وفحص المعالم وتحديد الأخطاء الهندسية",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/validate-topology.htm",
+    "arcpy_syntax": "arcpy.management.ValidateTopology(in_topology, in_extent)",
+    "ui_path": "Edit tab > Manage Edits > Validate (or Error Inspector)",
+    "description": {
+      "en": "Executes coordinate snapping across cluster tolerance and flags errors violating active topology rules.",
+      "ar": "تنفيذ التقريب العنقودي وفحص المعالم وتحديد الأخطاء الهندسية المخالفة لقواعد الطوبولوجيا."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-035",
+    "category": "Topology",
+    "name": "Export Topology Errors",
+    "name_ar": "تصدير أخطاء واستثناءات الطوبولوجيا (نقطية، خطية، مساحية) إلى",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/export-topology-errors.htm",
+    "arcpy_syntax": "arcpy.management.ExportTopologyErrors(in_topology, out_path, out_basename)",
+    "ui_path": "Geoprocessing > Search 'Export Topology Errors'",
+    "description": {
+      "en": "Exports point, line, and polygon topology error features and exceptions into standalone feature classes.",
+      "ar": "تصدير أخطاء واستثناءات الطوبولوجيا (نقطية، خطية، مساحية) إلى فئات معالم مستقلة للمراجعة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-036",
+    "category": "Projections and Transformations",
+    "name": "Define Projection",
+    "name_ar": "تعريف أو تعديل البيانات الوصفية للمرجع المكاني لطبقة مجهولة",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/define-projection.htm",
+    "arcpy_syntax": "arcpy.management.DefineProjection(in_dataset, coor_system)",
+    "ui_path": "Geoprocessing > Search 'Define Projection'",
+    "description": {
+      "en": "Overwrites or defines the coordinate system metadata for a dataset with missing or Unknown spatial reference.",
+      "ar": "تعريف أو تعديل البيانات الوصفية للمرجع المكاني لطبقة مجهولة الإسقاط دون تعديل أرقام الإحداثيات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-037",
+    "category": "Projections and Transformations",
+    "name": "Project",
+    "name_ar": "إعادة حساب إحداثيات المعالم رياضياً من نظام إلى آخر وإنتاج ف",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm",
+    "arcpy_syntax": "arcpy.management.Project(in_dataset, out_dataset, out_coor_system, transform_method, in_coor_system)",
+    "ui_path": "Geoprocessing > Search 'Project'",
+    "description": {
+      "en": "Mathematically recalculates feature coordinates from one coordinate system to another, producing a brand-new feature class.",
+      "ar": "إعادة حساب إحداثيات المعالم رياضياً من نظام إلى آخر وإنتاج فئة معالم مخرجة جديدة تماماً."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-038",
+    "category": "Projections and Transformations",
+    "name": "Project Raster",
+    "name_ar": "إعادة إسقاط شبكة الراستر إلى نظام إحداثيات مسقط جديد مع إعاد",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project-raster.htm",
+    "arcpy_syntax": "arcpy.management.ProjectRaster(in_raster, out_raster, out_coor_system, resampling_type, cell_size, geographic_transform)",
+    "ui_path": "Geoprocessing > Search 'Project Raster'",
+    "description": {
+      "en": "Transforms a raster grid into a new projected coordinate system with cell resampling.",
+      "ar": "إعادة إسقاط شبكة الراستر إلى نظام إحداثيات مسقط جديد مع إعادة معاينة الخلايا."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-039",
+    "category": "Joins and Relates",
+    "name": "Add Join",
+    "name_ar": "ضم أعمدة جدول إلى طبقة في الذاكرة بالاعتماد على مفتاح مشترك.",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-join.htm",
+    "arcpy_syntax": "arcpy.management.AddJoin(in_layer_or_view, in_field, join_table, join_field, join_type)",
+    "ui_path": "Contents Pane > Layer > Joins and Relates > Add Join",
+    "description": {
+      "en": "Joins attributes of a table to a layer in memory based on a common key. Best for 1:1 and M:1 relationships.",
+      "ar": "ضم أعمدة جدول إلى طبقة في الذاكرة بالاعتماد على مفتاح مشترك. مثالي لعلاقات 1:1 و M:1."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-040",
+    "category": "Joins and Relates",
+    "name": "Join Field",
+    "name_ar": "ضم وتثبيت أعمدة محددة من جدول خارجي بشكل دائم داخل جدول الطب",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/join-field.htm",
+    "arcpy_syntax": "arcpy.management.JoinField(in_data, in_field, join_table, join_field, fields)",
+    "ui_path": "Geoprocessing > Search 'Join Field'",
+    "description": {
+      "en": "Permanently appends specified columns from an external table directly into the target feature class table on disk.",
+      "ar": "ضم وتثبيت أعمدة محددة من جدول خارجي بشكل دائم داخل جدول الطبقة الهدف على القرص الصلب."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-041",
+    "category": "Joins and Relates",
+    "name": "Add Relate",
+    "name_ar": "إنشاء ارتباط تفاعلي مؤقت يدعم علاقات واحد لمتعدد (1:M) ومتعد",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-relate.htm",
+    "arcpy_syntax": "arcpy.management.AddRelate(in_layer_or_view, in_field, relate_table, relate_field, relate_name, cardinality)",
+    "ui_path": "Layer > Joins and Relates > Add Relate",
+    "description": {
+      "en": "Establishes a temporary dynamic link between a layer and table supporting 1:Many and Many:Many cardinalities.",
+      "ar": "إنشاء ارتباط تفاعلي مؤقت يدعم علاقات واحد لمتعدد (1:M) ومتعدد لمتعدد (M:N) دون دمج الأعمدة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-042",
+    "category": "Relationship Classes",
+    "name": "Create Relationship Class",
+    "name_ar": "إنشاء فئة علاقة دائمة في قاعدة البيانات لإدارة الروابط بين ا",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-relationship-class.htm",
+    "arcpy_syntax": "arcpy.management.CreateRelationshipClass(origin_table, destination_table, out_relationship_class, relationship_type, forward_label, backward_label, message_direction, cardinality, attributed, origin_primary_key, origin_foreign_key, destination_primary_key, destination_foreign_key)",
+    "ui_path": "Catalog Pane > Right-click GDB > New > Relationship Class",
+    "description": {
+      "en": "Creates a permanent geodatabase relationship schema item managing object associations with composite cascade-delete options.",
+      "ar": "إنشاء فئة علاقة دائمة في قاعدة البيانات لإدارة الروابط بين المعالم وتحديد سلوك الحذف المتسلسل."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-043",
+    "category": "Geodatabase Administration",
+    "name": "Create File Geodatabase",
+    "name_ar": "إنشاء قاعدة بيانات جغرافية ملفية جديدة (.gdb) تدعم سعة 1 تير",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-file-gdb.htm",
+    "arcpy_syntax": "arcpy.management.CreateFileGDB(out_folder_path, out_name, out_version)",
+    "ui_path": "Catalog Pane > Right-click folder > New > File Geodatabase",
+    "description": {
+      "en": "Creates a new File Geodatabase (.gdb) folder on disk supporting up to 1 TB default per table.",
+      "ar": "إنشاء قاعدة بيانات جغرافية ملفية جديدة (.gdb) تدعم سعة 1 تيرابايت افتراضياً لكل جدول."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-044",
+    "category": "Geodatabase Administration",
+    "name": "Create Mobile Geodatabase",
+    "name_ar": "إنشاء قاعدة بيانات جغرافية متنقلة (.geodatabase) قائمة على م",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-mobile-gdb.htm",
+    "arcpy_syntax": "arcpy.management.CreateMobileGDB(out_folder_path, out_name)",
+    "ui_path": "Catalog Pane > Right-click folder > New > Mobile Geodatabase",
+    "description": {
+      "en": "Creates a single-file SQLite/SpatiaLite database (.geodatabase) optimized for offline mobile apps.",
+      "ar": "إنشاء قاعدة بيانات جغرافية متنقلة (.geodatabase) قائمة على محرك SQLite ومثالية لتطبيقات الميدان."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-045",
+    "category": "Geodatabase Administration",
+    "name": "Compact",
+    "name_ar": "إعادة تنظيم الملفات على القرص واستعادة المساحات الفارغة المت",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/compact.htm",
+    "arcpy_syntax": "arcpy.management.Compact(in_workspace)",
+    "ui_path": "Catalog Pane > Right-click GDB > Manage > Compact",
+    "description": {
+      "en": "Reorganizes physical storage files in a File Geodatabase to eliminate fragmented free space and rebuild indexes.",
+      "ar": "إعادة تنظيم الملفات على القرص واستعادة المساحات الفارغة المتروكة وتحديث الفهارس لتسريع القراءة."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-046",
+    "category": "Geodatabase Administration",
+    "name": "Compress",
+    "name_ar": "ضغط قاعدة بيانات المؤسسة Enterprise GDB لدمج جداول التعديلات",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/compress.htm",
+    "arcpy_syntax": "arcpy.management.Compress(in_workspace)",
+    "ui_path": "Geoprocessing > Search 'Compress'",
+    "description": {
+      "en": "Compresses an Enterprise Geodatabase to remove unreferenced version delta states and push adds/deletes into base tables.",
+      "ar": "ضغط قاعدة بيانات المؤسسة Enterprise GDB لدمج جداول التعديلات (Delta Tables) في الجداول الأساسية."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-047",
+    "category": "Geodatabase Administration",
+    "name": "Add Global IDs",
+    "name_ar": "إضافة حقل معرفات عالمية فريدة (GlobalID) بطول 128-bit إلزامي",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/add-global-ids.htm",
+    "arcpy_syntax": "arcpy.management.AddGlobalIDs(in_datasets)",
+    "ui_path": "Catalog Pane > Right-click FC > Manage > Add Global IDs",
+    "description": {
+      "en": "Adds unique 128-bit GUIDs required for offline mobile synchronization, attachments, and branch versioning.",
+      "ar": "إضافة حقل معرفات عالمية فريدة (GlobalID) بطول 128-bit إلزامية للمزامنة الميدانية والمرفقات."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-048",
+    "category": "Geodatabase Administration",
+    "name": "Enable Attachments",
+    "name_ar": "إنشاء جدول مرفقات (_ATTACH) وفئة علاقة مركبة لتخزين الصور وا",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/enable-attachments.htm",
+    "arcpy_syntax": "arcpy.management.EnableAttachments(in_dataset)",
+    "ui_path": "Catalog Pane > Right-click FC > Manage > Enable Attachments",
+    "description": {
+      "en": "Creates an attachment table (_ATTACH) and a composite relationship class allowing features to store photos and documents.",
+      "ar": "إنشاء جدول مرفقات (_ATTACH) وفئة علاقة مركبة لتخزين الصور والمستندات المرفقة بالمعالم."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-049",
+    "category": "Geodatabase Administration",
+    "name": "Upgrade Dataset (256TB Upgrade)",
+    "name_ar": "ترقية سعة جداول أو راستر قاعدة البيانات الملفية من 1 تيراباي",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases-and-data-storage.htm",
+    "arcpy_syntax": "arcpy.management.MigrateStorage(in_datasets, configuration_keyword='MAX_FILE_SIZE_256TB')",
+    "ui_path": "Geoprocessing > Environments > Geodatabase Storage Parameters",
+    "description": {
+      "en": "Upgrades a File Geodatabase raster or table boundary limit from the default 1 TB to 256 TB.",
+      "ar": "ترقية سعة جداول أو راستر قاعدة البيانات الملفية من 1 تيرابايت الافتراضية إلى 256 تيرابايت."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-050",
+    "category": "General",
+    "name": "Append",
+    "name_ar": "إلحاق وإضافة معالم عدة طبقات مدخلة داخل طبقة هدف قائمة بالفع",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/append.htm",
+    "arcpy_syntax": "arcpy.management.Append(inputs, target, schema_type, field_mapping)",
+    "ui_path": "Geoprocessing > Search 'Append'",
+    "description": {
+      "en": "Appends multiple input datasets into an existing target dataset.",
+      "ar": "إلحاق وإضافة معالم عدة طبقات مدخلة داخل طبقة هدف قائمة بالفعل دون إنشاء ملف جديد."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-051",
+    "category": "General",
+    "name": "Merge",
+    "name_ar": "دمج معالم عدة طبقات من نفس النوع الهندسي في فئة معالم مخرجة",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/merge.htm",
+    "arcpy_syntax": "arcpy.management.Merge(inputs, output, field_mappings)",
+    "ui_path": "Geoprocessing > Search 'Merge'",
+    "description": {
+      "en": "Combines multiple input datasets of the same geometry type into a brand-new output feature class.",
+      "ar": "دمج معالم عدة طبقات من نفس النوع الهندسي في فئة معالم مخرجة جديدة تماماً على القرص."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": "DM-T-052",
+    "category": "General",
+    "name": "Delete",
+    "name_ar": "حذف العناصر وقواعد البيانات وفئات المعالم نهائياً من القرص ا",
+    "doc_url": "https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/delete.htm",
+    "arcpy_syntax": "arcpy.management.Delete(in_data, data_type)",
+    "ui_path": "Catalog Pane > Right-click item > Delete",
+    "description": {
+      "en": "Permanently deletes data items (feature classes, tables, geodatabases, shapes) from disk.",
+      "ar": "حذف العناصر وقواعد البيانات وفئات المعالم نهائياً من القرص الصلب."
+    },
+    "exam_trap": {
+      "en": "",
+      "ar": ""
+    }
+  }
+]

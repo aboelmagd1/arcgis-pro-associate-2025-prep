@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the maximum table and file size supported by a File Geodatabase (.gdb) by default?",
+    "front_ar": "ما هو الحد الأقصى الافتراضي لحجم الجدول والملف في قاعدة البيانات الجغرافية الملفية (.gdb)؟",
+    "back_en": "1 Terabyte (TB) per table or raster dataset. It can be upgraded up to 256 TB per table using the MAX_FILE_SIZE_256TB configuration keyword.",
+    "back_ar": "1 تيرابايت (1TB) افتراضياً لكل جدول أو راستر، ويمكن ترقيتها إلى 256 تيرابايت للجدول الواحد باستخدام الكلمة المفتاحية MAX_FILE_SIZE_256TB."
+  },
+  {
+    "id": 2,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the maximum file size limitation of a Shapefile (.shp)?",
+    "front_ar": "ما هو الحد الأقصى الصارم لحجم ملف الـ Shapefile (.shp)؟",
+    "back_en": "2 Gigabytes (2 GB) for any component file (.shp, .dbf, etc.). Exceeding this causes file corruption.",
+    "back_ar": "2 جيجابايت (2GB) لأي ملف مكون (.shp, .dbf إلخ)، وتجاوز هذا الحد يؤدي إلى تلف الملف تماماً."
+  },
+  {
+    "id": 3,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the maximum field name length limit in a Shapefile (.dbf) compared to a File Geodatabase?",
+    "front_ar": "ما هو الحد الأقصى لطول اسم حقل البيانات في الـ Shapefile مقارنة بقاعدة البيانات الجغرافية؟",
+    "back_en": "10 characters in Shapefile (.dbf), whereas File Geodatabase supports field names up to 64 characters (and aliases up to 255 characters).",
+    "back_ar": "10 أحرف فقط في Shapefile (.dbf)، بينما تدعم قاعدة البيانات الجغرافية File GDB أسماء حقول حتى 64 حرفاً وأسماء مستعارة حتى 255 حرفاً."
+  },
+  {
+    "id": 4,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the mandatory coordinate system rule inside a Feature Dataset?",
+    "front_ar": "ما هي القاعدة الإلزامية الصارمة لنظام الإحداثيات داخل طقم المعالم (Feature Dataset)؟",
+    "back_en": "All feature classes stored inside a Feature Dataset MUST share the exact same Coordinate System, XY Tolerance, and Resolution.",
+    "back_ar": "يجب أن تشترك جميع فئات المعالم داخل طقم المعالم Feature Dataset في نفس نظام الإحداثيات ودقة التحمل (XY Tolerance & Resolution) تماماً."
+  },
+  {
+    "id": 5,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What underlying database engine powers a Mobile Geodatabase (.geodatabase)?",
+    "front_ar": "ما هو محرك قواعد البيانات الذي تعمل عليه قاعدة البيانات الجغرافية المحمولة (.geodatabase)؟",
+    "back_en": "SQLite / SpatiaLite. It is a single-file, cross-platform spatial database that can be read directly by third-party SQLite software.",
+    "back_ar": "محرك SQLite / SpatiaLite. وهي قاعدة بيانات مكانية بملف فردي واحد تعمل عبر مختلف المنصات وقابلة للقراءة ببرمجيات خارجية."
+  },
+  {
+    "id": 6,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the key difference between GlobalID and ObjectID fields?",
+    "front_ar": "ما هو الفارق الجوهري بين حقل المعرف الفريد العالمي GlobalID والمعرف المحلي ObjectID؟",
+    "back_en": "ObjectID is a sequential integer unique only within that specific table (and changes when exported). GlobalID is a 36-character globally unique GUID maintained across databases and replication.",
+    "back_ar": "حقل ObjectID هو رقم تسلسلي فريد فقط داخل الجدول الواحد ويتغير عند التصدير. أما GlobalID فهو معرف عالمي فريد (GUID) من 36 رمزاً يظل ثابتاً عبر المزامنة والنسخ وقواعد البيانات."
+  },
+  {
+    "id": 7,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the primary operational effect of running the 'Compact' geodatabase tool?",
+    "front_ar": "ما هو التأثير الفعلي لتشغيل أداة ضغط قاعدة البيانات الجغرافية 'Compact'؟",
+    "back_en": "Removes unused empty space, defragments files, and rebuilds database indexes to enhance query performance. Requires an exclusive schema lock.",
+    "back_ar": "إزالة المساحات الفارغة غير المستخدمة وإلغاء تجزئة الملفات وإعادة بناء الفهارس لتسريع الاستعلامات. تتطلب قفلاً حصرياً للمخطط."
+  },
+  {
+    "id": 8,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What two database objects are automatically created when 'Enable Attachments' is executed on a feature class?",
+    "front_ar": "ما هما الكائنان اللذان يتم إنشاؤهما تلقائياً في قاعدة البيانات عند تفعيل المرفقات (Enable Attachments)؟",
+    "back_en": "An attachment table named '[FeatureClass]_ATTACH' (with a BLOB field) and a Composite Relationship Class linking the feature class to the table.",
+    "back_ar": "جدول مرفقات يحمل الاسم '[FeatureClass]_ATTACH' (يحوي حقل BLOB) وفئة علاقات تركيبية (Composite Relationship Class) لربط المعالم بالملفات."
+  },
+  {
+    "id": 9,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "Which data type is used in ArcGIS Pro to store unstructured binary files, PDFs, or photos directly inside an attribute table?",
+    "front_ar": "ما هو نوع البيانات المستخدم في ArcGIS Pro لتخزين الملفات الثنائية غير المهيكلة أو الصور أو الـ PDF داخل جدول السمات؟",
+    "back_en": "BLOB (Binary Large Object). It can store complex binary data up to the database limit.",
+    "back_ar": "نوع BLOB (Binary Large Object). وهو مخصص لتخزين البيانات الثنائية الضخمة كالمستندات والوسائط داخل الجدول."
+  },
+  {
+    "id": 10,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the functional purpose of exporting a geodatabase as an 'XML Workspace Document' (Schema Only)?",
+    "front_ar": "ما هو الغرض الوظيفي من تصدير قاعدة البيانات كوثيقة XML Workspace Document (بوضع Schema Only)؟",
+    "back_en": "Exports the structural definitions, tables, domains, subtypes, and topology rules WITHOUT copying any actual feature records, enabling fast template cloning.",
+    "back_ar": "تصدير الهيكل التصميمي والجداول والنطاقات والفئات الفرعية وقواعد الطوبولوجيا دون نسخ السجلات المكانية، مما يتيح استنساخ قوالب البيانات فوراً."
+  },
+  {
+    "id": 11,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "Can you enable M-values or Z-values on an existing feature class after its creation?",
+    "front_ar": "هل يمكن تفعيل إحداثيات الارتفاع Z أو القيم الخطية M على فئة معالم موجودة مسبقاً بعد إنشائها؟",
+    "back_en": "NO. Has_Z and Has_M are immutable geometry properties. You must export or copy the features into a newly created feature class with Z/M enabled.",
+    "back_ar": "لا، خصائص Z و M لا يمكن تعديلها بعد إنشاء الطبقة. يجب تصدير أو نسخ المعالم إلى فئة معالم جديدة ذات دعم مسبق لقيم Z/M."
+  },
+  {
+    "id": 12,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the difference between Truncate Table and Delete Rows?",
+    "front_ar": "ما هو الفارق بين أداتي تفريغ الجدول Truncate Table وحذف السجلات Delete Rows؟",
+    "back_en": "Delete Rows respects active selections and fires edit triggers (slower). Truncate Table bypasses row-level logging and instantly purges all records ignoring selections.",
+    "back_ar": "أداة Delete Rows تحذف السجلات المحددة فقط وتستجيب لمشغلات التحرير. أما Truncate Table فتتجاوز التحديد وتحذف كافة السجلات فورياً وبأعلى سرعة."
+  },
+  {
+    "id": 13,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What happens to the spatial index when performing large bulk data loads into an Enterprise Geodatabase?",
+    "front_ar": "ماذا يحدث للفهرس المكاني عند استيراد كميات ضخمة من البيانات إلى قاعدة بيانات Enterprise Geodatabase؟",
+    "back_en": "The spatial index becomes fragmented or suboptimal. Best practice is to drop/remove the spatial index before loading, and recreate it via 'Rebuild Indexes'.",
+    "back_ar": "يتعرض الفهرس المكاني للتجزئة وتدني الأداء؛ وتعد الممارسة الفضلى هي حذف الفهرس قبل التحميل الضخم ثم إعادة إنشائه بأداة Rebuild Indexes."
+  },
+  {
+    "id": 14,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "Which license level is required to author a Geodatabase Topology or Relationship Class in ArcGIS Pro?",
+    "front_ar": "ما هو مستوى الترخيص الأدنى المطلوب لبناء طوبولوجيا قاعدة البيانات أو فئات العلاقات في ArcGIS Pro؟",
+    "back_en": "ArcGIS Pro Standard or Advanced license. Basic license can only view and edit simple feature classes without creating topology datasets.",
+    "back_ar": "ترخيص ArcGIS Pro Standard أو Advanced. أما ترخيص Basic فيتيح العرض والتحرير البسيط دون إنشاء هياكل الطوبولوجيا المتقدمة."
+  },
+  {
+    "id": 15,
+    "category": "Geodatabase Architecture",
+    "category_ar": "معمارية قواعد البيانات الجغرافية",
+    "front_en": "What is the purpose of the 'Upgrade Geodatabase' tool?",
+    "front_ar": "ما هو الغرض من أداة ترقية قاعدة البيانات 'Upgrade Geodatabase'؟",
+    "back_en": "Updates internal geodatabase system tables to support newer ArcGIS Pro functionality (e.g. Attribute Rules, Contingent Values). Irreversible operation.",
+    "back_ar": "تحديث جداول النظام الداخلية لدعم ميزات ArcGIS Pro الحديثة مثل قواعد السمات والقيم الشرطية، وهي عملية غير قابلة للتراجع."
+  },
+  {
+    "id": 16,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What is a Coded Value Domain and what field types does it support?",
+    "front_ar": "ما هو نطاق القيم المقيدة (Coded Value Domain) وما هي أنواع الحقول التي يدعمها؟",
+    "back_en": "Restricts valid entries to a discrete list of (Code, Description) pairs. Supports Text, Short Integer, Long Integer, Float, Double, and Date.",
+    "back_ar": "حصر المدخلات في قائمة محددة من أزواج (الكود والوصف)، ويدعم الحقول النصية والرقمية وحقول التاريخ."
+  },
+  {
+    "id": 17,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What is a Range Domain and what field types does it strictly apply to?",
+    "front_ar": "ما هو نطاق المدى (Range Domain) وما هي أنواع الحقول التي يطبق عليها حصراً؟",
+    "back_en": "Defines allowable minimum and maximum threshold values. Strictly applies to NUMERIC fields (Short/Long Integer, Float, Double, Date). Never Text.",
+    "back_ar": "تحديد حد أدنى وأعلى للقيم المقبولة، ويطبق حصراً على الحقول العددية وحقول التاريخ، ولا يمكن تطبيقه على النصوص إطلاقاً."
+  },
+  {
+    "id": 18,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What is the required field data type for configuring Subtypes on a feature class?",
+    "front_ar": "ما هو نوع بيانات الحقل الإلزامي لتعريف الفئات الفرعية (Subtypes) في فئة المعالم؟",
+    "back_en": "Short Integer or Long Integer only. Text fields are strictly prohibited from serving as Subtype fields.",
+    "back_ar": "Short Integer أو Long Integer فقط. يُمنع منعاً باتاً استخدام حقول النصوص Text كحقل للفئات الفرعية."
+  },
+  {
+    "id": 19,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What is the behavior of the 'Geometry Ratio' split policy on a domain-controlled attribute?",
+    "front_ar": "ما هو سلوك سياسة التجزئة بالنسبة الهندسية (Geometry Ratio) على سمات النطاقات؟",
+    "back_en": "Divides the original feature's attribute value proportionally between the two new split geometries based on their ratio of length or area.",
+    "back_ar": "تقسيم القيمة السماتية الأصلية تناسبياً بين المعلمين الجديدين الناتجين عن التجزئة بناءً على نسبة طولهما أو مساحتهما."
+  },
+  {
+    "id": 20,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What are the three Merge Policies available for geodatabase domains?",
+    "front_ar": "ما هي سياسات الدمج الثلاث المتاحة لنطاقات قواعد البيانات الجغرافية؟",
+    "back_en": "1. Default Value (resets to default). 2. Sum Values (adds combined values). 3. Weighted Average (calculates weighted mean by length/area).",
+    "back_ar": "1. القيمة الافتراضية Default. 2. جمع القيم Sum Values. 3. المتوسط المرجح هندسياً Weighted Average بناءً على المساحة أو الطول."
+  },
+  {
+    "id": 21,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "Can different Subtypes of the same feature class have different domains assigned to the same field?",
+    "front_ar": "هل يمكن لفئات فرعية مختلفة في نفس الطبقة أن ترتبط بنطاقات مختلفة لنفس حقل السمات؟",
+    "back_en": "YES! This is one of the superpower capabilities of Subtypes. For example, residential pipes can have a 2-6 inch range domain while industrial pipes have 8-24 inches.",
+    "back_ar": "نعم! هذه إحدى أهم ميزات الفئات الفرعية؛ حيث يمكن لحقل قطر الأنبوب مثلاً أن يرتبط بنطاق 2-6 بوصة للأنابيب السكنية و8-24 بوصة للأنابيب الصناعية."
+  },
+  {
+    "id": 22,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What are Contingent Values and what prerequisite must be configured first?",
+    "front_ar": "ما هي القيم الاحتمالية المشروطة (Contingent Values) وما هو المتطلب السابق لإنشائها؟",
+    "back_en": "Tree of dependent allowable values across multiple fields (e.g. Tree Genus -> Tree Species). Prerequisite: A 'Field Group' must be created first.",
+    "back_ar": "شجرة خيارات معتمدة بين عدة حقول (مثل جنس الشجرة يحدد أنواعها المتاحة). ويتطلب إنشاؤها تكوين مجموعة حقول (Field Group) أولاً."
+  },
+  {
+    "id": 23,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What is the difference between a Simple and a Composite Relationship Class?",
+    "front_ar": "ما هو الفارق بين فئة العلاقات البسيطة (Simple) والعلاقات التركيبية (Composite)؟",
+    "back_en": "In Simple, origin and destination exist independently. In Composite, destination objects cannot exist without origin; deleting the origin deletes destination (Cascade Delete).",
+    "back_ar": "في Simple تكون الكائنات مستقلة. وفي Composite تعتمد الوجهة على الأصل كلياً، وحذف الأصل يؤدي لحذف كافة الكائنات المرتبطة في الوجهة تلقائياً (Cascade Delete)."
+  },
+  {
+    "id": 24,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What cardinalities are supported by Relationship Classes?",
+    "front_ar": "ما هي درجات العلاقات (Cardinalities) التي تدعمها فئات العلاقات في قواعد البيانات الجغرافية؟",
+    "back_en": "1:1 (One-to-One), 1:M (One-to-Many), and M:N (Many-to-Many). M:N automatically creates an intermediate junction table.",
+    "back_ar": "واحد لواحد (1:1)، واحد لأطراف (1:M)، وأطراف لأطراف (M:N) وتنشئ الأخيرة جدول ربط وسيط تلقائياً في قاعدة البيانات."
+  },
+  {
+    "id": 25,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What happens if a user selects a choice that violates a configured Contingent Value in the Pro attribute editor?",
+    "front_ar": "ماذا يحدث عند اختيار قيمة تخالف القيم الاحتمالية المشروطة (Contingent Values) أثناء التحرير؟",
+    "back_en": "The cell is highlighted in yellow as an invalid combination, and warning messages alert the editor before saving.",
+    "back_ar": "يتم تمييز الخلية بلون تحذيري أصفر كتركيبة غير صالحة وتظهر رسائل تنبيهية للمحرر لتصحيح التوليفة قبل الحفظ."
+  },
+  {
+    "id": 26,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "Can a domain be shared across multiple feature classes in the same geodatabase?",
+    "front_ar": "هل يمكن مشاركة نفس النطاق (Domain) عبر طبقات معالم متعددة داخل قاعدة البيانات؟",
+    "back_en": "YES. Domains are stored at the geodatabase root level and can be assigned to fields across any number of feature classes or tables.",
+    "back_ar": "نعم، تخزن النطاقات على مستوى جذر قاعدة البيانات الجغرافية ويمكن ربطها بأي عدد من الحقول في مختلف الطبقات والجداول."
+  },
+  {
+    "id": 27,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What is the critical rule regarding Domain Field Type and Target Field Type compatibility?",
+    "front_ar": "ما هي القاعدة الصارمة لتوافق نوع بيانات النطاق مع نوع بيانات الحقل المستهدف؟",
+    "back_en": "The data type of the domain MUST match the field data type exactly (e.g. Long Integer domain cannot be assigned to a Short Integer or Text field).",
+    "back_ar": "يجب أن يتطابق نوع بيانات النطاق مع نوع بيانات الحقل تماماً (فنطاق من نوع Long Integer لا يمكن ربطه بحقل Short أو حقل نصي)."
+  },
+  {
+    "id": 28,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "Can you delete a domain that is currently assigned to a field or subtype?",
+    "front_ar": "هل يمكن حذف نطاق (Domain) مرتبط حالياً بحقل سمات أو فئة فرعية نشطة؟",
+    "back_en": "NO. You must first unassign the domain from all fields and subtypes before deleting it, otherwise the database throws a schema lock error.",
+    "back_ar": "لا، يجب أولاً فك ارتباط النطاق من كافة الحقول والفئات الفرعية المرتبط بها قبل حذفه وإلا ستفشل العملية بسبب قفل المخطط."
+  },
+  {
+    "id": 29,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "What is the Default Subtype in a feature class?",
+    "front_ar": "ما هي الفئة الفرعية الافتراضية (Default Subtype) في فئة المعالم؟",
+    "back_en": "The subtype applied automatically to any newly digitized feature if the user does not specify a subtype during creation.",
+    "back_ar": "الفئة الفرعية التي يتم تطبيقها تلقائياً على المعالم الجديدة عند رسمها إذا لم يقم المستخدم بتحديد فئة فرعية مسبقاً."
+  },
+  {
+    "id": 30,
+    "category": "Domains & Subtypes",
+    "category_ar": "النطاقات والفئات الفرعية",
+    "front_en": "How do Subtypes improve editing performance in ArcGIS Pro?",
+    "front_ar": "كيف تساهم الفئات الفرعية (Subtypes) في تحسين كفاءة وسرعة التحرير في ArcGIS Pro؟",
+    "back_en": "They consolidate multiple layers into a single feature class, automatically populate default attributes, and eliminate the need for redundant empty tables.",
+    "back_ar": "توحد الطبقات المتشابهة في طبقة واحدة، وتعبئ القيم الافتراضية تلقائياً عند الرسم، وتلغي الحاجة لإنشاء جداول منفصلة مكررة."
+  },
+  {
+    "id": 31,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "Where MUST feature classes reside to participate in a Geodatabase Topology?",
+    "front_ar": "أين يجب أن تتواجد فئات المعالم لتتمكن من الاشتراك في طوبولوجيا قاعدة البيانات الجغرافية؟",
+    "back_en": "Inside the SAME Feature Dataset. Geodatabase Topology cannot be created on standalone feature classes at the root of a geodatabase.",
+    "back_ar": "داخل نفس طقم المعالم (Feature Dataset) حصراً؛ ولا يمكن إنشاء طوبولوجيا لقاعدة البيانات على طبقات منفصلة في جذر القاعدة."
+  },
+  {
+    "id": 32,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What does Coordinate Rank (1 to 50) control during topology validation?",
+    "front_ar": "ما الذي تتحكم فيه رتبة الإحداثيات (Coordinate Rank من 1 إلى 50) أثناء التحقق الطوبولوجي؟",
+    "back_en": "Determines geometric integrity. Rank 1 is highest accuracy (vertices will NOT move). Vertices of lower rank (e.g. 5) will snap to higher rank vertices within cluster tolerance.",
+    "back_ar": "تحدد دقة وموثوقية موقع القمم؛ الرتبة 1 هي الأعلى دقة ولا تتحرك قممها، بينما تُسحب قمم الطبقات ذات الرتب الأدنى (مثل 5) نحوها ضمن مسافة التسامح."
+  },
+  {
+    "id": 33,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "Which topology rule prevents cadastral parcel polygons from overlapping each other?",
+    "front_ar": "ما هي القاعدة الطوبولوجية التي تمنع تداخل مضلعات قطع الأراضي المساحية مع بعضها؟",
+    "back_en": "Must Not Overlap (Polygon). Highlights shared interior overlap areas as errors.",
+    "back_ar": "قاعدة Must Not Overlap (للمضلعات). تكتشف أي مساحات تداخل مشتركة كأخطاء طوبولوجية مساحية."
+  },
+  {
+    "id": 34,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "Which topology rule ensures road network centerlines do not have free-hanging dangles?",
+    "front_ar": "ما هي القاعدة الطوبولوجية التي تضمن عدم وجود نهايات سائبة معلقة (Dangles) لشبكة الطرق؟",
+    "back_en": "Must Not Have Dangles (Line). Detects overshoots and undershoots at line endpoints (cul-de-sacs can be marked as exceptions).",
+    "back_ar": "قاعدة Must Not Have Dangles (للخطوط). تكتشف أخطاء تجاوز الخط (Overshoot) وعدم اتصاله (Undershoot)، مع إمكانية تعليم الطرق المغلقة كاستثناءات."
+  },
+  {
+    "id": 35,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "Which rule validates that bus stops (points) coincide precisely with bus route lines?",
+    "front_ar": "ما هي القاعدة التي تتحقق من أن محطات الحافلات (النقاط) تقع تماماً فوق مسار خطوط الحافلات؟",
+    "back_en": "Point Must Be Covered By Line. Flags any point feature not positioned directly on a line vertex or edge.",
+    "back_ar": "قاعدة Point Must Be Covered By Line. تكتشف أي نقطة لا تقع هندسياً فوق خط المسار كخطأ طوبولوجي نقطي."
+  },
+  {
+    "id": 36,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What is the difference between Geodatabase Topology and Map Topology?",
+    "front_ar": "ما هو الفارق بين طوبولوجيا قاعدة البيانات (Geodatabase Topology) وطوبولوجيا الخريطة (Map Topology)؟",
+    "back_en": "GDB Topology enforces strict database rules and generates persistent error layers. Map Topology is a dynamic in-memory editing tool allowing shared edge/vertex editing across layers.",
+    "back_ar": "طوبولوجيا قاعدة البيانات تفرض قواعد صارمة في قاعدة البيانات وتولد طبقات أخطاء. أما طوبولوجيا الخريطة فهي أداة تحرير مؤقتة في الذاكرة لتعديل الحواف والقمم المشتركة للطبقات معاً."
+  },
+  {
+    "id": 37,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What happens when you 'Mark as Exception' on a topology error?",
+    "front_ar": "ماذا يحدث عند اختيار 'تعليم كاستثناء' (Mark as Exception) على خطأ طوبولوجي؟",
+    "back_en": "The error remains stored in the topology but is ignored in subsequent validation cycles and reports (e.g. cul-de-sac dead ends).",
+    "back_ar": "يظل الخطأ محفوظاً في الطوبولوجيا لكنه يستثنى ولا يظهر كخطأ مخالف في جولات التحقق والتقارير المستقبلية (مثل النهايات الميتة للطرق)."
+  },
+  {
+    "id": 38,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What are the three types of Attribute Rules in ArcGIS Pro?",
+    "front_ar": "ما هي الأنواع الثلاثة لقواعد السمات (Attribute Rules) في ArcGIS Pro؟",
+    "back_en": "1. Calculation Rules (Immediate or Batch). 2. Constraint Rules (blocks invalid edits). 3. Validation Rules (batch checks for data QA).",
+    "back_ar": "1. قواعد الحساب Calculation (فوري أو مجمع). 2. قواعد التقييد Constraint (تمنع حفظ الخطأ). 3. قواعد التحقق Validation (فحص الجودة المجمع)."
+  },
+  {
+    "id": 39,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What scripting language is mandatory for authoring Attribute Rules in ArcGIS Pro?",
+    "front_ar": "ما هي لغة البرمجة الإلزامية لكتابة قواعد السمات (Attribute Rules) في ArcGIS Pro؟",
+    "back_en": "Arcade. It provides portable, fast, client-side and server-side execution across ArcGIS Enterprise, Field Maps, and Pro.",
+    "back_ar": "لغة Arcade. وتتميز بالسرعة والتوافق التام عبر الويب والميدان وقواعد البيانات المؤسسية."
+  },
+  {
+    "id": 40,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What does the Arcade global variable '$editcontext.editType' return in an Attribute Rule?",
+    "front_ar": "ما الذي يعيده المتغير العام '$editcontext.editType' في قواعد سمات Arcade؟",
+    "back_en": "Returns a string representing the edit trigger: 'INSERT', 'UPDATE', or 'DELETE'.",
+    "back_ar": "يعيد نصاً يحدد نوع عملية التحرير المنفذة: إما 'INSERT' (إدراج) أو 'UPDATE' (تحديث) أو 'DELETE' (حذف)."
+  },
+  {
+    "id": 41,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What is the primary function of the Traverse tool in the Edit Ribbon?",
+    "front_ar": "ما هي الوظيفة الأساسية لأداة المسار المساحي (Traverse) في شريط التحرير؟",
+    "back_en": "Constructs precision boundary lines and parcels based on legal survey descriptions (Direction, Distance, Curve Radius, Deflection Angle).",
+    "back_ar": "إنشاء حدود وقطع أراضٍ فائقة الدقة بالاعتماد على سجلات المساحة القانونية من زوايا انحراف ومسافات وأقطار منحنيات."
+  },
+  {
+    "id": 42,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What is the difference between the Merge editing tool and the Union editing tool?",
+    "front_ar": "ما هو الفارق بين أداة الدمج Merge وأداة الاتحاد Union في شريط أدوات التحرير؟",
+    "back_en": "Merge combines selected features in the same layer into one existing feature. Union combines selected features into a NEW single feature (can combine across layers).",
+    "back_ar": "أداة Merge تدمج المعالم المحددة في معلَم واحد قائم بنفس الطبقة. أما Union فتنشئ معلماً جديداً كلياً ناتجاً عن الدمج ويمكن أن تجمع بين طبقات مختلفة."
+  },
+  {
+    "id": 43,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What is the function of the 'Align Edge' editing tool?",
+    "front_ar": "ما هي وظيفة أداة محاذاة الحواف 'Align Edge' في شريط التحرير؟",
+    "back_en": "Snaps and aligns an entire coincident boundary or line edge to match an adjacent reference feature without leaving sliver gaps or overlaps.",
+    "back_ar": "مطابقة ومحاذاة حافة خط أو مضلع بالكامل بدقة مع المعلم المجاور دون ترك أي فراغات شريطية (Slivers) أو تداخلات."
+  },
+  {
+    "id": 44,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "What tool repairs self-intersecting or duplicate polygon geometry in-place?",
+    "front_ar": "ما هي الأداة التي تقوم بإصلاح التقاطعات الذاتية والقمم المكررة في نفس الطبقة مباشرة؟",
+    "back_en": "Repair Geometry tool (arcpy.management.RepairGeometry). Modifies the input layer directly.",
+    "back_ar": "أداة إصلاح الهندسة Repair Geometry؛ وتقوم بتعديل وإصلاح عيوب الطبقة الأصلية مباشرة على القرص دون إنشاء طبقة جديدة."
+  },
+  {
+    "id": 45,
+    "category": "Topology Rules",
+    "category_ar": "قواعد الطوبولوجيا والتحرير",
+    "front_en": "Which topology rule ensures county boundary polygons completely cover a state polygon with no void areas?",
+    "front_ar": "ما هي القاعدة الطوبولوجية التي تضمن تغطية مضلعات المقاطعات لمضلع الولاية بالكامل دون أي فراغات؟",
+    "back_en": "Must Be Covered By Feature Class Of (Polygon). Detects any portion of the source polygon layer not inside the target boundary.",
+    "back_ar": "قاعدة Must Be Covered By Feature Class Of؛ تكتشف أي جزء من مضلعات المقاطعات يقع خارج مضلع حدود الولاية."
+  },
+  {
+    "id": 46,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "What is the critical functional difference between 'Define Projection' and 'Project'?",
+    "front_ar": "ما هو الفارق الوظيفي الحاسم بين أداتي 'Define Projection' و 'Project'؟",
+    "back_en": "Define Projection only writes/updates metadata for Unknown data (does NOT change coordinate numbers). Project mathematically transforms coordinates and outputs a NEW feature class.",
+    "back_ar": "أداة Define Projection تحدث فقط البيانات الوصفية للطبقات مجهولة الإحداثيات دون تعديل الأرقام. بينما Project تحول الإحداثيات رياضياً وتنتج طبقة جديدة."
+  },
+  {
+    "id": 47,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "What does On-the-Fly Projection do in an ArcGIS Pro Map Frame?",
+    "front_ar": "ما هي وظيفة الإسقاط اللحظي (On-the-Fly Projection) في إطار خريطة ArcGIS Pro؟",
+    "back_en": "Temporarily re-projects layers in display memory to match the Map's Coordinate System without modifying the physical data stored on disk.",
+    "back_ar": "إعادة إسقاط الطبقات بصرياً في الذاكرة لتتطابق مع نظام إحداثيات الخريطة دون تغيير الإحداثيات الفيزيائية المخزنة على القرص."
+  },
+  {
+    "id": 48,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "How is the initial Coordinate System of a new Map determined in ArcGIS Pro?",
+    "front_ar": "كيف يتحدد نظام الإحداثيات الافتراضي لخريطة جديدة في ArcGIS Pro؟",
+    "back_en": "By the Coordinate System of the FIRST operational layer added to the Map (or the Default Basemap if added first).",
+    "back_ar": "بنظام إحداثيات أول طبقة تشغيلية تضاف إلى الخريطة (أو خريطة الأساس الافتراضية إذا أضيفت أولاً)."
+  },
+  {
+    "id": 49,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "When is a Geographic (Datum) Transformation required during projecting?",
+    "front_ar": "متى يكون التحويل الجيوديسي للديدم (Datum Transformation) مطلوباً أثناء إعادة الإسقاط؟",
+    "back_en": "Whenever the input layer and target coordinate system are based on DIFFERENT Geodetic Datums (e.g. NAD 1927 to WGS 1984).",
+    "back_ar": "عندما يكون نظام الإحداثيات المدخل ونظام الإحداثيات المستهدف مبنيين على ديدم (Datums) مختلفين (مثل التحويل من NAD 1927 إلى WGS 1984)."
+  },
+  {
+    "id": 50,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "Which raster resampling technique should be used for discrete categorical data (e.g. Land Cover)?",
+    "front_ar": "ما هي طريقة إعادة أخذ العينات المكانية (Resampling) الواجب استخدامها مع البيانات الفئوية (مثل الغطاء النباتي)؟",
+    "back_en": "Nearest Neighbor (NEAREST). It preserves exact cell category values without creating artificial fractional numbers.",
+    "back_ar": "طريقة Nearest Neighbor؛ لأنها تحافظ على القيم الفئوية الأصلية الصحيحة للخلايا دون توليد قيم كسرية وهمية جديدة."
+  },
+  {
+    "id": 51,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "Which raster resampling techniques are suitable for continuous data (e.g. Elevation DEM, Temperature)?",
+    "front_ar": "ما هي طرق إعادة أخذ العينات (Resampling) المناسبة للبيانات المستمرة كراستر الارتفاعات ودرجات الحرارة؟",
+    "back_en": "Bilinear Interpolation (uses weighted distance of 4 nearest cells) or Cubic Convolution (uses 16 cells for smoothest surface).",
+    "back_ar": "طريقة Bilinear Interpolation (تستخدم أقرب 4 خلايا) أو Cubic Convolution (تستخدم أقرب 16 خلية) لإنتاج أسطح انسيابية ناعمة."
+  },
+  {
+    "id": 52,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "What is the difference between a Geographic Coordinate System (GCS) and a Projected Coordinate System (PCS)?",
+    "front_ar": "ما هو الفارق بين نظام الإحداثيات الجغرافي (GCS) ونظام الإحداثيات المسقط (PCS)؟",
+    "back_en": "GCS represents locations on a 3D curved spherical/ellipsoidal surface using angular units (degrees). PCS projects onto a flat 2D surface using linear units (meters, feet).",
+    "back_ar": "نظام GCS يمثل المواقع على سطح كروي بيضاوي ثلاثي الأبعاد بوحدات زاوية (درجات). ونظام PCS يسقط الإحداثيات على سطح مستوٍ ثنائي الأبعاد بوحدات طولية (أمتار، أقدام)."
+  },
+  {
+    "id": 53,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "What does RMS Error measure during Georeferencing?",
+    "front_ar": "ما الذي يقيسه مؤشر الخطأ الإحصائي (RMS Error) أثناء عملية الإرجاع الجغرافي (Georeferencing)؟",
+    "back_en": "Root Mean Square Error measures the geometric discrepancy between control point source coordinates and the transformed target coordinates.",
+    "back_ar": "يقيس متوسط مربعات الأخطاء الهندسية بين مواقع نقاط التحكم الأصلية ومواقعها المسقطة بعد التحويل."
+  },
+  {
+    "id": 54,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "What is Linear Referencing and what geometry property does it require?",
+    "front_ar": "ما هو الإسناد الخطي (Linear Referencing) وما هي خاصية الهندسة المطلوبة لتفعيله؟",
+    "back_en": "Stores positions along linear features using relative measure distances (e.g. mileposts, highway kilometer markers). Requires M-values on polyline geometry.",
+    "back_ar": "تخزين مواقع الأحداث على طول الخطوط باستخدام قياسات نسبية (مثل علامات الكيلومترات على الطرق السريعة). ويتطلب قيماً خطية M-values على الخطوط."
+  },
+  {
+    "id": 55,
+    "category": "Projections & Coordinates",
+    "category_ar": "الإسقاط ونظم الإحداثيات",
+    "front_en": "What is the difference between Unmatched and Tied addresses in the Rematch Addresses pane?",
+    "front_ar": "ما هو الفارق بين العناوين غير المتطابقة (Unmatched) والمتعادلة (Tied) في نافذة إعادة مطابقة العناوين؟",
+    "back_en": "Unmatched means no candidate met the minimum match score. Tied means two or more candidates received the exact same highest match score.",
+    "back_ar": "العنوان Unmatched لم يجد أي مرشح يحقق درجة المطابقة الدنيا. والعنوان Tied وجد مرشحين متطابقين بنفس الدرجة القصوى ويتطلب اختيار أحدهما يدوياً."
+  },
+  {
+    "id": 56,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "Which classification method places an equal number of features into each class?",
+    "front_ar": "ما هي طريقة التصنيف الإحصائية التي توزع عدداً متساوياً من المعالم في كل فئة؟",
+    "back_en": "Quantile. Ideal for ranked data, but can group widely different values into the same class.",
+    "back_ar": "طريقة المئينات (Quantile). مثالية لمقارنة الرتب والنسب، لكنها قد تضع قيماً شديدة التباين في فئة واحدة."
+  },
+  {
+    "id": 57,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "Which classification method minimizes variance within classes and maximizes variance between classes?",
+    "front_ar": "ما هي طريقة التصنيف التي تقلل التباين داخل الفئة الواحدة وتعظم التباين بين الفئات المختلفة؟",
+    "back_en": "Natural Breaks (Jenks). The standard default classification method in GIS for naturally clustered data.",
+    "back_ar": "طريقة الفواصل الطبيعية Natural Breaks (Jenks). وهي الطريقة الافتراضية القياسية للبيانات التي تحتوي على تجمعات طبيعية."
+  },
+  {
+    "id": 58,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "Why should raw counts (e.g. total population) be Normalized when mapping with Graduated Colors?",
+    "front_ar": "لماذا يجب تطبيع الأعداد المجردة (مثل إجمالي عدد السكان) عند تمثيلها بخرائط تدرج الألوان؟",
+    "back_en": "To prevent larger geographic polygons from visually misrepresenting data. Normalizing by Area or Total creates comparable Densities or Percentages.",
+    "back_ar": "لمنع المضلعات الكبيرة جغرافياً من تضليل القارئ؛ فتحويل القيم بالقسمة على المساحة أو الإجمالي ينتج كثافات ونسباً مئوية عادلة كارتوجرافياً."
+  },
+  {
+    "id": 59,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What is the difference between Geographic Rotation and Arithmetic Rotation in symbol rotation?",
+    "front_ar": "ما هو الفارق بين التدوير الجغرافي والتدوير الحسابي عند تدوير الرموز النقطية؟",
+    "back_en": "Geographic rotation measures angles clockwise from North (0° = North). Arithmetic rotation measures angles counter-clockwise from East (0° = East).",
+    "back_ar": "التدوير الجغرافي يقيس الزوايا باتجاه عقارب الساعة بدءاً من الشمال (0° = شمال). والتدوير الحسابي يقيسها عكس عقارب الساعة بدءاً من الشرق (0° = شرق)."
+  },
+  {
+    "id": 60,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What does Symbol Layer Drawing allow cartographers to achieve on road intersections?",
+    "front_ar": "ما الذي تتيحه ميزة رسم طبقات الرموز (Symbol Layer Drawing) لمصممي الخرائط عند تقاطعات الطرق؟",
+    "back_en": "Enables joining and merging road casings and fills seamlessly without overlapping outlines at intersections.",
+    "back_ar": "دمج أطر وتعبئات خطوط الطرق بسلاسة وإزالة الخطوط المتقاطعة عند مفترقات الطرق لتبدو متصلة كشبكة حقيقية."
+  },
+  {
+    "id": 61,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What is the functional difference between a Definition Query and a Display Filter?",
+    "front_ar": "ما هو الفارق الوظيفي بين استعلام التعريف (Definition Query) وفلتر العرض (Display Filter)؟",
+    "back_en": "Definition Query filters out features from the layer entirely (hidden from display, table, and analysis). Display Filter only hides features visually at specific scales while keeping them in the attribute table.",
+    "back_ar": "استعلام Definition Query يستبعد المعالم تماماً من العرض والجدول والتحليل. أما Display Filter فيخفيها بصرياً فقط عند مقاييس معينة مع بقائها في الجدول والتحليلات."
+  },
+  {
+    "id": 62,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What is the Map Reference Scale property and how does it affect symbol drawing?",
+    "front_ar": "ما هي خاصية مقياس الرسم المرجعي للخريطة (Reference Scale) وكيف تؤثر على رسم الرموز؟",
+    "back_en": "Fixes symbol sizes and text to look proportional at a specific scale. Zooming in makes symbols larger; zooming out makes symbols smaller.",
+    "back_ar": "تثبيت حجم الرموز والنصوص عند مقياس معين؛ فعند التكبير تكبر الرموز مع المعالم، وعند التصغير تصغر نسبياً."
+  },
+  {
+    "id": 63,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What is the primary advanced labeling engine enabled by default in ArcGIS Pro?",
+    "front_ar": "ما هو محرك وضع التسميات المتقدم الافتراضي في ArcGIS Pro؟",
+    "back_en": "Maplex Label Engine. Provides sophisticated conflict resolution, leader lines, abridgments, and curve placements.",
+    "back_ar": "محرك Maplex Label Engine المتقدم، ويوفر معالجة تضارب النصوص، خطوط التوصيل (Leader Lines)، وتوزيع التسميات على المنحنيات."
+  },
+  {
+    "id": 64,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What is the difference between dynamic Map Labels and Geodatabase Annotation?",
+    "front_ar": "ما هو الفارق بين التسميات الديناميكية (Labels) ونصوص التعليق التوضيحي (Annotation)؟",
+    "back_en": "Labels are generated dynamically on-the-fly and cannot be selected or moved individually. Geodatabase Annotation converts text into editable spatial features with fixed coordinates.",
+    "back_ar": "التسميات Labels تتولد ديناميكياً ولا يمكن تحريكها فردياً. أما Annotation فتتحول لنصوص مكانية هندسية مستقلة في قاعدة البيانات قابلة للتحريك والتحرير الفردي."
+  },
+  {
+    "id": 65,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "How do you create multi-line formatted labels combining multiple fields using Arcade?",
+    "front_ar": "كيف تنشئ تسميات متعددة الأسطر تجمع بين عدة حقول باستخدام كود Arcade؟",
+    "back_en": "$feature.Field1 + TextFormatting.NewLine + $feature.Field2",
+    "back_ar": "باستخدام الدالة: $feature.Field1 + TextFormatting.NewLine + $feature.Field2"
+  },
+  {
+    "id": 66,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What does Feature Weight control in the Maplex Label Engine?",
+    "front_ar": "ما الذي يتحكم فيه وزن المعلم (Feature Weight) في محرك تسميات Maplex؟",
+    "back_en": "Defines the importance of preventing labels from being placed on top of features in that layer (0 = freely place labels on top; 1000 = strictly forbidden).",
+    "back_ar": "يحدد درجة منع وضع التسميات فوق معالم الطبقة؛ حيث 0 يسمح بمرور النص فوقها، و1000 يمنع وضع أي تسمية فوقها منعاً باتاً."
+  },
+  {
+    "id": 67,
+    "category": "Symbology & Labeling",
+    "category_ar": "الترميز والتسميات الكارتوجرافية",
+    "front_en": "What is the purpose of the 'Bivariate Colors' symbology type?",
+    "front_ar": "ما هو الغرض من نوع الترميز بالألوان ثنائية المتغير (Bivariate Colors)؟",
+    "back_en": "Visualizes quantitative relationships and correlation between TWO distinct numeric attributes simultaneously across a 2D color grid.",
+    "back_ar": "تمثيل العلاقات والارتباط الإحصائي بين متغيرين رقميين اثنين في نفس الوقت عبر شبكة لونية ثنائية المتغير."
+  },
+  {
+    "id": 68,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What is the fundamental difference between a Global Scene and a Local Scene?",
+    "front_ar": "ما هو الفارق الجوهري بين المشهد الكروي العالمي (Global Scene) والمشهد المحلي (Local Scene)؟",
+    "back_en": "Global Scene displays real-world curvature on WGS 1984 globe. Local Scene displays localized extent on a Projected Coordinate System (PCS) suitable for local elevation and underground data.",
+    "back_ar": "المشهد Global يعرض كوكب الأرض كروياً بنظام WGS 1984. والمشهد Local يعرض رقعة مكانية مسطحة بنظام مسقط PCS ويدعم البيانات تحت السطحية."
+  },
+  {
+    "id": 69,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What does Layer Extrusion do in a 3D Scene?",
+    "front_ar": "ماذا تفعل خاصية الرفع الرأسي (Extrusion) للطبقات في المشهد ثلاثي الأبعاد؟",
+    "back_en": "Pulls 2D flat footprint polygons vertically into 3D volumetric building blocks based on an attribute value (e.g. building height or number of floors).",
+    "back_ar": "رفع بصمات المضلعات ثنائية الأبعاد رأسياً لتحويلها لمجسمات ثلاثية الأبعاد بالاعتماد على حقل الارتفاع أو عدد الطوابق."
+  },
+  {
+    "id": 70,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What is an Elevation Surface in ArcGIS Pro 3D?",
+    "front_ar": "ما هو سطح الارتفاع (Elevation Surface) في بيئة المشاهد ثلاثية الأبعاد؟",
+    "back_en": "A digital terrain surface (e.g. WorldElevation3D or custom DEM) that defines the base heights where 2D and 3D features drape in real-world elevation.",
+    "back_ar": "سطح تضاريس رقمي (مثل راستر الارتفاع DEM) يحدد مناسيب سطح الأرض التي تستند وتتدلى عليها كافة الطبقات ثلاثية الأبعاد."
+  },
+  {
+    "id": 71,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What format is used to store airborne LiDAR point cloud data in ArcGIS Pro?",
+    "front_ar": "ما هي الصيغة المستخدمة لتخزين سحابة نقاط الليدار (LiDAR) الجوية في ArcGIS Pro؟",
+    "back_en": "LAS Dataset (.las or compressed .laz files). It allows rapid filtering by classification code (ground, vegetation, building roofs).",
+    "back_ar": "ملفات LAS Dataset (.las أو .laz المضغوطة)، وتتيح فرز وتصنيف النقاط (الأرض، المباني، الغطاء النباتي) وعرض أسطح الارتفاعات."
+  },
+  {
+    "id": 72,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What must be enabled on a layer properties dialog to activate the interactive Time Slider?",
+    "front_ar": "ما الذي يجب تفعيله في خصائص الطبقة لتشغيل شريط التحكم بالزمن التفاعلي (Time Slider)؟",
+    "back_en": "Configure 'Time' properties on the layer, specifying whether features have a single time field (Instant) or start and end time fields (Interval).",
+    "back_ar": "تفعيل خصائص الزمن (Time) في خصائص الطبقة وتحديد حقل التاريخ اللحظي أو حقلي بداية ونهاية الفترة الزمنية."
+  },
+  {
+    "id": 73,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What is the Range Slider used for in ArcGIS Pro?",
+    "front_ar": "ما هي استخدامات شريط التصفح بالمدى (Range Slider) في ArcGIS Pro؟",
+    "back_en": "Filters features interactively through any integer or numeric attribute (e.g. building floor levels, pipe pressure values, pipeline inspection years).",
+    "back_ar": "تصفية المعالم تفاعلياً عبر أي حقل رقمي متدرج، مثل التنقل بين طوابق المباني، أو مستويات الضغط، أو سنوات الصيانة."
+  },
+  {
+    "id": 74,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What is the difference between 2D Layers and 3D Layers groups in the Scene Table of Contents?",
+    "front_ar": "ما هو الفارق بين مجموعتي طبقات 2D وطبقات 3D في جدول محتويات المشهد ثلاثي الأبعاد؟",
+    "back_en": "2D Layers drape directly onto the ground elevation surface. 3D Layers have independent Z heights and render as volumetric real-world 3D objects.",
+    "back_ar": "طبقات 2D تلتصق وتتدلى فوق سطح تضاريس الأرض مباشرة. أما طبقات 3D فتطفو بمناسيب Z مستقلة وتظهر كمجسمات ثلاثية الأبعاد في الفضاء."
+  },
+  {
+    "id": 75,
+    "category": "3D Scenes & Time",
+    "category_ar": "المشاهد ثلاثية الأبعاد والزمن",
+    "front_en": "What geometry type stores complex 3D textured objects like architectural photorealistic buildings?",
+    "front_ar": "ما هو نوع الهندسة المخصص لتخزين المجسمات ثلاثية الأبعاد المكسوة بالخامات والصور الواقعية كالمباني المعمارية؟",
+    "back_en": "Multipatch feature class (or 3D Object feature class in modern Enterprise GDB).",
+    "back_ar": "فئة معالم من نوع Multipatch (أو كائنات 3D Object في قواعد بيانات Enterprise الحديثة)."
+  },
+  {
+    "id": 76,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What is the functional difference between the Clip tool and the Intersect tool?",
+    "front_ar": "ما هو الفارق الوظيفي بين أداة الاقتطاع Clip وأداة التقاطع Intersect؟",
+    "back_en": "Clip cuts input features using a boundary cookie-cutter WITHOUT joining attributes of the clip polygon. Intersect computes geometric overlap AND joins attributes from both layers.",
+    "back_ar": "أداة Clip تقطع المعالم مثل قاطعة العجين دون دمج سمات مضلع القطع. أما Intersect فتحسب التراكب الهندسي وتدمج سمات الطبقتين معاً في الناتج."
+  },
+  {
+    "id": 77,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What does the Spatial Join tool do?",
+    "front_ar": "ما هي الوظيفة الأساسية لأداة الربط المكاني (Spatial Join)؟",
+    "back_en": "Appends attributes from one layer to another based on spatial location and relationship (Intersect, Within, Contains, Closest), producing a brand new feature class.",
+    "back_ar": "دمج سمات طبقة مع أخرى بناءً على علاقتها المكانية في الفراغ الجغرافي (تقاطع، احتواء، وقوع داخل، أو أقرب معلم)، وتنتج طبقة جديدة تماماً."
+  },
+  {
+    "id": 78,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What is the difference between Spatial Join and 'Select Layer By Location'?",
+    "front_ar": "ما هو الفارق بين الربط المكاني Spatial Join وأداة التحديد بالموقع Select Layer By Location؟",
+    "back_en": "Spatial Join creates a permanent new feature class with combined attributes. Select Layer By Location only creates an active selection set in-memory on the existing layer.",
+    "back_ar": "الربط المكاني ينشئ طبقة جديدة دائمة على القرص بدمج السمات. أما Select By Location فتنشئ فقط تحديداً مؤقتاً في الذاكرة للمعالم المطابقة."
+  },
+  {
+    "id": 79,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What parameter in the Buffer tool merges overlapping buffer polygons into a single continuous polygon?",
+    "front_ar": "ما هو المعامل في أداة الحرم (Buffer) الذي يدمج مضلعات الحرم المتقاطعة في مضلع واحد متصل؟",
+    "back_en": "Dissolve Type = 'Dissolve all output features into a single feature' (ALL).",
+    "back_ar": "معامل الدمج Dissolve Type وضبطه على 'ALL' (دمج كافة المخرجات المتداخلة)."
+  },
+  {
+    "id": 80,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What is the output format of the Kernel Density tool?",
+    "front_ar": "ما هي صيغة المخرجات الناتجة عن أداة حساب الكثافة النواتية (Kernel Density)؟",
+    "back_en": "A continuous floating-point Raster surface showing magnitude-per-unit-area concentration using a smooth curved mathematical kernel function.",
+    "back_ar": "سطح راستر نقطي مستمر ذو قيم كسرية يوضح تركيز الظاهرة في وحدة المساحة باستخدام دالة رياضية نواتية ملساء."
+  },
+  {
+    "id": 81,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What is the difference between Hot Spot Analysis (Getis-Ord Gi*) and Cluster and Outlier Analysis (Anselin Local Moran's I)?",
+    "front_ar": "ما هو الفارق بين تحليل البؤر الساخنة (Getis-Ord Gi*) وتحليل العناقيد والقيم الشاذة (Anselin Local Moran's I)؟",
+    "back_en": "Hot Spot Analysis identifies statistically significant clusters of high values (Hot Spots) and low values (Cold Spots). Anselin Local Moran's I identifies clusters AND spatial outliers (High surrounded by Low, or Low surrounded by High).",
+    "back_ar": "تحليل Getis-Ord Gi* يحدد تجمعات القيم المرتفعة (Hot) والمنخفضة (Cold). أما Anselin Local Moran's I فيحدد التجمعات والقيم الشاذة مكانياً (قيمة مرتفعة محاطة بقيم منخفضة والعكس)."
+  },
+  {
+    "id": 82,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What does the Con (Conditional) tool do in Spatial Analyst Map Algebra?",
+    "front_ar": "ما هي وظيفة أداة الشرط Con (Conditional) في جبر الخرائط الراستر؟",
+    "back_en": "Performs an IF-THEN-ELSE evaluation on each raster cell. If condition is true, outputs value A; if false, outputs value B (or NoData).",
+    "back_ar": "إجراء تقييم شرطي (IF-THEN-ELSE) لكل خلية في الراستر؛ فإذا تحقق الشرط تأخذ الخلية القيمة A، وإذا لم يتحقق تأخذ القيمة B أو NoData."
+  },
+  {
+    "id": 83,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What is the difference between Slope in Degrees vs Slope in Percent Rise?",
+    "front_ar": "ما هو الفارق بين حساب الانحدار بالدرجات (Degrees) وبنسبة الارتفاع المئوية (Percent Rise)؟",
+    "back_en": "Degrees ranges from 0° (flat) to 90° (vertical cliff). Percent Rise ranges from 0% to infinity (45° angle = 100% rise; rise over run * 100).",
+    "back_ar": "الانحدار بالدرجات يتراوح من 0° إلى 90°. أما بنسبة الارتفاع فيتراوح من 0% إلى مالا نهاية (وزاوية 45° تعادل 100% صعوداً)."
+  },
+  {
+    "id": 84,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What tool calculates the straight-line Euclidean distance from every cell to the nearest source feature?",
+    "front_ar": "ما هي الأداة التي تحسب المسافة الإقليدية المستقيمة من كل خلية راستر إلى أقرب معلم مصدر؟",
+    "back_en": "Distance Accumulation or Euclidean Distance tool in Spatial Analyst toolbox.",
+    "back_ar": "أداة Distance Accumulation أو Euclidean Distance في صندوق أدوات Spatial Analyst."
+  },
+  {
+    "id": 85,
+    "category": "Spatial Analysis",
+    "category_ar": "التحليل المكاني وتراكب الطبقات",
+    "front_en": "What is the difference between the Erase tool and the Dissolve tool?",
+    "front_ar": "ما هو الفارق بين أداة المسح Erase وأداة التذويب والدمج Dissolve؟",
+    "back_en": "Erase removes portions of the input layer that overlap the erase layer. Dissolve aggregates features that share the same attribute value, removing internal boundaries.",
+    "back_ar": "أداة Erase تحذف وتفرغ أجزاء الطبقة التي تتداخل مع معالم المسح. أما Dissolve فتدمج المعالم التي تتشابه في سمة معينة وتزيل الحدود البينية بينها."
+  },
+  {
+    "id": 86,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "What file format is output by the 'Create Space Time Cube By Aggregating Points' tool?",
+    "front_ar": "ما هي صيغة الملف الناتجة عن أداة إنشاء المكعب الزمكاني (Create Space Time Cube)؟",
+    "back_en": "A multidimensional NetCDF (.nc) file aggregating point incidents into regular 3D space-time bins.",
+    "back_ar": "ملف بصيغة NetCDF (.nc) متعدد الأبعاد يجمع الحوادث النقطية في خلايا تجميعية ثلاثية الأبعاد عبر المكان والزمان."
+  },
+  {
+    "id": 87,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "What statistical trend test is evaluated inside each space-time bin column during Emerging Hot Spot Analysis?",
+    "front_ar": "ما هو الاختبار الإحصائي للاتجاه المستخدم داخل كل عمود مكعب زمكاني في تحليل البؤر الناشئة؟",
+    "back_en": "Mann-Kendall Trend Test. It evaluates whether hot or cold spot values are increasing or decreasing over time monotonically.",
+    "back_ar": "اختبار اتجاه مان-كندال (Mann-Kendall) لتقييم ما إذا كانت قيم البؤر الساخنة أو الباردة تتزايد أو تتناقص عبر الزمن بشكل رتيب."
+  },
+  {
+    "id": 88,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "What defines an 'Intensifying Hot Spot' in Emerging Hot Spot Analysis?",
+    "front_ar": "ما هو تعريف 'البؤرة الساخنة المتفاقمة' (Intensifying Hot Spot) في تحليل البؤر الناشئة؟",
+    "back_en": "A location that has been a statistically significant hot spot for 90% of time-step intervals, AND the intensity of clustering in each time step is statistically increasing.",
+    "back_ar": "موقع كان بؤرة ساخنة ذات دلالة إحصائية في 90% من الفترات الزمنية، وتتزايد فيه شدة تركز الحوادث إحصائياً مع مرور الوقت."
+  },
+  {
+    "id": 89,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "What defines an 'Oscillating Hot Spot'?",
+    "front_ar": "ما هو تعريف 'البؤرة الساخنة المتذبذبة' (Oscillating Hot Spot)؟",
+    "back_en": "A statistically significant hot spot in the final time step that previously had a statistically significant cold spot history in earlier time steps.",
+    "back_ar": "موقع يمثل بؤرة ساخنة ذات دلالة في الفترة الزمنية الأخيرة، ولكنه كان تاريخياً يمثل بؤرة باردة (Cold Spot) في فترات زمنية سابقة."
+  },
+  {
+    "id": 90,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "What does a 'Precondition' connection enforce in ModelBuilder?",
+    "front_ar": "ما الذي تفرضه حلقة 'الشرط المسبق' (Precondition) في بيئة منشئ النماذج ModelBuilder؟",
+    "back_en": "Forces an upstream process to complete successfully BEFORE the downstream dependent process is permitted to execute.",
+    "back_ar": "إجبار العملية السابقة على الاكتمال بنجاح تام أولاً قبل السماح للعملية التالية التابعة بالبدء في التنفيذ."
+  },
+  {
+    "id": 91,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "How do you perform Inline Variable Substitution in ModelBuilder?",
+    "front_ar": "كيف تنفذ عملية استبدال المتغيرات النصية (Inline Variable Substitution) في ModelBuilder؟",
+    "back_en": "By wrapping variable names in percent signs: %Value% or %Name% in output paths or parameter dialogs.",
+    "back_ar": "بوضع اسم المتغير بين علامتي نسبة مئوية، مثل %Value% أو %Name% في مسارات الحفظ أو معاملات الأدوات."
+  },
+  {
+    "id": 92,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "What is an ArcGIS Pro Task (.esriTasks)?",
+    "front_ar": "ما هي مهام ArcGIS Pro الموجهة (.esriTasks)؟",
+    "back_en": "An interactive, guided workflow that steps end-users through specific business processes with preconfigured commands, tools, and message instructions.",
+    "back_ar": "سير عمل تفاعلي موجه يقود المستخدم خطوة بخطوة عبر مسارات عمل محددة مع إرشادات وأدوات وأوامر مضبوطة مسبقاً."
+  },
+  {
+    "id": 93,
+    "category": "Space-Time & Automation",
+    "category_ar": "التعدين الزمكاني والأتمتة",
+    "front_en": "Which ArcPy cursor is required to read existing attributes and geometry without locking rows for edits?",
+    "front_ar": "ما هو مؤشر ArcPy المستخدم لقراءة السمات والهندسة دون قفل السجلات للتعديل؟",
+    "back_en": "arcpy.da.SearchCursor. Highly efficient for read-only iterations when used inside a Python 'with' context manager.",
+    "back_ar": "المؤشر arcpy.da.SearchCursor. وهو فائق السرعة للقراءة فقط ويفضل استخدامه داخل عبارة with البرمجية لتفريغ الذاكرة."
+  },
+  {
+    "id": 94,
+    "category": "Layouts & Sharing",
+    "category_ar": "إخراج الخرائط والنشر والمشاركة",
+    "front_en": "What is a Spatial Map Series and what layer drives its page extents?",
+    "front_ar": "ما هي سلسلة الخرائط المكانية (Spatial Map Series) وما هي الطبقة التي تقود نطاقات صفحاتها؟",
+    "back_en": "Generates a multi-page book of map layouts where each page corresponds to the geographic extent of a feature in an 'Index Layer'.",
+    "back_ar": "توليد كتيب خرائط متعدد الصفحات بحيث يمثل نطاق كل صفحة معلماً جغرافياً في طبقة الفهرسة (Index Layer)."
+  },
+  {
+    "id": 95,
+    "category": "Layouts & Sharing",
+    "category_ar": "إخراج الخرائط والنشر والمشاركة",
+    "front_en": "How does Dynamic Text function on a Map Series layout?",
+    "front_ar": "كيف تعمل النصوص الديناميكية (Dynamic Text) في مخططات سلاسل الخرائط؟",
+    "back_en": "Automatically updates textual metadata on the page (e.g. Page Number, Page Name, Scale, Author, Date) using syntax like <dyn type=\"page\" property=\"name\"/>.",
+    "back_ar": "تحديث نصوص الصفحة كالعنوان ورقم الصفحة ومقياس الرسم والتاريخ تلقائياً بالاعتماد على سمات معالم طبقة الفهرسة."
+  },
+  {
+    "id": 96,
+    "category": "Layouts & Sharing",
+    "category_ar": "إخراج الخرائط والنشر والمشاركة",
+    "front_en": "What is the difference between a Project Package (.ppkx) and a Map Package (.mpkx)?",
+    "front_ar": "ما هو الفارق بين حزمة المشروع (.ppkx) وحزمة الخريطة (.mpkx)؟",
+    "back_en": ".ppkx packages the entire project (.aprx) including multiple maps, layouts, toolboxes, connections, and data. .mpkx packages only a single map and its referenced datasets.",
+    "back_ar": "حزمة .ppkx تحزم ملف المشروع بالكامل (.aprx) بكل ما فيه من خرائط وتخطيطات ونماذج وبيانات. أما .mpkx فتحزم خريطة فردية واحدة وطبقاتها."
+  },
+  {
+    "id": 97,
+    "category": "Layouts & Sharing",
+    "category_ar": "إخراج الخرائط والنشر والمشاركة",
+    "front_en": "What is the difference between a Layer File (.lyrx) and a Layer Package (.lpkx)?",
+    "front_ar": "ما هو الفارق بين ملف الطبقة (.lyrx) وحزمة الطبقة (.lpkx)؟",
+    "back_en": ".lyrx stores ONLY symbology, label rules, and layer properties pointing to data on disk. .lpkx packages both the symbology properties AND the actual data source together.",
+    "back_ar": "ملف .lyrx يخزن فقط الترميز وخصائص العرض ويشير للبيانات على القرص. بينما .lpkx تحزم خصائص العرض والبيانات المكانية الفعلية معاً في ملف مضغوط."
+  },
+  {
+    "id": 98,
+    "category": "Layouts & Sharing",
+    "category_ar": "إخراج الخرائط والنشر والمشاركة",
+    "front_en": "What is the difference between sharing as a 'Feature Layer' vs sharing as a 'Tile Layer' on ArcGIS Online / Enterprise?",
+    "front_ar": "ما هو الفارق بين نشر الطبقة كـ Feature Layer مقابل نشرها كـ Tile Layer على الويب؟",
+    "back_en": "Feature Layer publishes vector geometries supporting client-side querying and editing. Tile Layer publishes pre-rendered cached raster image tiles for rapid non-editable basemap display.",
+    "back_ar": "طبقة المعالم Feature Layer تنشر معالم متجهة تدعم الاستعلام والتحرير من المتصفح. أما Tile Layer فتنشر صوراً شبكية مخبأة مسبقاً للعرض السريع كخلفية دون تحرير."
+  },
+  {
+    "id": 99,
+    "category": "Layouts & Sharing",
+    "category_ar": "إخراج الخرائط والنشر والمشاركة",
+    "front_en": "What does a Vector Tile Layer (.vtpk) offer compared to traditional raster tile caches?",
+    "front_ar": "ما هي الميزة التي تقدمها حزم بلاطات المتجهات (Vector Tiles .vtpk) مقارنة ببلاطات الراستر التقليدية؟",
+    "back_en": "Smaller file size, crisp resolution at high-DPI displays, and client-side restyling without needing to regenerate cache tiles.",
+    "back_ar": "حجم ملف أصغر بكثير، ووضوح فائق الدقة على شاشات العرض الحديثة، وإمكانية تغيير ألوان وترميز الطبقة من المتصفح دون إعادة توليد البلاطات."
+  },
+  {
+    "id": 100,
+    "category": "Layouts & Sharing",
+    "category_ar": "إخراج الخرائط والنشر والمشاركة",
+    "front_en": "What is an ArcGIS Pro Project Template (.aptx)?",
+    "front_ar": "ما هو قالب مشروع ArcGIS Pro المعتمد (.aptx)؟",
+    "back_en": "A standardized project blueprint containing pre-configured default maps, layouts, styles, folders, and geodatabase schemas used to initiate new standardized projects.",
+    "back_ar": "مخطط نموذجي للمشروع يحتوي على خرائط وتخطيطات وقواعد بيانات واتصالات جاهزة لبدء مشاريع جديدة موحدة المعايير للمؤسسة."
+  }
+]
