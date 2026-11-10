@@ -93,6 +93,7 @@ export interface LearningModule {
   ui_paths: Array<string | UiPathItem>;
   key_concepts_en: string[];
   key_concepts_ar: string[];
+  key_concepts_refs?: Array<{ title_en: string; title_ar: string; url: string }>;
   comparison_table?: ComparisonTable;
   flashcards?: Array<{ q_en: string; a_en: string; q_ar: string; a_ar: string }>;
   lab_checklist: Array<{ id?: string; task_en: string; task_ar: string }>;

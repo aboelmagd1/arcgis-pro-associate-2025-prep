@@ -331,16 +331,34 @@ export default function LearningModules() {
                     <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                       {lang === 'ar' ? 'المفاهيم الأساسية المستهدفة في الاختبار' : 'Key Tested Concepts'}
                     </h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                      {(lang === 'ar' ? mod.key_concepts_ar : mod.key_concepts_en).map((c, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 shadow-sm leading-relaxed"
-                        >
-                          <span className="text-sky-500 font-bold shrink-0 mt-0.5">•</span>
-                          <span>{c}</span>
-                        </li>
-                      ))}
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {(lang === 'ar' ? mod.key_concepts_ar : mod.key_concepts_en).map((c, idx) => {
+                        const ref = mod.key_concepts_refs?.[idx];
+                        return (
+                          <li
+                            key={idx}
+                            className="flex flex-col justify-between gap-2.5 rounded-xl border border-slate-200 bg-white p-3.5 text-xs text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 shadow-sm leading-relaxed"
+                          >
+                            <div className="flex items-start gap-2.5">
+                              <span className="text-sky-500 font-bold shrink-0 mt-0.5">•</span>
+                              <span>{c}</span>
+                            </div>
+                            {ref && (
+                              <div className="pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center">
+                                <a
+                                  href={ref.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 rounded-md bg-sky-50 px-2.5 py-1 text-[11px] font-semibold text-sky-700 hover:bg-sky-100 hover:text-sky-800 dark:bg-sky-950/60 dark:text-sky-300 dark:hover:bg-sky-900/60 transition border border-sky-200/70 dark:border-sky-800/70"
+                                >
+                                  <ExternalLink size={11} className="shrink-0" />
+                                  <span>{lang === 'ar' ? ref.title_ar : ref.title_en}</span>
+                                </a>
+                              </div>
+                            )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
 

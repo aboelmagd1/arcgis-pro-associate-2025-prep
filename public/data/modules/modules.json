@@ -206,6 +206,38 @@
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
       }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "File Geodatabases Overview",
+        "title_ar": "نظرة عامة على File Geodatabases",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/manage-file-gdb/file-geodatabases.html"
+      },
+      {
+        "title_en": "Feature Dataset Properties",
+        "title_ar": "خصائص مجموعات بيانات المعالم Feature Datasets",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/feature-dataset-properties.html"
+      },
+      {
+        "title_en": "File Geodatabase Size & Name Limits (256 TB)",
+        "title_ar": "حدود الحجم والأسماء في File Geodatabase",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/manage-file-gdb/file-geodatabase-size-and-name-limits.html"
+      },
+      {
+        "title_en": "Geodatabase Field Data Types (GlobalID & ObjectID)",
+        "title_ar": "أنواع الحقول في الجيوداتابيز (GlobalID و ObjectID)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/geodatabase-field-data-types.html"
+      },
+      {
+        "title_en": "Attachments in the Geodatabase",
+        "title_ar": "المرفقات في قاعدة البيانات الجغرافية (Attachments)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/attachments-in-the-geodatabase.html"
+      },
+      {
+        "title_en": "Compact Geodatabase (Data Management)",
+        "title_ar": "أداة ضغط قاعدة البيانات الجغرافية (Compact)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/data-management/compact.html"
+      }
     ]
   },
   {
@@ -393,6 +425,43 @@
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
       }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Overview of Attribute Domains (Coded Value)",
+        "title_ar": "نظرة عامة على مجالات السمات (Coded Value)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/an-overview-of-attribute-domains.html"
+      },
+      {
+        "title_en": "Create and Manage Domains (Range Domains)",
+        "title_ar": "إنشاء وإدارة مجالات السمات (Range Domains)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/create-and-manage-domains.html"
+      },
+      {
+        "title_en": "Domain Split Policies (Create Domain)",
+        "title_ar": "سياسات التجزئة للمجالات (Split Policies)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/data-management/create-domain.html"
+      },
+      {
+        "title_en": "Modify Domains & Merge Policies",
+        "title_ar": "تعديل المجالات وسياسات الدمج (Merge Policies)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/modify-and-delete-domains.html"
+      },
+      {
+        "title_en": "Overview of Subtypes",
+        "title_ar": "نظرة عامة على الأنواع الفرعية (Subtypes)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/an-overview-of-subtypes.html"
+      },
+      {
+        "title_en": "Contingent Values & Field Groups",
+        "title_ar": "القيم المشروطة ومجموعات الحقول (Contingent Values)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/contingent-values.html"
+      },
+      {
+        "title_en": "Relationship Class Properties (Simple vs Composite)",
+        "title_ar": "خصائص فئات العلاقات (البسيطة والمركبة)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/relationship-class-properties.html"
+      }
     ]
   },
   {
@@ -565,6 +634,38 @@
         "title": "ArcPy Reference",
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
+      }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Introduction to Topology (GDB vs Map Topology)",
+        "title_ar": "مقدمة في الطوبولوجيا (GDB مقابل Map Topology)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/editing/introduction-to-topology.html"
+      },
+      {
+        "title_en": "Geodatabase Topology Rules & Error Fixes",
+        "title_ar": "قواعد طوبولوجيا الجيوداتابيز وإصلاح الأخطاء",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/editing/geodatabase-topology-rules-and-topology-error-fixes.html"
+      },
+      {
+        "title_en": "Attribute Rules Overview (Calculation, Constraint, Validation)",
+        "title_ar": "نظرة عامة على قواعد السمات (Attribute Rules)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/attribute-rules.html"
+      },
+      {
+        "title_en": "Attribute Rule Arcade Script Expressions",
+        "title_ar": "تعبيرات Arcade البرمجية لقواعد السمات",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/attribute-rule-script-expression-examples.html"
+      },
+      {
+        "title_en": "Modify Features & Geometry Editing Tools",
+        "title_ar": "أدوات تعديل وهندسة المعالم (Reshape, Align, Split)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/editing/modify-features.html"
+      },
+      {
+        "title_en": "Introduction to COGO & Traverse",
+        "title_ar": "مقدمة في إحداثيات المساحة COGO وأداة Traverse",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/editing/introduction-to-cogo.html"
       }
     ]
   },
@@ -740,6 +841,38 @@
         "title": "ArcPy Reference",
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
+      }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Coordinate Systems, Projections & Transformations",
+        "title_ar": "أنظمة الإحداثيات (GCS vs PCS) والإسقاطات",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/coordinate-systems-and-projections.html"
+      },
+      {
+        "title_en": "Project vs Define Projection Tool Reference",
+        "title_ar": "مرجع أداة Project مقابل Define Projection",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/data-management/project.html"
+      },
+      {
+        "title_en": "Project Raster & Resampling Techniques",
+        "title_ar": "إسقاط بيانات الراستر وطرق إعادة التشكيل (Resampling)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/data-management/project-raster.html"
+      },
+      {
+        "title_en": "Overview of Georeferencing & RMS Error",
+        "title_ar": "نظرة عامة على الإسناد الجغرافي للصور (Georeferencing)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/imagery/overview-of-georeferencing.html"
+      },
+      {
+        "title_en": "What is Geocoding? (Locators & Rematch)",
+        "title_ar": "التكويد الجغرافي ومحددات العناوين (Geocoding)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/geocoding/what-is-geocoding-.html"
+      },
+      {
+        "title_en": "What is Linear Referencing? (M-Values & Routes)",
+        "title_ar": "الإسناد الخطي وقيم القياس M-Values",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/linear-referencing/what-is-linear-referencing.html"
       }
     ]
   },
@@ -918,6 +1051,33 @@
         "title": "ArcPy Reference",
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
+      }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Data Classification Methods (7 Methods)",
+        "title_ar": "طرق تصنيف البيانات الإحصائية الـ 7",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/data-classification-methods.html"
+      },
+      {
+        "title_en": "Graduated Colors & Normalization",
+        "title_ar": "الألوان المتدرجة ومعايرة البيانات (Normalization)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/graduated-colors.html"
+      },
+      {
+        "title_en": "Vary Symbology by Attribute (Visual Variables)",
+        "title_ar": "تغيير الرموز حسب السمات (المتغيرات البصرية)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/vary-symbology-by-attribute.html"
+      },
+      {
+        "title_en": "Symbol Layer Drawing",
+        "title_ar": "رسم طبقات الرموز (Symbol Layer Drawing)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/symbol-layer-drawing.html"
+      },
+      {
+        "title_en": "Symbolize Feature Layers (Symbology Types)",
+        "title_ar": "أنواع ترميز طبقات المعالم",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/symbolize-feature-layers.html"
       }
     ]
   },
@@ -1109,6 +1269,38 @@
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
       }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Filter Features with Definition Queries",
+        "title_ar": "تصفية المعالم باستخدام Definition Queries",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/filter-features-with-definition-queries.html"
+      },
+      {
+        "title_en": "Apply Layer & Feature Blend Modes",
+        "title_ar": "تطبيق أنماط المزج البصري للطبقات (Blend Modes)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/apply-blend-modes.html"
+      },
+      {
+        "title_en": "Map Reference Scales",
+        "title_ar": "مقياس الرسم المرجعي للخريطة (Reference Scale)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/properties/map-reference-scales.html"
+      },
+      {
+        "title_en": "Labeling with the Maplex Label Engine",
+        "title_ar": "إعداد التسميات باستخدام محرك Maplex",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/text/labeling-with-the-maplex-label-engine.html"
+      },
+      {
+        "title_en": "Specify Text for Labels (Arcade Expressions)",
+        "title_ar": "كتابة تعبيرات التسميات بلغة Arcade",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/text/specify-text-for-labels.html"
+      },
+      {
+        "title_en": "Geodatabase Annotation Overview",
+        "title_ar": "التسميات التوضيحية المخزنة (Annotation)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/text/annotation.html"
+      }
     ]
   },
   {
@@ -1281,6 +1473,33 @@
         "title": "ArcPy Reference",
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
+      }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "3D Scenes (Global vs Local Scenes)",
+        "title_ar": "المشاهد ثلاثية الأبعاد (العالمية مقابل المحلية)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/map-authoring/scenes.html"
+      },
+      {
+        "title_en": "Extrude Features to 3D Symbology",
+        "title_ar": "بثق وتجسيم المعالم ثلاثية الأبعاد (Extrusion)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/layer-properties/extrude-features-to-3d-symbology.html"
+      },
+      {
+        "title_en": "Elevation Surfaces in 3D Scenes",
+        "title_ar": "أسطح الارتفاعات في المشاهد ثلاثية الأبعاد",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/map-authoring/elevation-surfaces.html"
+      },
+      {
+        "title_en": "Interactive 3D Exploratory Analysis (Viewshed & Line of Sight)",
+        "title_ar": "أدوات التحليل الاستكشافي ثلاثي الأبعاد التفاعلي",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/map-authoring/interactive-3d-analysis.html"
+      },
+      {
+        "title_en": "Temporal Data Visualization (Time & Range Sliders)",
+        "title_ar": "تصور البيانات الزمنية والنطاقية (Time & Range Sliders)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/mapping/time/temporal-data.html"
       }
     ]
   },
@@ -1465,6 +1684,33 @@
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
       }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Joins and Relates Overview (Add Join vs Add Relate)",
+        "title_ar": "نظرة عامة على الربط والعلاقات الجدولية (Joins & Relates)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/data/tables/joins-and-relates.html"
+      },
+      {
+        "title_en": "Spatial Join (Analysis Tool Reference)",
+        "title_ar": "مرجع أداة الربط المكاني (Spatial Join)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/analysis/spatial-join.html"
+      },
+      {
+        "title_en": "Overview of the Overlay Toolset (Clip, Intersect, Union, Erase)",
+        "title_ar": "نظرة عامة على أدوات التحليل التراكبي (Overlay)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/analysis/an-overview-of-the-overlay-toolset.html"
+      },
+      {
+        "title_en": "Overview of Pairwise Overlay Toolset",
+        "title_ar": "نظرة عامة على أدوات المعالجة الثنائية المتوازية (Pairwise)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/analysis/an-overview-of-the-pairwise-overlay-toolset.html"
+      },
+      {
+        "title_en": "How Buffer Analysis Works (Geodesic vs Planar)",
+        "title_ar": "آلية عمل النطاقات (Geodesic مقابل Planar Buffer)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/analysis/how-buffer-analysis-works.html"
+      }
     ]
   },
   {
@@ -1632,6 +1878,33 @@
         "title": "ArcPy Reference",
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
+      }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Hot Spot Analysis (Getis-Ord Gi*) Tool Reference",
+        "title_ar": "مرجع أداة تحليل البؤر الساخنة (Getis-Ord Gi*)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/spatial-statistics/hot-spot-analysis.html"
+      },
+      {
+        "title_en": "Create Space Time Cube By Aggregating Points (.nc)",
+        "title_ar": "إنشاء مكعب الزمان والمكان (Space-Time Cube .nc)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/space-time-pattern-mining/create-space-time-cube.html"
+      },
+      {
+        "title_en": "Emerging Hot Spot Analysis Tool Reference",
+        "title_ar": "مرجع أداة تحليل البؤر الساخنة الناشئة",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/space-time-pattern-mining/emerginghotspots.html"
+      },
+      {
+        "title_en": "Geographically Weighted Regression (GWR vs OLS)",
+        "title_ar": "الانحدار الموزون جغرافياً (GWR مقابل OLS)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/spatial-statistics/geographicallyweightedregression.html"
+      },
+      {
+        "title_en": "What is the Suitability Modeler? (Raster Modeling)",
+        "title_ar": "نمذجة الملاءمة المكانية للراستر (Suitability Modeler)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/analysis/spatial-analyst/suitability-modeler/what-is-the-suitability-modeler-.html"
       }
     ]
   },
@@ -1816,6 +2089,33 @@
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
       }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "What is a Task in ArcGIS Pro?",
+        "title_ar": "ما هي المهام الإرشادية (Tasks) في ArcGIS Pro؟",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/tasks/whatistask.html"
+      },
+      {
+        "title_en": "What is ModelBuilder?",
+        "title_ar": "مقدمة في منشئ النماذج (ModelBuilder)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/analysis/geoprocessing/modelbuilder/what-is-modelbuilder-.html"
+      },
+      {
+        "title_en": "Iterators, Parameters & Preconditions in ModelBuilder",
+        "title_ar": "الحلقات التكرارية والمعاملات والشروط في ModelBuilder",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/analysis/geoprocessing/modelbuilder/iterators-in-modelbuilder.html"
+      },
+      {
+        "title_en": "What is ArcPy? (Python Automation)",
+        "title_ar": "مكتبة ArcPy والأتمتة بلغة بايثون",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/arcpy/get-started/what-is-arcpy-.html"
+      },
+      {
+        "title_en": "Calculate Field (Python vs Arcade Expressions)",
+        "title_ar": "حساب الحقول باستخدام بايثون و Arcade",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/tool-reference/data-management/calculate-field.html"
+      }
     ]
   },
   {
@@ -1989,6 +2289,38 @@
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
       }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Add and Modify Map Frames in Layouts",
+        "title_ar": "إضافة وتعديل إطارات الخرائط في لوحات الإخراج",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/layouts/add-and-modify-map-frames.html"
+      },
+      {
+        "title_en": "North Arrows (Map North vs True North)",
+        "title_ar": "إعدادات سهم الشمال (شمال الخريطة مقابل الشمال الحقيقي)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/layouts/north-arrows.html"
+      },
+      {
+        "title_en": "Legends & Dynamic Map Extent Filtering",
+        "title_ar": "مفاتيح الخرائط الديناميكية (Legends)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/layouts/legends.html"
+      },
+      {
+        "title_en": "Map Series (Spatial & Grid Index)",
+        "title_ar": "سلاسل الخرائط (Spatial & Grid Map Series)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/layouts/map-series.html"
+      },
+      {
+        "title_en": "Add and Modify Dynamic Text",
+        "title_ar": "إضافة وتنسيق النصوص الديناميكية (Dynamic Text)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/layouts/add-and-modify-dynamic-text.html"
+      },
+      {
+        "title_en": "Filter a Layer with a Page Query",
+        "title_ar": "تصفية الطبقات باستخدام استعلام الصفحة (Page Query)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/layouts/filter-a-layer-with-a-page-query.html"
+      }
     ]
   },
   {
@@ -2161,6 +2493,38 @@
         "title": "ArcPy Reference",
         "url": "https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm",
         "kind": "official"
+      }
+    ],
+    "key_concepts_refs": [
+      {
+        "title_en": "Introduction to Sharing Packages (.ppkx, .mpkx, .lpkx)",
+        "title_ar": "مقدمة في مشاركة الحزم مقابل الملفات المرجعية",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/sharing/overview/introduction-to-sharing-packages.html"
+      },
+      {
+        "title_en": "Introduction to Sharing Web Layers",
+        "title_ar": "مقدمة في نشر ومشاركة طبقات الويب",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/sharing/overview/introduction-to-sharing-web-layers.html"
+      },
+      {
+        "title_en": "Web Feature Layers (Copy All vs Reference Registered Data)",
+        "title_ar": "طبقات المعالم على الويب (نسخ البيانات مقابل البيانات المسجلة)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/sharing/overview/web-feature-layer.html"
+      },
+      {
+        "title_en": "Prepare Data for Offline Field Use",
+        "title_ar": "تجهيز البيانات للعمل الميداني دون اتصال (Offline Sync)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/sharing/overview/prepare-data-for-offline-use.html"
+      },
+      {
+        "title_en": "Sharing Analyzer Errors and Warnings",
+        "title_ar": "أخطاء وتحذيرات محلل المشاركة (Sharing Analyzer)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/sharing/analyzer-errors/analyzer-errors-and-warnings.html"
+      },
+      {
+        "title_en": "Export a Map or Layout (PDF Layers & Attributes)",
+        "title_ar": "تصدير الخرائط واللوحات (خيارات PDF التفاعلية)",
+        "url": "https://doc.esri.com/en/arcgis-pro/latest/help/sharing/overview/export-a-map-or-layout.html"
       }
     ]
   }
