@@ -171,3 +171,53 @@ export interface StudyPlanner {
   weeks: StudyPlannerWeek[];
 }
 
+export interface TextbookOfficialLink {
+  id: string;
+  title_en: string;
+  title_ar: string;
+  url: string;
+  description_en: string;
+  description_ar: string;
+}
+
+export interface TextbookExercise {
+  id: string;
+  title_en: string;
+  title_ar: string;
+  domain: string;
+  objectives_en: string[];
+  objectives_ar: string[];
+  tools: string[];
+  uiPath: string;
+}
+
+export interface TextbookChapter {
+  chapterNumber: number;
+  title_en: string;
+  title_ar: string;
+  scenario_en: string;
+  scenario_ar: string;
+  primaryDomain: string;
+  domains: string[];
+  examWeight: string;
+  examRelevance_en: string;
+  examRelevance_ar: string;
+  exercises: TextbookExercise[];
+  examFocus_en: string;
+  examFocus_ar: string;
+  examTraps_en: string;
+  examTraps_ar: string;
+}
+
+export interface TextbookData {
+  metadata: {
+    title_en: string;
+    title_ar: string;
+    authors: string;
+    publisher: string;
+    software: string;
+    officialLinks: TextbookOfficialLink[];
+  };
+  chapters: TextbookChapter[];
+}
+

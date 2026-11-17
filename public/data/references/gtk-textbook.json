@@ -1,0 +1,890 @@
+{
+  "metadata": {
+    "title_en": "Getting to Know ArcGIS Pro 3.2 (Fifth Edition)",
+    "title_ar": "كتاب التعرّف على ArcGIS Pro 3.2 (الإصدار الخامس)",
+    "authors": "Michael Law & Amy Collins",
+    "publisher": "Esri Press",
+    "software": "ArcGIS Pro 3.2 / 3.3 & ArcGIS Online",
+    "officialLinks": [
+      {
+        "id": "gtk-data-zip",
+        "title_en": "Getting to Know ArcGIS Pro 3.2 – Official Exercise Data Package",
+        "title_ar": "حزمة بيانات وتمارين كتاب Getting to Know ArcGIS Pro 3.2 الرسمية",
+        "url": "https://www.arcgis.com/home/item.html?id=0395a02959fa4de6bf4318aca4c3b3e8#overview",
+        "description_en": "Official Esri Press exercise data (.zip). Extract to C:\\EsriPress\\GTKPro to perform all chapter exercises.",
+        "description_ar": "ملف البيانات والتمارين الرسمي (.zip) من Esri Press. فك الضغط في المسار C:\\EsriPress\\GTKPro لبدء التمارين."
+      },
+      {
+        "id": "gtk-web-resources",
+        "title_en": "Getting to Know ArcGIS Pro 3.2 – Companion Web Maps & Feature Layers",
+        "title_ar": "خرائط الويب والطبقات التفاعلية المرافقة لكتاب Getting to Know ArcGIS Pro 3.2",
+        "url": "https://www.arcgis.com/home/item.html?id=7a6aaff321b5421db15626d4ea10b3ce#overview",
+        "description_en": "ArcGIS Online companion item containing shared web maps, layers, and basemaps used in Chapter 1 and Chapter 9.",
+        "description_ar": "عنصر ArcGIS Online المرافق الذي يحتوي على خرائط الويب المشتركة والطبقات المستخدمة في الفصل الأول والتاسع."
+      }
+    ]
+  },
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "title_en": "Introducing GIS",
+      "title_ar": "مقدمة إلى نظم المعلومات الجغرافية (GIS)",
+      "scenario_en": "Global Earthquake Risk & Demographic Analysis: Exploring how spatial patterns of natural hazards intersect with human populations across the world using web-based GIS.",
+      "scenario_ar": "تحليل مخاطر الزلازل والديموغرافيا العالمية: استكشاف تقاطع الأنماط المكانية للمخاطر الطبيعية مع التجمعات البشرية حول العالم باستخدام نظم المعلومات الجغرافية السحابية.",
+      "primaryDomain": "Layouts and Sharing",
+      "domains": [
+        "Layouts and Sharing",
+        "Visualization"
+      ],
+      "examWeight": "18% Layouts & Sharing · 25% Visualization",
+      "examRelevance_en": "Focuses on ArcGIS Online cloud architecture, web maps, feature layer pop-up configuration, and sharing permissions tested in Domain 4.",
+      "examRelevance_ar": "يركز على معمارية سحابة ArcGIS Online، خرائط الويب، إعداد النوافذ المنبثقة للطبقات، وصلاحيات المشاركة المطلوبة في المجال الرابع.",
+      "exercises": [
+        {
+          "id": "1",
+          "title_en": "Exercise 1: Explore ArcGIS Online",
+          "title_ar": "التمرين 1: استكشاف منصة ArcGIS Online",
+          "domain": "Layouts and Sharing",
+          "objectives_en": [
+            "Explore a public web map on ArcGIS Online",
+            "Configure map symbology and visual styles on the web",
+            "Configure informative pop-up windows with attribute expressions",
+            "Save and share a web map with organization or public"
+          ],
+          "objectives_ar": [
+            "استعراض خريطة ويب عامة على منصة ArcGIS Online",
+            "تكوين أنماط الترميز والعرض البصري للخريطة على الويب",
+            "إعداد النوافذ المنبثقة (Pop-ups) وتنسيق سمات المعالم",
+            "حفظ ومشاركة خريطة الويب مع المؤسسة أو العامة"
+          ],
+          "tools": [
+            "ArcGIS Online Map Viewer",
+            "Change Style",
+            "Configure Pop-ups",
+            "Share Map"
+          ],
+          "uiPath": "arcgis.com > Map Viewer > Add Layer > Styles > Pop-ups > Save and Open"
+        }
+      ],
+      "examFocus_en": "Understanding Web Maps vs Web Layers vs Web Scenes. How sharing levels (Owner, Organization, Everyone/Public) affect item access.",
+      "examFocus_ar": "التمييز بين Web Maps و Web Layers و Web Scenes، وكيف تؤثر مستويات المشاركة (Owner, Organization, Public) على وصول المستخدمين.",
+      "examTraps_en": "Exam trap: Web Maps store references, symbology, and pop-up configurations, but do NOT store the raw spatial data itself.",
+      "examTraps_ar": "فخ الامتحان: خرائط الويب تخزن المراجع والترميز وإعدادات النوافذ المنبثقة، ولكنها لا تخزن البيانات المكانية الخام ذاتها."
+    },
+    {
+      "chapterNumber": 2,
+      "title_en": "A First Look at ArcGIS Pro",
+      "title_ar": "نظرة أولى على برنامج ArcGIS Pro",
+      "scenario_en": "Washington, DC Public School Safety & Lower Manhattan 3D Buildings: Inspecting safety zones around elementary schools in Washington, DC, and creating a realistic 3D local scene of New York City skyscrapers.",
+      "scenario_ar": "أمان مدارس واشنطن العاصمة ومباني مانهاتن ثلاثية الأبعاد: فحص مناطق أمان المدارس الابتدائية في واشنطن، وإنشاء مشهد محلي ثلاثي الأبعاد لناطحات سحاب نيويورك.",
+      "primaryDomain": "Data Management",
+      "domains": [
+        "Data Management",
+        "Visualization",
+        "Layouts and Sharing"
+      ],
+      "examWeight": "32% Data Management · 25% Visualization",
+      "examRelevance_en": "Covers project structure (.aprx), folder connections, importing ArcMap MXDs, selection methods, 3D Local Scene conversion, and Extrusion.",
+      "examRelevance_ar": "يغطي بنية مشاريع Pro (.aprx)، اتصالات المجلدات، استيراد خرائط ArcMap (MXD)، أساليب التحديد، التحويل إلى مشهد محلي 3D، والبثق الرأسي (Extrusion).",
+      "exercises": [
+        {
+          "id": "2a",
+          "title_en": "Exercise 2a: Learn Some Basics",
+          "title_ar": "التمرين 2a: تعلم أساسيات واجهة البرنامج",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Start a new project from a Map template (.aprx)",
+            "Import an existing ArcMap document (.mxd)",
+            "Create a folder connection in Catalog Pane",
+            "Explore contextual ribbons, Contents pane, and attribute tables",
+            "Perform interactive feature selections"
+          ],
+          "objectives_ar": [
+            "بدء مشروع جديد من قالب Map (.aprx)",
+            "استيراد ملف خريطة قديم من ArcMap (.mxd)",
+            "إنشاء اتصال مجلد (Folder Connection) في نافذة الكتالوج",
+            "استكشاف الأشرطة السياقية Contextual Ribbons وجدول السمات",
+            "إجراء عمليات تحديد المعالم التفاعلية"
+          ],
+          "tools": [
+            "Catalog Pane",
+            "Import Map",
+            "Folder Connection",
+            "Select Features",
+            "Attributes Pane"
+          ],
+          "uiPath": "Insert Tab > Import Map | View Tab > Catalog Pane > Folders > Add Folder Connection"
+        },
+        {
+          "id": "2b",
+          "title_en": "Exercise 2b: Go Beyond the Basics",
+          "title_ar": "التمرين 2b: ما بعد الأساسيات والترميز والمشاركة",
+          "domain": "Visualization",
+          "objectives_en": [
+            "Modify feature layer symbols from gallery and formatting tabs",
+            "Enable and configure basic feature labeling",
+            "Measure distances using the Measure tool",
+            "Add and switch basemaps from ArcGIS Living Atlas",
+            "Package and share the project as a Project Package (.ppkx)"
+          ],
+          "objectives_ar": [
+            "تعديل رموز الطبقات من معرض الرموز وخصائص التنسيق",
+            "تفعيل وضبط تسميات المعالم التلقائية (Labeling)",
+            "قياس المسافات الجيوديسية بأداة Measure",
+            "إضافة وتبديل خرائط الأساس من Living Atlas",
+            "حزم ومشاركة المشروع كحزمة متكاملة (.ppkx)"
+          ],
+          "tools": [
+            "Symbology Pane",
+            "Labeling Tab",
+            "Measure Distance",
+            "Basemap Gallery",
+            "Package Project"
+          ],
+          "uiPath": "Map Tab > Basemap | Share Tab > Package Project (.ppkx)"
+        },
+        {
+          "id": "2c",
+          "title_en": "Exercise 2c: Experience 3D GIS",
+          "title_ar": "التمرين 2c: تجربة نظم المعلومات الجغرافية ثلاثية الأبعاد (3D)",
+          "domain": "Visualization",
+          "objectives_en": [
+            "Start a project and add 2D building footprint polygons",
+            "Convert a 2D map into a 3D Local Scene",
+            "Extrude 2D building footprints into 3D volumetric blocks using height attribute",
+            "Create and save 3D bookmarks for camera perspectives"
+          ],
+          "objectives_ar": [
+            "بدء مشروع وإضافة مضلعات بصمات المباني 2D",
+            "تحويل الخريطة ثنائية الأبعاد إلى مشهد محلي 3D Local Scene",
+            "بثق بصمات المباني رأسياً (Extrude) إلى كتل مجسمة ثلاثية الأبعاد بناءً على حقل الارتفاع",
+            "إنشاء وحفظ إشارات مرجعية ثلاثية الأبعاد لزوايا الرؤية"
+          ],
+          "tools": [
+            "Convert to Local Scene",
+            "Extrusion Type: Base Height",
+            "Bookmarks",
+            "Elevation Surfaces"
+          ],
+          "uiPath": "View Tab > Convert > To Local Scene | Feature Layer Tab > Appearance > Extrusion: Type > Absolute Height"
+        }
+      ],
+      "examFocus_en": "Local Scene (projected coordinate systems, flat planar, small extent) vs Global Scene (WGS84 spherical globe). Project Package (.ppkx) contains all maps, data, geodatabases, and toolboxes consolidated.",
+      "examFocus_ar": "المشهد المحلي Local Scene (إسقاطات مستوية PCS، مساحة محدودة) مقابل المشهد العالمي Global Scene (كرة أرضية WGS84). حزمة المشروع (.ppkx) تجمع كافة الخرائط والبيانات وقواعد البيانات في ملف واحد.",
+      "examTraps_en": "Exam trap: Extrusion requires polygon features or multipatch/points; lines cannot be extruded into volumetric solid prisms without special symbology.",
+      "examTraps_ar": "فخ الامتحان: البثق الرأسي (Extrusion) يحتاج مضلعات لتكوين مجسمات كتلية؛ والخطوط لا تنتج مجسمات حجمية مصمتة."
+    },
+    {
+      "chapterNumber": 3,
+      "title_en": "Exploring Geospatial Relationships",
+      "title_ar": "استكشاف العلاقات المكانية والجدولية",
+      "scenario_en": "Illinois State Health Coalition Adult Obesity Study: Investigating county-level health disparities by joining CDC health data to county boundaries, calculating obesity rates, and connecting spatial layers.",
+      "scenario_ar": "دراسة ائتلاف صحة ولاية إلينوي لسمنة البالغين: فحص التفاوتات الصحية على مستوى المقاطعات عبر ربط بيانات CDC بحدود المقاطعات، وحساب معدلات السمنة، والربط المكاني.",
+      "primaryDomain": "Analysis and Geoprocessing",
+      "domains": [
+        "Analysis and Geoprocessing",
+        "Data Management",
+        "Visualization"
+      ],
+      "examWeight": "25% Analysis & GP · 32% Data Management",
+      "examRelevance_en": "Crucial chapter covering Select By Attributes (SQL), Add Join (1:1 vs M:1), Calculate Field (Python/Arcade), Summary Statistics, Add Relate, and Spatial Join.",
+      "examRelevance_ar": "فصل محوري يغطي الاستعلام بالسمات SQL، والربط الجدولي Add Join، وحساب الحقول Calculate Field، والإحصاءات الوصفية، وعلاقات Relates، والربط المكاني Spatial Join.",
+      "exercises": [
+        {
+          "id": "3a",
+          "title_en": "Exercise 3a: Extract Part of a Dataset",
+          "title_ar": "التمرين 3a: استخراج وتصدير جزء من مجموعة البيانات",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Add US county boundary feature class to project",
+            "Construct a SQL query using Select By Attributes clause builder",
+            "Export the selected Illinois counties to a new standalone feature class"
+          ],
+          "objectives_ar": [
+            "إضافة فئة معالم مقاطعات الولايات المتحدة إلى المشروع",
+            "بناء استعلام SQL عبر منشئ العبارات في Select By Attributes",
+            "تصدير مقاطعات ولاية إلينوي المحددة إلى فئة معالم مستقلة جديدة"
+          ],
+          "tools": [
+            "Select By Attributes",
+            "Export Features",
+            "SQL Clause Builder"
+          ],
+          "uiPath": "Map Tab > Select By Attributes | Data Tab > Export Features"
+        },
+        {
+          "id": "3b",
+          "title_en": "Exercise 3b: Incorporate Tabular Data",
+          "title_ar": "التمرين 3b: دمج وربط البيانات الجدولية الخارجية",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Join an external standalone Excel/CSV health table to the county layer using common FIPS code",
+            "Symbolize the joined data using Graduated Colors",
+            "Import symbology from an existing layer file (.lyrx)",
+            "Use the interactive Swipe tool to visually compare layers"
+          ],
+          "objectives_ar": [
+            "ربط جدول إحصاءات خارجي بطبقة المقاطعات عبر حقل كود FIPS المشترك",
+            "ترميز البيانات المربوطة باستخدام الألوان المتدرجة (Graduated Colors)",
+            "استيراد الترميز من ملف طبقة جاهز (.lyrx)",
+            "استخدام أداة المسح التفاعلي (Swipe) للمقارنة البصرية بين الطبقات"
+          ],
+          "tools": [
+            "Add Join",
+            "Apply Symbology From Layer",
+            "Swipe Tool",
+            "Graduated Colors"
+          ],
+          "uiPath": "Layer Context Menu > Joins and Relates > Add Join | Appearance Tab > Symbology | Appearance Tab > Swipe"
+        },
+        {
+          "id": "3c",
+          "title_en": "Exercise 3c: Calculate Data Statistics",
+          "title_ar": "التمرين 3c: إضافة الحقول وحساب الإحصاءات",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Add a new Double numeric field to the attribute table",
+            "Calculate obesity percentage using Calculate Field expression",
+            "Run Summary Statistics to compute mean, min, max, and standard deviation across regions",
+            "Inspect demographic characteristics with Infographics cards"
+          ],
+          "objectives_ar": [
+            "إضافة حقل رقمي جديد من نوع Double في جدول السمات",
+            "حساب نسبة السمنة باستخدام تعبير Calculate Field الحسابي",
+            "تشغيل أداة Summary Statistics لحساب المتوسط والانحراف المعياري",
+            "معاينة الخصائص الديموغرافية عبر بطاقات الرسوم البيانية التفاعلية Infographics"
+          ],
+          "tools": [
+            "Add Field",
+            "Calculate Field",
+            "Summary Statistics",
+            "Infographics"
+          ],
+          "uiPath": "Table View > Add Field | Right-click Field Header > Calculate Field | GP > Summary Statistics"
+        },
+        {
+          "id": "3d",
+          "title_en": "Exercise 3d: Connect Spatial Datasets",
+          "title_ar": "التمرين 3d: الربط المكاني والعلاقات المتبادلة",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Establish a temporary relationship using Add Relate (1:Many cardinality)",
+            "Perform a Spatial Join to aggregate point health clinics into polygon county boundaries",
+            "Configure Join Operation: One-to-One with merge rule count"
+          ],
+          "objectives_ar": [
+            "إنشاء علاقة مؤقتة Add Relate لربط جدول متعدد بسجل واحد (1:M)",
+            "إجراء ربط مكاني Spatial Join لتجميع عيادات النقاط داخل مضلعات المقاطعات",
+            "ضبط خيار الربط One-to-One وحساب عدد العيادات الإجمالي لكل مقاطعة"
+          ],
+          "tools": [
+            "Add Relate",
+            "Spatial Join",
+            "Field Map",
+            "Merge Rule: Count"
+          ],
+          "uiPath": "Layer Context Menu > Joins and Relates > Add Relate | Analysis Tab > Tools > Spatial Join"
+        }
+      ],
+      "examFocus_en": "Add Join creates a temporary in-memory link; requires common key field. 1:1 and M:1 are valid; 1:Many produces duplicate parent records. Spatial Join joins attributes based on spatial geometry (Within, Intersect, Contains).",
+      "examFocus_ar": "Add Join ينشئ ارتباطاً مؤقتاً في الذاكرة ويتطلب حقلاً مشتركاً. يدعم 1:1 و M:1 فقط؛ بينما 1:Many يتطلب Add Relate. الربط المكاني Spatial Join يدمج البيانات بناءً على العلاقة الجغرافية.",
+      "examTraps_en": "Exam trap: Exporting a layer with an active join creates a permanent geodatabase feature class with all joined fields written to disk.",
+      "examTraps_ar": "فخ الامتحان: تصدير طبقة عليها Add Join نشط ينشئ فئة معالم دائمة تتضمن جميع الحقول المربوطة مكتوبة على القرص."
+    },
+    {
+      "chapterNumber": 4,
+      "title_en": "Creating and Editing Spatial Data",
+      "title_ar": "إنشاء وتعديل البيانات المكانية",
+      "scenario_en": "City of Troutdale, Oregon Water & Utility Infrastructure: Modernizing utility records by importing legacy shapefiles and CAD drawings into a File Geodatabase, enforcing data integrity with Coded Value Domains, and digitizing water infrastructure.",
+      "scenario_ar": "البنية التحتية لمياه مدينة تروتديل، أوريغون: تحديث سجلات المرافق عبر استيراد ملفات Shapefiles ورسومات CAD إلى جيوداتابيز، وفرض تكامل البيانات بمجالات القيم المشفرة، ورقمنة أنابيب المياه.",
+      "primaryDomain": "Data Management",
+      "domains": [
+        "Data Management"
+      ],
+      "examWeight": "32% Data Management",
+      "examRelevance_en": "100% Data Management domain core: File GDB creation, XY Table To Point, Coded Value Domains, Snapping configuration, Create Features pane, Split, Merge, and Reshape.",
+      "examRelevance_ar": "جوهر مجال إدارة البيانات: إنشاء File GDB، تحويل إحداثيات XY إلى نقاط، مجالات القيم المشفرة Coded Value Domains، إعدادات الانجذاب Snapping، وأدوات التحرير (Split, Merge, Reshape).",
+      "exercises": [
+        {
+          "id": "4a",
+          "title_en": "Exercise 4a: Build a Geodatabase",
+          "title_ar": "التمرين 4a: بناء قاعدة بيانات جغرافية وإعداد النطاقات",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Convert Shapefiles to Geodatabase feature classes using Feature Class To Geodatabase",
+            "Import tabular XY coordinate records and generate point features via XY Table To Point",
+            "Create and assign a Coded Value Domain (pipe materials: PVC, Ductile Iron, Copper)"
+          ],
+          "objectives_ar": [
+            "تحويل ملفات Shapefile إلى فئات معالم جيوداتابيز بأداة Feature Class To Geodatabase",
+            "استيراد جدول إحداثيات XY وتوليد نقاط المعالم بأداة XY Table To Point",
+            "إنشاء وتعيين نطاق قيم مشفرة Coded Value Domain لأنواع مواسير المياه (PVC, الحديد، النحاس)"
+          ],
+          "tools": [
+            "Feature Class To Geodatabase",
+            "XY Table To Point",
+            "Domains View",
+            "Assign Domain To Field"
+          ],
+          "uiPath": "Catalog > New > File Geodatabase | Data Tab > Domains | GP > XY Table To Point"
+        },
+        {
+          "id": "4b",
+          "title_en": "Exercise 4b: Create Features",
+          "title_ar": "التمرين 4b: رقمنة ورسم المعالم الجديدة",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Configure snapping tolerance and snapping modes (Point, End, Vertex, Edge)",
+            "Digitize new water main line features using Create Features pane and line construction tools",
+            "Populate attribute values leveraging the newly configured Coded Value Domain dropdown"
+          ],
+          "objectives_ar": [
+            "تكوين حساسية وأنماط الانجذاب Snapping (نقطة، نهاية، رأس، حافة)",
+            "رسم ورقمنة خطوط مياه جديدة عبر نافذة Create Features وأدوات الإنشاء الخطية",
+            "إدخال وتعبئة السمات بالاستفادة من القوائم المنسدلة لمجال القيم المشفرة"
+          ],
+          "tools": [
+            "Snapping Toolbar",
+            "Create Features Pane",
+            "Line Tool",
+            "Active Template"
+          ],
+          "uiPath": "Edit Tab > Snapping | Edit Tab > Create Features | Feature Construction Toolbar"
+        },
+        {
+          "id": "4c",
+          "title_en": "Exercise 4c: Modify Features",
+          "title_ar": "التمرين 4c: تعديل وتجزئة ودمج المعالم",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Split water service boundary polygons using the Split tool",
+            "Merge adjoining water parcel polygons into a single feature",
+            "Modify line and point geometries using Vertices and Reshape tools"
+          ],
+          "objectives_ar": [
+            "تجزئة مضلعات مناطق الخدمة بأداة Split",
+            "دمج المضلعات المتجاورة في معلم واحد بأداة Merge",
+            "تعديل هندسة الخطوط والنقاط باستخدام أدوات تحرير الرؤوس Vertices وأداة Reshape"
+          ],
+          "tools": [
+            "Modify Features Pane",
+            "Split Tool",
+            "Merge Tool",
+            "Reshape Tool",
+            "Edit Vertices"
+          ],
+          "uiPath": "Edit Tab > Modify Features > Split / Merge / Reshape"
+        }
+      ],
+      "examFocus_en": "Coded Value Domain restricts attributes to valid values. Shapefile limits (2 GB max, 10-char field names, no true curves, no topology). Merge combines features of SAME layer into one; Split divides one feature into multiple.",
+      "examFocus_ar": "مجال القيم المشفرة يمنع أخطاء الإدخال. قيود Shapefile (سعة 2 جيجا كحد أقصى، أسماء الحقول 10 أحرف، عدم دعم المنحنيات الحقيقية). أداة Merge تدمج معالم من نفس الطبقة في معلم واحد، و Split تجزئ المعلم.",
+      "examTraps_en": "Exam trap: In ArcGIS Pro, editing does NOT require an explicit 'Start Editing' session (unlike ArcMap); edits occur directly and must be Saved on the Edit tab.",
+      "examTraps_ar": "فخ الامتحان: في ArcGIS Pro لا توجد جلسة 'Start Editing' صريحة؛ التحرير مباشر ويلزم الضغط على Save في شريط Edit لتثبيت التعديلات."
+    },
+    {
+      "chapterNumber": 5,
+      "title_en": "Facilitating Workflows",
+      "title_ar": "تيسير وأتمتة مسارات العمل",
+      "scenario_en": "Africa Armed Conflict Location & Event Data (ACLED) Automation: Automating conflict monitoring workflows across Africa by authoring interactive Tasks, building automated ModelBuilder models, and running Python/ArcPy script tools.",
+      "scenario_ar": "أتمتة بيانات النزاعات المسلحة في إفريقيا (ACLED): أتمتة مسارات مراقبة النزاعات عبر إنشاء مهام Tasks تفاعلية، وبناء نماذج ModelBuilder مؤتمتة، وتشغيل أدوات وسكربتات ArcPy.",
+      "primaryDomain": "Analysis and Geoprocessing",
+      "domains": [
+        "Analysis and Geoprocessing",
+        "Layouts and Sharing"
+      ],
+      "examWeight": "25% Analysis & GP",
+      "examRelevance_en": "Covers Tasks authoring, ModelBuilder model construction, Model Parameters (P), preconditions, Python window execution, and Custom Script Tools.",
+      "examRelevance_ar": "يغطي إنشاء المهام التوجيهية Tasks، بناء النماذج عبر ModelBuilder، معاملات النماذج (P)، الشروط المسبقة، أوامر بايثون عبر نافذة Python، وأدوات السكربتات المخصصة.",
+      "exercises": [
+        {
+          "id": "5a",
+          "title_en": "Exercise 5a: Manage a Repeatable Workflow Using Tasks",
+          "title_ar": "التمرين 5a: إدارة مسار عمل متكرر باستخدام المهام (Tasks)",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Open and proceed through a preconfigured task workflow",
+            "Author a new Task Item, Task Group, and Task Steps",
+            "Configure step behavior (Manual, Auto-Run, Auto-Proceed)"
+          ],
+          "objectives_ar": [
+            "فتح ومتابعة مسار عمل مهمة تفاعلية مجهزة مسبقاً",
+            "إنشاء عنصر مهمة جديد Task Item ومجموعة خطوات Task Steps",
+            "ضبط سلوك الخطوة (يدوي Manual، تشغيل تلقائي Auto-Run، انتقال تلقائي Auto-Proceed)"
+          ],
+          "tools": [
+            "Tasks Pane",
+            "Task Designer",
+            "Task Step Configuration"
+          ],
+          "uiPath": "View Tab > Tasks | Tasks Context Menu > New Task Item > Edit in Designer"
+        },
+        {
+          "id": "5b",
+          "title_en": "Exercise 5b: Create a Geoprocessing Model",
+          "title_ar": "التمرين 5b: إنشاء نموذج معالجة جغرافية في ModelBuilder",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Create a new model in the project toolbox",
+            "Drag and connect data variables and GP tools (Select, Buffer, Clip)",
+            "Expose input and output variables as Model Parameters (marked with 'P')",
+            "Validate and execute the ModelBuilder model",
+            "Export model to a standalone Python script"
+          ],
+          "objectives_ar": [
+            "إنشاء نموذج جديد داخل صندوق أدوات المشروع Toolbox",
+            "سحب وربط متغيرات البيانات وأدوات المعالجة (Select, Buffer, Clip)",
+            "تحديد المتغيرات كمعاملات للنموذج Model Parameters (تظهر بالحرف P)",
+            "التحقق من صحة النموذج وتشغيله في ModelBuilder",
+            "تصدير النموذج إلى كود بايثون مستقل"
+          ],
+          "tools": [
+            "ModelBuilder Tab",
+            "Model Parameter (P)",
+            "Validate Model",
+            "Run Model",
+            "Export to Python"
+          ],
+          "uiPath": "Analysis Tab > ModelBuilder | ModelBuilder Tab > Model > Model Properties / Validate / Run"
+        },
+        {
+          "id": "5c",
+          "title_en": "Exercise 5c: Run a Python Command and Script Tool",
+          "title_ar": "التمرين 5c: تشغيل أوامر بايثون وأدوات السكربت المخصصة",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Open the interactive Python window in ArcGIS Pro",
+            "Execute geoprocessing functions using ArcPy syntax (e.g. arcpy.analysis.Buffer)",
+            "Run a custom script tool from a toolbox (.atbx)",
+            "Package the completed project and scripts"
+          ],
+          "objectives_ar": [
+            "فتح نافذة بايثون التفاعلية داخل ArcGIS Pro",
+            "تنفيذ دوال المعالجة بصيغة ArcPy البرمجية (مثل arcpy.analysis.Buffer)",
+            "تشغيل أداة سكربت مخصصة من صندوق الأدوات (.atbx)",
+            "حزم ومشاركة المشروع المكتمل مع السكربتات"
+          ],
+          "tools": [
+            "Python Window",
+            "ArcPy Module",
+            "Custom Script Tool (.atbx)"
+          ],
+          "uiPath": "Analysis Tab > Python Window | Toolboxes > Run Script Tool"
+        }
+      ],
+      "examFocus_en": "Model Parameters marked with 'P' expose inputs/outputs in the geoprocessing tool dialog. White oval in ModelBuilder indicates state is ready to run; gray means not ready; drop shadow indicates already run.",
+      "examFocus_ar": "المعاملات المميزة بالحرف 'P' تظهر كمدخلات ومخرجات في واجهة الأداة عند تشغيلها. اللون الأبيض للبيضاوي يعني جاهز للتشغيل؛ الرمادي غير جاهز؛ الظل يعني تم تنفيذه بنجاح.",
+      "examTraps_en": "Exam trap: Tasks guide end-users step-by-step through interactive UI clicks; ModelBuilder automates multi-step geoprocessing chains into a single execution.",
+      "examTraps_ar": "فخ الامتحان: المهام (Tasks) ترشد المستخدم تفاعلياً خطوة بخطوة في الواجهة؛ بينما ModelBuilder يؤتمت سلسلة من أدوات التحليل دفعة واحدة."
+    },
+    {
+      "chapterNumber": 6,
+      "title_en": "Geoenabling Your Project",
+      "title_ar": "التمكين المكاني والتحليل الجغرافي للمشاريع",
+      "scenario_en": "City of Houston, Texas Healthcare Facilities & Demographics: Converting address lists of medical clinics into precise geographic points via Geocoding, rematching addresses, and analyzing service coverage using proximity buffers.",
+      "scenario_ar": "المرافق الصحية والديموغرافيا لمدينة هيوستن، تكساس: تحويل قوائم عناوين العيادات الطبية إلى نقاط مكانية دقيقة عبر التكويد الجغرافي، وإعادة مطابقة العناوين، وتحليل نطاق الخدمة بالنطاقات العازلة.",
+      "primaryDomain": "Data Management",
+      "domains": [
+        "Data Management",
+        "Analysis and Geoprocessing"
+      ],
+      "examWeight": "32% Data Management · 25% Analysis & GP",
+      "examRelevance_en": "Direct exam topics: Address Locators, Geocode Table, Rematch Addresses (Matched, Unmatched, Tied), Buffer (Dissolve Type: None vs All), and Spatial Join.",
+      "examRelevance_ar": "موضوعات امتحانية مباشرة: محددات العناوين Locators، تكويد الجداول Geocode Table، إعادة مطابقة العناوين Rematch (المتطابقة، غير المتطابقة، المتطابقة مع أكثر من عنوان Tied)، والنطاقات Buffers.",
+      "exercises": [
+        {
+          "id": "6a",
+          "title_en": "Exercise 6a: Prepare Project Data",
+          "title_ar": "التمرين 6a: إعداد بيانات المشروع والربط الجدولي",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Join census demographic tables to tract polygons",
+            "Symbolize populations using Graduated Colors classification"
+          ],
+          "objectives_ar": [
+            "ربط جداول التعداد السكاني الديموغرافي بمضلعات المناطق الإحصائية",
+            "ترميز السكان باستخدام تصنيف الألوان المتدرجة (Graduated Colors)"
+          ],
+          "tools": [
+            "Add Join",
+            "Graduated Colors",
+            "Data Classification"
+          ],
+          "uiPath": "Joins and Relates > Add Join | Symbology Pane > Primary Symbology: Graduated Colors"
+        },
+        {
+          "id": "6b",
+          "title_en": "Exercise 6b: Geocode Location Data",
+          "title_ar": "التمرين 6b: التكويد الجغرافي لبيانات العناوين",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Build an Address Locator or utilize ArcGIS World Geocoding Service",
+            "Geocode tabular address records using Geocode Addresses / Geocode Table tool",
+            "Open Rematch Addresses pane to inspect Matched, Unmatched, and Tied candidates",
+            "Manually match Tied addresses using address candidates list"
+          ],
+          "objectives_ar": [
+            "إنشاء محدد عناوين (Address Locator) أو استخدام خدمة التكويد العالمية",
+            "تكويد سجلات العناوين الجدولية بأداة Geocode Table وتحويلها إلى نقاط",
+            "فتح نافذة إعادة المطابقة (Rematch Addresses) لفحص العناوين المتطابقة وغير المتطابقة والمتنافسة (Tied)",
+            "مطابقة العناوين المتنافسة يدوياً بناءً على قائمة المرشحين الأعلى دقة"
+          ],
+          "tools": [
+            "Create Locator",
+            "Geocode Table",
+            "Rematch Addresses Pane"
+          ],
+          "uiPath": "GP > Geocode Addresses | Data Tab > Rematch Addresses Pane"
+        },
+        {
+          "id": "6c",
+          "title_en": "Exercise 6c: Use Geoprocessing Tools to Analyze Vector Data",
+          "title_ar": "التمرين 6c: استخدام أدوات المعالجة لتحليل البيانات المتجهة",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Generate proximity zones around clinics using Buffer tool",
+            "Configure Dissolve Type: Dissolve All Output Features into a unified service area",
+            "Clip census tracts to the clinic service boundary",
+            "Select features using Select By Location (Intersect, Completely Within)",
+            "Perform Spatial Join to compute population within 1 mile of clinics"
+          ],
+          "objectives_ar": [
+            "توليد نطاقات القرب حول العيادات باستخدام أداة Buffer",
+            "ضبط خيار التذويب Dissolve: دمج كافة النطاقات في منطقة خدمة موحدة (Dissolve all)",
+            "اقتطاع مضلعات السكان بأداة Clip بناءً على حدود خدمة العيادات",
+            "تحديد المعالم مكانياً بأداة Select By Location",
+            "إجراء ربط مكاني Spatial Join لحساب إجمالي السكان الواقعين ضمن نطاق ميل واحد من العيادات"
+          ],
+          "tools": [
+            "Buffer",
+            "Dissolve Type: All",
+            "Clip",
+            "Select By Location",
+            "Spatial Join"
+          ],
+          "uiPath": "Analysis Tab > Tools > Buffer | Analysis Tab > Select By Location"
+        }
+      ],
+      "examFocus_en": "Rematch Addresses pane categories: Matched (green check), Unmatched (red X), Tied (yellow question mark - multiple candidates with equal score). Dissolve 'None' keeps separate buffer circles; Dissolve 'All' creates unified multi-part polygon.",
+      "examFocus_ar": "فئات نافذة Rematch Addresses: المتطابقة Matched (صح أخضر)، غير المتطابقة Unmatched (خطأ أحمر)، والمتنافسة Tied (علامة استفهام صفراء لتساوي درجات المطابقة لعدة عناوين).",
+      "examTraps_en": "Exam trap: Geocoding requires credit consumption if using ArcGIS Online World Geocoding Service; using a custom local locator (.loc) costs zero credits.",
+      "examTraps_ar": "فخ الامتحان: التكويد بخدمة ArcGIS World Geocoding يستهلك نقاط رصيد (Credits)؛ بينما استخدام محدد محلي (.loc) مجاني تماماً."
+    },
+    {
+      "chapterNumber": 7,
+      "title_en": "Analyzing Spatial and Temporal Patterns",
+      "title_ar": "تحليل الأنماط المكانية والزمانية",
+      "scenario_en": "City of Philadelphia Crime Incidents Pattern Mining: Investigating 911 assault and robbery calls across neighborhoods, identifying statistically significant clusters, and building a 3D Space-Time Cube to detect emerging trends.",
+      "scenario_ar": "استكشاف أنماط جرائم مدينة فيلادلفيا: فحص بلاغات الاعتداء والسطو عبر الأحياء، وتحديد البؤر الساخنة ذات الدلالة الإحصائية، وبناء مكعب الزمان والمكان 3D لاكتشاف الاتجاهات الناشئة.",
+      "primaryDomain": "Analysis and Geoprocessing",
+      "domains": [
+        "Analysis and Geoprocessing",
+        "Visualization"
+      ],
+      "examWeight": "25% Analysis & GP · 25% Visualization",
+      "examRelevance_en": "Heavily tested spatial statistics: Kernel Density, Optimized Hot Spot Analysis (Getis-Ord Gi*), Create Space Time Cube (.nc), Emerging Hot Spot Analysis, Time Slider, and Range Slider.",
+      "examRelevance_ar": "إحصاءات مكانية هامة في الامتحان: الكثافة النواتية Kernel Density، البؤر الساخنة (Getis-Ord Gi*)، إنشاء مكعب الزمان والمكان (.nc)، تحليل البؤر الناشئة، ومشرقي الوقت Time والمدى Range.",
+      "exercises": [
+        {
+          "id": "7a",
+          "title_en": "Exercise 7a: Create a Kernel Density Map",
+          "title_ar": "التمرين 7a: إنشاء خريطة الكثافة النواتية (Kernel Density)",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Filter crime records by attribute (Assault incidents)",
+            "Run Kernel Density tool to generate a continuous raster surface representing crime intensity per square unit"
+          ],
+          "objectives_ar": [
+            "تصفية بلاغات الجرائم بالسمات (جرائم الاعتداء فقط)",
+            "تشغيل أداة Kernel Density لتوليد سطح راستر متصل يعبر عن كثافة الجرائم لكل وحدة مساحة"
+          ],
+          "tools": [
+            "Select By Attributes",
+            "Kernel Density",
+            "Search Radius",
+            "Cell Size"
+          ],
+          "uiPath": "Analysis Tab > Tools > Kernel Density"
+        },
+        {
+          "id": "7b",
+          "title_en": "Exercise 7b: Perform a Hot Spot Analysis",
+          "title_ar": "التمرين 7b: إجراء تحليل البؤر الساخنة ومكعب الزمان والمكان",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Run Optimized Hot Spot Analysis (Getis-Ord Gi*) to identify statistically significant clusters with 99%, 95%, 90% confidence",
+            "Aggregate temporal crime points into netCDF bins using Create Space Time Cube By Aggregating Points (.nc)",
+            "Run Emerging Hot Spot Analysis to categorize trends (New, Consecutive, Intensifying, Persistent, Sporadic Hot Spots)"
+          ],
+          "objectives_ar": [
+            "تشغيل أداة Optimized Hot Spot Analysis لتحديد التجمعات ذات الدلالة الإحصائية بمستويات ثقة 90% و 95% و 99%",
+            "تجميع نقاط الجرائم زمنياً في خلايا netCDF عبر أداة Create Space Time Cube (.nc)",
+            "تشغيل أداة Emerging Hot Spot Analysis لتصنيف الاتجاهات (بؤر ساخنة جديدة، متتالية، متصاعدة، متفرقة)"
+          ],
+          "tools": [
+            "Optimized Hot Spot Analysis",
+            "Create Space Time Cube (.nc)",
+            "Emerging Hot Spot Analysis"
+          ],
+          "uiPath": "Spatial Statistics Tools > Mapping Clusters | Space Time Pattern Mining Tools"
+        },
+        {
+          "id": "7c",
+          "title_en": "Exercise 7c: Explore the Results in 3D",
+          "title_ar": "التمرين 7c: استكشاف وتحليل النتائج في مشهد ثلاثي الأبعاد",
+          "domain": "Visualization",
+          "objectives_en": [
+            "Convert map to a 3D Local Scene",
+            "Visualize the 3D space-time cube bins stacked along the vertical Z-axis (Z represents Time)",
+            "Inspect vertical trends in crime intensity over months"
+          ],
+          "objectives_ar": [
+            "تحويل الخريطة إلى مشهد محلي 3D Local Scene",
+            "عرض خلايا مكعب الزمان والمكان مكدسة رأسياً على محور Z (المحور الرأسي يمثل الزمن)",
+            "فحص الاتجاهات الرأسية لتطور كثافة الجريمة عبر الأشهر والسنوات"
+          ],
+          "tools": [
+            "Visualize Space Time Cube in 3D",
+            "Local Scene",
+            "Extrusion by Time"
+          ],
+          "uiPath": "Space Time Pattern Mining Tools > Visualize Space Time Cube in 3D"
+        },
+        {
+          "id": "7d",
+          "title_en": "Exercise 7d: Animate the Data",
+          "title_ar": "التمرين 7d: تحريك البيانات عبر مشلقي الزمن والمدى",
+          "domain": "Visualization",
+          "objectives_en": [
+            "Enable Time on crime feature layer properties (Date field)",
+            "Configure the on-screen Time Slider to animate monthly incidents",
+            "Configure Range Slider to filter features interactively based on numeric attributes"
+          ],
+          "objectives_ar": [
+            "تفعيل خصائص الزمن (Time-enabled) على طبقة الجرائم بربطها بحقل التاريخ",
+            "ضبط مشلق الزمن (Time Slider) لعرض وتحريك تطور الجرائم شهرياً",
+            "ضبط مشلق المدى (Range Slider) لفلترة المعالم تفاعلياً بناءً على حقول رقمية"
+          ],
+          "tools": [
+            "Layer Properties > Time",
+            "Time Slider",
+            "Range Slider"
+          ],
+          "uiPath": "Layer Context Menu > Properties > Time | Map Tab > Time / Range Ribbons"
+        }
+      ],
+      "examFocus_en": "Space Time Cube stores data in netCDF format (.nc). Emerging Hot Spot Analysis identifies 17 pattern types (New, Consecutive, Intensifying, Persistent, Diminishing, Sporadic, Oscillating, Historical). Time slider requires Date/Time field; Range slider works with integers/doubles.",
+      "examFocus_ar": "مكعب الزمان والمكان يُخزن بصيغة netCDF (.nc). أداة Emerging Hot Spot تحدد 17 نمطاً للبؤر. مشلق الزمن يتطلب حقل تاريخ Date/Time، بينما مشلق المدى يعمل على الحقول الرقمية.",
+      "examTraps_en": "Exam trap: High values alone do not make a hot spot; a feature must have a high value AND be surrounded by other features with high values to be statistically significant.",
+      "examTraps_ar": "فخ الامتحان: القيمة المرتفعة وحدها لا تعني بؤرة ساخنة؛ يجب أن تكون القيمة مرتفعة ومحاطة بقيم مرتفعة أخرى حتى تكون ذات دلالة إحصائية."
+    },
+    {
+      "chapterNumber": 8,
+      "title_en": "Determining Suitability",
+      "title_ar": "تحديد الملاءمة المكانية والتحليل الشبكي (Raster)",
+      "scenario_en": "Sonoma County, California Vineyard Site Selection: Solving a land-use suitability challenge for high-quality wine grape production by analyzing elevation, slope, aspect, solar radiation, and zoning criteria.",
+      "scenario_ar": "اختيار مواقع كروم العنب في مقاطعة سونوما، كاليفورنيا: حل مسألة الملاءمة المكانية لإنتاج العنب عالي الجودة بتحليل التضاريس والارتفاع والانحدار وزاوية المواجهة (Aspect) واستخدامات الأراضي.",
+      "primaryDomain": "Analysis and Geoprocessing",
+      "domains": [
+        "Analysis and Geoprocessing",
+        "Data Management"
+      ],
+      "examWeight": "25% Analysis & GP",
+      "examRelevance_en": "Core raster analysis: Feature to Polygon, Clip Raster, Mosaic/Merge, Surface derivations (Aspect, Slope, Hillshade), Reclassify, and Raster Calculator / Suitability Modeler.",
+      "examRelevance_ar": "جوهر تحليل الراستر: تحويل المعالم لمضلعات، اقتطاع الراستر Clip، الدمج والموزاييك، اشتقاق الأسطح (Slope, Aspect, Hillshade)، إعادة التصنيف Reclassify، وحسابات الراستر.",
+      "exercises": [
+        {
+          "id": "8a",
+          "title_en": "Exercise 8a: Prepare Project Data",
+          "title_ar": "التمرين 8a: تجهيز بيانات الراستر والمتجهات",
+          "domain": "Data Management",
+          "objectives_en": [
+            "Convert parcel boundary lines into polygon features via Feature To Polygon",
+            "Clip high-resolution DEM rasters to the project boundary via Clip Raster",
+            "Combine adjacent elevation tiles into a single seamless dataset using Mosaic To New Raster"
+          ],
+          "objectives_ar": [
+            "تحويل خطوط حدود الأراضي إلى مضلعات بأداة Feature To Polygon",
+            "اقتطاع راستر الارتفاع الرقمي DEM بأداة Clip Raster",
+            "دمج مربعات الارتفاع المتجاورة في راستر واحد متصل بأداة Mosaic To New Raster"
+          ],
+          "tools": [
+            "Feature To Polygon",
+            "Clip Raster",
+            "Mosaic To New Raster"
+          ],
+          "uiPath": "Data Management Tools > Features > Feature To Polygon | Raster > Raster Processing"
+        },
+        {
+          "id": "8b",
+          "title_en": "Exercise 8b: Derive New Surfaces",
+          "title_ar": "التمرين 8b: اشتقاق أسطح التضاريس والانحدار والمواجهة",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Calculate topographic slope in degrees using Slope tool",
+            "Derive compass direction of slope faces using Aspect tool (e.g. South-facing slopes for sun exposure)",
+            "Generate an illuminated terrain surface for 3D visualization using Hillshade tool"
+          ],
+          "objectives_ar": [
+            "حساب درجة الانحدار الطبوغرافي بالدرجات باستخدام أداة Slope",
+            "اشتقاق اتجاه مواجهة المنحدرات الجغرافية بأداة Aspect (لتحديد المنحدرات الجنوبية المشمسة)",
+            "توليد سطح التظليل التضاريسي للإظهار البصري بأداة Hillshade"
+          ],
+          "tools": [
+            "Slope (Spatial Analyst)",
+            "Aspect",
+            "Hillshade",
+            "Geoprocessing Environments: Snap Raster"
+          ],
+          "uiPath": "Spatial Analyst Tools > Surface > Slope / Aspect / Hillshade"
+        },
+        {
+          "id": "8c",
+          "title_en": "Exercise 8c: Create a Weighted Suitability Model",
+          "title_ar": "التمرين 8c: إنشاء نموذج الملاءمة المكانية الموزونة",
+          "domain": "Analysis and Geoprocessing",
+          "objectives_en": [
+            "Standardize diverse criteria rasters into a common 1-to-10 scale using Reclassify",
+            "Weight and overlay multiple criteria (Slope 40%, Aspect 30%, Soils 30%) using Raster Calculator or Suitability Modeler",
+            "Extract the optimal suitability parcels"
+          ],
+          "objectives_ar": [
+            "توحيد معايير الراستر المختلفة إلى مقياس موحد (من 1 إلى 10) باستخدام أداة Reclassify",
+            "وزن وتجميع المعايير المتعددة (الانحدار 40%، المواجهة 30%، التربة 30%) بأداة Raster Calculator",
+            "استخراج وتحديد قطع الأراضي ذات الملاءمة القصوى"
+          ],
+          "tools": [
+            "Reclassify",
+            "Raster Calculator",
+            "Suitability Modeler",
+            "Con Tool"
+          ],
+          "uiPath": "Spatial Analyst Tools > Reclass > Reclassify | Map Algebra > Raster Calculator"
+        }
+      ],
+      "examFocus_en": "Aspect measures slope direction in clockwise degrees from 0 (North) to 360 (North); flat areas are assigned -1. Geoprocessing environment 'Snap Raster' aligns output cell grid with an existing raster to prevent resampling shifts.",
+      "examFocus_ar": "أداة Aspect تقيس اتجاه الانحدار بالدرجات مع عقارب الساعة من 0 (شمال) إلى 360، والمناطق المستوية تأخذ قيمة -1. بيئة المعالجة Snap Raster تضمن محاذاة خلايا الراستر الناتج مع راستر مرجعي.",
+      "examTraps_en": "Exam trap: Reclassifying continuous surfaces converts floating-point cell values into discrete integer categories required for weighted overlay.",
+      "examTraps_ar": "فخ الامتحان: إعادة تصنيف الأسطح المتصلة تحول قيم الخلايا الكسرية (Float) إلى فئات أعداد صحيحة (Integer) لازمة لعمليات التراكب."
+    },
+    {
+      "chapterNumber": 9,
+      "title_en": "Presenting Your Project",
+      "title_ar": "عرض وإخراج المشروع ومشاركته",
+      "scenario_en": "City of San Diego Park & Recreation Cartographic Presentation: Producing an executive-quality printed poster layout, configuring Maplex advanced labeling fitting strategies, and packaging project templates.",
+      "scenario_ar": "الإخراج الكارتوجرافي لمنتزهات مدينة سان دييغو: إنتاج لوحة إخراج طباعية احترافية، وضبط استراتيجيات محرك التسميات Maplex، وحزم قوالب المشاريع للمشاركة.",
+      "primaryDomain": "Layouts and Sharing",
+      "domains": [
+        "Layouts and Sharing",
+        "Visualization"
+      ],
+      "examWeight": "18% Layouts & Sharing · 25% Visualization",
+      "examRelevance_en": "Essential exam topics: Definition Queries, Symbol Layer Drawing (casing connections), Maplex Label Engine (stacking, abbreviating), Map Frames, Dynamic Text, Map Series, and PDF Layer exports.",
+      "examRelevance_ar": "موضوعات امتحانية جوهرية: استعلامات التعريف Definition Queries، رسم طبقات الرموز Symbol Layer Drawing، محرك Maplex، إطارات الخرائط، النصوص الديناميكية، وسلاسل الخرائط.",
+      "exercises": [
+        {
+          "id": "9a",
+          "title_en": "Exercise 9a: Apply Detailed Symbology",
+          "title_ar": "التمرين 9a: تطبيق الترميز المتقدم واستعلامات العرض",
+          "domain": "Visualization",
+          "objectives_en": [
+            "Create a Definition Query to restrict display to public park amenities",
+            "Fine-tune symbol properties using multi-layer stroke and fill symbols",
+            "Enable and configure Symbol Layer Drawing to eliminate road casing overlaps at intersections"
+          ],
+          "objectives_ar": [
+            "إنشاء استعلام تعريف Definition Query لقصر العرض على مرافق المنتزهات العامة فقط",
+            "تنسيق خصائص الرموز المتقدمة متعددة الطبقات (Stroke & Fill)",
+            "تفعيل وضبط رسم طبقات الرموز (Symbol Layer Drawing) لدمج خطوط إطارات الطرق عند التقاطعات"
+          ],
+          "tools": [
+            "Definition Query",
+            "Symbology Formatting",
+            "Symbol Layer Drawing"
+          ],
+          "uiPath": "Layer Properties > Definition Query | Symbology Pane > Advanced Symbology Options > Symbol Layer Drawing"
+        },
+        {
+          "id": "9b",
+          "title_en": "Exercise 9b: Label Features",
+          "title_ar": "التمرين 9b: إعداد التسميات بمحرك Maplex المتقدم",
+          "domain": "Visualization",
+          "objectives_en": [
+            "Activate the Maplex Label Engine",
+            "Configure Label Placement rules (Best Position, Along Line)",
+            "Apply Maplex Fitting Strategies: Text Stacking, Font Reduction, Font Abbreviation dictionaries",
+            "Resolve label conflicts using Label Weight and Feature Weight"
+          ],
+          "objectives_ar": [
+            "تفعيل محرك التسميات المتقدم Maplex Label Engine",
+            "تكوين قواعد مواضع التسميات (أفضل موضع، على طول الخط)",
+            "تطبيق استراتيجيات ملاءمة Maplex: تقسيم النصوص إلى أسطر (Stacking)، تصغير الخط، وقواميس الاختصارات",
+            "فض تعارض النصوص باستخدام وزن التسمية (Label Weight) ووزن المعلم (Feature Weight)"
+          ],
+          "tools": [
+            "Maplex Label Engine",
+            "Label Stacking",
+            "Abbreviation Dictionaries",
+            "Label Weights"
+          ],
+          "uiPath": "Map Tab > Labeling Group | Labeling Tab > Position / Fitting Strategy / Conflict Resolution"
+        },
+        {
+          "id": "9c",
+          "title_en": "Exercise 9c: Create a Page Layout",
+          "title_ar": "التمرين 9c: إنشاء لوحة الإخراج وعناصر الخريطة",
+          "domain": "Layouts and Sharing",
+          "objectives_en": [
+            "Insert a new Page Layout (ANSI D - Landscape)",
+            "Insert Main Map Frame and Locator Inset Map Frame",
+            "Insert dynamic Legend filtered to only show features visible in map extent",
+            "Insert Scale Bar, North Arrow, and Dynamic Text (e.g. Project Name, Current User, Date, Coordinate System)",
+            "Activate Map Frame to pan and zoom within layout"
+          ],
+          "objectives_ar": [
+            "إدراج لوحة إخراج جديدة بمقاس صفحة محدد (Landscape)",
+            "إدراج إطار الخريطة الرئيسي وإطار الخريطة الإرشادية المصغرة (Locator Map Frame)",
+            "إدراج مفتاح خريطة ديناميكي (Legend) يعرض فقط المعالم الظاهرة في نطاق الخريطة الحالي",
+            "إدراج مقياس الرسم، سهم الشمال، والنصوص الديناميكية (Dynamic Text)",
+            "تنشيط إطار الخريطة (Activate Map Frame) للتحريك وتغيير مقياس العرض داخل اللوحة"
+          ],
+          "tools": [
+            "Insert Layout",
+            "Map Frame",
+            "Activate Map Frame",
+            "Dynamic Text",
+            "Scale Bar",
+            "North Arrow"
+          ],
+          "uiPath": "Insert Tab > New Layout | Insert Tab > Map Frame / Legend / Scale Bar / Dynamic Text"
+        },
+        {
+          "id": "9d",
+          "title_en": "Exercise 9d: Share Your Project",
+          "title_ar": "التمرين 9d: تصدير ومشاركة المشروع وقوالبه",
+          "domain": "Layouts and Sharing",
+          "objectives_en": [
+            "Export layout to a high-resolution print-ready PDF with georeferencing and layers enabled",
+            "Save Layout File (.pagx) to easily reuse layout templates across projects",
+            "Package project as a Project Template (.aptx) with sharing analyzer verification"
+          ],
+          "objectives_ar": [
+            "تصدير لوحة الإخراج إلى ملف PDF عالي الجودة مع تفعيل طبقات PDF والإسناد الجغرافي",
+            "حفظ ملف لوحة الإخراج (.pagx) لإعادة استخدام قالب اللوحة في مشاريع أخرى",
+            "حزم المشروع كقالب مشروع (.aptx) مع تشغيل أداة التحليل وفحص الأخطاء (Sharing Analyzer)"
+          ],
+          "tools": [
+            "Export Layout (PDF)",
+            "Save As Layout File (.pagx)",
+            "Package Project Template (.aptx)",
+            "Sharing Analyzer"
+          ],
+          "uiPath": "Share Tab > Export Layout | Share Tab > Package Project Template"
+        }
+      ],
+      "examFocus_en": "Symbol Layer Drawing connects road casing lines seamlessly. Maplex fitting strategies (Stacking, Overrun, Font Reduction, Font Abbreviation, Key Numbering). Dynamic text syntax e.g. <dyn type=\"project\" property=\"name\"/>. Difference between .ppkx (Project Package), .aptx (Project Template), and .pagx (Layout file).",
+      "examFocus_ar": "أداة Symbol Layer Drawing تدمج خطوط إطارات الطرق بسلاسة. استراتيجيات Maplex (Stacking, Overrun, Font Reduction, Abbreviation). صيغة النصوص الديناميكية <dyn type=\"...\"/>. الفروق بين حزم المشاريع (.ppkx) وقوالب المشاريع (.aptx) وملفات اللوحات (.pagx).",
+      "examTraps_en": "Exam trap: Activating a Map Frame allows you to pan and zoom the map inside the layout without moving the layout frame on the page; you must click 'Close Activation' to return to layout editing.",
+      "examTraps_ar": "فخ الامتحان: تنشيط إطار الخريطة (Activate Map Frame) يمكنك من التحريك وتكبير الخريطة دون تغيير موضع الإطار في الصفحة؛ ويجب الضغط على 'Close Activation' للعودة لتحرير عناصر اللوحة."
+    }
+  ]
+}

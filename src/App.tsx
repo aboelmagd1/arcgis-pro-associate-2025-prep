@@ -19,6 +19,7 @@ import {
   Menu,
   X,
   Compass,
+  GraduationCap,
 } from 'lucide-react';
 import { useI18n } from './i18n';
 
@@ -28,6 +29,7 @@ const Bank = lazy(() => import('./pages/QuestionBank'));
 const LearningModules = lazy(() => import('./pages/LearningModules'));
 const ScenarioLibrary = lazy(() => import('./pages/ScenarioLibrary'));
 const WorkflowsPage = lazy(() => import('./pages/WorkflowsPage'));
+const TextbookGuidePage = lazy(() => import('./pages/TextbookGuidePage'));
 const FlashcardsPage = lazy(() => import('./pages/FlashcardsPage'));
 const ReferencesPage = lazy(() => import('./pages/ReferencesPage'));
 const Exam = lazy(() => import('./features/exam/ExamPage'));
@@ -57,6 +59,7 @@ export default function App() {
   const navItems = [
     { to: '/', label: t('home'), icon: Home },
     { to: '/overview', label: t('overview'), icon: Map },
+    { to: '/textbook', label: t('textbook'), icon: GraduationCap },
     { to: '/modules', label: t('modules'), icon: BookOpen },
     { to: '/scenarios', label: t('scenarios'), icon: FolderKanban },
     { to: '/workflows', label: t('workflows'), icon: GitBranch },
@@ -227,6 +230,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/overview" element={<Overview />} />
+            <Route path="/textbook" element={<TextbookGuidePage />} />
             <Route path="/modules" element={<LearningModules />} />
             <Route path="/questions" element={<Bank />} />
             <Route path="/scenarios" element={<ScenarioLibrary />} />

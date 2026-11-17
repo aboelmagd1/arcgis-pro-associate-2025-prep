@@ -17,6 +17,7 @@ import {
   Palette,
   Cpu,
   Share2,
+  GraduationCap,
 } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { loadProgress } from '../storage/store';
@@ -169,6 +170,15 @@ export default function HomePage() {
 
   const quickFeatures = [
     {
+      to: '/textbook',
+      titleEn: 'GTK Pro 3.2 Textbook & Labs',
+      titleAr: 'دليل كتاب Getting to Know Pro والتمارين',
+      descEn: 'Full 9-chapter syllabus, official exercise data packages, and exam blueprint classification.',
+      descAr: 'منهج الفصول الـ 9 الكامل، روابط تحميل البيانات الرسمية، وتصنيف التمارين حسب مجالات الاختبار.',
+      icon: GraduationCap,
+      color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50',
+    },
+    {
       to: '/modules',
       titleEn: '12 Learning Modules',
       titleAr: '12 وحدة تعليمية تفاعلية',
@@ -287,11 +297,19 @@ export default function HomePage() {
             </Link>
 
             <Link
+              to="/textbook"
+              className="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all border border-white/10"
+            >
+              <GraduationCap size={18} />
+              <span>{lang === 'ar' ? 'دليل الكتاب والتمارين (Ch 1-9)' : 'GTK Pro Book (Ch 1–9)'}</span>
+            </Link>
+
+            <Link
               to="/modules"
               className="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all border border-white/10"
             >
               <BookOpen size={18} />
-              <span>{lang === 'ar' ? 'استعراض الوحدات الـ 12' : 'Explore 12 Modules'}</span>
+              <span>{lang === 'ar' ? 'الوحدات الـ 12' : '12 Modules'}</span>
             </Link>
 
             <Link

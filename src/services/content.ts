@@ -6,7 +6,8 @@ import type {
   TroubleshootingGuide,
   Flashcard,
   DataManagementTool,
-  StudyPlanner
+  StudyPlanner,
+  TextbookData
 } from '../types/content';
 
 const url = (p: string) => `${import.meta.env.BASE_URL}data/${p}`;
@@ -110,5 +111,12 @@ export async function loadDataManagementTools(): Promise<DataManagementTool[]> {
 export async function loadStudyPlanner(): Promise<StudyPlanner> {
   const res = await fetch(url('references/study-planner.json'));
   if (!res.ok) throw new Error('missing-study-planner');
+  return res.json();
+}
+
+/** Loads the Getting to Know ArcGIS Pro 3.2 textbook and lab guide. */
+export async function loadTextbookGuide(): Promise<TextbookData> {
+  const res = await fetch(url('references/gtk-textbook.json'));
+  if (!res.ok) throw new Error('missing-textbook-guide');
   return res.json();
 }
